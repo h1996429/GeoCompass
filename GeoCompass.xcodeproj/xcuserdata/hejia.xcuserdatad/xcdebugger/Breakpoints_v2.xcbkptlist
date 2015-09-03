@@ -10,13 +10,194 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GeoCompass/FirstViewController.swift"
-            timestampString = "462971914.919023"
+            timestampString = "462973265.868173"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "34"
-            endingLineNumber = "34"
+            startingLineNumber = "66"
+            endingLineNumber = "66"
             landmarkName = "didReceiveMemoryWarning()"
             landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GeoCompass/FirstViewController.swift"
+            timestampString = "462973012.054551"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "12"
+            endingLineNumber = "12">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "globalinit_33_0AB4AD94DAEAE3D96461EFC9228B556D_func0"
+                  moduleName = "GeoCompass"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hejia/Documents/GeoCompass/GeoCompass/FirstViewController.swift"
+                  timestampString = "462973266.368832"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "12"
+                  endingLineNumber = "12"
+                  offsetFromSymbolStart = "7">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "globalinit_33_0AB4AD94DAEAE3D96461EFC9228B556D_func1"
+                  moduleName = "GeoCompass"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hejia/Documents/GeoCompass/GeoCompass/FirstViewController.swift"
+                  timestampString = "462973266.3693"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "12"
+                  endingLineNumber = "12"
+                  offsetFromSymbolStart = "7">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GeoCompass.dip.unsafeMutableAddressor : Swift.Double"
+                  moduleName = "GeoCompass"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hejia/Documents/GeoCompass/GeoCompass/FirstViewController.swift"
+                  timestampString = "462973266.369462"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "12"
+                  endingLineNumber = "12"
+                  offsetFromSymbolStart = "22">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "globalinit_33_0AB4AD94DAEAE3D96461EFC9228B556D_func2"
+                  moduleName = "GeoCompass"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hejia/Documents/GeoCompass/GeoCompass/FirstViewController.swift"
+                  timestampString = "462973266.369617"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "12"
+                  endingLineNumber = "12"
+                  offsetFromSymbolStart = "7">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GeoCompass.dipdir.unsafeMutableAddressor : Swift.Double"
+                  moduleName = "GeoCompass"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hejia/Documents/GeoCompass/GeoCompass/FirstViewController.swift"
+                  timestampString = "462973266.36982"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "12"
+                  endingLineNumber = "12"
+                  offsetFromSymbolStart = "22">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "globalinit_33_0AB4AD94DAEAE3D96461EFC9228B556D_func3"
+                  moduleName = "GeoCompass"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hejia/Documents/GeoCompass/GeoCompass/FirstViewController.swift"
+                  timestampString = "462973266.36998"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "12"
+                  endingLineNumber = "12"
+                  offsetFromSymbolStart = "7">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GeoCompass.cefujiao.unsafeMutableAddressor : Swift.Double"
+                  moduleName = "GeoCompass"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hejia/Documents/GeoCompass/GeoCompass/FirstViewController.swift"
+                  timestampString = "462973266.370143"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "12"
+                  endingLineNumber = "12"
+                  offsetFromSymbolStart = "22">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "globalinit_33_0AB4AD94DAEAE3D96461EFC9228B556D_func4"
+                  moduleName = "GeoCompass"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hejia/Documents/GeoCompass/GeoCompass/FirstViewController.swift"
+                  timestampString = "462973266.370295"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "12"
+                  endingLineNumber = "12"
+                  offsetFromSymbolStart = "7">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GeoCompass.qingfujiao.unsafeMutableAddressor : Swift.Double"
+                  moduleName = "GeoCompass"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hejia/Documents/GeoCompass/GeoCompass/FirstViewController.swift"
+                  timestampString = "462973266.370477"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "12"
+                  endingLineNumber = "12"
+                  offsetFromSymbolStart = "22">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "globalinit_33_0AB4AD94DAEAE3D96461EFC9228B556D_func5"
+                  moduleName = "GeoCompass"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hejia/Documents/GeoCompass/GeoCompass/FirstViewController.swift"
+                  timestampString = "462973266.370786"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "12"
+                  endingLineNumber = "12"
+                  offsetFromSymbolStart = "7">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GeoCompass.qingfuxiang.unsafeMutableAddressor : Swift.Double"
+                  moduleName = "GeoCompass"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hejia/Documents/GeoCompass/GeoCompass/FirstViewController.swift"
+                  timestampString = "462973266.37104"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "12"
+                  endingLineNumber = "12"
+                  offsetFromSymbolStart = "22">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

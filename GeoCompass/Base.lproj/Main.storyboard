@@ -28,6 +28,9 @@
                                                 <segment title="测量线状构造"/>
                                                 <segment title="保持数据"/>
                                             </segments>
+                                            <connections>
+                                                <action selector="indexChange:" destination="9pv-A4-QxB" eventType="valueChanged" id="puz-Lc-SKB"/>
+                                            </connections>
                                         </segmentedControl>
                                     </barButtonItem>
                                 </items>
@@ -314,6 +317,9 @@
                         </variation>
                     </view>
                     <tabBarItem key="tabBarItem" title="罗盘" image="first" id="acW-dT-cKf"/>
+                    <connections>
+                        <outlet property="segmentedControl" destination="b6I-Kl-dQA" id="0qP-aF-jAZ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
