@@ -14,6 +14,7 @@
 		A722933F1B983CAC00CCF6E8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A722933E1B983CAC00CCF6E8 /* Images.xcassets */; };
 		A72293421B983CAC00CCF6E8 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = A72293401B983CAC00CCF6E8 /* LaunchScreen.xib */; };
 		A722934E1B983CAC00CCF6E8 /* GeoCompassTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A722934D1B983CAC00CCF6E8 /* GeoCompassTests.swift */; };
+		A72293581B98619800CCF6E8 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A72293571B98619800CCF6E8 /* CoreMotion.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +39,7 @@
 		A72293471B983CAC00CCF6E8 /* GeoCompassTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GeoCompassTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A722934C1B983CAC00CCF6E8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A722934D1B983CAC00CCF6E8 /* GeoCompassTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoCompassTests.swift; sourceTree = "<group>"; };
+		A72293571B98619800CCF6E8 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,6 +47,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A72293581B98619800CCF6E8 /* CoreMotion.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -61,6 +64,7 @@
 		A72293271B983CAC00CCF6E8 = {
 			isa = PBXGroup;
 			children = (
+				A72293571B98619800CCF6E8 /* CoreMotion.framework */,
 				A72293321B983CAC00CCF6E8 /* GeoCompass */,
 				A722934A1B983CAC00CCF6E8 /* GeoCompassTests */,
 				A72293311B983CAC00CCF6E8 /* Products */,

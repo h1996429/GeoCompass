@@ -7,12 +7,19 @@
 //
 
 import UIKit
+import CoreMotion
 
 class FirstViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+    }
+    
+    @IBOutlet weak var segmentedControl: UISegmentedControl!
+    
+    @IBAction func indexChange(sender: UISegmentedControl) {
     }
 
     override func didReceiveMemoryWarning() {
