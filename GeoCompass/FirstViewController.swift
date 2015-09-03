@@ -14,13 +14,22 @@ class FirstViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
+        let manager = CMMotionManager()
+        if manager.gyroAvailable {
+            manager.deviceMotionUpdateInterval = 0.1
+            let queue = NSOperationQueue()
+            manager.startDeviceMotionUpdatesToQueue(queue) {
+                [weak self] (data: CMDeviceMotion!, error: NSError!) in
+                // motion processing here
+                NSOperationQueue.mainQueue().addOperationWithBlock {
+                    // update UI here
+                }
+            }
+
+        }
     }
     
-    @IBOutlet weak var segmentedControl: UISegmentedControl!
-    
-    @IBAction func indexChange(sender: UISegmentedControl) {
-    }
+
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
