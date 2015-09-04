@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>1A9893A1-15BF-4295-8C6C-A250633A1F56</string>
+	<key>IDESourceControlProjectName</key>
+	<string>project</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>4d770e62-bb1e-0410-ad62-f2382d3e8790++5681</key>
+		<string>https://vmmlib.svn.sourceforge.net/svnroot/vmmlib/trunk/include/vmmlib</string>
+		<key>CF6BA31DEB4B1377BE47A235D25F231FC8788C38</key>
+		<string>https://github.com/h1996429/GeoCompass.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>GeoCompass.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>4d770e62-bb1e-0410-ad62-f2382d3e8790++5681</key>
+		<string>../..vmmlib/</string>
+		<key>CF6BA31DEB4B1377BE47A235D25F231FC8788C38</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectRepositoryRootDictionary</key>
+	<dict>
+		<key>4d770e62-bb1e-0410-ad62-f2382d3e8790++5681</key>
+		<string>https://vmmlib.svn.sourceforge.net/svnroot/vmmlib</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/h1996429/GeoCompass.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>CF6BA31DEB4B1377BE47A235D25F231FC8788C38</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>CF6BA31DEB4B1377BE47A235D25F231FC8788C38</string>
+			<key>IDESourceControlWCCName</key>
+			<string>GeoCompass</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.subversion</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>4d770e62-bb1e-0410-ad62-f2382d3e8790++5681</string>
+			<key>IDESourceControlWCCName</key>
+			<string>vmmlib</string>
+		</dict>
+	</array>
+</dict>
+</plist>
