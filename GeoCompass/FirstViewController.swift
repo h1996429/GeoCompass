@@ -27,6 +27,9 @@ class FirstViewController: UIViewController {
     
     let manager = CMMotionManager();
     
+    @IBOutlet weak var arrow: UIImageView!
+    
+    
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var label1: UILabel!
     @IBOutlet weak var labelA: UILabel!
@@ -67,7 +70,9 @@ class FirstViewController: UIViewController {
                 var gravityX = self!.manager.deviceMotion.gravity.x;
                 var gravityY = self!.manager.deviceMotion.gravity.y;
                 var gravityZ = self!.manager.deviceMotion.gravity.z;
-                var dipangel = (atan2(gravityZ,sqrt(gravityX*gravityX+gravityY*gravityY)))/M_PI*180.0;
+                var dipangle = (atan2(gravityZ,sqrt(gravityX*gravityX+gravityY*gravityY)))/M_PI*180.0;
+                
+                var angle = -atan2(gravityY, gravityX) + M_PI/2;
                 
                 switch self!.index
                 {
@@ -77,8 +82,8 @@ class FirstViewController: UIViewController {
                         self!.dipdir += 2*M_PI;}
                     self!.strike = self!.dipdir*(180/M_PI) - 90.0;
                     if(self!.strike < 0){self!.strike += 360;}
-                    if(dipangel < 0){self!.dip = 90+dipangel;}
-                    else{self!.dip = 90-dipangel;}
+                    if(dipangle < 0){self!.dip = 90+dipangle;}
+                    else{self!.dip = 90-dipangle;}
                     
                 case 1:
                     self!.strike = self!.manager.deviceMotion.attitude.roll ?? 0 ;
@@ -94,12 +99,15 @@ class FirstViewController: UIViewController {
                     switch self!.index
                     {
                     case 0:
-                        self!.label1.text = "走向";                        self!.labelA.text = (self!.strike).format(".2")
+                        self!.label1.text = "走向";
+                        self!.labelA.text = (self!.strike).format(".2")+"°";
                         self!.label2.text = "倾向";
+                        self!.labelB.text = (self!.dipdir).format(".2")+"°";
                         self!.label3.text = "倾角";
-                        self!.labelC.text = (self!.dip).format(".2")
+                        self!.labelC.text = (self!.dip).format(".2")+"°";
                         self!.label4.text = "";
                         self!.labelD.text = "";
+                        self!.arrow.transform=CGAffineTransformMakeRotation(CGFloat(angle));
 
 
                     case 1:

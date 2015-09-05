@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 47;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -11,7 +11,6 @@
 		A72293381B983CAC00CCF6E8 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72293371B983CAC00CCF6E8 /* FirstViewController.swift */; };
 		A722933A1B983CAC00CCF6E8 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72293391B983CAC00CCF6E8 /* SecondViewController.swift */; };
 		A722933D1B983CAC00CCF6E8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A722933B1B983CAC00CCF6E8 /* Main.storyboard */; };
-		A722933F1B983CAC00CCF6E8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A722933E1B983CAC00CCF6E8 /* Images.xcassets */; };
 		A72293421B983CAC00CCF6E8 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = A72293401B983CAC00CCF6E8 /* LaunchScreen.xib */; };
 		A722934E1B983CAC00CCF6E8 /* GeoCompassTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A722934D1B983CAC00CCF6E8 /* GeoCompassTests.swift */; };
 		A72293581B98619800CCF6E8 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A72293571B98619800CCF6E8 /* CoreMotion.framework */; };
@@ -19,6 +18,8 @@
 		A722936B1B99CFA100CCF6E8 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A72293681B99CFA100CCF6E8 /* CoreLocation.framework */; };
 		A722936C1B99CFA100CCF6E8 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A72293691B99CFA100CCF6E8 /* MapKit.framework */; };
 		A722936D1B99CFA100CCF6E8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A722936A1B99CFA100CCF6E8 /* UIKit.framework */; };
+		A72293791B9ADCC000CCF6E8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A72293781B9ADCC000CCF6E8 /* Images.xcassets */; };
+		A722937B1B9ADD8E00CCF6E8 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = A722937A1B9ADD8E00CCF6E8 /* icon.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,7 +39,6 @@
 		A72293371B983CAC00CCF6E8 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
 		A72293391B983CAC00CCF6E8 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		A722933C1B983CAC00CCF6E8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		A722933E1B983CAC00CCF6E8 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		A72293411B983CAC00CCF6E8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		A72293471B983CAC00CCF6E8 /* GeoCompassTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GeoCompassTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A722934C1B983CAC00CCF6E8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -49,6 +49,8 @@
 		A72293691B99CFA100CCF6E8 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		A722936A1B99CFA100CCF6E8 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		A722936F1B99D9EC00CCF6E8 /* GeoCompass-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GeoCompass-Bridging-Header.h"; sourceTree = "<group>"; };
+		A72293781B9ADCC000CCF6E8 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = GeoCompass/Images.xcassets; sourceTree = "<group>"; };
+		A722937A1B9ADD8E00CCF6E8 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon.png; path = GeoCompass/Images.xcassets/icon.imageset/icon.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,7 +78,9 @@
 		A72293271B983CAC00CCF6E8 = {
 			isa = PBXGroup;
 			children = (
+				A722937A1B9ADD8E00CCF6E8 /* icon.png */,
 				A722936F1B99D9EC00CCF6E8 /* GeoCompass-Bridging-Header.h */,
+				A72293781B9ADCC000CCF6E8 /* Images.xcassets */,
 				A722936E1B99CFAC00CCF6E8 /* framework */,
 				A72293321B983CAC00CCF6E8 /* GeoCompass */,
 				A722934A1B983CAC00CCF6E8 /* GeoCompassTests */,
@@ -101,7 +105,6 @@
 				A72293371B983CAC00CCF6E8 /* FirstViewController.swift */,
 				A72293391B983CAC00CCF6E8 /* SecondViewController.swift */,
 				A722933B1B983CAC00CCF6E8 /* Main.storyboard */,
-				A722933E1B983CAC00CCF6E8 /* Images.xcassets */,
 				A72293401B983CAC00CCF6E8 /* LaunchScreen.xib */,
 				A72293331B983CAC00CCF6E8 /* Supporting Files */,
 			);
@@ -201,7 +204,7 @@
 				};
 			};
 			buildConfigurationList = A722932B1B983CAC00CCF6E8 /* Build configuration list for PBXProject "GeoCompass" */;
-			compatibilityVersion = "Xcode 3.2";
+			compatibilityVersion = "Xcode 6.3";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -225,8 +228,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				A722933D1B983CAC00CCF6E8 /* Main.storyboard in Resources */,
+				A722937B1B9ADD8E00CCF6E8 /* icon.png in Resources */,
+				A72293791B9ADCC000CCF6E8 /* Images.xcassets in Resources */,
 				A72293421B983CAC00CCF6E8 /* LaunchScreen.xib in Resources */,
-				A722933F1B983CAC00CCF6E8 /* Images.xcassets in Resources */,
 				A72293671B99C66A00CCF6E8 /* VectorMath in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

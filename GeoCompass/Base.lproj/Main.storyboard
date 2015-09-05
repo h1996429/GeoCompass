@@ -107,6 +107,15 @@
                                     <rect key="frame" x="211" y="162" width="97" height="21"/>
                                 </variation>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nN6-u6-6Vz">
+                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <color key="textColor" red="0.12549019610000001" green="0.62745098040000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="38" y="191" width="165" height="28"/>
+                                </variation>
+                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Ey-Kb-8k7">
                                 <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
@@ -230,12 +239,6 @@
                                     <rect key="frame" x="38" y="335" width="34" height="21"/>
                                 </variation>
                             </label>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="arrow" translatesAutoresizingMaskIntoConstraints="NO" id="ey0-P2-cUf">
-                                <rect key="frame" x="0.0" y="-147" width="124" height="147"/>
-                                <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="38" y="364" width="124" height="147"/>
-                                </variation>
-                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Vk-eb-9Gr">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
@@ -243,18 +246,24 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="211" y="414" width="97" height="48"/>
+                                    <rect key="frame" x="211" y="421" width="97" height="48"/>
                                 </variation>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nN6-u6-6Vz">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="irh-yd-QGy">
                                 <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                <color key="textColor" red="0.12549019610000001" green="0.62745098040000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="38" y="191" width="165" height="28"/>
+                                    <rect key="frame" x="211" y="392" width="296" height="21"/>
                                 </variation>
                             </label>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="arrow" translatesAutoresizingMaskIntoConstraints="NO" id="QmJ-9U-aIv">
+                                <rect key="frame" x="0.0" y="-127" width="52" height="127"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="74" y="381" width="52" height="127"/>
+                                </variation>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <variation key="default">
@@ -267,6 +276,7 @@
                                 <exclude reference="LUu-dM-SwU"/>
                                 <exclude reference="w3q-rS-dJr"/>
                                 <exclude reference="UCw-st-HcR"/>
+                                <exclude reference="nN6-u6-6Vz"/>
                                 <exclude reference="1Ey-Kb-8k7"/>
                                 <exclude reference="9xd-ZG-tTD"/>
                                 <exclude reference="eNm-q5-ePd"/>
@@ -281,9 +291,9 @@
                                 <exclude reference="9Hp-EO-0fW"/>
                                 <exclude reference="cvq-Gw-kLT"/>
                                 <exclude reference="fee-Mm-RsB"/>
-                                <exclude reference="ey0-P2-cUf"/>
                                 <exclude reference="9Vk-eb-9Gr"/>
-                                <exclude reference="nN6-u6-6Vz"/>
+                                <exclude reference="irh-yd-QGy"/>
+                                <exclude reference="QmJ-9U-aIv"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -296,6 +306,7 @@
                                 <include reference="LUu-dM-SwU"/>
                                 <include reference="w3q-rS-dJr"/>
                                 <include reference="UCw-st-HcR"/>
+                                <include reference="nN6-u6-6Vz"/>
                                 <include reference="1Ey-Kb-8k7"/>
                                 <include reference="9xd-ZG-tTD"/>
                                 <include reference="eNm-q5-ePd"/>
@@ -310,14 +321,15 @@
                                 <include reference="9Hp-EO-0fW"/>
                                 <include reference="cvq-Gw-kLT"/>
                                 <include reference="fee-Mm-RsB"/>
-                                <include reference="ey0-P2-cUf"/>
                                 <include reference="9Vk-eb-9Gr"/>
-                                <include reference="nN6-u6-6Vz"/>
+                                <include reference="irh-yd-QGy"/>
+                                <include reference="QmJ-9U-aIv"/>
                             </mask>
                         </variation>
                     </view>
                     <tabBarItem key="tabBarItem" title="罗盘" image="first" id="acW-dT-cKf"/>
                     <connections>
+                        <outlet property="arrow" destination="QmJ-9U-aIv" id="imH-uR-bjD"/>
                         <outlet property="label1" destination="Ajv-uJ-p3Q" id="9he-Gc-FMW"/>
                         <outlet property="label2" destination="1Q6-8d-o6X" id="uia-qZ-lYu"/>
                         <outlet property="label3" destination="w3q-rS-dJr" id="1gY-Rq-Fb1"/>
@@ -394,7 +406,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="arrow" width="124" height="147"/>
+        <image name="arrow" width="52" height="127"/>
         <image name="first" width="30" height="30"/>
         <image name="second" width="30" height="30"/>
     </resources>
