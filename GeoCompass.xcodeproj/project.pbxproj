@@ -386,6 +386,7 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = GeoCompass/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "GeoCompass-Bridging-Header.h";
@@ -403,6 +404,7 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = GeoCompass/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "GeoCompass-Bridging-Header.h";
@@ -462,6 +464,7 @@
 				A72293531B983CAC00CCF6E8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A72293541B983CAC00CCF6E8 /* Build configuration list for PBXNativeTarget "GeoCompassTests" */ = {
 			isa = XCConfigurationList;
@@ -470,6 +473,7 @@
 				A72293561B983CAC00CCF6E8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
