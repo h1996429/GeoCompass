@@ -11,6 +11,8 @@ import CoreMotion
 import CoreLocation
 
 
+
+
 extension Double {
     func format(f: String) -> String {
         return NSString(format: "%\(f)f", self) as String
@@ -21,7 +23,8 @@ extension Double {
 class FirstViewController: UIViewController ,CLLocationManagerDelegate{
     lazy var strike = 0.0 , dipdir = 0.0 , dip = 0.0;
     lazy var pitch = 0.0 , plusyn = 0.0 , pluang = 0.0; //pitch、plunging syncline and plunge angle
-    lazy var lat = 0.0 , lon = 0.0 , hight = 0.0 , locError = 0.0 , hightError = 0.0 , magError = 0.0;
+    lazy var lat = 0.0 , lon = 0.0 , hight = 0.0 , locError = 0.0 , hightError = 0.0 , magError = 0.0 ;
+    lazy var northV = Vector3(0,0,0);
     
     lazy var index = 0;
     lazy var requestauthorization = false ;
@@ -87,7 +90,7 @@ class FirstViewController: UIViewController ,CLLocationManagerDelegate{
             
             self.labelLat.text = "\(transloc(lat).b)" + "°" + "\(transloc(lat).c)" + "'" + (transloc(lat).d).format(".4") + "\"";
             self.labelLon.text = "\(transloc(lon).b)" + "°" + "\(transloc(lon).c)" + "'" + (transloc(lon).d).format(".4") + "\"";
-            self.labelH.text = "\(self.hight)";
+            self.labelH.text = (self.hight).format(".2")+"m";
             self.labelLonE.text = "±"+(self.locError).format(".1")+"m";
             self.labelLatE.text = "±"+(self.locError).format(".1")+"m";
             self.labelHE.text = "±"+(self.hightError).format(".1")+"m";
@@ -103,6 +106,8 @@ class FirstViewController: UIViewController ,CLLocationManagerDelegate{
     
     func locationManager(manager: CLLocationManager!, didUpdateHeading newHeading: CLHeading!) {
         self.magError = (self.locationManager.heading.magneticHeading - self.locationManager.heading.trueHeading) ?? 0;
+        self.northV = Vector3(self.locationManager.heading.x,self.locationManager.heading.y,self.locationManager.heading.z);
+        self.plusyn =  self.locationManager.heading.trueHeading;
         
         self.labelDec.text = (self.magError).format(".2")+"°"+"(数据来源：World Magnetic Model ";
         self.labelDecText.text = "(2014-2019),美国国家海洋和大气管理局(NOAA))";
@@ -142,6 +147,8 @@ class FirstViewController: UIViewController ,CLLocationManagerDelegate{
                 self!.locationManager.startUpdatingLocation();
                 self!.locationManager.startUpdatingHeading();
                 
+                
+                
                 data.attitude.multiplyByInverseOfAttitude(self!.manager.deviceMotion.attitude)
                 
                 var gravityX = self!.manager.deviceMotion.gravity.x;
@@ -151,13 +158,31 @@ class FirstViewController: UIViewController ,CLLocationManagerDelegate{
                 
                 var angle = -atan2(gravityY, gravityX) + M_PI/2;
                 
+
+                var dipV = Vector3(gravityX,gravityY,0);
+                let n_downV = Vector3(gravityX,gravityY,gravityZ).normalized();
+                var hplane_dipV   = dipV - n_downV * ( n_downV.dot(dipV  ) );
+                var hplane_northV = self!.northV - n_downV * ( n_downV.dot(self!.northV) );
+                hplane_dipV = Vector3(hplane_dipV.x,hplane_dipV.y,hplane_dipV.z).normalized();
+                hplane_northV = Vector3(hplane_northV.x,hplane_northV.y,hplane_northV.z).normalized();
+                var cp = Vector3(hplane_dipV.x,hplane_dipV.y,hplane_dipV.z).cross(hplane_northV);
+                var dp = Vector3(hplane_dipV.x,hplane_dipV.y,hplane_dipV.z).dot(hplane_northV);
+                var len = cp.length; // get length of vector
+                cp = cp/len; // normalize
+                var dipDirection = acos(dp/((hplane_dipV.length)*(hplane_northV.length))); // now we have the angle
+                // now we want whether or not the cross product is in the same direction or the opposite of g, telling us the sign of the angle!
+                dipDirection *= -(n_downV.dot(cp));
+                if(dipDirection < 0){
+                    dipDirection += 2*M_PI;}
+                
+                
+            
+                
                 switch self!.index
                 {
                 case 0:
-
-                    if(self!.dipdir < 0){
-                        self!.dipdir += 2*M_PI;}
-                    self!.strike = self!.dipdir*(180/M_PI) - 90.0;
+                    self!.dipdir = dipDirection*(180/M_PI)+self!.magError;
+                    self!.strike = dipDirection*(180/M_PI)+self!.magError - 90.0;
                     if(self!.strike < 0){self!.strike += 360;}
                     if(dipangle < 0){self!.dip = 90+dipangle;}
                     else{self!.dip = 90-dipangle;}
@@ -165,7 +190,20 @@ class FirstViewController: UIViewController ,CLLocationManagerDelegate{
                     
                     
                 case 1:
-                    self!.strike = self!.manager.deviceMotion.attitude.roll ?? 0 ;
+                    self!.strike = dipDirection*(180/M_PI)+self!.magError - 90.0;
+                    if(self!.strike < 0){self!.strike += 360;}
+                    
+                    self!.pitch = (atan2(gravityY, gravityX))/M_PI*180.0;
+                    if(self!.pitch < 0){self!.pitch = -self!.pitch};
+                    if(self!.pitch > 90){self!.pitch = 180 - self!.pitch};
+                    
+                    //var plusynlevel = Vector3(0,gravityY,-gravityZ).normalized();
+                    //var plusynbasic = (Vector3(0,gravityY,-gravityZ).normalized()).dot(self!.northV.normalized());
+                    //self!.plusyn = acos(plusynbasic/((plusynlevel.length)*(self!.northV.length)))*(180/M_PI);
+                    
+                    var calpitch:Double = cos(self!.pitch/(180/M_PI));
+                    var calplusyn:Double = (self!.plusyn - self!.strike)/(180/M_PI);
+                    self!.pluang =  acos(calpitch/calplusyn)*(180/M_PI);
                 case 2:
                     break;
                 default:
@@ -195,9 +233,14 @@ class FirstViewController: UIViewController ,CLLocationManagerDelegate{
 
                     case 1:
                         self!.label1.text = "走向";
+                        self!.labelA.text = (self!.strike).format(".2")+"°";
                         self!.label2.text = "侧俯角";
+                        self!.labelB.text = (self!.pitch).format(".2")+"°";
                         self!.label3.text = "倾伏向";
+                        self!.labelC.text = (self!.plusyn).format(".2")+"°";
                         self!.label4.text = "倾伏角";
+                        self!.labelD.text = (self!.pluang).format(".2")+"°";
+                        self!.arrow.transform=CGAffineTransformMakeRotation(CGFloat(angle));
                     case 2:
                         break;
                     default:

@@ -20,6 +20,9 @@
 		A722936D1B99CFA100CCF6E8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A722936A1B99CFA100CCF6E8 /* UIKit.framework */; };
 		A72293791B9ADCC000CCF6E8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A72293781B9ADCC000CCF6E8 /* Images.xcassets */; };
 		A722937B1B9ADD8E00CCF6E8 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = A722937A1B9ADD8E00CCF6E8 /* icon.png */; };
+		A722937F1B9C35C300CCF6E8 /* VectorMath.swift in Sources */ = {isa = PBXBuildFile; fileRef = A722937C1B9C35C300CCF6E8 /* VectorMath.swift */; };
+		A72293801B9C35C300CCF6E8 /* VectorMath+Quartz.swift in Sources */ = {isa = PBXBuildFile; fileRef = A722937D1B9C35C300CCF6E8 /* VectorMath+Quartz.swift */; };
+		A72293811B9C35C300CCF6E8 /* VectorMath+SceneKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = A722937E1B9C35C300CCF6E8 /* VectorMath+SceneKit.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +54,9 @@
 		A722936F1B99D9EC00CCF6E8 /* GeoCompass-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GeoCompass-Bridging-Header.h"; sourceTree = "<group>"; };
 		A72293781B9ADCC000CCF6E8 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = GeoCompass/Images.xcassets; sourceTree = "<group>"; };
 		A722937A1B9ADD8E00CCF6E8 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon.png; path = GeoCompass/Images.xcassets/icon.imageset/icon.png; sourceTree = "<group>"; };
+		A722937C1B9C35C300CCF6E8 /* VectorMath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VectorMath.swift; sourceTree = "<group>"; };
+		A722937D1B9C35C300CCF6E8 /* VectorMath+Quartz.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "VectorMath+Quartz.swift"; sourceTree = "<group>"; };
+		A722937E1B9C35C300CCF6E8 /* VectorMath+SceneKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "VectorMath+SceneKit.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +107,9 @@
 		A72293321B983CAC00CCF6E8 /* GeoCompass */ = {
 			isa = PBXGroup;
 			children = (
+				A722937C1B9C35C300CCF6E8 /* VectorMath.swift */,
+				A722937D1B9C35C300CCF6E8 /* VectorMath+Quartz.swift */,
+				A722937E1B9C35C300CCF6E8 /* VectorMath+SceneKit.swift */,
 				A72293351B983CAC00CCF6E8 /* AppDelegate.swift */,
 				A72293371B983CAC00CCF6E8 /* FirstViewController.swift */,
 				A72293391B983CAC00CCF6E8 /* SecondViewController.swift */,
@@ -249,6 +258,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A72293801B9C35C300CCF6E8 /* VectorMath+Quartz.swift in Sources */,
+				A722937F1B9C35C300CCF6E8 /* VectorMath.swift in Sources */,
+				A72293811B9C35C300CCF6E8 /* VectorMath+SceneKit.swift in Sources */,
 				A722933A1B983CAC00CCF6E8 /* SecondViewController.swift in Sources */,
 				A72293361B983CAC00CCF6E8 /* AppDelegate.swift in Sources */,
 				A72293381B983CAC00CCF6E8 /* FirstViewController.swift in Sources */,

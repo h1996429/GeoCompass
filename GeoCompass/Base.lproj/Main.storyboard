@@ -245,19 +245,13 @@
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="irh-yd-QGy">
                                 <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="widthClass=compact" fixedFrame="YES">
                                     <rect key="frame" x="97" y="361" width="287" height="17"/>
                                 </variation>
                             </label>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="arrow" translatesAutoresizingMaskIntoConstraints="NO" id="QmJ-9U-aIv">
-                                <rect key="frame" x="0.0" y="-127" width="52" height="127"/>
-                                <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="74" y="393" width="52" height="127"/>
-                                </variation>
-                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="磁偏角" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gQz-ek-8DC">
                                 <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
@@ -278,13 +272,25 @@
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ekW-6V-eZH">
                                 <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="widthClass=compact" fixedFrame="YES">
                                     <rect key="frame" x="97" y="376" width="287" height="14"/>
                                 </variation>
                             </label>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="arrow" translatesAutoresizingMaskIntoConstraints="NO" id="QmJ-9U-aIv">
+                                <rect key="frame" x="0.0" y="-127" width="52" height="127"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="74" y="390" width="52" height="127"/>
+                                </variation>
+                            </imageView>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="arrow" translatesAutoresizingMaskIntoConstraints="NO" id="rGr-yO-IzS">
+                                <rect key="frame" x="0.0" y="-127" width="52" height="127"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="74" y="390" width="52" height="127"/>
+                                </variation>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <variation key="default">
@@ -313,10 +319,11 @@
                                 <exclude reference="fee-Mm-RsB"/>
                                 <exclude reference="9Vk-eb-9Gr"/>
                                 <exclude reference="irh-yd-QGy"/>
-                                <exclude reference="QmJ-9U-aIv"/>
                                 <exclude reference="gQz-ek-8DC"/>
                                 <exclude reference="aM5-hE-ST7"/>
                                 <exclude reference="ekW-6V-eZH"/>
+                                <exclude reference="QmJ-9U-aIv"/>
+                                <exclude reference="rGr-yO-IzS"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -345,10 +352,11 @@
                                 <include reference="fee-Mm-RsB"/>
                                 <include reference="9Vk-eb-9Gr"/>
                                 <include reference="irh-yd-QGy"/>
-                                <include reference="QmJ-9U-aIv"/>
                                 <include reference="gQz-ek-8DC"/>
                                 <include reference="aM5-hE-ST7"/>
                                 <include reference="ekW-6V-eZH"/>
+                                <include reference="QmJ-9U-aIv"/>
+                                <include reference="rGr-yO-IzS"/>
                             </mask>
                         </variation>
                     </view>
@@ -440,7 +448,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="arrow" width="52" height="127"/>
+        <image name="arrow" width="48" height="128"/>
         <image name="first" width="30" height="30"/>
         <image name="second" width="30" height="30"/>
     </resources>
