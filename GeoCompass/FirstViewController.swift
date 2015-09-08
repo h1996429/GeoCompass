@@ -26,6 +26,8 @@ class FirstViewController: UIViewController ,CLLocationManagerDelegate{
     lazy var lat = 0.0 , lon = 0.0 , hight = 0.0 , locError = 0.0 , hightError = 0.0 , magError = 0.0 ;
     lazy var northV = Vector3(0,0,0);
     
+    lazy var adr = "NULL";
+    
     lazy var index = 0;
     lazy var requestauthorization = false ;
     
@@ -76,8 +78,20 @@ class FirstViewController: UIViewController ,CLLocationManagerDelegate{
     }
     
     func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!){
-        
+
         var location:CLLocation = locations[locations.count-1] as! CLLocation
+        
+        let thelocations:NSArray = locations as NSArray
+        let curlocation:CLLocation = thelocations.objectAtIndex(0) as! CLLocation
+        var geocoder:CLGeocoder = CLGeocoder()
+        var placemarks:NSArray?
+        var error:NSError?
+        geocoder.reverseGeocodeLocation(curlocation, completionHandler:{(placemarks,error) in
+            if error == nil && placemarks.count > 0{
+                var placemark:CLPlacemark = (placemarks as NSArray).objectAtIndex(0) as! CLPlacemark
+                self.adr = "\(placemark.name)";
+            }
+        })
         
         if (location.horizontalAccuracy > 0) {
             self.locationManager.stopUpdatingLocation();
@@ -94,6 +108,7 @@ class FirstViewController: UIViewController ,CLLocationManagerDelegate{
             self.labelLonE.text = "±"+(self.locError).format(".1")+"m";
             self.labelLatE.text = "±"+(self.locError).format(".1")+"m";
             self.labelHE.text = "±"+(self.hightError).format(".1")+"m";
+            self.labelAdr.text = adr;
 
             
         }

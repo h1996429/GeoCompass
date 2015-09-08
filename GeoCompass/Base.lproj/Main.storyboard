@@ -167,15 +167,6 @@
                                     <rect key="frame" x="97" y="285" width="165" height="21"/>
                                 </variation>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lpT-gf-uh4">
-                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                                <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="97" y="335" width="296" height="21"/>
-                                </variation>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FbX-AM-OtK">
                                 <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="10"/>
@@ -291,6 +282,15 @@
                                     <rect key="frame" x="74" y="390" width="52" height="127"/>
                                 </variation>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lpT-gf-uh4">
+                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="97" y="326" width="296" height="39"/>
+                                </variation>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <variation key="default">
@@ -310,7 +310,6 @@
                                 <exclude reference="H6T-o3-pxb"/>
                                 <exclude reference="zY0-xy-39E"/>
                                 <exclude reference="U7X-VE-Gdv"/>
-                                <exclude reference="lpT-gf-uh4"/>
                                 <exclude reference="FbX-AM-OtK"/>
                                 <exclude reference="UGr-9e-7A8"/>
                                 <exclude reference="P1K-OD-bwN"/>
@@ -324,6 +323,7 @@
                                 <exclude reference="ekW-6V-eZH"/>
                                 <exclude reference="QmJ-9U-aIv"/>
                                 <exclude reference="rGr-yO-IzS"/>
+                                <exclude reference="lpT-gf-uh4"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -343,7 +343,6 @@
                                 <include reference="H6T-o3-pxb"/>
                                 <include reference="zY0-xy-39E"/>
                                 <include reference="U7X-VE-Gdv"/>
-                                <include reference="lpT-gf-uh4"/>
                                 <include reference="FbX-AM-OtK"/>
                                 <include reference="UGr-9e-7A8"/>
                                 <include reference="P1K-OD-bwN"/>
@@ -357,6 +356,7 @@
                                 <include reference="ekW-6V-eZH"/>
                                 <include reference="QmJ-9U-aIv"/>
                                 <include reference="rGr-yO-IzS"/>
+                                <include reference="lpT-gf-uh4"/>
                             </mask>
                         </variation>
                     </view>
