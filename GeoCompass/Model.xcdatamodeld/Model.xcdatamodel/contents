@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="7701" systemVersion="14F27" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="LineData" representedClassName="LineData" syncable="YES">
+        <attribute name="adrS" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="hightErrorS" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="hightS" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="imageS" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
+        <attribute name="latS" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="locErrorS" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="lonS" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="magErrorS" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="pitchS" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="pluangS" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="plusynS" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="strikeS" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="timeS" optional="YES" attributeType="Date" syncable="YES"/>
+    </entity>
+    <entity name="SurfaceData" representedClassName="SurfaceData" syncable="YES">
+        <attribute name="adrS" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="dipdirS" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="dipS" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="hightErrorS" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="hightS" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="imageS" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
+        <attribute name="latS" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="locErrorS" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="lonS" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="magErrorS" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="strikeS" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="timeS" optional="YES" attributeType="Date" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="LineData" positionX="-18" positionY="27" width="128" height="240"/>
+        <element name="SurfaceData" positionX="-36" positionY="18" width="128" height="225"/>
+    </elements>
+</model>

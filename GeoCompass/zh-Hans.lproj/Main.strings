@@ -1,0 +1,105 @@
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "1Ey-Kb-8k7"; */
+"1Ey-Kb-8k7.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "1Q6-8d-o6X"; */
+"1Q6-8d-o6X.text" = "Label";
+
+/* Class = "UILabel"; text = "产状"; ObjectID = "5id-fI-S2H"; */
+"5id-fI-S2H.text" = "产状";
+
+/* Class = "UILabel"; text = "Third View"; ObjectID = "8uy-wU-kmJ"; */
+"8uy-wU-kmJ.text" = "Third View";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "9Hp-EO-0fW"; */
+"9Hp-EO-0fW.text" = "Label";
+
+/* Class = "UIButton"; normalTitle = "保存数据"; ObjectID = "9Vk-eb-9Gr"; */
+"9Vk-eb-9Gr.normalTitle" = "保存数据";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "Ajv-uJ-p3Q"; */
+"Ajv-uJ-p3Q.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "FbX-AM-OtK"; */
+"FbX-AM-OtK.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "Ftk-2D-Rmn"; */
+"Ftk-2D-Rmn.text" = "Label";
+
+/* Class = "UILabel"; text = "经度"; ObjectID = "H6T-o3-pxb"; */
+"H6T-o3-pxb.text" = "经度";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "LUu-dM-SwU"; */
+"LUu-dM-SwU.text" = "Label";
+
+/* Class = "UILabel"; text = "Loaded by SecondViewController"; ObjectID = "NDk-cv-Gan"; */
+"NDk-cv-Gan.text" = "Loaded by SecondViewController";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "P1K-OD-bwN"; */
+"P1K-OD-bwN.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "U7X-VE-Gdv"; */
+"U7X-VE-Gdv.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "UCw-st-HcR"; */
+"UCw-st-HcR.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "UGr-9e-7A8"; */
+"UGr-9e-7A8.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "aM5-hE-ST7"; */
+"aM5-hE-ST7.text" = "Label";
+
+/* Class = "UITabBarItem"; title = "罗盘"; ObjectID = "acW-dT-cKf"; */
+"acW-dT-cKf.title" = "罗盘";
+
+/* Class = "UISegmentedControl"; b6I-Kl-dQA.segmentTitles[0] = "测量面状构造"; ObjectID = "b6I-Kl-dQA"; */
+"b6I-Kl-dQA.segmentTitles[0]" = "测量面状构造";
+
+/* Class = "UISegmentedControl"; b6I-Kl-dQA.segmentTitles[1] = "测量线状构造"; ObjectID = "b6I-Kl-dQA"; */
+"b6I-Kl-dQA.segmentTitles[1]" = "测量线状构造";
+
+/* Class = "UISegmentedControl"; b6I-Kl-dQA.segmentTitles[2] = "保持数据"; ObjectID = "b6I-Kl-dQA"; */
+"b6I-Kl-dQA.segmentTitles[2]" = "保持数据";
+
+/* Class = "UITabBarItem"; title = "列表"; ObjectID = "cPa-gy-q4n"; */
+"cPa-gy-q4n.title" = "列表";
+
+/* Class = "UILabel"; text = "纬度"; ObjectID = "cvq-Gw-kLT"; */
+"cvq-Gw-kLT.text" = "纬度";
+
+/* Class = "UILabel"; text = "地理信息"; ObjectID = "eNm-q5-ePd"; */
+"eNm-q5-ePd.text" = "地理信息";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "ekW-6V-eZH"; */
+"ekW-6V-eZH.text" = "Label";
+
+/* Class = "UILabel"; text = "地址"; ObjectID = "fee-Mm-RsB"; */
+"fee-Mm-RsB.text" = "地址";
+
+/* Class = "UILabel"; text = "磁偏角"; ObjectID = "gQz-ek-8DC"; */
+"gQz-ek-8DC.text" = "磁偏角";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "irh-yd-QGy"; */
+"irh-yd-QGy.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "lpT-gf-uh4"; */
+"lpT-gf-uh4.text" = "Label";
+
+/* Class = "UILabel"; text = "Loaded by SecondViewController"; ObjectID = "mGq-Pw-IDK"; */
+"mGq-Pw-IDK.text" = "Loaded by SecondViewController";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "nN6-u6-6Vz"; */
+"nN6-u6-6Vz.text" = "Label";
+
+/* Class = "UITabBarItem"; title = "地图"; ObjectID = "p2J-vc-dV1"; */
+"p2J-vc-dV1.title" = "地图";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "w3q-rS-dJr"; */
+"w3q-rS-dJr.text" = "Label";
+
+/* Class = "UILabel"; text = "Second View"; ObjectID = "zEq-FU-wV5"; */
+"zEq-FU-wV5.text" = "Second View";
+
+/* Class = "UILabel"; text = "高程"; ObjectID = "zY0-xy-39E"; */
+"zY0-xy-39E.text" = "高程";

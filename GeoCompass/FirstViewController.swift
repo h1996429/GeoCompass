@@ -9,6 +9,7 @@
 import UIKit
 import CoreMotion
 import CoreLocation
+import CoreData
 
 
 
@@ -21,22 +22,33 @@ extension Double {
 
 
 class FirstViewController: UIViewController ,CLLocationManagerDelegate{
+    var fetchedResultsController: NSFetchedResultsController?
+
+    
+    var appDel : AppDelegate?
+    var context : NSManagedObjectContext!
+
+    
     lazy var strike = 0.0 , dipdir = 0.0 , dip = 0.0;
     lazy var pitch = 0.0 , plusyn = 0.0 , pluang = 0.0; //pitch、plunging syncline and plunge angle
     lazy var lat = 0.0 , lon = 0.0 , hight = 0.0 , locError = 0.0 , hightError = 0.0 , magError = 0.0 ;
     lazy var northV = Vector3(0,0,0);
     
-    lazy var adr = "NULL";
+    lazy var time:NSDate! = NSDate();
+    
+    lazy var adr = "网络未连接";
     
     lazy var index = 0;
+    lazy var needSave = 0;
     lazy var requestauthorization = false ;
     
-    lazy var Sstrike = 0.0 , Sdipdir = 0.0 , Sdip = 0.0;
-    lazy var Spitch = 0.0 , Splusyn = 0.0 , Spluang = 0.0;
-    lazy var Slat = 0.0 , Slon = 0.0 , Shight = 0.0 , SlocError = 0.0 , ShightError = 0.0 , SmagError = 0.0;// data for saving
+    
     
     let manager = CMMotionManager();
     let locationManager:CLLocationManager = CLLocationManager();
+    
+    let cdControl = NewsCoreDataController();
+
     
     @IBOutlet weak var arrow: UIImageView!
     
@@ -61,6 +73,52 @@ class FirstViewController: UIViewController ,CLLocationManagerDelegate{
     @IBOutlet weak var labelDec: UILabel!
  
     @IBOutlet weak var labelDecText: UILabel!
+
+    @IBAction func saveData(sender: AnyObject) {
+        if segmentedControl.selectedSegmentIndex != 2 {
+            var alertView = UIAlertView(title: "提示！", message: "请先按下保持“保持数据”再点击“保存数据”", delegate: self, cancelButtonTitle: "确定")
+            alertView.show()
+        }
+        else if segmentedControl.selectedSegmentIndex == 2 {
+            switch needSave{
+            case 0:
+                var surfacedata: AnyObject! = cdControl.insertForEntityWithName("SurfaceData");  
+                surfacedata.setValue(time, forKey: "timeS");
+                surfacedata.setValue(strike, forKey: "strikeS");
+                surfacedata.setValue(dipdir, forKey: "dipdirS");
+                surfacedata.setValue(dip, forKey: "dipS");
+                surfacedata.setValue(lat, forKey: "latS");
+                surfacedata.setValue(lon, forKey: "lonS");
+                surfacedata.setValue(hight, forKey: "hightS");
+                surfacedata.setValue(locError, forKey: "locErrorS");
+                surfacedata.setValue(hightError, forKey: "hightErrorS");
+                surfacedata.setValue(magError, forKey: "magErrorS");
+                surfacedata.setValue(adr, forKey: "adrS");
+                surfacedata.setValue(nil, forKey: "imageS");
+            case 1:
+                var surfacedata: AnyObject! = cdControl.insertForEntityWithName("LineData");
+                surfacedata.setValue(time, forKey: "timeS");
+                surfacedata.setValue(strike, forKey: "strikeS");
+                surfacedata.setValue(pitch, forKey: "pitchS");
+                surfacedata.setValue(plusyn, forKey: "plusynS");
+                surfacedata.setValue(pluang, forKey: "pluangS");
+                surfacedata.setValue(lat, forKey: "latS");
+                surfacedata.setValue(lon, forKey: "lonS");
+                surfacedata.setValue(hight, forKey: "hightS");
+                surfacedata.setValue(locError, forKey: "locErrorS");
+                surfacedata.setValue(hightError, forKey: "hightErrorS");
+                surfacedata.setValue(magError, forKey: "magErrorS");
+                surfacedata.setValue(adr, forKey: "adrS");
+                surfacedata.setValue(nil, forKey: "imageS");
+            default:
+                break;
+            }
+            
+            
+        }
+        
+ 
+    }
     
     
     @IBAction func indexchange(sender: UISegmentedControl) {
@@ -68,14 +126,17 @@ class FirstViewController: UIViewController ,CLLocationManagerDelegate{
         {
         case 0:
             index = 0;
+            needSave = 0;
         case 1:
             index = 1;
+            needSave = 1;
         case 2:
             index = 2;
         default:
             break; 
         }
     }
+    
     
     func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!){
 
@@ -87,9 +148,14 @@ class FirstViewController: UIViewController ,CLLocationManagerDelegate{
         var placemarks:NSArray?
         var error:NSError?
         geocoder.reverseGeocodeLocation(curlocation, completionHandler:{(placemarks,error) in
-            if error == nil && placemarks.count > 0{
+            print(placemarks.count)
+            if error != nil {
+                self.adr = "网络连接中断，无法获取此地名称。";
+            }
+            if (error == nil && placemarks.count >= 0){
                 var placemark:CLPlacemark = (placemarks as NSArray).objectAtIndex(0) as! CLPlacemark
                 self.adr = "\(placemark.name)";
+
             }
         })
         
@@ -115,8 +181,8 @@ class FirstViewController: UIViewController ,CLLocationManagerDelegate{
     }//get lat、lon and hight。
     func locationManager(manager: CLLocationManager!, didFailWithError error: NSError!) {
         println(error)
-        self.labelLat.text = "卫星信号不足或GPS异常"
-        self.labelLon.text = "卫星信号不足或GPS异常"
+        self.labelLat.text = "设备接收卫星数量不足"
+        self.labelLon.text = "或GPS信号接收异常"
     }
     
     func locationManager(manager: CLLocationManager!, didUpdateHeading newHeading: CLHeading!) {
@@ -142,8 +208,9 @@ class FirstViewController: UIViewController ,CLLocationManagerDelegate{
     override func viewDidLoad() {
         super.viewDidLoad();
         // Do any additional setup after loading the view, typically from a nib.
-        
 
+        
+        
        if manager.gyroAvailable {
             manager.deviceMotionUpdateInterval = 0.1;
             let queue = NSOperationQueue();
@@ -271,7 +338,6 @@ class FirstViewController: UIViewController ,CLLocationManagerDelegate{
         
     }
     
-
     
 
 
@@ -279,6 +345,11 @@ class FirstViewController: UIViewController ,CLLocationManagerDelegate{
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+
+    
+
+
 
 
 }

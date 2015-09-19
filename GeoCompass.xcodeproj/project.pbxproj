@@ -23,6 +23,14 @@
 		A722937F1B9C35C300CCF6E8 /* VectorMath.swift in Sources */ = {isa = PBXBuildFile; fileRef = A722937C1B9C35C300CCF6E8 /* VectorMath.swift */; };
 		A72293801B9C35C300CCF6E8 /* VectorMath+Quartz.swift in Sources */ = {isa = PBXBuildFile; fileRef = A722937D1B9C35C300CCF6E8 /* VectorMath+Quartz.swift */; };
 		A72293811B9C35C300CCF6E8 /* VectorMath+SceneKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = A722937E1B9C35C300CCF6E8 /* VectorMath+SceneKit.swift */; };
+		A72293831BA0985900CCF6E8 /* ThirdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72293821BA0985900CCF6E8 /* ThirdViewController.swift */; };
+		A72293851BA18BB600CCF6E8 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A72293841BA18BB600CCF6E8 /* CoreData.framework */; };
+		A731A04D1BAA5F54008C5966 /* SurfaceData.m in Sources */ = {isa = PBXBuildFile; fileRef = A731A04C1BAA5F54008C5966 /* SurfaceData.m */; };
+		A731A0501BAA5F55008C5966 /* LineData.m in Sources */ = {isa = PBXBuildFile; fileRef = A731A04F1BAA5F55008C5966 /* LineData.m */; };
+		A731A05D1BAC77B4008C5966 /* NewsCoreDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A731A05C1BAC77B4008C5966 /* NewsCoreDataController.swift */; };
+		A731A05F1BAC79A0008C5966 /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A731A05E1BAC79A0008C5966 /* CoreDataHelper.swift */; };
+		A731A0611BAC79BC008C5966 /* CoreDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = A731A0601BAC79BC008C5966 /* CoreDataStore.swift */; };
+		A794CF721BA82BCB00A64365 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A794CF701BA82BCB00A64365 /* Model.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +65,18 @@
 		A722937C1B9C35C300CCF6E8 /* VectorMath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VectorMath.swift; sourceTree = "<group>"; };
 		A722937D1B9C35C300CCF6E8 /* VectorMath+Quartz.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "VectorMath+Quartz.swift"; sourceTree = "<group>"; };
 		A722937E1B9C35C300CCF6E8 /* VectorMath+SceneKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "VectorMath+SceneKit.swift"; sourceTree = "<group>"; };
+		A72293821BA0985900CCF6E8 /* ThirdViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThirdViewController.swift; sourceTree = "<group>"; };
+		A72293841BA18BB600CCF6E8 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		A731A04B1BAA5F54008C5966 /* SurfaceData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SurfaceData.h; sourceTree = "<group>"; };
+		A731A04C1BAA5F54008C5966 /* SurfaceData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SurfaceData.m; sourceTree = "<group>"; };
+		A731A04E1BAA5F55008C5966 /* LineData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LineData.h; sourceTree = "<group>"; };
+		A731A04F1BAA5F55008C5966 /* LineData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LineData.m; sourceTree = "<group>"; };
+		A731A05C1BAC77B4008C5966 /* NewsCoreDataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsCoreDataController.swift; sourceTree = "<group>"; };
+		A731A05E1BAC79A0008C5966 /* CoreDataHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataHelper.swift; sourceTree = "<group>"; };
+		A731A0601BAC79BC008C5966 /* CoreDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStore.swift; sourceTree = "<group>"; };
+		A794CF6E1BA82ABC00A64365 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
+		A794CF6F1BA82ABC00A64365 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		A794CF711BA82BCB00A64365 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +84,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A72293851BA18BB600CCF6E8 /* CoreData.framework in Frameworks */,
 				A722936B1B99CFA100CCF6E8 /* CoreLocation.framework in Frameworks */,
 				A722936C1B99CFA100CCF6E8 /* MapKit.framework in Frameworks */,
 				A722936D1B99CFA100CCF6E8 /* UIKit.framework in Frameworks */,
@@ -107,15 +128,20 @@
 		A72293321B983CAC00CCF6E8 /* GeoCompass */ = {
 			isa = PBXGroup;
 			children = (
+				A731A0511BAA5F6E008C5966 /* datamodel */,
 				A722937C1B9C35C300CCF6E8 /* VectorMath.swift */,
 				A722937D1B9C35C300CCF6E8 /* VectorMath+Quartz.swift */,
 				A722937E1B9C35C300CCF6E8 /* VectorMath+SceneKit.swift */,
 				A72293351B983CAC00CCF6E8 /* AppDelegate.swift */,
 				A72293371B983CAC00CCF6E8 /* FirstViewController.swift */,
 				A72293391B983CAC00CCF6E8 /* SecondViewController.swift */,
+				A72293821BA0985900CCF6E8 /* ThirdViewController.swift */,
 				A722933B1B983CAC00CCF6E8 /* Main.storyboard */,
 				A72293401B983CAC00CCF6E8 /* LaunchScreen.xib */,
 				A72293331B983CAC00CCF6E8 /* Supporting Files */,
+				A731A05C1BAC77B4008C5966 /* NewsCoreDataController.swift */,
+				A731A05E1BAC79A0008C5966 /* CoreDataHelper.swift */,
+				A731A0601BAC79BC008C5966 /* CoreDataStore.swift */,
 			);
 			path = GeoCompass;
 			sourceTree = "<group>";
@@ -148,12 +174,25 @@
 		A722936E1B99CFAC00CCF6E8 /* framework */ = {
 			isa = PBXGroup;
 			children = (
+				A72293841BA18BB600CCF6E8 /* CoreData.framework */,
 				A72293681B99CFA100CCF6E8 /* CoreLocation.framework */,
 				A72293691B99CFA100CCF6E8 /* MapKit.framework */,
 				A722936A1B99CFA100CCF6E8 /* UIKit.framework */,
 				A72293571B98619800CCF6E8 /* CoreMotion.framework */,
 			);
 			name = framework;
+			sourceTree = "<group>";
+		};
+		A731A0511BAA5F6E008C5966 /* datamodel */ = {
+			isa = PBXGroup;
+			children = (
+				A731A04E1BAA5F55008C5966 /* LineData.h */,
+				A731A04F1BAA5F55008C5966 /* LineData.m */,
+				A731A04B1BAA5F54008C5966 /* SurfaceData.h */,
+				A731A04C1BAA5F54008C5966 /* SurfaceData.m */,
+				A794CF701BA82BCB00A64365 /* Model.xcdatamodeld */,
+			);
+			name = datamodel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -261,9 +300,16 @@
 				A72293801B9C35C300CCF6E8 /* VectorMath+Quartz.swift in Sources */,
 				A722937F1B9C35C300CCF6E8 /* VectorMath.swift in Sources */,
 				A72293811B9C35C300CCF6E8 /* VectorMath+SceneKit.swift in Sources */,
+				A794CF721BA82BCB00A64365 /* Model.xcdatamodeld in Sources */,
+				A731A04D1BAA5F54008C5966 /* SurfaceData.m in Sources */,
+				A72293831BA0985900CCF6E8 /* ThirdViewController.swift in Sources */,
+				A731A0611BAC79BC008C5966 /* CoreDataStore.swift in Sources */,
+				A731A05F1BAC79A0008C5966 /* CoreDataHelper.swift in Sources */,
 				A722933A1B983CAC00CCF6E8 /* SecondViewController.swift in Sources */,
 				A72293361B983CAC00CCF6E8 /* AppDelegate.swift in Sources */,
+				A731A05D1BAC77B4008C5966 /* NewsCoreDataController.swift in Sources */,
 				A72293381B983CAC00CCF6E8 /* FirstViewController.swift in Sources */,
+				A731A0501BAA5F55008C5966 /* LineData.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -290,6 +336,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				A722933C1B983CAC00CCF6E8 /* Base */,
+				A794CF6E1BA82ABC00A64365 /* zh-Hans */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -298,6 +345,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				A72293411B983CAC00CCF6E8 /* Base */,
+				A794CF6F1BA82ABC00A64365 /* zh-Hans */,
 			);
 			name = LaunchScreen.xib;
 			sourceTree = "<group>";
@@ -488,6 +536,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		A794CF701BA82BCB00A64365 /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				A794CF711BA82BCB00A64365 /* Model.xcdatamodel */,
+			);
+			currentVersion = A794CF711BA82BCB00A64365 /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = A72293281B983CAC00CCF6E8 /* Project object */;
 }
