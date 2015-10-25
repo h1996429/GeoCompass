@@ -2,7 +2,7 @@
 //  LineData.m
 //  GeoCompass
 //
-//  Created by 何嘉 on 15/9/17.
+//  Created by 何嘉 on 15/9/20.
 //  Copyright (c) 2015年 何嘉. All rights reserved.
 //
 
@@ -14,6 +14,7 @@
 @dynamic adrS;
 @dynamic hightErrorS;
 @dynamic hightS;
+@dynamic id;
 @dynamic imageS;
 @dynamic latS;
 @dynamic locErrorS;

@@ -53,6 +53,15 @@ class NewsCoreDataController:NSObject {
         return NSEntityDescription.insertNewObjectForEntityForName(entityName, inManagedObjectContext: self.cdh.managedObjectContext)
     }
     
+    func EntityDescription(entityName:String)->NSEntityDescription?{
+        return NSEntityDescription.entityForName(entityName, inManagedObjectContext: self.cdh.managedObjectContext)
+    }
+    
+    func FetchedResultsController(entityname:String)->NSFetchedResultsController?{
+        var fReq:NSFetchRequest = NSFetchRequest(entityName: entityname)
+        return NSFetchedResultsController(fetchRequest: fReq, managedObjectContext: self.cdh.managedObjectContext, sectionNameKeyPath: entityname, cacheName: "Root")
+    }
+    
     //删除一个entity里的所有数据
     func deleteOneEntityAllData(entityName:String) {
         var error:NSError? = nil

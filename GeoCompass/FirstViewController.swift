@@ -11,7 +11,10 @@ import CoreMotion
 import CoreLocation
 import CoreData
 
-
+// MARK: == Data.plist Keys ==
+let surfaceKey = "surfaceid"
+let lineKey = "lineid"
+// MARK: -
 
 
 extension Double {
@@ -22,8 +25,6 @@ extension Double {
 
 
 class FirstViewController: UIViewController ,CLLocationManagerDelegate{
-    var fetchedResultsController: NSFetchedResultsController?
-
     
     var appDel : AppDelegate?
     var context : NSManagedObjectContext!
@@ -31,12 +32,19 @@ class FirstViewController: UIViewController ,CLLocationManagerDelegate{
     
     lazy var strike = 0.0 , dipdir = 0.0 , dip = 0.0;
     lazy var pitch = 0.0 , plusyn = 0.0 , pluang = 0.0; //pitch、plunging syncline and plunge angle
+    lazy var strikeFS = 0.0 , dipdirFS = 0.0 , dipFS = 0.0;
+    lazy var pitchFS = 0.0 , plusynFS = 0.0 , pluangFS = 0.0;
+    
     lazy var lat = 0.0 , lon = 0.0 , hight = 0.0 , locError = 0.0 , hightError = 0.0 , magError = 0.0 ;
+    lazy var latFS = 0.0 , lonFS = 0.0 , hightFS = 0.0 , locErrorFS = 0.0 , hightErrorFS = 0.0 , magErrorFS = 0.0 ;
+
+
     lazy var northV = Vector3(0,0,0);
     
-    lazy var time:NSDate! = NSDate();
+
     
     lazy var adr = "网络未连接";
+    lazy var adrFS = "网络未连接";
     
     lazy var index = 0;
     lazy var needSave = 0;
@@ -48,6 +56,10 @@ class FirstViewController: UIViewController ,CLLocationManagerDelegate{
     let locationManager:CLLocationManager = CLLocationManager();
     
     let cdControl = NewsCoreDataController();
+    
+
+    var surfaceidID: AnyObject = 0.0
+    var lineidID: AnyObject = 0.0
 
     
     @IBOutlet weak var arrow: UIImageView!
@@ -79,37 +91,48 @@ class FirstViewController: UIViewController ,CLLocationManagerDelegate{
             var alertView = UIAlertView(title: "提示！", message: "请先按下保持“保持数据”再点击“保存数据”", delegate: self, cancelButtonTitle: "确定")
             alertView.show()
         }
+            
         else if segmentedControl.selectedSegmentIndex == 2 {
+            var time:NSDate = NSDate();
+            loadData();
             switch needSave{
             case 0:
-                var surfacedata: AnyObject! = cdControl.insertForEntityWithName("SurfaceData");  
+                surfaceidID=(surfaceidID as! Double)+1;
+                var surfacedata: AnyObject! = cdControl.insertForEntityWithName("SurfaceData");
+                surfacedata.setValue(surfaceidID, forKey: "id");
                 surfacedata.setValue(time, forKey: "timeS");
-                surfacedata.setValue(strike, forKey: "strikeS");
-                surfacedata.setValue(dipdir, forKey: "dipdirS");
-                surfacedata.setValue(dip, forKey: "dipS");
-                surfacedata.setValue(lat, forKey: "latS");
-                surfacedata.setValue(lon, forKey: "lonS");
-                surfacedata.setValue(hight, forKey: "hightS");
-                surfacedata.setValue(locError, forKey: "locErrorS");
-                surfacedata.setValue(hightError, forKey: "hightErrorS");
-                surfacedata.setValue(magError, forKey: "magErrorS");
-                surfacedata.setValue(adr, forKey: "adrS");
+                surfacedata.setValue(strikeFS, forKey: "strikeS");
+                surfacedata.setValue(dipdirFS, forKey: "dipdirS");
+                surfacedata.setValue(dipFS, forKey: "dipS");
+                surfacedata.setValue(latFS, forKey: "latS");
+                surfacedata.setValue(lonFS, forKey: "lonS");
+                surfacedata.setValue(hightFS, forKey: "hightS");
+                surfacedata.setValue(locErrorFS, forKey: "locErrorS");
+                surfacedata.setValue(hightErrorFS, forKey: "hightErrorS");
+                surfacedata.setValue(magErrorFS, forKey: "magErrorS");
+                surfacedata.setValue(adrFS, forKey: "adrS");
                 surfacedata.setValue(nil, forKey: "imageS");
+                saveData();
+                
             case 1:
-                var surfacedata: AnyObject! = cdControl.insertForEntityWithName("LineData");
-                surfacedata.setValue(time, forKey: "timeS");
-                surfacedata.setValue(strike, forKey: "strikeS");
-                surfacedata.setValue(pitch, forKey: "pitchS");
-                surfacedata.setValue(plusyn, forKey: "plusynS");
-                surfacedata.setValue(pluang, forKey: "pluangS");
-                surfacedata.setValue(lat, forKey: "latS");
-                surfacedata.setValue(lon, forKey: "lonS");
-                surfacedata.setValue(hight, forKey: "hightS");
-                surfacedata.setValue(locError, forKey: "locErrorS");
-                surfacedata.setValue(hightError, forKey: "hightErrorS");
-                surfacedata.setValue(magError, forKey: "magErrorS");
-                surfacedata.setValue(adr, forKey: "adrS");
-                surfacedata.setValue(nil, forKey: "imageS");
+                lineidID=(lineidID as! Double)+1;
+                var linedata: AnyObject! = cdControl.insertForEntityWithName("LineData");
+                linedata.setValue(lineidID, forKey: "id");
+                linedata.setValue(time, forKey: "timeS");
+                linedata.setValue(strikeFS, forKey: "strikeS");
+                linedata.setValue(pitchFS, forKey: "pitchS");
+                linedata.setValue(plusynFS, forKey: "plusynS");
+                linedata.setValue(pluangFS, forKey: "pluangS");
+                linedata.setValue(latFS, forKey: "latS");
+                linedata.setValue(lonFS, forKey: "lonS");
+                linedata.setValue(hightFS, forKey: "hightS");
+                linedata.setValue(locErrorFS, forKey: "locErrorS");
+                linedata.setValue(hightErrorFS, forKey: "hightErrorS");
+                linedata.setValue(magErrorFS, forKey: "magErrorS");
+                linedata.setValue(adrFS, forKey: "adrS");
+                linedata.setValue(nil, forKey: "imageS");
+                saveData();
+
             default:
                 break;
             }
@@ -205,10 +228,11 @@ class FirstViewController: UIViewController ,CLLocationManagerDelegate{
     return (b,c,d);
     }
     
+    
     override func viewDidLoad() {
         super.viewDidLoad();
         // Do any additional setup after loading the view, typically from a nib.
-
+        
         
         
        if manager.gyroAvailable {
@@ -324,7 +348,18 @@ class FirstViewController: UIViewController ,CLLocationManagerDelegate{
                         self!.labelD.text = (self!.pluang).format(".2")+"°";
                         self!.arrow.transform=CGAffineTransformMakeRotation(CGFloat(angle));
                     case 2:
-                        break;
+                        self!.strikeFS = self!.strike;
+                        self!.dipdirFS = self!.dipdir;
+                        self!.dipFS = self!.dip;
+                        self!.pitchFS = self!.pitch;
+                        self!.plusynFS = self!.plusyn;
+                        self!.pluangFS = self!.pluang;
+                        self!.latFS = self!.lat;
+                        self!.lonFS = self!.lon;
+                        self!.hightFS = self!.hight;
+                        self!.locErrorFS = self!.locError;
+                        self!.hightErrorFS = self!.hightError;
+                        self!.magErrorFS = self!.magError;
                     default:
                         break; 
                     }
@@ -338,19 +373,69 @@ class FirstViewController: UIViewController ,CLLocationManagerDelegate{
         
     }
     
+    func loadData() {
+        // getting path to Data.plist
+        let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true) as NSArray
+        let documentsDirectory = paths[0] as! String
+        let path = documentsDirectory.stringByAppendingPathComponent("Data.plist")
+        let fileManager = NSFileManager.defaultManager()
+        //check if file exists
+        if(!fileManager.fileExistsAtPath(path)) {
+            // If it doesn't, copy it from the default file in the Bundle
+            if let bundlePath = NSBundle.mainBundle().pathForResource("Data", ofType: "plist") {
+                let resultDictionary = NSMutableDictionary(contentsOfFile: bundlePath)
+                println("Bundle Data.plist file is --> \(resultDictionary?.description)")
+                fileManager.copyItemAtPath(bundlePath, toPath: path, error: nil)
+                println("copy")
+            } else {
+                println("Data.plist not found. Please, make sure it is part of the bundle.")
+            }
+        } else {
+            println("Data.plist already exits at path.")
+            // use this to delete file from documents directory
+            //fileManager.removeItemAtPath(path, error: nil)
+        }
+        let resultDictionary = NSMutableDictionary(contentsOfFile: path)
+        println("Loaded Data.plist file is --> \(resultDictionary?.description)")
+        var myDict = NSDictionary(contentsOfFile: path)
+        if let dict = myDict {
+            //loading values
+            surfaceidID = dict.objectForKey(surfaceKey)!
+            lineidID = dict.objectForKey(lineKey)!
+            //...
+        } else {
+            println("WARNING: Couldn't create dictionary from Data.plist! Default values will be used!")
+        }
+    }
     
+    func saveData() {
+        let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true) as NSArray
+        let documentsDirectory = paths.objectAtIndex(0) as! NSString
+        let path = documentsDirectory.stringByAppendingPathComponent("Data.plist")
+        var dict: NSMutableDictionary = ["XInitializerItem": "DoNotEverChangeMe"]
+        //saving values
+        dict.setObject(surfaceidID, forKey: surfaceKey)
+        dict.setObject(lineidID, forKey: lineKey)
+        //...
+        //writing to Data.plist
+        dict.writeToFile(path, atomically: false)
+        let resultDictionary = NSMutableDictionary(contentsOfFile: path)
+        println("Saved Data.plist file is --> \(resultDictionary?.description)")
+    }
+
 
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+
+            // Add code to preserve data stored in the views that might be
+            // needed later.
+            
+            // Add code to clean up other strong references to the view in
+            // the view hierarchy.
+        
     }
     
-
-    
-
-
-
-
 }
 

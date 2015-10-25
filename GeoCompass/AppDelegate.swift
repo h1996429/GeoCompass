@@ -16,6 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     //app 开始启动时调用
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        
         return true
     }
     
