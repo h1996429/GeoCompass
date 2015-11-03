@@ -422,45 +422,87 @@
             <point key="canvasLocation" x="1185" y="-728"/>
         </scene>
         <!--列表-->
-        <scene sceneID="klj-pW-WEb">
+        <scene sceneID="Ecx-pf-YEX">
             <objects>
-                <tableViewController title="列表" id="Aze-33-Q4t" customClass="SecondViewController" customModule="GeoCompass" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="HHD-Ub-70K">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
+                <tableViewController id="Uhb-D4-Q1A" userLabel="列表" customClass="SecondViewController" customModule="GeoCompass" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="lXV-Lw-3Ni">
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="Fuf-Ht-fJ4">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Cell" id="xAv-Xf-ZFB">
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Fuf-Ht-fJ4" id="OEz-lL-eMA">
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xAv-Xf-ZFB" id="VXW-Y0-Z41">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <animations/>
                                 </tableViewCellContentView>
                                 <animations/>
                                 <connections>
-                                    <segue destination="Aze-33-Q4t" kind="showDetail" id="Gex-vD-GEU"/>
+                                    <segue destination="kvD-BT-MiT" kind="showDetail" trigger="accessoryAction" id="CQc-6l-YoY"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
-                            <outlet property="dataSource" destination="Aze-33-Q4t" id="uSD-Cc-EJG"/>
-                            <outlet property="delegate" destination="Aze-33-Q4t" id="7II-Gh-OCB"/>
+                            <outlet property="dataSource" destination="Uhb-D4-Q1A" id="5F0-EJ-s8r"/>
+                            <outlet property="delegate" destination="Uhb-D4-Q1A" id="hMc-cN-H6J"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="列表" id="nul-Un-bBc"/>
-                    <navigationItem key="navigationItem" title="列表" id="EpZ-7Q-XWV">
-                        <barButtonItem key="rightBarButtonItem" title="输出" id="WmE-SN-6hV">
-                            <connections>
-                                <segue destination="Aze-33-Q4t" kind="presentation" id="LOI-kj-fUD"/>
-                            </connections>
-                        </barButtonItem>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="列表" id="odT-AM-DrQ" userLabel="列表">
+                        <barButtonItem key="rightBarButtonItem" title="输出" id="dHh-8o-jyf" userLabel="输出"/>
                     </navigationItem>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="TVk-uv-aDM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HP5-JG-lHS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1417.5" y="16"/>
+            <point key="canvasLocation" x="1773" y="-62"/>
+        </scene>
+        <!--Table View Controller-->
+        <scene sceneID="dyG-RD-1NM">
+            <objects>
+                <tableViewController id="kvD-BT-MiT" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="e7P-Fo-Yfy">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Detail" id="Vuc-Nz-CFc">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Vuc-Nz-CFc" id="bld-RJ-4iW">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <animations/>
+                                </tableViewCellContentView>
+                                <animations/>
+                            </tableViewCell>
+                        </prototypes>
+                        <sections/>
+                        <connections>
+                            <outlet property="dataSource" destination="kvD-BT-MiT" id="XTU-cW-Dgz"/>
+                            <outlet property="delegate" destination="kvD-BT-MiT" id="veL-4r-Q5d"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wyc-Av-pY4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2649" y="802"/>
+        </scene>
+        <!--列表（导航）-->
+        <scene sceneID="7GY-hO-1hk">
+            <objects>
+                <navigationController id="Zps-qg-Jpd" userLabel="列表（导航）" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="列表" image="second" id="Gsx-S6-Mm0"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="eIE-qt-C6X">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="Uhb-D4-Q1A" kind="relationship" relationship="rootViewController" id="ku5-Ud-LBb"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hYp-o5-ViI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="931.5" y="-44"/>
         </scene>
         <!--地图-->
         <scene sceneID="dqw-N7-2fU">
@@ -530,7 +572,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="9pv-A4-QxB" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
-                        <segue destination="Aze-33-Q4t" kind="relationship" relationship="viewControllers" id="3RU-ud-FJH"/>
+                        <segue destination="Zps-qg-Jpd" kind="relationship" relationship="viewControllers" id="fAh-JS-sgc"/>
                         <segue destination="ekV-pn-k5k" kind="relationship" relationship="viewControllers" id="ldD-YO-Kag"/>
                     </connections>
                 </tabBarController>
@@ -544,7 +586,4 @@
         <image name="first" width="30" height="30"/>
         <image name="second" width="30" height="30"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="3RU-ud-FJH"/>
-    </inferredMetricsTieBreakers>
 </document>

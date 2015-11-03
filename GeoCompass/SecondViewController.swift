@@ -19,24 +19,22 @@ class SecondViewController:UITableViewController,UITabBarControllerDelegate,NSFe
     var dateFormatter = NSDateFormatter()
 
     override func viewWillAppear(animated: Bool) {
+
+
+    }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view, typically from a nib.
+        //为导航栏左边按钮设置编辑按钮
         self.navigationItem.leftBarButtonItem = self.editButtonItem()
         
         //执行获取数据，并处理异常
         var error: NSError? = nil
         if !self.initFetchedResultsController().performFetch(&error){
             NSLog("Unresolved error \(error), \(error!.userInfo)")
-            abort()}
-        self.tableView.reloadData()
-    }
-
-     override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        //为导航栏左边按钮设置编辑按钮
-        //self.appDel = UIApplication.sharedApplication().delegate as! AppDelegate
-        
-
-
+            abort()
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -147,7 +145,7 @@ class SecondViewController:UITableViewController,UITabBarControllerDelegate,NSFe
         fetchRequest.sortDescriptors = sortDescriptors
         
         // 创建获取数据的控制器，将section的name设置为author，可以直接用于tableViewSourceData
-        var fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: cdControl.cdh.managedObjectContext, sectionNameKeyPath: "timeS", cacheName: "Root")
+        var fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: cdControl.cdh.managedObjectContext, sectionNameKeyPath: "adrS", cacheName: "Root")
         fetchedResultsController.delegate = self
         self.fetchedResultsController = fetchedResultsController
         return fetchedResultsController

@@ -41,8 +41,8 @@ class FirstViewController: UIViewController ,CLLocationManagerDelegate{
     
 
     
-    lazy var adr = "网络未连接";
-    lazy var adrFS = "网络未连接";
+    lazy var adr = "网络未连接，无地址";
+    lazy var adrFS = "网络未连接，无地址";
     
     lazy var index = 0;
     lazy var needSave = 0;
