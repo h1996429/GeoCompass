@@ -12,12 +12,11 @@ import CoreData
 
 class SecondViewController:UITableViewController,UITabBarControllerDelegate,NSFetchedResultsControllerDelegate {
     let cdControl = NewsCoreDataController();
-    var managedObjectContext: NSManagedObjectContext?
+    //var managedObjectContext: NSManagedObjectContext?
     //获取数据的控制器
-    //var fetchedResultsController: NSFetchedResultsController?
+    var fetchedResultsController: NSFetchedResultsController?
     var rightBarButtonItem: UIBarButtonItem?
     var dateFormatter = NSDateFormatter()
-    var appDel : AppDelegate!
 
     override func viewWillAppear(animated: Bool) {
         self.navigationItem.leftBarButtonItem = self.editButtonItem()
@@ -47,8 +46,8 @@ class SecondViewController:UITableViewController,UITabBarControllerDelegate,NSFe
     
     //设置单元格的信息
     func setCellInfo(cell: UITableViewCell, indexPath: NSIndexPath) {
-        var surfacedata = cdControl.FetchedResultsController("SurfaceData")?.objectAtIndexPath(indexPath) as! SurfaceData
-        var linedata = cdControl.FetchedResultsController("SurfaceData")?.objectAtIndexPath(indexPath) as! LineData
+        var surfacedata = self.fetchedResultsController?.objectAtIndexPath(indexPath) as! SurfaceData
+        //var linedata = cdControl.FetchedResultsController("SurfaceData")?.objectAtIndexPath(indexPath) as! LineData
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
         cell.textLabel!.text = dateFormatter.stringFromDate(surfacedata.timeS)
     }
@@ -57,12 +56,12 @@ class SecondViewController:UITableViewController,UITabBarControllerDelegate,NSFe
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         //分组数量
-        return cdControl.FetchedResultsController("SurfaceData")!.sections!.count
+        return self.fetchedResultsController!.sections!.count
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         //每个分组的数据数量
-        var section = cdControl.FetchedResultsController("SurfaceData")!.sections![section]as! NSFetchedResultsSectionInfo
+        var section = self.fetchedResultsController!.sections![section]as! NSFetchedResultsSectionInfo
         return section.numberOfObjects
     }
     
@@ -76,7 +75,7 @@ class SecondViewController:UITableViewController,UITabBarControllerDelegate,NSFe
     
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         //分组表头显示
-        return cdControl.FetchedResultsController("SurfaceData")!.sections![section].name
+        return self.fetchedResultsController!.sections![section].name
     }
     
     /*
@@ -91,11 +90,11 @@ class SecondViewController:UITableViewController,UITabBarControllerDelegate,NSFe
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
             //删除sqlite库中对应的数据
-            var context = cdControl.FetchedResultsController("SurfaceData")!.managedObjectContext
-            context.deleteObject(cdControl.FetchedResultsController("SurfaceData")!.objectAtIndexPath(indexPath) as! NSManagedObject)
+            var context = self.fetchedResultsController?.managedObjectContext
+            context!.deleteObject(self.fetchedResultsController?.objectAtIndexPath(indexPath) as! NSManagedObject)
             //删除后要进行保存
             var error: NSError? = nil
-            if context.save(&error) == false {
+            if context?.save(&error) == false {
                 NSLog("Unresolved error \(error), \(error!.userInfo)")
                 abort()
             }
@@ -130,9 +129,9 @@ class SecondViewController:UITableViewController,UITabBarControllerDelegate,NSFe
     func initFetchedResultsController() ->NSFetchedResultsController
     {
         NSLog("===initFetchedResultsController===")
-        if cdControl.FetchedResultsController("SurfaceData") != nil {
+        if self.fetchedResultsController != nil {
             NSLog("===1===")
-            return cdControl.FetchedResultsController("SurfaceData")!
+            return self.fetchedResultsController!
         }
         NSLog("===2===")
         // 创建一个获取数据的实例，用来查询实体
@@ -148,10 +147,10 @@ class SecondViewController:UITableViewController,UITabBarControllerDelegate,NSFe
         fetchRequest.sortDescriptors = sortDescriptors
         
         // 创建获取数据的控制器，将section的name设置为author，可以直接用于tableViewSourceData
-        var fetchedResultsController = cdControl.FetchedResultsController("SurfaceData")
-        fetchedResultsController!.delegate = self
-        cdControl.FetchedResultsController("SurfaceData")!.delegate = self
-        return fetchedResultsController!
+        var fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: cdControl.cdh.managedObjectContext, sectionNameKeyPath: "timeS", cacheName: "Root")
+        fetchedResultsController.delegate = self
+        self.fetchedResultsController = fetchedResultsController
+        return fetchedResultsController
     }
     
     //通知控制器即将开始处理一个或多个的单元格变化，包括添加、删除、移动或更新。在这里处理变化时对tableView的影响，例如删除sqlite数据时同时要删除tableView中对应的单元格

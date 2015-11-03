@@ -26,8 +26,6 @@ extension Double {
 
 class FirstViewController: UIViewController ,CLLocationManagerDelegate{
     
-    var appDel : AppDelegate?
-    var context : NSManagedObjectContext!
 
     
     lazy var strike = 0.0 , dipdir = 0.0 , dip = 0.0;
@@ -55,11 +53,12 @@ class FirstViewController: UIViewController ,CLLocationManagerDelegate{
     let manager = CMMotionManager();
     let locationManager:CLLocationManager = CLLocationManager();
     
+    
     let cdControl = NewsCoreDataController();
     
+    var surfaceidID: AnyObject = 0
+    var lineidID: AnyObject = 0
 
-    var surfaceidID: AnyObject = 0.0
-    var lineidID: AnyObject = 0.0
 
     
     @IBOutlet weak var arrow: UIImageView!
@@ -97,9 +96,21 @@ class FirstViewController: UIViewController ,CLLocationManagerDelegate{
             loadData();
             switch needSave{
             case 0:
+                var surfacedata:SurfaceData = cdControl.insertForEntityWithName("SurfaceData") as! SurfaceData;
                 surfaceidID=(surfaceidID as! Double)+1;
-                var surfacedata: AnyObject! = cdControl.insertForEntityWithName("SurfaceData");
-                surfacedata.setValue(surfaceidID, forKey: "id");
+                surfacedata.id=surfaceidID as! NSNumber;
+                surfacedata.timeS=time;
+                surfacedata.strikeS=strikeFS;
+                surfacedata.dipdirS=dipdirFS;
+                surfacedata.dipS=dipFS;
+                surfacedata.latS=latFS;
+                surfacedata.lonS=lonFS;
+                surfacedata.hightS=hightFS;
+                surfacedata.locErrorS=locErrorFS;
+                surfacedata.hightErrorS=hightErrorFS;
+                surfacedata.magErrorS=magErrorFS;
+                surfacedata.adrS=adrFS;
+                /*surfacedata.setValue(surfaceidID, forKey: "id");
                 surfacedata.setValue(time, forKey: "timeS");
                 surfacedata.setValue(strikeFS, forKey: "strikeS");
                 surfacedata.setValue(dipdirFS, forKey: "dipdirS");
@@ -111,13 +122,28 @@ class FirstViewController: UIViewController ,CLLocationManagerDelegate{
                 surfacedata.setValue(hightErrorFS, forKey: "hightErrorS");
                 surfacedata.setValue(magErrorFS, forKey: "magErrorS");
                 surfacedata.setValue(adrFS, forKey: "adrS");
-                surfacedata.setValue(nil, forKey: "imageS");
+                surfacedata.setValue(nil, forKey: "imageS");*/
+                cdControl.save();
+            
                 saveData();
                 
             case 1:
+                var linedata:LineData = cdControl.insertForEntityWithName("LineData") as! LineData;
                 lineidID=(lineidID as! Double)+1;
-                var linedata: AnyObject! = cdControl.insertForEntityWithName("LineData");
-                linedata.setValue(lineidID, forKey: "id");
+                linedata.id=surfaceidID as! NSNumber;
+                linedata.timeS=time;
+                linedata.strikeS=strikeFS;
+                linedata.pitchS=pitchFS;
+                linedata.plusynS=plusynFS;
+                linedata.pluangS=pluangFS;
+                linedata.latS=latFS;
+                linedata.lonS=lonFS;
+                linedata.hightS=hightFS;
+                linedata.locErrorS=locErrorFS;
+                linedata.hightErrorS=hightErrorFS;
+                linedata.magErrorS=magErrorFS;
+                linedata.adrS=adrFS;
+                /*linedata.setValue(lineidID, forKey: "id");
                 linedata.setValue(time, forKey: "timeS");
                 linedata.setValue(strikeFS, forKey: "strikeS");
                 linedata.setValue(pitchFS, forKey: "pitchS");
@@ -129,8 +155,8 @@ class FirstViewController: UIViewController ,CLLocationManagerDelegate{
                 linedata.setValue(locErrorFS, forKey: "locErrorS");
                 linedata.setValue(hightErrorFS, forKey: "hightErrorS");
                 linedata.setValue(magErrorFS, forKey: "magErrorS");
-                linedata.setValue(adrFS, forKey: "adrS");
-                linedata.setValue(nil, forKey: "imageS");
+                linedata.setValue(adrFS, forKey: "adrS");*/
+                cdControl.save();
                 saveData();
 
             default:
@@ -232,8 +258,6 @@ class FirstViewController: UIViewController ,CLLocationManagerDelegate{
     override func viewDidLoad() {
         super.viewDidLoad();
         // Do any additional setup after loading the view, typically from a nib.
-        
-        
         
        if manager.gyroAvailable {
             manager.deviceMotionUpdateInterval = 0.1;

@@ -19,7 +19,6 @@ class NewsCoreDataController:NSObject {
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         self.store = appDelegate.cdstore
         self.cdh = appDelegate.cdh
-        super.init()
     }
     
     func fetchNewestNews(entityname:String,keyname:String)->NSFetchedResultsController {
@@ -55,6 +54,10 @@ class NewsCoreDataController:NSObject {
     
     func EntityDescription(entityName:String)->NSEntityDescription?{
         return NSEntityDescription.entityForName(entityName, inManagedObjectContext: self.cdh.managedObjectContext)
+    }
+    
+    func NSManagedObjectIt(entity:NSEntityDescription)->NSManagedObject?{
+        return NSManagedObject(entity: entity, insertIntoManagedObjectContext: self.cdh.managedObjectContext)
     }
     
     func FetchedResultsController(entityname:String)->NSFetchedResultsController?{

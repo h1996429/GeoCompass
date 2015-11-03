@@ -1,5 +1,5 @@
 //
-//  LineData.swift
+//  SurfaceData.swift
 //  
 //
 //  Created by 何嘉 on 15/11/1.
@@ -9,10 +9,12 @@
 import Foundation
 import CoreData
 
-@objc(LineData)
-class LineData: NSManagedObject {
+@objc(SurfaceData)
+class SurfaceData: NSManagedObject {
 
     @NSManaged var adrS: String
+    @NSManaged var dipdirS: NSNumber
+    @NSManaged var dipS: NSNumber
     @NSManaged var hightErrorS: NSNumber
     @NSManaged var hightS: NSNumber
     @NSManaged var id: NSNumber
@@ -21,12 +23,8 @@ class LineData: NSManagedObject {
     @NSManaged var locErrorS: NSNumber
     @NSManaged var lonS: NSNumber
     @NSManaged var magErrorS: NSNumber
-    @NSManaged var pitchS: NSNumber
-    @NSManaged var pluangS: NSNumber
-    @NSManaged var plusynS: NSNumber
     @NSManaged var strikeS: NSNumber
     @NSManaged var timeS: NSDate
 
 }
-
 
