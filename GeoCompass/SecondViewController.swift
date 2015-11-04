@@ -12,8 +12,11 @@ import CoreData
 
 class SecondViewController:UITableViewController,UITabBarControllerDelegate,NSFetchedResultsControllerDelegate {
     let cdControl = NewsCoreDataController();
-    //var managedObjectContext: NSManagedObjectContext?
+    var managedObjectContext: NSManagedObjectContext?
     //获取数据的控制器
+    var addObjectContext: NSManagedObjectContext!
+    var delegate: SecondViewController!
+    
     var fetchedResultsController: NSFetchedResultsController?
     var rightBarButtonItem: UIBarButtonItem?
     var dateFormatter = NSDateFormatter()
@@ -180,6 +183,38 @@ class SecondViewController:UITableViewController,UITabBarControllerDelegate,NSFe
         case .Move:
             break
         }
+    }
+    
+    //通知控制器即将有变化
+    func controllerWillChangeContent(controller: NSFetchedResultsController) {
+        //tableView启动变更，需要endUpdates来结束变更，类似于一个事务，统一做变化处理
+        self.tableView.beginUpdates()
+    }
+    
+    //通知控制器变化完成
+    func controllerDidChangeContent(controller: NSFetchedResultsController) {
+        self.tableView.endUpdates()
+    }
+    
+    // MARK: - Add controller delegate
+    
+    func addViewController(controller:SecondViewController, isSave: Bool){
+        
+        if isSave {
+            NSLog("===dismissViewControllerAnimated 1===")
+            var error: NSError? = nil
+            if !controller.addObjectContext.save(&error) {
+                NSLog("Unresolved error \(error), \(error!.userInfo)")
+                abort()
+            }
+            NSLog("===dismissViewControllerAnimated 2===")
+            if self.fetchedResultsController?.managedObjectContext.save(&error) == nil {
+                NSLog("Unresolved error \(error), \(error!.userInfo)")
+                abort()
+            }
+        }
+        NSLog("===dismissViewControllerAnimated 3===")
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
 
 }
