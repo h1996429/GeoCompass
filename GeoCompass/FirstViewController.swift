@@ -42,7 +42,6 @@ class FirstViewController: UIViewController ,CLLocationManagerDelegate{
 
     
     lazy var adr = "网络未连接，无地址";
-    lazy var adrFS = "网络未连接，无地址";
     
     lazy var index = 0;
     lazy var needSave = 0;
@@ -109,7 +108,7 @@ class FirstViewController: UIViewController ,CLLocationManagerDelegate{
                 surfacedata.locErrorS=locErrorFS;
                 surfacedata.hightErrorS=hightErrorFS;
                 surfacedata.magErrorS=magErrorFS;
-                surfacedata.adrS=adrFS;
+                surfacedata.adrS=adr;
                 /*surfacedata.setValue(surfaceidID, forKey: "id");
                 surfacedata.setValue(time, forKey: "timeS");
                 surfacedata.setValue(strikeFS, forKey: "strikeS");
@@ -142,7 +141,7 @@ class FirstViewController: UIViewController ,CLLocationManagerDelegate{
                 linedata.locErrorS=locErrorFS;
                 linedata.hightErrorS=hightErrorFS;
                 linedata.magErrorS=magErrorFS;
-                linedata.adrS=adrFS;
+                linedata.adrS=adr;
                 /*linedata.setValue(lineidID, forKey: "id");
                 linedata.setValue(time, forKey: "timeS");
                 linedata.setValue(strikeFS, forKey: "strikeS");
