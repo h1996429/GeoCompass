@@ -426,13 +426,13 @@
         <scene sceneID="Ecx-pf-YEX">
             <objects>
                 <tableViewController id="Uhb-D4-Q1A" userLabel="列表" customClass="SecondViewController" customModule="GeoCompass" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="lXV-Lw-3Ni">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="lXV-Lw-3Ni">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="detailDisclosureButton" indentationWidth="10" reuseIdentifier="Cell" id="xAv-Xf-ZFB">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Cell" id="xAv-Xf-ZFB">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xAv-Xf-ZFB" id="VXW-Y0-Z41">
                                     <autoresizingMask key="autoresizingMask"/>
@@ -450,7 +450,7 @@
                         </connections>
                     </tableView>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="列表" id="odT-AM-DrQ" userLabel="列表">
+                    <navigationItem key="navigationItem" title="历史数据" id="odT-AM-DrQ" userLabel="列表">
                         <barButtonItem key="rightBarButtonItem" title="输出" id="dHh-8o-jyf" userLabel="输出"/>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
@@ -463,7 +463,7 @@
         <scene sceneID="7GY-hO-1hk">
             <objects>
                 <navigationController id="Zps-qg-Jpd" userLabel="列表（导航）" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="列表" image="second" id="Gsx-S6-Mm0"/>
+                    <tabBarItem key="tabBarItem" title="历史数据" image="second" id="Gsx-S6-Mm0"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="eIE-qt-C6X">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>

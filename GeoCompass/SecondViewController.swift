@@ -21,10 +21,7 @@ class SecondViewController:UITableViewController,UITabBarControllerDelegate,NSFe
     var rightBarButtonItem: UIBarButtonItem?
     var dateFormatter = NSDateFormatter()
 
-    override func viewWillAppear(animated: Bool) {
 
-
-    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,7 +48,7 @@ class SecondViewController:UITableViewController,UITabBarControllerDelegate,NSFe
         var surfacedata = self.fetchedResultsController?.objectAtIndexPath(indexPath) as! SurfaceData
         //var linedata = cdControl.FetchedResultsController("SurfaceData")?.objectAtIndexPath(indexPath) as! LineData
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
-        cell.textLabel!.text = dateFormatter.stringFromDate(surfacedata.timeS) + " 记录"
+        cell.textLabel!.text = dateFormatter.stringFromDate(surfacedata.timeS) + " 数据"
     }
     
     // MARK: - Table view data source
@@ -213,27 +210,7 @@ class SecondViewController:UITableViewController,UITabBarControllerDelegate,NSFe
             secondViewDetailController.surfacedata = surfacedata
         }
     }
-    
-        // MARK: - Add controller delegate
-    
-    func addViewController(controller:SecondViewController, isSave: Bool){
         
-        if isSave {
-            NSLog("===dismissViewControllerAnimated 1===")
-            var error: NSError? = nil
-            if !controller.addObjectContext.save(&error) {
-                NSLog("Unresolved error \(error), \(error!.userInfo)")
-                abort()
-            }
-            NSLog("===dismissViewControllerAnimated 2===")
-            if self.fetchedResultsController?.managedObjectContext.save(&error) == nil {
-                NSLog("Unresolved error \(error), \(error!.userInfo)")
-                abort()
-            }
-        }
-        NSLog("===dismissViewControllerAnimated 3===")
-        self.dismissViewControllerAnimated(true, completion: nil)
-    }
 
 }
 
