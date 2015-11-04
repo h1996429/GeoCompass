@@ -438,7 +438,7 @@
                                 </tableViewCellContentView>
                                 <animations/>
                                 <connections>
-                                    <segue destination="kvD-BT-MiT" kind="show" identifier="" trigger="accessoryAction" id="CQc-6l-YoY"/>
+                                    <segue destination="QtM-tT-Cbd" kind="show" id="QCY-3Y-BEv"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -456,35 +456,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HP5-JG-lHS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1827" y="-44"/>
-        </scene>
-        <!--详细-->
-        <scene sceneID="dyG-RD-1NM">
-            <objects>
-                <tableViewController title="详细" id="kvD-BT-MiT" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="e7P-Fo-Yfy">
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <animations/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Detail" id="Vuc-Nz-CFc">
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Vuc-Nz-CFc" id="bld-RJ-4iW">
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <animations/>
-                                </tableViewCellContentView>
-                                <animations/>
-                            </tableViewCell>
-                        </prototypes>
-                        <sections/>
-                        <connections>
-                            <outlet property="dataSource" destination="kvD-BT-MiT" id="XTU-cW-Dgz"/>
-                            <outlet property="delegate" destination="kvD-BT-MiT" id="veL-4r-Q5d"/>
-                        </connections>
-                    </tableView>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="wyc-Av-pY4" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2721" y="-44"/>
         </scene>
         <!--列表（导航）-->
         <scene sceneID="7GY-hO-1hk">
@@ -579,6 +550,37 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-24" y="0.0"/>
+        </scene>
+        <!--细节-->
+        <scene sceneID="sTN-DX-p6s">
+            <objects>
+                <tableViewController id="QtM-tT-Cbd" userLabel="细节" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="dZZ-Pq-ASv">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Detail" id="Mho-9k-r7U">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Mho-9k-r7U" id="Gyp-cT-MVC">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <animations/>
+                                </tableViewCellContentView>
+                                <animations/>
+                            </tableViewCell>
+                        </prototypes>
+                        <sections/>
+                        <connections>
+                            <outlet property="dataSource" destination="QtM-tT-Cbd" id="WTW-CU-hq1"/>
+                            <outlet property="delegate" destination="QtM-tT-Cbd" id="Mmz-LJ-Xu5"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="细节" id="aT2-FZ-fLd"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lHh-uE-b75" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2553" y="-44"/>
         </scene>
     </scenes>
     <resources>
