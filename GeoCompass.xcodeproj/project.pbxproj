@@ -34,6 +34,8 @@
 		A758CA4D1BE66CB60043A637 /* SurfaceImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A758CA481BE66CB60043A637 /* SurfaceImage.swift */; };
 		A76406B21BAECC3E00256D1B /* Data.plist in Resources */ = {isa = PBXBuildFile; fileRef = A76406B11BAECC3E00256D1B /* Data.plist */; };
 		A794CF721BA82BCB00A64365 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A794CF701BA82BCB00A64365 /* Model.xcdatamodeld */; };
+		A7AE53171BEA18F50077B630 /* SecondViewDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7AE53161BEA18F50077B630 /* SecondViewDetailController.swift */; };
+		A7AE53191BEA33900077B630 /* SecondViewEditController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7AE53181BEA33900077B630 /* SecondViewEditController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +83,8 @@
 		A794CF6E1BA82ABC00A64365 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
 		A794CF6F1BA82ABC00A64365 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		A794CF711BA82BCB00A64365 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		A7AE53161BEA18F50077B630 /* SecondViewDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondViewDetailController.swift; sourceTree = "<group>"; };
+		A7AE53181BEA33900077B630 /* SecondViewEditController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondViewEditController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,6 +145,8 @@
 				A72293351B983CAC00CCF6E8 /* AppDelegate.swift */,
 				A72293371B983CAC00CCF6E8 /* FirstViewController.swift */,
 				A72293391B983CAC00CCF6E8 /* SecondViewController.swift */,
+				A7AE53161BEA18F50077B630 /* SecondViewDetailController.swift */,
+				A7AE53181BEA33900077B630 /* SecondViewEditController.swift */,
 				A72293821BA0985900CCF6E8 /* ThirdViewController.swift */,
 				A722933B1B983CAC00CCF6E8 /* Main.storyboard */,
 				A72293401B983CAC00CCF6E8 /* LaunchScreen.xib */,
@@ -304,8 +310,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A7AE53191BEA33900077B630 /* SecondViewEditController.swift in Sources */,
 				A72293801B9C35C300CCF6E8 /* VectorMath+Quartz.swift in Sources */,
 				A722937F1B9C35C300CCF6E8 /* VectorMath.swift in Sources */,
+				A7AE53171BEA18F50077B630 /* SecondViewDetailController.swift in Sources */,
 				A72293811B9C35C300CCF6E8 /* VectorMath+SceneKit.swift in Sources */,
 				A794CF721BA82BCB00A64365 /* Model.xcdatamodeld in Sources */,
 				A72293831BA0985900CCF6E8 /* ThirdViewController.swift in Sources */,

@@ -109,19 +109,7 @@ class FirstViewController: UIViewController ,CLLocationManagerDelegate{
                 surfacedata.hightErrorS=hightErrorFS;
                 surfacedata.magErrorS=magErrorFS;
                 surfacedata.adrS=adr;
-                /*surfacedata.setValue(surfaceidID, forKey: "id");
-                surfacedata.setValue(time, forKey: "timeS");
-                surfacedata.setValue(strikeFS, forKey: "strikeS");
-                surfacedata.setValue(dipdirFS, forKey: "dipdirS");
-                surfacedata.setValue(dipFS, forKey: "dipS");
-                surfacedata.setValue(latFS, forKey: "latS");
-                surfacedata.setValue(lonFS, forKey: "lonS");
-                surfacedata.setValue(hightFS, forKey: "hightS");
-                surfacedata.setValue(locErrorFS, forKey: "locErrorS");
-                surfacedata.setValue(hightErrorFS, forKey: "hightErrorS");
-                surfacedata.setValue(magErrorFS, forKey: "magErrorS");
-                surfacedata.setValue(adrFS, forKey: "adrS");
-                surfacedata.setValue(nil, forKey: "imageS");*/
+
                 cdControl.save();
             
                 saveData();
@@ -142,19 +130,7 @@ class FirstViewController: UIViewController ,CLLocationManagerDelegate{
                 linedata.hightErrorS=hightErrorFS;
                 linedata.magErrorS=magErrorFS;
                 linedata.adrS=adr;
-                /*linedata.setValue(lineidID, forKey: "id");
-                linedata.setValue(time, forKey: "timeS");
-                linedata.setValue(strikeFS, forKey: "strikeS");
-                linedata.setValue(pitchFS, forKey: "pitchS");
-                linedata.setValue(plusynFS, forKey: "plusynS");
-                linedata.setValue(pluangFS, forKey: "pluangS");
-                linedata.setValue(latFS, forKey: "latS");
-                linedata.setValue(lonFS, forKey: "lonS");
-                linedata.setValue(hightFS, forKey: "hightS");
-                linedata.setValue(locErrorFS, forKey: "locErrorS");
-                linedata.setValue(hightErrorFS, forKey: "hightErrorS");
-                linedata.setValue(magErrorFS, forKey: "magErrorS");
-                linedata.setValue(adrFS, forKey: "adrS");*/
+
                 cdControl.save();
                 saveData();
 

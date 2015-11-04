@@ -31,6 +31,7 @@ class SecondViewController:UITableViewController,UITabBarControllerDelegate,NSFe
         // Do any additional setup after loading the view, typically from a nib.
         //为导航栏左边按钮设置编辑按钮
         self.navigationItem.leftBarButtonItem = self.editButtonItem()
+        self.editButtonItem().title = "编辑"
         
         //执行获取数据，并处理异常
         var error: NSError? = nil
@@ -50,7 +51,7 @@ class SecondViewController:UITableViewController,UITabBarControllerDelegate,NSFe
         var surfacedata = self.fetchedResultsController?.objectAtIndexPath(indexPath) as! SurfaceData
         //var linedata = cdControl.FetchedResultsController("SurfaceData")?.objectAtIndexPath(indexPath) as! LineData
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
-        cell.textLabel!.text = dateFormatter.stringFromDate(surfacedata.timeS)
+        cell.textLabel!.text = dateFormatter.stringFromDate(surfacedata.timeS) + " 记录"
     }
     
     // MARK: - Table view data source
@@ -115,10 +116,12 @@ class SecondViewController:UITableViewController,UITabBarControllerDelegate,NSFe
         super.setEditing(editing, animated: animated)
         
         if (editing) {
+            self.editButtonItem().title = "完成"
             self.rightBarButtonItem = self.navigationItem.rightBarButtonItem;
             self.navigationItem.rightBarButtonItem = nil;
         }
         else {
+            self.editButtonItem().title = "编辑"
             self.navigationItem.rightBarButtonItem = self.rightBarButtonItem;
             self.rightBarButtonItem = nil;
         }
@@ -195,8 +198,23 @@ class SecondViewController:UITableViewController,UITabBarControllerDelegate,NSFe
     func controllerDidChangeContent(controller: NSFetchedResultsController) {
         self.tableView.endUpdates()
     }
+   
     
-    // MARK: - Add controller delegate
+    // MARK: - Navigation
+
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        //明细查询页面
+        if (segue.identifier == "Detail") {
+            NSLog("Detail go")
+            //将所选择的当前数据赋值给所打开页面的控制器
+            var secondViewDetailController = segue.destinationViewController as! SecondViewDetailController
+            var currentRow = tableView.indexPathForSelectedRow()
+            var surfacedata = self.fetchedResultsController?.objectAtIndexPath(currentRow!)as! SurfaceData
+            secondViewDetailController.surfacedata = surfacedata
+        }
+    }
+    
+        // MARK: - Add controller delegate
     
     func addViewController(controller:SecondViewController, isSave: Bool){
         
