@@ -6,13 +6,8 @@
 //  Copyright (c) 2015年 何嘉. All rights reserved.
 //
 import UIKit
-import Foundation
 
-extension NSNumber {
-    func format(f: String) -> String {
-        return NSString(format: "%\(f)f", self) as String
-    }
-}
+
 
 class SecondViewDetailController: UITableViewController{
     var surfacedata:SurfaceData!
@@ -128,12 +123,46 @@ class SecondViewDetailController: UITableViewController{
     }
     
     //更新数据
+    func transloc(a:Double)->(b:Int,c:Int,d:Double){
+        var b = 0,c = 0,d = 0.0,last1 = 0.0,last2 = 0.0;
+        last1 = a-Double(Int(a));
+        b = Int(a);
+        last2 = (last1*60)-Double(Int(last1*60));
+        c = Int(last1*60);
+        d = last2*60;
+        return (b,c,d);
+    }
+    
     func updateInterface() {
-        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm";
+        
         self.title1.text = "时间"
         self.detail1.text = dateFormatter.stringFromDate(surfacedata.timeS)
-        self.title2.text = "走向"
-        self.detail2.text = (self.surfacedata.strikeS).format(".2")+"°";
+        self.title2.text = "地址"
+        self.detail2.text = self.surfacedata.adrS;
+        self.title3.text = "走向"
+        self.detail3.text = (self.surfacedata.strikeS as! Double).format(".2")+"°";
+        self.title4.text = "倾向"
+        self.detail4.text = (self.surfacedata.dipdirS as! Double).format(".2")+"°";
+        self.title5.text = "倾角"
+        self.detail5.text = (self.surfacedata.dipS as! Double).format(".2")+"°";
+        self.title6.text = "纬度"
+        var R = transloc(self.surfacedata.latS as! Double);
+        self.detail6.text = "\(R.b)" + "°" + "\(R.c)" + "'" + (R.d).format(".4") + "\"";
+        self.title7.text = "经度"
+        R = transloc(self.surfacedata.lonS as! Double);
+        self.detail7.text = "\(R.b)" + "°" + "\(R.c)" + "'" + (R.d).format(".4") + "\"";
+        self.title8.text = "高程"
+        self.detail8.text = (self.surfacedata.hightS as! Double).format(".2")+"m";
+        self.title9.text = "经纬误差"
+        self.detail9.text = "±"+(self.surfacedata.locErrorS as! Double).format(".1")+"m";
+        self.title10.text = "高程误差"
+        self.detail10.text = "±"+(self.surfacedata.hightErrorS as! Double).format(".1")+"m";
+        self.title11.text = "磁偏角"
+        self.detail11.text = (self.surfacedata.magErrorS as! Double).format(".2")+"°";
+        self.title12.text = ""
+        self.detail12.text = ""
+
         NSLog("===updateInterface===\(self.surfacedata.timeS)")
     }
     
@@ -230,14 +259,16 @@ class SecondViewDetailController: UITableViewController{
             //根据选择的不同行为编辑view赋不同的值
             switch(self.tableView.indexPathForSelectedRow()!.row) {
             case 0:
+                break
+            case 1:
                 bookEditViewController.editedFieldKey = "timeS"
                 bookEditViewController.editedFieldName = "时间"
-            case 1:
+            case 2:
+                bookEditViewController.editedFieldKey = "adrS"
+                bookEditViewController.editedFieldName = "地址"
+            case 3:
                 bookEditViewController.editedFieldKey = "strikeS"
                 bookEditViewController.editedFieldName = "走向"
-            case 2:
-                bookEditViewController.editedFieldKey = "dipdirS"
-                bookEditViewController.editedFieldName = "倾向"
             default:
                 break
             }

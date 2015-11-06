@@ -42,6 +42,8 @@ class FirstViewController: UIViewController ,CLLocationManagerDelegate{
 
     
     lazy var adr = "网络未连接，无地址";
+    lazy var adrFS = "网络未连接，无地址";
+
     
     lazy var index = 0;
     lazy var needSave = 0;
@@ -108,7 +110,7 @@ class FirstViewController: UIViewController ,CLLocationManagerDelegate{
                 surfacedata.locErrorS=locErrorFS;
                 surfacedata.hightErrorS=hightErrorFS;
                 surfacedata.magErrorS=magErrorFS;
-                surfacedata.adrS=adr;
+                surfacedata.adrS=adrFS;
 
                 cdControl.save();
             
@@ -129,7 +131,7 @@ class FirstViewController: UIViewController ,CLLocationManagerDelegate{
                 linedata.locErrorS=locErrorFS;
                 linedata.hightErrorS=hightErrorFS;
                 linedata.magErrorS=magErrorFS;
-                linedata.adrS=adr;
+                linedata.adrS=adrFS;
 
                 cdControl.save();
                 saveData();
@@ -192,8 +194,10 @@ class FirstViewController: UIViewController ,CLLocationManagerDelegate{
             self.hightError = location.verticalAccuracy;
             
             
-            self.labelLat.text = "\(transloc(lat).b)" + "°" + "\(transloc(lat).c)" + "'" + (transloc(lat).d).format(".4") + "\"";
-            self.labelLon.text = "\(transloc(lon).b)" + "°" + "\(transloc(lon).c)" + "'" + (transloc(lon).d).format(".4") + "\"";
+            var R = transloc(self.lat);
+            self.labelLat.text = "\(R.b)" + "°" + "\(R.c)" + "'" + (R.d).format(".4") + "\"";
+            R = transloc(self.lon);
+            self.labelLon.text = "\(R.b)" + "°" + "\(R.c)" + "'" + (R.d).format(".4") + "\"";
             self.labelH.text = (self.hight).format(".2")+"m";
             self.labelLonE.text = "±"+(self.locError).format(".1")+"m";
             self.labelLatE.text = "±"+(self.locError).format(".1")+"m";
@@ -359,6 +363,8 @@ class FirstViewController: UIViewController ,CLLocationManagerDelegate{
                         self!.locErrorFS = self!.locError;
                         self!.hightErrorFS = self!.hightError;
                         self!.magErrorFS = self!.magError;
+                        self!.adrFS = self!.adr;
+
                     default:
                         break; 
                     }

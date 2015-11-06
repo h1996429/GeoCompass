@@ -7,12 +7,12 @@
 //
 
 import UIKit
-import Foundation
 
-class SecondViewEditController: UITableViewController{
+class SecondViewEditController: UIViewController{
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var textField: UITextField!
     
+    var dateFormatter = NSDateFormatter()
     var editedObject: SurfaceData!
     var editedFieldKey: String!
     var editedFieldName: String!
@@ -20,7 +20,7 @@ class SecondViewEditController: UITableViewController{
         get{
             //判断是否是日期字段
             var attributeClassName = self.editedObject.entity.attributesByName[self.editedFieldKey]?.attributeValueClassName
-            if attributeClassName! == "NSDate" {
+            if (attributeClassName! == "NSDate") {
                 return true
             }
             else {
@@ -34,7 +34,7 @@ class SecondViewEditController: UITableViewController{
         //为标题赋值
         self.title = self.editedFieldName
         //如果选中日期，则显示日期控件
-        if self.editingDate! {
+        if (self.editingDate == true) {
             self.textField.hidden = true
             self.datePicker.hidden = false
             
@@ -45,6 +45,7 @@ class SecondViewEditController: UITableViewController{
             self.datePicker.date = date!
         }
         else {
+            dateFormatter.dateFormat = "yyyy-MM-dd HH:mm";
             self.textField.hidden = false
             self.datePicker.hidden = true
             self.textField.text = self.editedObject.valueForKey(self.editedFieldKey) as! String
