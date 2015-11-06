@@ -41,7 +41,6 @@ class SecondViewDetailController: UITableViewController{
     
     
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         NSLog("==viewDidLoad==")
@@ -135,7 +134,7 @@ class SecondViewDetailController: UITableViewController{
     
     func updateInterface() {
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm";
-        
+
         self.title1.text = "时间"
         self.detail1.text = dateFormatter.stringFromDate(surfacedata.timeS)
         self.title2.text = "地址"
@@ -269,6 +268,32 @@ class SecondViewDetailController: UITableViewController{
             case 3:
                 bookEditViewController.editedFieldKey = "strikeS"
                 bookEditViewController.editedFieldName = "走向"
+            case 4:
+                bookEditViewController.editedFieldKey = "dipdirS"
+                bookEditViewController.editedFieldName = "倾向"
+            case 5:
+                bookEditViewController.editedFieldKey = "dipS"
+                bookEditViewController.editedFieldName = "倾角"
+            case 6:
+                bookEditViewController.editedFieldKey = "latS"
+                bookEditViewController.editedFieldName = "纬度"
+            case 7:
+                bookEditViewController.editedFieldKey = "lonS"
+                bookEditViewController.editedFieldName = "经度"
+            case 8:
+                bookEditViewController.editedFieldKey = "hightS"
+                bookEditViewController.editedFieldName = "高程"
+            case 9:
+                bookEditViewController.editedFieldKey = "locError"
+                bookEditViewController.editedFieldName = "经纬误差"
+            case 10:
+                bookEditViewController.editedFieldKey = "hightError"
+                bookEditViewController.editedFieldName = "高程误差"
+            case 11:
+                bookEditViewController.editedFieldKey = "magError"
+                bookEditViewController.editedFieldName = "磁偏角"
+            case 12:
+                break
             default:
                 break
             }
