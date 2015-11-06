@@ -682,12 +682,12 @@
                                                 <constraint firstAttribute="bottomMargin" secondItem="8iV-1m-zdb" secondAttribute="bottom" constant="2.5" id="7rC-fn-2wn"/>
                                                 <constraint firstItem="8iV-1m-zdb" firstAttribute="leading" secondItem="4Ut-j5-ZeR" secondAttribute="leadingMargin" id="B94-B3-Qgf"/>
                                                 <constraint firstItem="VGp-xe-OTl" firstAttribute="leading" secondItem="8iV-1m-zdb" secondAttribute="trailing" constant="31" id="RKZ-6X-vye">
-                                                    <variation key="widthClass=compact" constant="19"/>
+                                                    <variation key="widthClass=compact" constant="23"/>
                                                 </constraint>
                                                 <constraint firstItem="8iV-1m-zdb" firstAttribute="top" secondItem="4Ut-j5-ZeR" secondAttribute="topMargin" constant="4" id="fOz-WK-ILt"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="VGp-xe-OTl" secondAttribute="bottom" constant="-7.5" id="hwz-IV-McA"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="VGp-xe-OTl" secondAttribute="trailing" constant="-23" id="y4h-Me-9co">
-                                                    <variation key="widthClass=compact" constant="-11"/>
+                                                    <variation key="widthClass=compact" constant="-15"/>
                                                 </constraint>
                                             </constraints>
                                             <variation key="default">
