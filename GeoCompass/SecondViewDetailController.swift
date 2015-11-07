@@ -284,13 +284,13 @@ class SecondViewDetailController: UITableViewController{
                 bookEditViewController.editedFieldKey = "hightS"
                 bookEditViewController.editedFieldName = "高程"
             case 9:
-                bookEditViewController.editedFieldKey = "locError"
+                bookEditViewController.editedFieldKey = "locErrorS"
                 bookEditViewController.editedFieldName = "经纬误差"
             case 10:
-                bookEditViewController.editedFieldKey = "hightError"
+                bookEditViewController.editedFieldKey = "hightErrorS"
                 bookEditViewController.editedFieldName = "高程误差"
             case 11:
-                bookEditViewController.editedFieldKey = "magError"
+                bookEditViewController.editedFieldKey = "magErrorS"
                 bookEditViewController.editedFieldName = "磁偏角"
             case 12:
                 break
