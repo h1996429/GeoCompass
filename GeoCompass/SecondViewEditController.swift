@@ -28,6 +28,18 @@ class SecondViewEditController: UIViewController{
             }
         }
     }
+    var editingNumber: Bool!{
+        get{
+            //判断是否是日期字段
+            var attributeClassName = self.editedObject.entity.attributesByName[self.editedFieldKey]?.attributeValueClassName
+            if (attributeClassName! == "NSNumber") {
+                return true
+            }
+            else {
+                return false
+            }
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,8 +56,14 @@ class SecondViewEditController: UIViewController{
             }
             self.datePicker.date = date!
         }
+        else if(self.editingNumber == true) {
+            self.textField.hidden = false
+            self.datePicker.hidden = true
+            self.textField.text = "\(self.editedObject.valueForKey(self.editedFieldKey) as! Double)"
+            self.textField.placeholder = self.title//空的时候显示值
+            self.textField.becomeFirstResponder()
+        }
         else {
-            dateFormatter.dateFormat = "yyyy-MM-dd HH:mm";
             self.textField.hidden = false
             self.datePicker.hidden = true
             self.textField.text = self.editedObject.valueForKey(self.editedFieldKey) as! String
@@ -70,12 +88,14 @@ class SecondViewEditController: UIViewController{
         if self.editingDate! {
             self.editedObject.setValue(self.datePicker.date, forKey:self.editedFieldKey)
         }
+        else if self.editingNumber! {
+            self.editedObject.setValue((self.textField.text as NSString).doubleValue, forKey:self.editedFieldKey)
+        }
         else {
             self.editedObject.setValue(self.textField.text, forKey:self.editedFieldKey)
         }
         
         self.navigationController?.popViewControllerAnimated(true)
     }
-
-    
 }
+    

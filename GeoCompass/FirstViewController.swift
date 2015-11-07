@@ -24,6 +24,9 @@ extension Double {
 }
 
 
+
+
+
 class FirstViewController: UIViewController ,CLLocationManagerDelegate{
     
 
@@ -101,15 +104,15 @@ class FirstViewController: UIViewController ,CLLocationManagerDelegate{
                 surfaceidID=(surfaceidID as! Double)+1;
                 surfacedata.id=surfaceidID as! NSNumber;
                 surfacedata.timeS=time;
-                surfacedata.strikeS=strikeFS;
-                surfacedata.dipdirS=dipdirFS;
-                surfacedata.dipS=dipFS;
-                surfacedata.latS=latFS;
-                surfacedata.lonS=lonFS;
-                surfacedata.hightS=hightFS;
-                surfacedata.locErrorS=locErrorFS;
-                surfacedata.hightErrorS=hightErrorFS;
-                surfacedata.magErrorS=magErrorFS;
+                surfacedata.strikeS=(round(strikeFS*100))/100;
+                surfacedata.dipdirS=(round(dipdirFS*100))/100;
+                surfacedata.dipS=(round(dipFS*100))/100;
+                surfacedata.latS=(round(latFS*10000000))/10000000;
+                surfacedata.lonS=(round(lonFS*10000000))/10000000;
+                surfacedata.hightS=(round(hightFS*100))/100;
+                surfacedata.locErrorS=(round(locErrorFS*10))/10;
+                surfacedata.hightErrorS=(round(hightErrorFS*10))/10;
+                surfacedata.magErrorS=(round(magErrorFS*100))/100;
                 surfacedata.adrS=adrFS;
 
                 cdControl.save();
