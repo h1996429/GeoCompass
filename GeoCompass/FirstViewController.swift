@@ -62,6 +62,8 @@ class FirstViewController: UIViewController ,CLLocationManagerDelegate{
     
     var surfaceidID: AnyObject = 0
     var lineidID: AnyObject = 0
+    
+    var locklocShow:Bool = false
 
 
     
@@ -196,16 +198,28 @@ class FirstViewController: UIViewController ,CLLocationManagerDelegate{
             self.locError = location.horizontalAccuracy;
             self.hightError = location.verticalAccuracy;
             
-            
-            var R = transloc(self.lat);
-            self.labelLat.text = "\(R.b)" + "°" + "\(R.c)" + "'" + (R.d).format(".4") + "\"";
-            R = transloc(self.lon);
-            self.labelLon.text = "\(R.b)" + "°" + "\(R.c)" + "'" + (R.d).format(".4") + "\"";
-            self.labelH.text = (self.hight).format(".2")+"m";
-            self.labelLonE.text = "±"+(self.locError).format(".1")+"m";
-            self.labelLatE.text = "±"+(self.locError).format(".1")+"m";
-            self.labelHE.text = "±"+(self.hightError).format(".1")+"m";
-            self.labelAdr.text = adr;
+            if (self.index == 2 && self.locklocShow == true){
+                var R = transloc(self.latFS);
+                self.labelLat.text = "\(R.b)" + "°" + "\(R.c)" + "'" + (R.d).format(".4") + "\"";
+                R = transloc(self.lonFS);
+                self.labelLon.text = "\(R.b)" + "°" + "\(R.c)" + "'" + (R.d).format(".4") + "\"";
+                self.labelH.text = (self.hightFS).format(".2")+"m";
+                self.labelLonE.text = "±"+(self.locErrorFS).format(".1")+"m";
+                self.labelLatE.text = "±"+(self.locErrorFS).format(".1")+"m";
+                self.labelHE.text = "±"+(self.hightErrorFS).format(".1")+"m";
+                self.labelAdr.text = adr;
+            }
+            else {
+                var R = transloc(self.lat);
+                self.labelLat.text = "\(R.b)" + "°" + "\(R.c)" + "'" + (R.d).format(".4") + "\"";
+                R = transloc(self.lon);
+                self.labelLon.text = "\(R.b)" + "°" + "\(R.c)" + "'" + (R.d).format(".4") + "\"";
+                self.labelH.text = (self.hight).format(".2")+"m";
+                self.labelLonE.text = "±"+(self.locError).format(".1")+"m";
+                self.labelLatE.text = "±"+(self.locError).format(".1")+"m";
+                self.labelHE.text = "±"+(self.hightError).format(".1")+"m";
+                self.labelAdr.text = adrFS;
+            }
 
             
         }
@@ -221,8 +235,14 @@ class FirstViewController: UIViewController ,CLLocationManagerDelegate{
         self.northV = Vector3(self.locationManager.heading.x,self.locationManager.heading.y,self.locationManager.heading.z);
         self.plusyn =  self.locationManager.heading.trueHeading;
         
+        if (self.index == 2 && self.locklocShow == true) {
+        self.labelDec.text = (self.magErrorFS).format(".2")+"°"+"(数据来源：World Magnetic Model ";
+        }
+        else {
         self.labelDec.text = (self.magError).format(".2")+"°"+"(数据来源：World Magnetic Model ";
+        }
         self.labelDecText.text = "(2014-2019),美国国家海洋和大气管理局(NOAA))";
+        
     }
 
     
@@ -330,6 +350,7 @@ class FirstViewController: UIViewController ,CLLocationManagerDelegate{
                     switch self!.index
                     {
                     case 0:
+                        self!.locklocShow = false;
                         self!.label1.text = "走向";
                         self!.labelA.text = (self!.strike).format(".2")+"°";
                         self!.label2.text = "倾向";
@@ -339,11 +360,9 @@ class FirstViewController: UIViewController ,CLLocationManagerDelegate{
                         self!.label4.text = "";
                         self!.labelD.text = "";
                         self!.arrow.transform=CGAffineTransformMakeRotation(CGFloat(angle));
-
-
-
-
+                        
                     case 1:
+                        self!.locklocShow = false;
                         self!.label1.text = "走向";
                         self!.labelA.text = (self!.strike).format(".2")+"°";
                         self!.label2.text = "侧俯角";
@@ -353,7 +372,9 @@ class FirstViewController: UIViewController ,CLLocationManagerDelegate{
                         self!.label4.text = "倾伏角";
                         self!.labelD.text = (self!.pluang).format(".2")+"°";
                         self!.arrow.transform=CGAffineTransformMakeRotation(CGFloat(angle));
+                        
                     case 2:
+                        if (self!.locklocShow == false) {
                         self!.strikeFS = self!.strike;
                         self!.dipdirFS = self!.dipdir;
                         self!.dipFS = self!.dip;
@@ -366,7 +387,8 @@ class FirstViewController: UIViewController ,CLLocationManagerDelegate{
                         self!.locErrorFS = self!.locError;
                         self!.hightErrorFS = self!.hightError;
                         self!.magErrorFS = self!.magError;
-                        self!.adrFS = self!.adr;
+                            self!.adrFS = self!.adr;}
+                        self!.locklocShow = true;
 
                     default:
                         break; 
