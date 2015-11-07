@@ -28,6 +28,7 @@
 		A731A05D1BAC77B4008C5966 /* NewsCoreDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A731A05C1BAC77B4008C5966 /* NewsCoreDataController.swift */; };
 		A731A05F1BAC79A0008C5966 /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A731A05E1BAC79A0008C5966 /* CoreDataHelper.swift */; };
 		A731A0611BAC79BC008C5966 /* CoreDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = A731A0601BAC79BC008C5966 /* CoreDataStore.swift */; };
+		A743D9301BEE6FCC00624737 /* SecondViewEditLineController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A743D92F1BEE6FCC00624737 /* SecondViewEditLineController.swift */; };
 		A758CA4A1BE66CB60043A637 /* SurfaceData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A758CA451BE66CB60043A637 /* SurfaceData.swift */; };
 		A758CA4B1BE66CB60043A637 /* LineData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A758CA461BE66CB60043A637 /* LineData.swift */; };
 		A758CA4C1BE66CB60043A637 /* LineImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A758CA471BE66CB60043A637 /* LineImage.swift */; };
@@ -35,7 +36,7 @@
 		A76406B21BAECC3E00256D1B /* Data.plist in Resources */ = {isa = PBXBuildFile; fileRef = A76406B11BAECC3E00256D1B /* Data.plist */; };
 		A794CF721BA82BCB00A64365 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A794CF701BA82BCB00A64365 /* Model.xcdatamodeld */; };
 		A7AE53171BEA18F50077B630 /* SecondViewDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7AE53161BEA18F50077B630 /* SecondViewDetailController.swift */; };
-		A7AE53191BEA33900077B630 /* SecondViewEditController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7AE53181BEA33900077B630 /* SecondViewEditController.swift */; };
+		A7AE53191BEA33900077B630 /* SecondViewEditSurfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7AE53181BEA33900077B630 /* SecondViewEditSurfaceController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +76,7 @@
 		A731A05C1BAC77B4008C5966 /* NewsCoreDataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsCoreDataController.swift; sourceTree = "<group>"; };
 		A731A05E1BAC79A0008C5966 /* CoreDataHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataHelper.swift; sourceTree = "<group>"; };
 		A731A0601BAC79BC008C5966 /* CoreDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStore.swift; sourceTree = "<group>"; };
+		A743D92F1BEE6FCC00624737 /* SecondViewEditLineController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondViewEditLineController.swift; sourceTree = "<group>"; };
 		A758CA451BE66CB60043A637 /* SurfaceData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SurfaceData.swift; path = ../GeoCompass/datamodel/SurfaceData.swift; sourceTree = "<group>"; };
 		A758CA461BE66CB60043A637 /* LineData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LineData.swift; path = ../GeoCompass/datamodel/LineData.swift; sourceTree = "<group>"; };
 		A758CA471BE66CB60043A637 /* LineImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LineImage.swift; path = ../GeoCompass/datamodel/LineImage.swift; sourceTree = "<group>"; };
@@ -84,7 +86,7 @@
 		A794CF6F1BA82ABC00A64365 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		A794CF711BA82BCB00A64365 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		A7AE53161BEA18F50077B630 /* SecondViewDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondViewDetailController.swift; sourceTree = "<group>"; };
-		A7AE53181BEA33900077B630 /* SecondViewEditController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondViewEditController.swift; sourceTree = "<group>"; };
+		A7AE53181BEA33900077B630 /* SecondViewEditSurfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondViewEditSurfaceController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,7 +148,8 @@
 				A72293371B983CAC00CCF6E8 /* FirstViewController.swift */,
 				A72293391B983CAC00CCF6E8 /* SecondViewController.swift */,
 				A7AE53161BEA18F50077B630 /* SecondViewDetailController.swift */,
-				A7AE53181BEA33900077B630 /* SecondViewEditController.swift */,
+				A7AE53181BEA33900077B630 /* SecondViewEditSurfaceController.swift */,
+				A743D92F1BEE6FCC00624737 /* SecondViewEditLineController.swift */,
 				A72293821BA0985900CCF6E8 /* ThirdViewController.swift */,
 				A722933B1B983CAC00CCF6E8 /* Main.storyboard */,
 				A72293401B983CAC00CCF6E8 /* LaunchScreen.xib */,
@@ -310,7 +313,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A7AE53191BEA33900077B630 /* SecondViewEditController.swift in Sources */,
+				A7AE53191BEA33900077B630 /* SecondViewEditSurfaceController.swift in Sources */,
 				A72293801B9C35C300CCF6E8 /* VectorMath+Quartz.swift in Sources */,
 				A722937F1B9C35C300CCF6E8 /* VectorMath.swift in Sources */,
 				A7AE53171BEA18F50077B630 /* SecondViewDetailController.swift in Sources */,
@@ -326,6 +329,7 @@
 				A722933A1B983CAC00CCF6E8 /* SecondViewController.swift in Sources */,
 				A72293361B983CAC00CCF6E8 /* AppDelegate.swift in Sources */,
 				A731A05D1BAC77B4008C5966 /* NewsCoreDataController.swift in Sources */,
+				A743D9301BEE6FCC00624737 /* SecondViewEditLineController.swift in Sources */,
 				A72293381B983CAC00CCF6E8 /* FirstViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

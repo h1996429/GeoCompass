@@ -324,6 +324,16 @@
                                     <rect key="frame" x="0.0" y="20" width="400" height="44"/>
                                 </variation>
                             </toolbar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZYK-G1-2hD">
+                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="95" y="64" width="217" height="35"/>
+                                </variation>
+                            </label>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -359,6 +369,7 @@
                                 <exclude reference="rGr-yO-IzS"/>
                                 <exclude reference="lpT-gf-uh4"/>
                                 <exclude reference="L4K-7n-vCw"/>
+                                <exclude reference="ZYK-G1-2hD"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -393,6 +404,7 @@
                                 <include reference="rGr-yO-IzS"/>
                                 <include reference="lpT-gf-uh4"/>
                                 <include reference="L4K-7n-vCw"/>
+                                <include reference="ZYK-G1-2hD"/>
                             </mask>
                         </variation>
                     </view>
@@ -416,6 +428,7 @@
                         <outlet property="labelLatE" destination="P1K-OD-bwN" id="zxc-dU-qPR"/>
                         <outlet property="labelLon" destination="U7X-VE-Gdv" id="KbS-Kn-6zB"/>
                         <outlet property="labelLonE" destination="9Hp-EO-0fW" id="pNv-n2-LxJ"/>
+                        <outlet property="method" destination="ZYK-G1-2hD" id="rc1-Kt-w9T"/>
                         <outlet property="segmentedControl" destination="b6I-Kl-dQA" id="ZbQ-6i-kQo"/>
                     </connections>
                 </viewController>
@@ -451,10 +464,25 @@
                         </connections>
                     </tableView>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="历史数据" id="odT-AM-DrQ" userLabel="列表">
+                    <navigationItem key="navigationItem" id="odT-AM-DrQ" userLabel="列表">
+                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="X8G-JQ-n7H">
+                            <rect key="frame" x="-61" y="-14" width="123" height="29"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <animations/>
+                            <segments>
+                                <segment title="面状构造数据"/>
+                                <segment title="线状构造数据"/>
+                            </segments>
+                            <connections>
+                                <action selector="indexChange:" destination="Uhb-D4-Q1A" eventType="valueChanged" id="e6H-LV-Dfi"/>
+                            </connections>
+                        </segmentedControl>
                         <barButtonItem key="rightBarButtonItem" title="输出" id="dHh-8o-jyf" userLabel="输出"/>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="segmentedControl" destination="X8G-JQ-n7H" id="sB0-bY-ZC4"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HP5-JG-lHS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1269,7 +1297,9 @@
                             <outlet property="delegate" destination="QtM-tT-Cbd" id="Mmz-LJ-Xu5"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="细节" id="aT2-FZ-fLd"/>
+                    <navigationItem key="navigationItem" title="详细数据" id="aT2-FZ-fLd">
+                        <barButtonItem key="backBarButtonItem" title="返回" id="bua-vh-v3d"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="detail1" destination="6nO-Qu-ist" id="vWe-iY-ChG"/>
                         <outlet property="detail10" destination="Dxz-pW-Ls1" id="9X5-Dw-qmt"/>
@@ -1295,17 +1325,18 @@
                         <outlet property="title7" destination="lSx-OU-GpW" id="1vH-mh-Vx2"/>
                         <outlet property="title8" destination="CgK-AV-m2L" id="MWu-wx-J57"/>
                         <outlet property="title9" destination="3Ip-zi-1cP" id="7xr-X3-lTH"/>
-                        <segue destination="hqY-Co-q74" kind="show" identifier="ItemToEdit" id="gG1-3Q-H6J"/>
+                        <segue destination="hqY-Co-q74" kind="show" identifier="ItemToEditSurface" id="gG1-3Q-H6J"/>
+                        <segue destination="4o9-TS-ktw" kind="show" identifier="ItemToEditLine" id="HdR-Dp-CEk"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lHh-uE-b75" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2571" y="-44"/>
         </scene>
-        <!--编辑-->
+        <!--编辑面状-->
         <scene sceneID="Gks-IH-nB0">
             <objects>
-                <viewController title="编辑" id="hqY-Co-q74" customClass="SecondViewEditController" customModule="GeoCompass" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="编辑" id="hqY-Co-q74" userLabel="编辑面状" customClass="SecondViewEditSurfaceController" customModule="GeoCompass" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Fta-qm-7k4"/>
                         <viewControllerLayoutGuide type="bottom" id="oQ2-98-r8a"/>
@@ -1337,12 +1368,12 @@
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="9sk-un-Hf0" firstAttribute="top" secondItem="Fta-qm-7k4" secondAttribute="bottom" id="92R-hL-RWT"/>
-                            <constraint firstItem="oQ2-98-r8a" firstAttribute="top" secondItem="9sk-un-Hf0" secondAttribute="bottom" constant="320" id="9E8-dT-rYM"/>
+                            <constraint firstItem="Uc1-eP-s8e" firstAttribute="top" secondItem="Fta-qm-7k4" secondAttribute="bottom" constant="59" id="JQj-hZ-jZB"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Uc1-eP-s8e" secondAttribute="trailing" constant="42" id="LgP-g0-iGM"/>
                             <constraint firstItem="9sk-un-Hf0" firstAttribute="leading" secondItem="bNg-de-YxH" secondAttribute="leadingMargin" constant="-16" id="RMS-C9-7pZ"/>
                             <constraint firstItem="Uc1-eP-s8e" firstAttribute="leading" secondItem="bNg-de-YxH" secondAttribute="leadingMargin" constant="42" id="YkN-1i-JjP"/>
-                            <constraint firstItem="Uc1-eP-s8e" firstAttribute="top" secondItem="Fta-qm-7k4" secondAttribute="bottom" constant="59" id="gG7-QZ-5xM"/>
+                            <constraint firstItem="9sk-un-Hf0" firstAttribute="top" secondItem="Fta-qm-7k4" secondAttribute="bottom" id="eYl-Ru-kgS"/>
+                            <constraint firstItem="oQ2-98-r8a" firstAttribute="top" secondItem="9sk-un-Hf0" secondAttribute="bottom" constant="320" id="jBm-Hh-Lrz"/>
                             <constraint firstAttribute="trailingMargin" secondItem="9sk-un-Hf0" secondAttribute="trailing" constant="-16" id="rPK-kJ-JMt"/>
                         </constraints>
                     </view>
@@ -1360,7 +1391,71 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="k7I-xx-U4n" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3352.5" y="-44"/>
+            <point key="canvasLocation" x="3544.5" y="-644"/>
+        </scene>
+        <!--编辑线状-->
+        <scene sceneID="1Ka-tP-auY">
+            <objects>
+                <viewController title="编辑" id="4o9-TS-ktw" userLabel="编辑线状" customClass="SecondViewEditLineController" customModule="GeoCompass" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="SfR-Na-P09"/>
+                        <viewControllerLayoutGuide type="bottom" id="VdO-cI-m5P"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Jzp-fr-bYQ">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="efE-dj-fyC">
+                                <rect key="frame" x="58" y="123" width="484" height="30"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <datePicker opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="P2X-58-2j2">
+                                <rect key="frame" x="0.0" y="64" width="600" height="216"/>
+                                <animations/>
+                                <date key="date" timeIntervalSinceReferenceDate="436460436.97159702">
+                                    <!--2014-10-31 15:00:36 +0000-->
+                                </date>
+                                <date key="minimumDate" timeIntervalSinceReferenceDate="-978267600">
+                                    <!--1970-01-01 11:00:00 +0000-->
+                                </date>
+                                <date key="maximumDate" timeIntervalSinceReferenceDate="1167562800">
+                                    <!--2037-12-31 11:00:00 +0000-->
+                                </date>
+                            </datePicker>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="efE-dj-fyC" firstAttribute="leading" secondItem="Jzp-fr-bYQ" secondAttribute="leadingMargin" constant="42" id="QDo-eH-zPy"/>
+                            <constraint firstItem="VdO-cI-m5P" firstAttribute="top" secondItem="P2X-58-2j2" secondAttribute="bottom" constant="320" id="ShI-PR-qXh">
+                                <variation key="widthClass=compact" constant="325"/>
+                            </constraint>
+                            <constraint firstItem="P2X-58-2j2" firstAttribute="leading" secondItem="Jzp-fr-bYQ" secondAttribute="leadingMargin" constant="-16" id="eGw-C3-WnC"/>
+                            <constraint firstItem="efE-dj-fyC" firstAttribute="top" secondItem="SfR-Na-P09" secondAttribute="bottom" constant="59" id="rGb-cw-mcX"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="efE-dj-fyC" secondAttribute="trailing" constant="42" id="rI7-53-ikL"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="P2X-58-2j2" secondAttribute="trailing" constant="-16" id="wRf-BK-eEW"/>
+                            <constraint firstItem="P2X-58-2j2" firstAttribute="top" secondItem="SfR-Na-P09" secondAttribute="bottom" id="z8q-iX-Iwi">
+                                <variation key="widthClass=compact" constant="5"/>
+                            </constraint>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="编辑" id="Ewn-jc-vUG">
+                        <barButtonItem key="rightBarButtonItem" title="保存" id="jzH-6v-B82">
+                            <connections>
+                                <action selector="saveAction:" destination="4o9-TS-ktw" id="lgc-pz-Uei"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="datePicker" destination="P2X-58-2j2" id="Vzh-CF-AyA"/>
+                        <outlet property="textField" destination="efE-dj-fyC" id="VMr-Yr-B1G"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="h0Q-rj-maK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3592.5" y="292"/>
         </scene>
     </scenes>
     <resources>

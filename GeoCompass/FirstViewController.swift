@@ -88,6 +88,9 @@ class FirstViewController: UIViewController ,CLLocationManagerDelegate{
     @IBOutlet weak var labelHE: UILabel!
     @IBOutlet weak var labelAdr: UILabel!
     @IBOutlet weak var labelDec: UILabel!
+    
+    @IBOutlet weak var method: UILabel!
+    
  
     @IBOutlet weak var labelDecText: UILabel!
 
@@ -126,16 +129,16 @@ class FirstViewController: UIViewController ,CLLocationManagerDelegate{
                 lineidID=(lineidID as! Double)+1;
                 linedata.id=surfaceidID as! NSNumber;
                 linedata.timeS=time;
-                linedata.strikeS=strikeFS;
-                linedata.pitchS=pitchFS;
-                linedata.plusynS=plusynFS;
-                linedata.pluangS=pluangFS;
-                linedata.latS=latFS;
-                linedata.lonS=lonFS;
-                linedata.hightS=hightFS;
-                linedata.locErrorS=locErrorFS;
-                linedata.hightErrorS=hightErrorFS;
-                linedata.magErrorS=magErrorFS;
+                linedata.strikeS=(round(strikeFS*100))/100;
+                linedata.pitchS=(round(pitchFS*100))/100;
+                linedata.plusynS=(round(plusynFS*100))/100;
+                linedata.pluangS=(round(pluangFS*100))/100;
+                linedata.latS=(round(latFS*10000000))/10000000;
+                linedata.lonS=(round(lonFS*10000000))/10000000;
+                linedata.hightS=(round(hightFS*100))/100;
+                linedata.locErrorS=(round(locErrorFS*10))/10;
+                linedata.hightErrorS=(round(hightErrorFS*10))/10;
+                linedata.magErrorS=(round(magErrorFS*100))/100;
                 linedata.adrS=adrFS;
 
                 cdControl.save();
@@ -365,6 +368,7 @@ class FirstViewController: UIViewController ,CLLocationManagerDelegate{
                         self!.labelC.text = (self!.dip).format(".2")+"°";
                         self!.label4.text = "";
                         self!.labelD.text = "";
+                        self!.method.text = "测量方法：手机紧贴面状构造，可转动的箭头方向即为倾向在面上的投影方向，将其与不可转动的箭头重合可得到仪器最精确测量值";
                         self!.arrow.transform=CGAffineTransformMakeRotation(CGFloat(angle));
                         
                     case 1:
@@ -377,6 +381,7 @@ class FirstViewController: UIViewController ,CLLocationManagerDelegate{
                         self!.labelC.text = (self!.plusyn).format(".2")+"°";
                         self!.label4.text = "倾伏角";
                         self!.labelD.text = (self!.pluang).format(".2")+"°";
+                        self!.method.text = "测量方法：将不可转动的箭头方向与线状构造方向保持一致既可";
                         self!.arrow.transform=CGAffineTransformMakeRotation(CGFloat(angle));
                         
                     case 2:

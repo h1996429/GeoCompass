@@ -11,7 +11,8 @@ import UIKit
 
 class SecondViewDetailController: UITableViewController{
     var surfacedata:SurfaceData!
-    var lindata:LineData!
+    var linedata:LineData!
+    var nowData = "surfacedata"
     var dateFormatter = NSDateFormatter()
     
     @IBOutlet weak var title1: UILabel!
@@ -48,7 +49,6 @@ class SecondViewDetailController: UITableViewController{
 
         self.navigationItem.rightBarButtonItem = self.editButtonItem()
         self.editButtonItem().title = "编辑"
-
         
         //编辑的时候允许选择
         self.tableView.allowsSelectionDuringEditing = true
@@ -109,9 +109,17 @@ class SecondViewDetailController: UITableViewController{
             self.editButtonItem().title = "编辑"
             self.cleanUpUndoManager()
             var error: NSError? = nil
-            if !self.surfacedata.managedObjectContext!.save(&error) {
-                NSLog("Unresolved error \(error), \(error?.userInfo)")
-                abort()
+            if nowData == "surfacedata" {
+                if !self.surfacedata.managedObjectContext!.save(&error) {
+                    NSLog("Unresolved error \(error), \(error?.userInfo)")
+                    abort()
+                }
+            }
+            else if nowData == "linedata" {
+                if !self.linedata.managedObjectContext!.save(&error) {
+                    NSLog("Unresolved error \(error), \(error?.userInfo)")
+                    abort()
+                }
             }
         }
     }
@@ -134,42 +142,76 @@ class SecondViewDetailController: UITableViewController{
     
     func updateInterface() {
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm";
-
-        self.title1.text = "时间"
-        self.detail1.text = dateFormatter.stringFromDate(surfacedata.timeS)
-        self.title2.text = "地址"
-        self.detail2.text = self.surfacedata.adrS;
-        self.title3.text = "走向"
-        self.detail3.text = (self.surfacedata.strikeS as! Double).format(".2")+"°";
-        self.title4.text = "倾向"
-        self.detail4.text = (self.surfacedata.dipdirS as! Double).format(".2")+"°";
-        self.title5.text = "倾角"
-        self.detail5.text = (self.surfacedata.dipS as! Double).format(".2")+"°";
-        self.title6.text = "纬度"
-        var R = transloc(self.surfacedata.latS as! Double);
-        self.detail6.text = "\(R.b)" + "°" + "\(R.c)" + "'" + (R.d).format(".4") + "\"";
-        self.title7.text = "经度"
-        R = transloc(self.surfacedata.lonS as! Double);
-        self.detail7.text = "\(R.b)" + "°" + "\(R.c)" + "'" + (R.d).format(".4") + "\"";
-        self.title8.text = "高程"
-        self.detail8.text = (self.surfacedata.hightS as! Double).format(".2")+"m";
-        self.title9.text = "经纬误差"
-        self.detail9.text = "±"+(self.surfacedata.locErrorS as! Double).format(".1")+"m";
-        self.title10.text = "高程误差"
-        self.detail10.text = "±"+(self.surfacedata.hightErrorS as! Double).format(".1")+"m";
-        self.title11.text = "磁偏角"
-        self.detail11.text = (self.surfacedata.magErrorS as! Double).format(".2")+"°";
-        self.title12.text = ""
-        self.detail12.text = ""
-
-        NSLog("===updateInterface===\(self.surfacedata.timeS)")
+        if nowData == "surfacedata" {
+            self.title1.text = "时间"
+            self.detail1.text = dateFormatter.stringFromDate(surfacedata.timeS)
+            self.title2.text = "地址"
+            self.detail2.text = self.surfacedata.adrS;
+            self.title3.text = "走向"
+            self.detail3.text = (self.surfacedata.strikeS as! Double).format(".2")+"°";
+            self.title4.text = "倾向"
+            self.detail4.text = (self.surfacedata.dipdirS as! Double).format(".2")+"°";
+            self.title5.text = "倾角"
+            self.detail5.text = (self.surfacedata.dipS as! Double).format(".2")+"°";
+            self.title6.text = "纬度"
+            var R = transloc(self.surfacedata.latS as! Double);
+            self.detail6.text = "\(R.b)" + "°" + "\(R.c)" + "'" + (R.d).format(".4") + "\"";
+            self.title7.text = "经度"
+            R = transloc(self.surfacedata.lonS as! Double);
+            self.detail7.text = "\(R.b)" + "°" + "\(R.c)" + "'" + (R.d).format(".4") + "\"";
+            self.title8.text = "高程"
+            self.detail8.text = (self.surfacedata.hightS as! Double).format(".2")+"m";
+            self.title9.text = "经纬误差"
+            self.detail9.text = "±"+(self.surfacedata.locErrorS as! Double).format(".1")+"m";
+            self.title10.text = "高程误差"
+            self.detail10.text = "±"+(self.surfacedata.hightErrorS as! Double).format(".1")+"m";
+            self.title11.text = "磁偏角"
+            self.detail11.text = (self.surfacedata.magErrorS as! Double).format(".2")+"°";
+            self.title12.text = ""
+            self.detail12.text = ""
+            NSLog("===updateInterface===\(self.surfacedata.timeS)")
+        }
+        else if nowData == "linedata" {
+            self.title1.text = "时间"
+            self.detail1.text = dateFormatter.stringFromDate(linedata.timeS)
+            self.title2.text = "地址"
+            self.detail2.text = self.linedata.adrS;
+            self.title3.text = "走向"
+            self.detail3.text = (self.linedata.strikeS as! Double).format(".2")+"°";
+            self.title4.text = "侧俯角"
+            self.detail4.text = (self.linedata.pitchS as! Double).format(".2")+"°";
+            self.title5.text = "倾伏向"
+            self.detail5.text = (self.linedata.plusynS as! Double).format(".2")+"°";
+            self.title6.text = "倾伏角"
+            self.detail6.text = (self.linedata.pluangS as! Double).format(".2")+"°";
+            self.title7.text = "纬度"
+            var R = transloc(self.linedata.latS as! Double);
+            self.detail7.text = "\(R.b)" + "°" + "\(R.c)" + "'" + (R.d).format(".4") + "\"";
+            self.title8.text = "经度"
+            R = transloc(self.linedata.lonS as! Double);
+            self.detail8.text = "\(R.b)" + "°" + "\(R.c)" + "'" + (R.d).format(".4") + "\"";
+            self.title9.text = "高程"
+            self.detail9.text = (self.linedata.hightS as! Double).format(".2")+"m";
+            self.title10.text = "经纬误差"
+            self.detail10.text = "±"+(self.linedata.locErrorS as! Double).format(".1")+"m";
+            self.title11.text = "高程误差"
+            self.detail11.text = "±"+(self.linedata.hightErrorS as! Double).format(".1")+"m";
+            self.title12.text = "磁偏角"
+            self.detail12.text = (self.linedata.magErrorS as! Double).format(".2")+"°";
+            NSLog("===updateInterface===\(self.linedata.timeS)")
+        }
     }
     
     func updateRightBarButtonItemState() {
         NSLog("==updateRightBarButtonItemState==")
         // 如果实体对象在保存状态，则允许右侧按钮
         var error: NSError? = nil
+        if nowData == "surfacedata" {
         self.navigationItem.rightBarButtonItem?.enabled = self.surfacedata.validateForUpdate(&error)
+        }
+        else if nowData == "linedata" {
+        self.navigationItem.rightBarButtonItem?.enabled = self.linedata.validateForUpdate(&error)
+        }
     }
     
     // MARK: - Table view data source
@@ -194,8 +236,11 @@ class SecondViewDetailController: UITableViewController{
     
     //在选择行后执行，这里是编辑状态选中一行时创建一个编辑页面
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        if(self.editing){
-            self.performSegueWithIdentifier("ItemToEdit", sender: self)
+        if(self.editing && nowData == "surfacedata"){
+            self.performSegueWithIdentifier("ItemToEditSurface", sender: self)
+        }
+        else if(self.editing && nowData == "linedata"){
+            self.performSegueWithIdentifier("ItemToEditLine", sender: self)
         }
     }
     
@@ -203,28 +248,47 @@ class SecondViewDetailController: UITableViewController{
     
     //设置撤回管理器
     func setUpundoManager() {
+        if  nowData == "surfacedata" {
+            var bookUndoManagerSurface = self.surfacedata.managedObjectContext?.undoManager
         if self.surfacedata.managedObjectContext?.undoManager == nil {
             self.surfacedata.managedObjectContext?.undoManager =  NSUndoManager()
             self.surfacedata.managedObjectContext?.undoManager?.levelsOfUndo = 13//撤销最大数
         }
-        
-        var bookUndoManager = self.surfacedata.managedObjectContext?.undoManager
-        
         //监听撤回和取消撤回
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "undoManagerDidUndo:", name: NSUndoManagerDidUndoChangeNotification, object: bookUndoManager)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "undoManagerDidRedo:", name: NSUndoManagerDidRedoChangeNotification, object: bookUndoManager)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "undoManagerDidUndo:", name: NSUndoManagerDidUndoChangeNotification, object: bookUndoManagerSurface)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "undoManagerDidRedo:", name: NSUndoManagerDidRedoChangeNotification, object: bookUndoManagerSurface)
+        }
+        else if nowData == "linedata" {
+            var bookUndoManagerLine = self.linedata.managedObjectContext?.undoManager
+        if self.linedata.managedObjectContext?.undoManager == nil {
+            self.linedata.managedObjectContext?.undoManager =  NSUndoManager()
+            self.linedata.managedObjectContext?.undoManager?.levelsOfUndo = 13//撤销最大数
+        }
+        //监听撤回和取消撤回
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "undoManagerDidUndo:", name: NSUndoManagerDidUndoChangeNotification, object: bookUndoManagerLine)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "undoManagerDidRedo:", name: NSUndoManagerDidRedoChangeNotification, object: bookUndoManagerLine)
+        }
     }
     
     //取消撤回管理器
     func cleanUpUndoManager() {
-        var bookUndoManager = self.surfacedata.managedObjectContext?.undoManager
-        
+        if  nowData == "surfacedata" {
+            var bookUndoManagerSurface = self.surfacedata.managedObjectContext?.undoManager
         //移除撤回和取消撤回监听
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: NSUndoManagerWillUndoChangeNotification, object: bookUndoManager)
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: NSUndoManagerWillRedoChangeNotification, object: bookUndoManager)
-        
-        //置空context的撤回管理器
-        self.surfacedata.managedObjectContext?.undoManager = nil
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: NSUndoManagerWillUndoChangeNotification, object: bookUndoManagerSurface)
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: NSUndoManagerWillRedoChangeNotification, object: bookUndoManagerSurface)
+            //置空context的撤回管理器
+            self.surfacedata.managedObjectContext?.undoManager = nil
+        }
+        else if nowData == "linedata" {
+            var bookUndoManagerLine = self.linedata.managedObjectContext?.undoManager
+            //移除撤回和取消撤回监听
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: NSUndoManagerWillUndoChangeNotification, object: bookUndoManagerLine)
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: NSUndoManagerWillRedoChangeNotification, object: bookUndoManagerLine)
+            //置空context的撤回管理器
+            self.linedata.managedObjectContext?.undoManager = nil
+
+        }
     }
     
     //监听到撤回触发，重载数据和导航右侧按钮状态
@@ -251,53 +315,104 @@ class SecondViewDetailController: UITableViewController{
     
     //通过segue跳转前所做的工作
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if(segue.identifier == "ItemToEdit"){
-            var bookEditViewController = segue.destinationViewController as! SecondViewEditController
-            
+        if(segue.identifier == "ItemToEditSurface"){
+            var bookEditViewController = segue.destinationViewController as! SecondViewEditSurfaceController
+            if nowData == "surfacedata" {
             bookEditViewController.editedObject = self.surfacedata
             //根据选择的不同行为编辑view赋不同的值
             switch(self.tableView.indexPathForSelectedRow()!.row) {
-            case 0:
+                case 0:
                 break
-            case 1:
+                case 1:
                 bookEditViewController.editedFieldKey = "timeS"
                 bookEditViewController.editedFieldName = "时间"
-            case 2:
+                case 2:
                 bookEditViewController.editedFieldKey = "adrS"
                 bookEditViewController.editedFieldName = "地址"
-            case 3:
+                case 3:
                 bookEditViewController.editedFieldKey = "strikeS"
                 bookEditViewController.editedFieldName = "走向"
-            case 4:
+                case 4:
                 bookEditViewController.editedFieldKey = "dipdirS"
                 bookEditViewController.editedFieldName = "倾向"
-            case 5:
+                case 5:
                 bookEditViewController.editedFieldKey = "dipS"
                 bookEditViewController.editedFieldName = "倾角"
-            case 6:
+                case 6:
                 bookEditViewController.editedFieldKey = "latS"
                 bookEditViewController.editedFieldName = "纬度"
-            case 7:
+                case 7:
                 bookEditViewController.editedFieldKey = "lonS"
                 bookEditViewController.editedFieldName = "经度"
-            case 8:
+                case 8:
                 bookEditViewController.editedFieldKey = "hightS"
                 bookEditViewController.editedFieldName = "高程"
-            case 9:
+                case 9:
                 bookEditViewController.editedFieldKey = "locErrorS"
                 bookEditViewController.editedFieldName = "经纬误差"
-            case 10:
+                case 10:
                 bookEditViewController.editedFieldKey = "hightErrorS"
                 bookEditViewController.editedFieldName = "高程误差"
-            case 11:
+                case 11:
                 bookEditViewController.editedFieldKey = "magErrorS"
                 bookEditViewController.editedFieldName = "磁偏角"
-            case 12:
+                case 12:
                 break
-            default:
+                default:
                 break
+                }
             }
         }
+            else if segue.identifier == "ItemToEditLine" {
+            var bookEditViewController = segue.destinationViewController as! SecondViewEditLineController
+            if nowData == "linedata" {
+                bookEditViewController.editedObject = self.linedata
+                //根据选择的不同行为编辑view赋不同的值
+                switch(self.tableView.indexPathForSelectedRow()!.row) {
+                case 0:
+                    break
+                case 1:
+                    bookEditViewController.editedFieldKey = "timeS"
+                    bookEditViewController.editedFieldName = "时间"
+                case 2:
+                    bookEditViewController.editedFieldKey = "adrS"
+                    bookEditViewController.editedFieldName = "地址"
+                case 3:
+                    bookEditViewController.editedFieldKey = "strikeS"
+                    bookEditViewController.editedFieldName = "走向"
+                case 4:
+                    bookEditViewController.editedFieldKey = "pitchS"
+                    bookEditViewController.editedFieldName = "侧俯角"
+                case 5:
+                    bookEditViewController.editedFieldKey = "plusynS"
+                    bookEditViewController.editedFieldName = "倾伏向"
+                case 6:
+                    bookEditViewController.editedFieldKey = "pluangS"
+                    bookEditViewController.editedFieldName = "倾伏角"
+                case 7:
+                    bookEditViewController.editedFieldKey = "latS"
+                    bookEditViewController.editedFieldName = "纬度"
+                case 8:
+                    bookEditViewController.editedFieldKey = "lonS"
+                    bookEditViewController.editedFieldName = "经度"
+                case 9:
+                    bookEditViewController.editedFieldKey = "hightS"
+                    bookEditViewController.editedFieldName = "高程"
+                case 10:
+                    bookEditViewController.editedFieldKey = "locErrorS"
+                    bookEditViewController.editedFieldName = "经纬误差"
+                case 11:
+                    bookEditViewController.editedFieldKey = "hightErrorS"
+                    bookEditViewController.editedFieldName = "高程误差"
+                case 12:
+                    bookEditViewController.editedFieldKey = "magErrorS"
+                    bookEditViewController.editedFieldName = "磁偏角"
+                default:
+                    break
+                }
+            }
+            }
+        
     }
     
     // MARK: - Locale changes

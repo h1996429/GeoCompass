@@ -8,12 +8,12 @@
 
 import UIKit
 
-class SecondViewEditController: UIViewController{
+class SecondViewEditLineController: UIViewController{
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var textField: UITextField!
     
     var dateFormatter = NSDateFormatter()
-    var editedObject: SurfaceData!
+    var editedObject: LineData!
     var editedFieldKey: String!
     var editedFieldName: String!
     var editingDate: Bool!{
@@ -30,7 +30,7 @@ class SecondViewEditController: UIViewController{
     }
     var editingNumber: Bool!{
         get{
-            //判断是否是日期字段
+            //判断是否是数字字段
             var attributeClassName = self.editedObject.entity.attributesByName[self.editedFieldKey]?.attributeValueClassName
             if (attributeClassName! == "NSNumber") {
                 return true
@@ -98,4 +98,4 @@ class SecondViewEditController: UIViewController{
         self.navigationController?.popViewControllerAnimated(true)
     }
 }
-    
+
