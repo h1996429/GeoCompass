@@ -179,7 +179,6 @@ class FirstViewController: UIViewController ,CLLocationManagerDelegate{
         var placemarks:NSArray?
         var error:NSError?
         geocoder.reverseGeocodeLocation(curlocation, completionHandler:{(placemarks,error) in
-            print(placemarks.count)
             if error != nil {
                 self.adr = "网络连接中断，无法获取此地名称。";
             }
@@ -231,9 +230,13 @@ class FirstViewController: UIViewController ,CLLocationManagerDelegate{
     }
     
     func locationManager(manager: CLLocationManager!, didUpdateHeading newHeading: CLHeading!) {
+        var error:NSError?
+        if error != nil {
+            return
+        }
         self.magError = (self.locationManager.heading.magneticHeading - self.locationManager.heading.trueHeading) ?? 0;
-        self.northV = Vector3(self.locationManager.heading.x,self.locationManager.heading.y,self.locationManager.heading.z);
-        self.plusyn =  self.locationManager.heading.trueHeading;
+        self.northV = Vector3(self.locationManager.heading.x,self.locationManager.heading.y,self.locationManager.heading.z) ;
+        self.plusyn =  self.locationManager.heading.trueHeading  ?? 0;
         
         if (self.index == 2 && self.locklocShow == true) {
         self.labelDec.text = (self.magErrorFS).format(".2")+"°"+"(数据来源：World Magnetic Model ";
@@ -279,13 +282,16 @@ class FirstViewController: UIViewController ,CLLocationManagerDelegate{
                 self!.locationManager.startUpdatingLocation();
                 self!.locationManager.startUpdatingHeading();
                 
-                
+                var error:NSError?
+                if error != nil {
+                    return
+                }
                 
                 data.attitude.multiplyByInverseOfAttitude(self!.manager.deviceMotion.attitude)
                 
-                var gravityX = self!.manager.deviceMotion.gravity.x;
-                var gravityY = self!.manager.deviceMotion.gravity.y;
-                var gravityZ = self!.manager.deviceMotion.gravity.z;
+                var gravityX = self!.manager.deviceMotion.gravity.x  ?? 0;
+                var gravityY = self!.manager.deviceMotion.gravity.y  ?? 0;
+                var gravityZ = self!.manager.deviceMotion.gravity.z  ?? 0;
                 var dipangle = (atan2(gravityZ,sqrt(gravityX*gravityX+gravityY*gravityY)))/M_PI*180.0;
                 
                 var angle = -atan2(gravityY, gravityX) + M_PI/2;
