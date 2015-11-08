@@ -45,10 +45,12 @@ class SecondViewDetailController: UITableViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         NSLog("==viewDidLoad==")
-        
+        navigationController
 
         self.navigationItem.rightBarButtonItem = self.editButtonItem()
         self.editButtonItem().title = "编辑"
+
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "详细数据", style: UIBarButtonItemStyle.Plain, target: nil, action: nil)
         
         //编辑的时候允许选择
         self.tableView.allowsSelectionDuringEditing = true

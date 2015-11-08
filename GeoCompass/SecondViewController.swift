@@ -42,7 +42,7 @@ class SecondViewController:UITableViewController,UITabBarControllerDelegate,NSFe
         self.navigationItem.leftBarButtonItem = self.editButtonItem()
         self.editButtonItem().title = "编辑"
         
-        navigationItem.backBarButtonItem = UIBarButtonItem(title: "返回", style: UIBarButtonItemStyle.Plain, target: nil, action: nil)
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "历史数据", style: UIBarButtonItemStyle.Plain, target: nil, action: nil)
 
         //执行获取数据，并处理异常
         var error: NSError? = nil
@@ -230,7 +230,7 @@ class SecondViewController:UITableViewController,UITabBarControllerDelegate,NSFe
     // MARK: - Navigation
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        //明细查询页面
+        //明细查询页面            
         if (segue.identifier == "Detail") {
             NSLog("Detail go")
             //将所选择的当前数据赋值给所打开页面的控制器
