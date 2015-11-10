@@ -22,10 +22,12 @@ class CoreDataStore: NSObject{
     var persistentStoreCoordinator: NSPersistentStoreCoordinator {
         if _persistentStoreCoordinator == nil {
             let storeURL = self.applicationDocumentsDirectory.URLByAppendingPathComponent(storeFilename)
-            var error: NSError? = nil
             _persistentStoreCoordinator = NSPersistentStoreCoordinator(managedObjectModel: self.managedObjectModel)
-            if _persistentStoreCoordinator!.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: storeURL, options: nil, error: &error) == nil {
-                abort()
+            do {
+                try _persistentStoreCoordinator!.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: storeURL, options: nil)
+            } catch let error as NSError {
+                if error != 0 {
+                    abort()}
             }
         }
         return _persistentStoreCoordinator!
@@ -34,6 +36,6 @@ class CoreDataStore: NSObject{
     // #pragma mark - Documents directory
     var applicationDocumentsDirectory: NSURL {
         let urls = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)
-        return urls[urls.endIndex-1] as! NSURL
+        return urls[urls.endIndex-1] 
     }
 }

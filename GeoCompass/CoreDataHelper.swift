@@ -47,11 +47,15 @@ class CoreDataHelper: NSObject{
     var _backgroundContext: NSManagedObjectContext? = nil
     // save NSManagedObjectContext
     func saveContext (context: NSManagedObjectContext) {
-        var error: NSError? = nil
         if context != 0 {
-            if context.hasChanges && !context.save(&error) {
-                NSLog("Unresolved error (error)")
-                abort()
+            if context.hasChanges {
+                do {
+                    try context.save()
+                } catch let error as NSError {
+                    if error != 0 {
+                        NSLog("Unresolved error (error)")
+                        abort()}
+                }
             }
         }
     }
@@ -62,17 +66,17 @@ class CoreDataHelper: NSObject{
     func contextDidSaveContext(notification: NSNotification) {
         let sender = notification.object as! NSManagedObjectContext
         if sender === self.managedObjectContext {
-            println("======= Saved main Context in this thread")
+            print("======= Saved main Context in this thread")
             self.backgroundContext.performBlock {
                 self.backgroundContext.mergeChangesFromContextDidSaveNotification(notification)
             }
         } else if sender === self.backgroundContext {
-            println("======= Saved background Context in this thread")
+            print("======= Saved background Context in this thread")
             self.managedObjectContext.performBlock {
                 self.managedObjectContext.mergeChangesFromContextDidSaveNotification(notification)
             }
         } else {
-            println("======= Saved Context in other thread")
+            print("======= Saved Context in other thread")
             self.backgroundContext.performBlock {                self.backgroundContext.mergeChangesFromContextDidSaveNotification(notification)
             }
             self.managedObjectContext.performBlock {

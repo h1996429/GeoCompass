@@ -1,3 +1,4 @@
+
 //
 //  FirstViewController.swift
 //  GeoCompass
@@ -31,13 +32,13 @@ class FirstViewController: UIViewController ,CLLocationManagerDelegate{
     
 
     
-    lazy var strike = 0.0 , dipdir = 0.0 , dip = 0.0;
-    lazy var pitch = 0.0 , plusyn = 0.0 , pluang = 0.0; //pitch、plunging syncline and plunge angle
-    lazy var strikeFS = 0.0 , dipdirFS = 0.0 , dipFS = 0.0;
-    lazy var pitchFS = 0.0 , plusynFS = 0.0 , pluangFS = 0.0;
+    var strike = 0.0 , dipdir = 0.0 , dip = 0.0;
+    var pitch = 0.0 , plusyn = 0.0 , pluang = 0.0; //pitch、plunging syncline and plunge angle
+    var strikeFS = 0.0 , dipdirFS = 0.0 , dipFS = 0.0;
+    var pitchFS = 0.0 , plusynFS = 0.0 , pluangFS = 0.0;
     
-    lazy var lat = 0.0 , lon = 0.0 , hight = 0.0 , locError = 0.0 , hightError = 0.0 , magError = 0.0 ;
-    lazy var latFS = 0.0 , lonFS = 0.0 , hightFS = 0.0 , locErrorFS = 0.0 , hightErrorFS = 0.0 , magErrorFS = 0.0 ;
+    var lat = 0.0 , lon = 0.0 , hight = 0.0 , locError = 0.0 , hightError = 0.0 , magError = 0.0 ;
+    var latFS = 0.0 , lonFS = 0.0 , hightFS = 0.0 , locErrorFS = 0.0 , hightErrorFS = 0.0 , magErrorFS = 0.0 ;
 
 
     lazy var northV = Vector3(0,0,0);
@@ -96,16 +97,16 @@ class FirstViewController: UIViewController ,CLLocationManagerDelegate{
 
     @IBAction func saveData(sender: AnyObject) {
         if segmentedControl.selectedSegmentIndex != 2 {
-            var alertView = UIAlertView(title: "提示！", message: "请先按下保持“保持数据”再点击“保存数据”", delegate: self, cancelButtonTitle: "确定")
+            let alertView = UIAlertView(title: "提示！", message: "请先按下保持“保持数据”再点击“保存数据”", delegate: self, cancelButtonTitle: "确定")
             alertView.show()
         }
             
         else if segmentedControl.selectedSegmentIndex == 2 {
-            var time:NSDate = NSDate();
+            let time:NSDate = NSDate();
             loadData();
             switch needSave{
             case 0:
-                var surfacedata:SurfaceData = cdControl.insertForEntityWithName("SurfaceData") as! SurfaceData;
+                let surfacedata:SurfaceData = cdControl.insertForEntityWithName("SurfaceData") as! SurfaceData;
                 surfaceidID=(surfaceidID as! Double)+1;
                 surfacedata.id=surfaceidID as! NSNumber;
                 surfacedata.timeS=time;
@@ -125,7 +126,7 @@ class FirstViewController: UIViewController ,CLLocationManagerDelegate{
                 saveData();
                 
             case 1:
-                var linedata:LineData = cdControl.insertForEntityWithName("LineData") as! LineData;
+                let linedata:LineData = cdControl.insertForEntityWithName("LineData") as! LineData;
                 lineidID=(lineidID as! Double)+1;
                 linedata.id=surfaceidID as! NSNumber;
                 linedata.timeS=time;
@@ -172,25 +173,23 @@ class FirstViewController: UIViewController ,CLLocationManagerDelegate{
     }
     
     
-    func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!){
+    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]){
 
-        var location:CLLocation = locations[locations.count-1] as! CLLocation
+        let location:CLLocation = locations[locations.count-1] 
         
         let thelocations:NSArray = locations as NSArray
         let curlocation:CLLocation = thelocations.objectAtIndex(0) as! CLLocation
-        var geocoder:CLGeocoder = CLGeocoder()
-        var placemarks:NSArray?
-        var error:NSError?
+        let geocoder:CLGeocoder = CLGeocoder()
+        //let placemarks:NSArray?
+        //let error:NSError
         geocoder.reverseGeocodeLocation(curlocation, completionHandler:{(placemarks,error) in
             if error != nil {
-                self.adr = "网络连接中断，无法获取此地名称。";
-            }
-            if (error == nil && placemarks.count >= 0){
-                var placemark:CLPlacemark = (placemarks as NSArray).objectAtIndex(0) as! CLPlacemark
-                self.adr = "\(placemark.name)";
-
-            }
+                self.adr = "网络连接中断，无法获取此地名称。";}
+            if (error == nil && placemarks!.count >= 0){
+                let placemark:CLPlacemark = (placemarks! as NSArray).objectAtIndex(0) as! CLPlacemark
+                self.adr = placemark.name!;}
         })
+
         
         if (location.horizontalAccuracy > 0) {
             self.locationManager.stopUpdatingLocation();
@@ -209,7 +208,7 @@ class FirstViewController: UIViewController ,CLLocationManagerDelegate{
                 self.labelLonE.text = "±"+(self.locErrorFS).format(".1")+"m";
                 self.labelLatE.text = "±"+(self.locErrorFS).format(".1")+"m";
                 self.labelHE.text = "±"+(self.hightErrorFS).format(".1")+"m";
-                self.labelAdr.text = adr;
+                self.labelAdr.text = adrFS;
             }
             else {
                 var R = transloc(self.lat);
@@ -220,26 +219,22 @@ class FirstViewController: UIViewController ,CLLocationManagerDelegate{
                 self.labelLonE.text = "±"+(self.locError).format(".1")+"m";
                 self.labelLatE.text = "±"+(self.locError).format(".1")+"m";
                 self.labelHE.text = "±"+(self.hightError).format(".1")+"m";
-                self.labelAdr.text = adrFS;
+                self.labelAdr.text = adr;
             }
 
             
         }
     }//get lat、lon and hight。
-    func locationManager(manager: CLLocationManager!, didFailWithError error: NSError!) {
-        println(error)
+    func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
+        print(error)
         self.labelLat.text = "设备接收卫星数量不足"
         self.labelLon.text = "或GPS信号接收异常"
     }
     
-    func locationManager(manager: CLLocationManager!, didUpdateHeading newHeading: CLHeading!) {
-        var error:NSError?
-        if error != nil {
-            return
-        }
-        self.magError = (self.locationManager.heading.magneticHeading - self.locationManager.heading.trueHeading) ?? 0;
-        self.northV = Vector3(self.locationManager.heading.x,self.locationManager.heading.y,self.locationManager.heading.z) ;
-        self.plusyn =  self.locationManager.heading.trueHeading  ?? 0;
+    func locationManager(manager: CLLocationManager, didUpdateHeading newHeading: CLHeading) {
+        self.magError = (self.locationManager.heading!.magneticHeading - self.locationManager.heading!.trueHeading) ?? 0;
+        self.northV = Vector3(self.locationManager.heading!.x,self.locationManager.heading!.y,self.locationManager.heading!.z) ;
+        self.plusyn =  self.locationManager.heading!.trueHeading  ?? 0;
         
         if (self.index == 2 && self.locklocShow == true) {
         self.labelDec.text = (self.magErrorFS).format(".2")+"°"+"(数据来源：World Magnetic Model ";
@@ -266,49 +261,47 @@ class FirstViewController: UIViewController ,CLLocationManagerDelegate{
     override func viewDidLoad() {
         super.viewDidLoad();
         // Do any additional setup after loading the view, typically from a nib.
+        manager.startDeviceMotionUpdates()
         
-       if manager.gyroAvailable {
+       if manager.deviceMotionAvailable {
             manager.deviceMotionUpdateInterval = 0.1;
-            let queue = NSOperationQueue();
-            manager.startDeviceMotionUpdatesToQueue(queue) {
-                [weak self] (data: CMDeviceMotion!, error: NSError!) in
-                // motion processing here
+        manager.startDeviceMotionUpdatesToQueue(
+            NSOperationQueue.currentQueue()!, withHandler: {
+                (deviceMotion, error) -> Void in
                 
-                self!.locationManager.delegate = self;
-                self!.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-                if(self!.requestauthorization==false){
-                if self!.locationManager.respondsToSelector("requestWhenInUseAuthorization") {
-                    println("requestWhenInUseAuthorization")
-                    self!.locationManager.requestWhenInUseAuthorization ()
-                    self!.requestauthorization=true
+                let data = self.manager.deviceMotion
+
+                self.locationManager.delegate = self;
+                self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+                if(self.requestauthorization==false){
+                if self.locationManager.respondsToSelector("requestWhenInUseAuthorization") {
+                    print("requestWhenInUseAuthorization")
+                    self.locationManager.requestWhenInUseAuthorization ()
+                    self.requestauthorization=true
                     }}
-                self!.locationManager.startUpdatingLocation();
-                self!.locationManager.startUpdatingHeading();
+                self.locationManager.startUpdatingLocation();
+                self.locationManager.startUpdatingHeading();
                 
-                var error:NSError?
-                if error != nil {
-                    return
-                }
                 
-                data.attitude.multiplyByInverseOfAttitude(self!.manager.deviceMotion.attitude)
+                data!.attitude.multiplyByInverseOfAttitude(self.manager.deviceMotion!.attitude)
                 
-                var gravityX = self!.manager.deviceMotion.gravity.x  ?? 0;
-                var gravityY = self!.manager.deviceMotion.gravity.y  ?? 0;
-                var gravityZ = self!.manager.deviceMotion.gravity.z  ?? 0;
-                var dipangle = (atan2(gravityZ,sqrt(gravityX*gravityX+gravityY*gravityY)))/M_PI*180.0;
+                let gravityX = self.manager.deviceMotion!.gravity.x  ?? 0;
+                let gravityY = self.manager.deviceMotion!.gravity.y  ?? 0;
+                let gravityZ = self.manager.deviceMotion!.gravity.z  ?? 0;
+                let dipangle = (atan2(gravityZ,sqrt(gravityX*gravityX+gravityY*gravityY)))/M_PI*180.0;
                 
-                var angle = -atan2(gravityY, gravityX) + M_PI/2;
+                let angle = -atan2(gravityY, gravityX) + M_PI/2;
                 
 
-                var dipV = Vector3(gravityX,gravityY,0);
+                let dipV = Vector3(gravityX,gravityY,0);
                 let n_downV = Vector3(gravityX,gravityY,gravityZ).normalized();
                 var hplane_dipV   = dipV - n_downV * ( n_downV.dot(dipV  ) );
-                var hplane_northV = self!.northV - n_downV * ( n_downV.dot(self!.northV) );
+                var hplane_northV = self.northV - n_downV * ( n_downV.dot(self.northV) );
                 hplane_dipV = Vector3(hplane_dipV.x,hplane_dipV.y,hplane_dipV.z).normalized();
                 hplane_northV = Vector3(hplane_northV.x,hplane_northV.y,hplane_northV.z).normalized();
                 var cp = Vector3(hplane_dipV.x,hplane_dipV.y,hplane_dipV.z).cross(hplane_northV);
-                var dp = Vector3(hplane_dipV.x,hplane_dipV.y,hplane_dipV.z).dot(hplane_northV);
-                var len = cp.length; // get length of vector
+                let dp = Vector3(hplane_dipV.x,hplane_dipV.y,hplane_dipV.z).dot(hplane_northV);
+                let len = cp.length; // get length of vector
                 cp = cp/len; // normalize
                 var dipDirection = acos(dp/((hplane_dipV.length)*(hplane_northV.length))); // now we have the angle
                 // now we want whether or not the cross product is in the same direction or the opposite of g, telling us the sign of the angle!
@@ -319,32 +312,32 @@ class FirstViewController: UIViewController ,CLLocationManagerDelegate{
                 
             
                 
-                switch self!.index
+                switch self.index
                 {
                 case 0:
-                    self!.dipdir = dipDirection*(180/M_PI)+self!.magError;
-                    self!.strike = dipDirection*(180/M_PI)+self!.magError - 90.0;
-                    if(self!.strike < 0){self!.strike += 360;}
-                    if(dipangle < 0){self!.dip = 90+dipangle;}
-                    else{self!.dip = 90-dipangle;}
+                    self.dipdir = dipDirection*(180/M_PI)+self.magError;
+                    self.strike = dipDirection*(180/M_PI)+self.magError - 90.0;
+                    if(self.strike < 0){self.strike += 360;}
+                    if(dipangle < 0){self.dip = 90+dipangle;}
+                    else{self.dip = 90-dipangle;}
                     
                     
                     
                 case 1:
-                    self!.strike = dipDirection*(180/M_PI)+self!.magError - 90.0;
-                    if(self!.strike < 0){self!.strike += 360;}
+                    self.strike = dipDirection*(180/M_PI)+self.magError - 90.0;
+                    if(self.strike < 0){self.strike += 360;}
                     
-                    self!.pitch = (atan2(gravityY, gravityX))/M_PI*180.0;
-                    if(self!.pitch < 0){self!.pitch = -self!.pitch};
-                    if(self!.pitch > 90){self!.pitch = 180 - self!.pitch};
+                    self.pitch = (atan2(gravityY, gravityX))/M_PI*180.0;
+                    if(self.pitch < 0){self.pitch = -self.pitch};
+                    if(self.pitch > 90){self.pitch = 180 - self.pitch};
                     
                     //var plusynlevel = Vector3(0,gravityY,-gravityZ).normalized();
                     //var plusynbasic = (Vector3(0,gravityY,-gravityZ).normalized()).dot(self!.northV.normalized());
                     //self!.plusyn = acos(plusynbasic/((plusynlevel.length)*(self!.northV.length)))*(180/M_PI);
                     
-                    var calpitch:Double = cos(self!.pitch/(180/M_PI));
-                    var calplusyn:Double = (self!.plusyn - self!.strike)/(180/M_PI);
-                    self!.pluang =  acos(calpitch/calplusyn)*(180/M_PI);
+                    let calpitch:Double = cos(self.pitch/(180/M_PI));
+                    let calplusyn:Double = (self.plusyn - self.strike)/(180/M_PI);
+                    self.pluang =  acos(calpitch/calplusyn)*(180/M_PI);
                 case 2:
                     break;
                 default:
@@ -356,50 +349,50 @@ class FirstViewController: UIViewController ,CLLocationManagerDelegate{
                     // update UI here
 
                     
-                    switch self!.index
+                    switch self.index
                     {
                     case 0:
-                        self!.locklocShow = false;
-                        self!.label1.text = "走向";
-                        self!.labelA.text = (self!.strike).format(".2")+"°";
-                        self!.label2.text = "倾向";
-                        self!.labelB.text = (self!.dipdir).format(".2")+"°";
-                        self!.label3.text = "倾角";
-                        self!.labelC.text = (self!.dip).format(".2")+"°";
-                        self!.label4.text = "";
-                        self!.labelD.text = "";
-                        self!.method.text = "测量方法：手机紧贴面状构造，可转动的箭头方向即为倾向在面上的投影方向，将其与不可转动的箭头重合可得到仪器最精确测量值";
-                        self!.arrow.transform=CGAffineTransformMakeRotation(CGFloat(angle));
+                        self.locklocShow = false;
+                        self.label1.text = "走向";
+                        self.labelA.text = (self.strike).format(".2")+"°";
+                        self.label2.text = "倾向";
+                        self.labelB.text = (self.dipdir).format(".2")+"°";
+                        self.label3.text = "倾角";
+                        self.labelC.text = (self.dip).format(".2")+"°";
+                        self.label4.text = "";
+                        self.labelD.text = "";
+                        self.method.text = "测量方法：手机紧贴面状构造，可转动的箭头方向即为倾向在面上的投影方向，将其与不可转动的箭头重合可得到仪器最精确测量值";
+                        self.arrow.transform=CGAffineTransformMakeRotation(CGFloat(angle));
                         
                     case 1:
-                        self!.locklocShow = false;
-                        self!.label1.text = "走向";
-                        self!.labelA.text = (self!.strike).format(".2")+"°";
-                        self!.label2.text = "侧俯角";
-                        self!.labelB.text = (self!.pitch).format(".2")+"°";
-                        self!.label3.text = "倾伏向";
-                        self!.labelC.text = (self!.plusyn).format(".2")+"°";
-                        self!.label4.text = "倾伏角";
-                        self!.labelD.text = (self!.pluang).format(".2")+"°";
-                        self!.method.text = "测量方法：将不可转动的箭头方向与线状构造方向保持一致既可";
-                        self!.arrow.transform=CGAffineTransformMakeRotation(CGFloat(angle));
+                        self.locklocShow = false;
+                        self.label1.text = "走向";
+                        self.labelA.text = (self.strike).format(".2")+"°";
+                        self.label2.text = "侧俯角";
+                        self.labelB.text = (self.pitch).format(".2")+"°";
+                        self.label3.text = "倾伏向";
+                        self.labelC.text = (self.plusyn).format(".2")+"°";
+                        self.label4.text = "倾伏角";
+                        self.labelD.text = (self.pluang).format(".2")+"°";
+                        self.method.text = "测量方法：将不可转动的箭头方向与线状构造方向保持一致既可";
+                        self.arrow.transform=CGAffineTransformMakeRotation(CGFloat(angle));
                         
                     case 2:
-                        if (self!.locklocShow == false) {
-                        self!.strikeFS = self!.strike;
-                        self!.dipdirFS = self!.dipdir;
-                        self!.dipFS = self!.dip;
-                        self!.pitchFS = self!.pitch;
-                        self!.plusynFS = self!.plusyn;
-                        self!.pluangFS = self!.pluang;
-                        self!.latFS = self!.lat;
-                        self!.lonFS = self!.lon;
-                        self!.hightFS = self!.hight;
-                        self!.locErrorFS = self!.locError;
-                        self!.hightErrorFS = self!.hightError;
-                        self!.magErrorFS = self!.magError;
-                            self!.adrFS = self!.adr;}
-                        self!.locklocShow = true;
+                        if (self.locklocShow == false) {
+                        self.strikeFS = self.strike;
+                        self.dipdirFS = self.dipdir;
+                        self.dipFS = self.dip;
+                        self.pitchFS = self.pitch;
+                        self.plusynFS = self.plusyn;
+                        self.pluangFS = self.pluang;
+                        self.latFS = self.lat;
+                        self.lonFS = self.lon;
+                        self.hightFS = self.hight;
+                        self.locErrorFS = self.locError;
+                        self.hightErrorFS = self.hightError;
+                        self.magErrorFS = self.magError;
+                            self.adrFS = self.adr;}
+                        self.locklocShow = true;
 
                     default:
                         break; 
@@ -408,7 +401,7 @@ class FirstViewController: UIViewController ,CLLocationManagerDelegate{
                     
  
                 }
-            }
+            })
 
         }
         
@@ -418,34 +411,37 @@ class FirstViewController: UIViewController ,CLLocationManagerDelegate{
         // getting path to Data.plist
         let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true) as NSArray
         let documentsDirectory = paths[0] as! String
-        let path = documentsDirectory.stringByAppendingPathComponent("Data.plist")
+        let path = (documentsDirectory as NSString).stringByAppendingPathComponent("Data.plist")
         let fileManager = NSFileManager.defaultManager()
         //check if file exists
         if(!fileManager.fileExistsAtPath(path)) {
             // If it doesn't, copy it from the default file in the Bundle
             if let bundlePath = NSBundle.mainBundle().pathForResource("Data", ofType: "plist") {
                 let resultDictionary = NSMutableDictionary(contentsOfFile: bundlePath)
-                println("Bundle Data.plist file is --> \(resultDictionary?.description)")
-                fileManager.copyItemAtPath(bundlePath, toPath: path, error: nil)
-                println("copy")
+                print("Bundle Data.plist file is --> \(resultDictionary?.description)")
+                do {
+                    try fileManager.copyItemAtPath(bundlePath, toPath: path)
+                } catch _ {
+                }
+                print("copy")
             } else {
-                println("Data.plist not found. Please, make sure it is part of the bundle.")
+                print("Data.plist not found. Please, make sure it is part of the bundle.")
             }
         } else {
-            println("Data.plist already exits at path.")
+            print("Data.plist already exits at path.")
             // use this to delete file from documents directory
             //fileManager.removeItemAtPath(path, error: nil)
         }
         let resultDictionary = NSMutableDictionary(contentsOfFile: path)
-        println("Loaded Data.plist file is --> \(resultDictionary?.description)")
-        var myDict = NSDictionary(contentsOfFile: path)
+        print("Loaded Data.plist file is --> \(resultDictionary?.description)")
+        let myDict = NSDictionary(contentsOfFile: path)
         if let dict = myDict {
             //loading values
             surfaceidID = dict.objectForKey(surfaceKey)!
             lineidID = dict.objectForKey(lineKey)!
             //...
         } else {
-            println("WARNING: Couldn't create dictionary from Data.plist! Default values will be used!")
+            print("WARNING: Couldn't create dictionary from Data.plist! Default values will be used!")
         }
     }
     
@@ -453,7 +449,7 @@ class FirstViewController: UIViewController ,CLLocationManagerDelegate{
         let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true) as NSArray
         let documentsDirectory = paths.objectAtIndex(0) as! NSString
         let path = documentsDirectory.stringByAppendingPathComponent("Data.plist")
-        var dict: NSMutableDictionary = ["XInitializerItem": "DoNotEverChangeMe"]
+        let dict: NSMutableDictionary = ["XInitializerItem": "DoNotEverChangeMe"]
         //saving values
         dict.setObject(surfaceidID, forKey: surfaceKey)
         dict.setObject(lineidID, forKey: lineKey)
@@ -461,7 +457,7 @@ class FirstViewController: UIViewController ,CLLocationManagerDelegate{
         //writing to Data.plist
         dict.writeToFile(path, atomically: false)
         let resultDictionary = NSMutableDictionary(contentsOfFile: path)
-        println("Saved Data.plist file is --> \(resultDictionary?.description)")
+        print("Saved Data.plist file is --> \(resultDictionary?.description)")
     }
 
 

@@ -22,9 +22,8 @@ class NewsCoreDataController:NSObject {
     }
     
     func fetchNewestNews(entityname:String,keyname:String)->NSFetchedResultsController {
-        var error:NSError? = nil
-        var fReq:NSFetchRequest = NSFetchRequest(entityName: entityname)
-        var sorter:NSSortDescriptor = NSSortDescriptor(key: keyname, ascending: false)
+        let fReq:NSFetchRequest = NSFetchRequest(entityName: entityname)
+        let sorter:NSSortDescriptor = NSSortDescriptor(key: keyname, ascending: false)
         fReq.sortDescriptors = [sorter]
         fReq.fetchBatchSize = 20
         fReq.fetchLimit = 20
@@ -33,19 +32,27 @@ class NewsCoreDataController:NSObject {
     
     //按条件检查entity是否有符合条件数据
     func fetchOneWithConditionForCheckIfExist(entityName:String,condition:NSPredicate)->[AnyObject]! {
-        var fetchReq = NSFetchRequest(entityName: entityName)
+        let fetchReq = NSFetchRequest(entityName: entityName)
         fetchReq.predicate = condition
         fetchReq.fetchLimit = 1
-        var error:NSError? = nil
-        return self.cdh.managedObjectContext.executeFetchRequest(fetchReq, error: &error)
+        var _:NSError? = nil
+        do {
+            return try self.cdh.managedObjectContext.executeFetchRequest(fetchReq)
+        } catch _ {
+            return nil
+        }
     }
     
     //检查entity里是否有数据
     func fetchOneForCheckIfExist(entityName:String)->[AnyObject]! {
-        var fetchReq = NSFetchRequest(entityName: entityName)
+        let fetchReq = NSFetchRequest(entityName: entityName)
         fetchReq.fetchLimit = 1
-        var error:NSError? = nil
-        return self.cdh.managedObjectContext.executeFetchRequest(fetchReq, error: &error)
+        var _:NSError? = nil
+        do {
+            return try self.cdh.managedObjectContext.executeFetchRequest(fetchReq)
+        } catch _ {
+            return nil
+        }
     }
     
     func insertForEntityWithName(entityName:String)->AnyObject! {
@@ -61,15 +68,21 @@ class NewsCoreDataController:NSObject {
     }
     
     func FetchedResultsController(entityname:String)->NSFetchedResultsController?{
-        var fReq:NSFetchRequest = NSFetchRequest(entityName: entityname)
+        let fReq:NSFetchRequest = NSFetchRequest(entityName: entityname)
         return NSFetchedResultsController(fetchRequest: fReq, managedObjectContext: self.cdh.managedObjectContext, sectionNameKeyPath: entityname, cacheName: "Root")
     }
     
     //删除一个entity里的所有数据
     func deleteOneEntityAllData(entityName:String) {
-        var error:NSError? = nil
-        var fReq:NSFetchRequest = NSFetchRequest(entityName: entityName)
-        var result = self.cdh.backgroundContext.executeFetchRequest(fReq, error: &error)
+        let fReq:NSFetchRequest = NSFetchRequest(entityName: entityName)
+        var result: [AnyObject]?
+        do {
+            result = try self.cdh.backgroundContext.executeFetchRequest(fReq)
+        } catch let error as NSError {
+            if error != 0 {
+             result = nil
+            }
+        }
         for resultItem:AnyObject in result! {
             self.cdh.backgroundContext.deleteObject(resultItem as! NSManagedObject)
         }

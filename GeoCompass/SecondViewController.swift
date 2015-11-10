@@ -28,7 +28,10 @@ class SecondViewController:UITableViewController,UITabBarControllerDelegate,NSFe
     @IBAction func indexChange(sender: UISegmentedControl) {
         var error: NSError? = nil
         segmentedControlChange = true;
-        if !self.initFetchedResultsController().performFetch(&error){
+        do {
+            try self.initFetchedResultsController().performFetch()
+        } catch let error1 as NSError {
+            error = error1
             NSLog("Unresolved error \(error), \(error!.userInfo)")
             abort()
         }
@@ -46,7 +49,10 @@ class SecondViewController:UITableViewController,UITabBarControllerDelegate,NSFe
 
         //执行获取数据，并处理异常
         var error: NSError? = nil
-        if !self.initFetchedResultsController().performFetch(&error){
+        do {
+            try self.initFetchedResultsController().performFetch()
+        } catch let error1 as NSError {
+            error = error1
             NSLog("Unresolved error \(error), \(error!.userInfo)")
             abort()
         }
@@ -62,11 +68,11 @@ class SecondViewController:UITableViewController,UITabBarControllerDelegate,NSFe
     func setCellInfo(cell: UITableViewCell, indexPath: NSIndexPath) {
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
         if segmentedControl.selectedSegmentIndex == 0 {
-            var surfacedata = self.fetchedResultsController?.objectAtIndexPath(indexPath) as! SurfaceData
+            let surfacedata = self.fetchedResultsController?.objectAtIndexPath(indexPath) as! SurfaceData
             cell.textLabel!.text = dateFormatter.stringFromDate(surfacedata.timeS) + " 数据"
         }
         else if segmentedControl.selectedSegmentIndex == 1 {
-            var linedata = self.fetchedResultsController?.objectAtIndexPath(indexPath) as! LineData
+            let linedata = self.fetchedResultsController?.objectAtIndexPath(indexPath) as! LineData
             cell.textLabel!.text = dateFormatter.stringFromDate(linedata.timeS) + " 数据"
         }
     }
@@ -80,13 +86,13 @@ class SecondViewController:UITableViewController,UITabBarControllerDelegate,NSFe
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         //每个分组的数据数量
-        var section = self.fetchedResultsController!.sections![section]as! NSFetchedResultsSectionInfo
+        let section = self.fetchedResultsController!.sections![section]
         return section.numberOfObjects
     }
     
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) 
         // 为列表Cell赋值
         self.setCellInfo(cell, indexPath: indexPath)
         return cell
@@ -109,16 +115,16 @@ class SecondViewController:UITableViewController,UITabBarControllerDelegate,NSFe
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
             //删除sqlite库中对应的数据
-            var context = self.fetchedResultsController?.managedObjectContext
+            let context = self.fetchedResultsController?.managedObjectContext
             context!.deleteObject(self.fetchedResultsController?.objectAtIndexPath(indexPath) as! NSManagedObject)
             //删除后要进行保存
-            var error: NSError? = nil
-            if context?.save(&error) == false {
-                NSLog("Unresolved error \(error), \(error!.userInfo)")
+            do{ try context?.save() }
+            catch let error as NSError {
+            if error != 0 {
+                NSLog("Unresolved error \(error), \(error.userInfo)")
                 abort()
             }
-        } else if editingStyle == .Insert {
-            
+        }
         }
     }
     
@@ -160,25 +166,25 @@ class SecondViewController:UITableViewController,UITabBarControllerDelegate,NSFe
         }
         NSLog("===2===")
         // 创建一个获取数据的实例，用来查询实体
-        var fetchRequest = NSFetchRequest()
+        let fetchRequest = NSFetchRequest()
         if segmentedControl.selectedSegmentIndex == 0 {
             entityName = "SurfaceData"
         }
         else if segmentedControl.selectedSegmentIndex == 1 {
             entityName = "LineData"
         }
-        var entity = cdControl.EntityDescription(entityName)
+        let entity = cdControl.EntityDescription(entityName)
         fetchRequest.entity = entity
         
         // 创建排序规则
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
-        var authorDescriptor = NSSortDescriptor(key: "timeS", ascending: false)
-        var titleDescriptor = NSSortDescriptor(key: "adrS", ascending: true)
-        var sortDescriptors = [authorDescriptor, titleDescriptor]
+        let authorDescriptor = NSSortDescriptor(key: "timeS", ascending: false)
+        let titleDescriptor = NSSortDescriptor(key: "adrS", ascending: true)
+        let sortDescriptors = [authorDescriptor, titleDescriptor]
         fetchRequest.sortDescriptors = sortDescriptors
         
         // 创建获取数据的控制器，将section的name设置为author，可以直接用于tableViewSourceData
-        var fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: cdControl.cdh.managedObjectContext, sectionNameKeyPath: "adrS", cacheName: "Root")
+        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: cdControl.cdh.managedObjectContext, sectionNameKeyPath: "adrS", cacheName: "Root")
         fetchedResultsController.delegate = self
         self.fetchedResultsController = fetchedResultsController
         return fetchedResultsController
@@ -234,14 +240,14 @@ class SecondViewController:UITableViewController,UITabBarControllerDelegate,NSFe
         if (segue.identifier == "Detail") {
             NSLog("Detail go")
             //将所选择的当前数据赋值给所打开页面的控制器
-            var secondViewDetailController = segue.destinationViewController as! SecondViewDetailController
-            var currentRow = tableView.indexPathForSelectedRow()
+            let secondViewDetailController = segue.destinationViewController as! SecondViewDetailController
+            let currentRow = tableView.indexPathForSelectedRow
             if segmentedControl.selectedSegmentIndex == 0 {
-                var surfacedata = self.fetchedResultsController?.objectAtIndexPath(currentRow!)as! SurfaceData
+                let surfacedata = self.fetchedResultsController?.objectAtIndexPath(currentRow!)as! SurfaceData
                 secondViewDetailController.surfacedata = surfacedata
                 secondViewDetailController.nowData = "surfacedata"}
             else if segmentedControl.selectedSegmentIndex == 1 {
-                var linedata = self.fetchedResultsController?.objectAtIndexPath(currentRow!)as! LineData
+                let linedata = self.fetchedResultsController?.objectAtIndexPath(currentRow!)as! LineData
                 secondViewDetailController.linedata = linedata
                 secondViewDetailController.nowData = "linedata"}
         }

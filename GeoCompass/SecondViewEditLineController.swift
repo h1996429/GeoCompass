@@ -19,7 +19,7 @@ class SecondViewEditLineController: UIViewController{
     var editingDate: Bool!{
         get{
             //判断是否是日期字段
-            var attributeClassName = self.editedObject.entity.attributesByName[self.editedFieldKey]?.attributeValueClassName
+            let attributeClassName = self.editedObject.entity.attributesByName[self.editedFieldKey]?.attributeValueClassName
             if (attributeClassName! == "NSDate") {
                 return true
             }
@@ -31,7 +31,7 @@ class SecondViewEditLineController: UIViewController{
     var editingNumber: Bool!{
         get{
             //判断是否是数字字段
-            var attributeClassName = self.editedObject.entity.attributesByName[self.editedFieldKey]?.attributeValueClassName
+            let attributeClassName = self.editedObject.entity.attributesByName[self.editedFieldKey]?.attributeValueClassName
             if (attributeClassName! == "NSNumber") {
                 return true
             }
@@ -66,7 +66,7 @@ class SecondViewEditLineController: UIViewController{
         else {
             self.textField.hidden = false
             self.datePicker.hidden = true
-            self.textField.text = self.editedObject.valueForKey(self.editedFieldKey) as! String
+            self.textField.text = self.editedObject.valueForKey(self.editedFieldKey) as? String
             self.textField.placeholder = self.title//空的时候显示值
             self.textField.becomeFirstResponder()
         }
@@ -81,7 +81,7 @@ class SecondViewEditLineController: UIViewController{
     @IBAction func saveAction(sender: AnyObject) {
         // Set the action name for the undo operation.给撤回操作设置name
         NSLog("==saveAction==\(self.editedFieldName)")
-        var undoManager = self.editedObject.managedObjectContext?.undoManager
+        let undoManager = self.editedObject.managedObjectContext?.undoManager
         undoManager?.setActionName(self.editedFieldName)
         
         //更新该对象，然后抛出
@@ -89,7 +89,7 @@ class SecondViewEditLineController: UIViewController{
             self.editedObject.setValue(self.datePicker.date, forKey:self.editedFieldKey)
         }
         else if self.editingNumber! {
-            self.editedObject.setValue((self.textField.text as NSString).doubleValue, forKey:self.editedFieldKey)
+            self.editedObject.setValue((self.textField.text! as NSString).doubleValue, forKey:self.editedFieldKey)
         }
         else {
             self.editedObject.setValue(self.textField.text, forKey:self.editedFieldKey)
