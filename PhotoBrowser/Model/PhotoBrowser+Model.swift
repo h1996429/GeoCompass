@@ -52,7 +52,7 @@ extension PhotoBrowser{
         }
         
         
-        /**  本地相册专业初始化方法  */
+        /**  网络相册专业初始化方法  */
         init(hostHDImgURL: String!, hostThumbnailImg: UIImage!, titleStr: String!, descStr: String!, sourceView: UIView!){
             
             self.isLocal = false

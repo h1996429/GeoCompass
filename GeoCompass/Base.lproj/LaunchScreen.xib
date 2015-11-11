@@ -11,7 +11,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="启动界面" translatesAutoresizingMaskIntoConstraints="NO" id="mHG-rQ-2Fp">
+                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" misplaced="YES" image="启动界面" translatesAutoresizingMaskIntoConstraints="NO" id="mHG-rQ-2Fp">
                     <rect key="frame" x="0.0" y="28" width="320" height="423"/>
                     <animations/>
                 </imageView>

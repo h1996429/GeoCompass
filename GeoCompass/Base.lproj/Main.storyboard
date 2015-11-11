@@ -623,7 +623,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="147.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="吉大校徽" translatesAutoresizingMaskIntoConstraints="NO" id="Jc0-n0-17H" userLabel="image">
+                                                <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="Jc0-n0-17H" userLabel="image">
                                                     <rect key="frame" x="8" y="0.0" width="147" height="147"/>
                                                     <animations/>
                                                     <accessibility key="accessibilityConfiguration" label=""/>
@@ -640,6 +640,13 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 </textView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="照片数:0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eSy-B5-qzY" userLabel="photoNumber">
+                                                    <rect key="frame" x="88" y="124" width="58" height="23"/>
+                                                    <animations/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                    <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <animations/>
                                             <constraints>
@@ -1007,6 +1014,7 @@
                         <outlet property="detail8" destination="pNf-wz-1TL" id="9Yg-L3-Eap"/>
                         <outlet property="detail9" destination="HZv-LQ-EqW" id="K5J-NC-khY"/>
                         <outlet property="image" destination="Jc0-n0-17H" id="1PN-1o-ar8"/>
+                        <outlet property="photoNumber" destination="eSy-B5-qzY" id="URS-YJ-HTT"/>
                         <outlet property="text" destination="Jh6-cd-Atr" id="KDB-iR-SSK"/>
                         <outlet property="title1" destination="IAL-77-lXq" id="JrY-aM-ca0"/>
                         <outlet property="title10" destination="YtJ-W7-PkZ" id="181-B3-opo"/>
@@ -1149,8 +1157,8 @@
     </scenes>
     <resources>
         <image name="arrow" width="48" height="128"/>
+        <image name="defaultPhoto" width="512" height="512"/>
         <image name="first" width="30" height="30"/>
         <image name="second" width="30" height="30"/>
-        <image name="吉大校徽" width="221" height="234"/>
     </resources>
 </document>

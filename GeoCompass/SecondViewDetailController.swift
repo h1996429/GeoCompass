@@ -14,6 +14,8 @@ class SecondViewDetailController: UITableViewController{
     var linedata:LineData!
     var nowData = "surfacedata"
     var dateFormatter = NSDateFormatter()
+    var fileManager = NSFileManager.defaultManager()
+    var dir:String = ""
     
     @IBOutlet weak var title1: UILabel!
     @IBOutlet weak var detail1: UILabel!
@@ -43,6 +45,8 @@ class SecondViewDetailController: UITableViewController{
     @IBOutlet weak var image: UIImageView!
     
     @IBOutlet weak var text: UITextView!
+    
+    @IBOutlet weak var photoNumber: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -154,9 +158,15 @@ class SecondViewDetailController: UITableViewController{
         return (b,c,d);
     }
     
+    
     func updateInterface() {
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm";
         if nowData == "surfacedata" {
+            dir = NSHomeDirectory()+"/Documents/GeoCompass/Photos/"+"\(self.surfacedata.id)"
+                do{guard fileManager.fileExistsAtPath(dir) == true else {
+                self.photoNumber.text = "照片数:0"
+                return}
+            self.photoNumber.text = "照片数:"+"\(fileManager.subpathsAtPath(dir)?.count)"}
             self.text.text = "\(self.surfacedata.describeS as String)"
             self.title1.text = "时间"
             self.detail1.text = dateFormatter.stringFromDate(surfacedata.timeS)
@@ -187,6 +197,11 @@ class SecondViewDetailController: UITableViewController{
             NSLog("===updateInterface===\(self.surfacedata.timeS)")
         }
         else if nowData == "linedata" {
+            dir = NSHomeDirectory()+"/Documents/GeoCompass/Photos/"+"\(self.surfacedata.id)"
+            do{guard fileManager.fileExistsAtPath(dir) == true else {
+                self.photoNumber.text = "照片数:0"
+                return}
+            self.photoNumber.text = "照片数:"+"\(fileManager.subpathsAtPath(dir)?.count)"}
             self.text.text = "\(self.linedata.describeS as String)"
             self.title1.text = "时间"
             self.detail1.text = dateFormatter.stringFromDate(linedata.timeS)

@@ -24,7 +24,7 @@ class SecondViewController:UITableViewController,UITabBarControllerDelegate,NSFe
     var segmentedControlChange = false;
 
     @IBOutlet weak var segmentedControl: UISegmentedControl!
-
+    
     @IBAction func indexChange(sender: UISegmentedControl) {
         var error: NSError? = nil
         segmentedControlChange = true;
@@ -103,13 +103,7 @@ class SecondViewController:UITableViewController,UITabBarControllerDelegate,NSFe
         return self.fetchedResultsController!.sections![section].name
     }
     
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-    // Return NO if you do not want the specified item to be editable.
-    return true
-    }
-    */
+
     
     // 自定义编辑单元格时的动作，可编辑样式包括UITableViewCellEditingStyleInsert（插入）、UITableViewCellEditingStyleDelete（删除）。
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
@@ -236,7 +230,7 @@ class SecondViewController:UITableViewController,UITabBarControllerDelegate,NSFe
     // MARK: - Navigation
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        //明细查询页面            
+        //明细查询页面
         if (segue.identifier == "Detail") {
             NSLog("Detail go")
             //将所选择的当前数据赋值给所打开页面的控制器
@@ -252,7 +246,6 @@ class SecondViewController:UITableViewController,UITabBarControllerDelegate,NSFe
                 secondViewDetailController.nowData = "linedata"}
         }
     }
-        
 
 }
 
