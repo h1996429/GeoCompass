@@ -13,5 +13,7 @@ class LineImage: NSManagedObject {
 
     @NSManaged var id: NSNumber
     @NSManaged var imageS: NSData
+    @NSManaged var describe: NSString
+
 
 }

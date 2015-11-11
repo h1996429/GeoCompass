@@ -40,7 +40,9 @@ class SecondViewDetailController: UITableViewController{
     @IBOutlet weak var title12: UILabel!
     @IBOutlet weak var detail12: UILabel!
     
+    @IBOutlet weak var image: UIImageView!
     
+    @IBOutlet weak var text: UITextView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -103,6 +105,7 @@ class SecondViewDetailController: UITableViewController{
         
         //编辑状态时设置撤销管理器
         if(editing){
+            self.text.editable = true
             self.editButtonItem().title = "完成"
             self.setUpundoManager()
         }else
