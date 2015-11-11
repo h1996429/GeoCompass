@@ -25,6 +25,8 @@ class SurfaceData: NSManagedObject {
     @NSManaged var magErrorS: NSNumber
     @NSManaged var strikeS: NSNumber
     @NSManaged var timeS: NSDate
+    @NSManaged var describeS: NSString
+
 
 }
 

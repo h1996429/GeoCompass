@@ -632,7 +632,7 @@
                                                         <constraint firstAttribute="height" constant="147" id="hLO-O9-4aq"/>
                                                     </constraints>
                                                 </imageView>
-                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="在这里写下对此数据的描述……" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jh6-cd-Atr" userLabel="text">
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="在这里写下对此数据的描述……                " selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jh6-cd-Atr" userLabel="text">
                                                     <rect key="frame" x="164" y="10" width="428" height="128"/>
                                                     <animations/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -685,7 +685,7 @@
                                         <rect key="frame" x="0.0" y="256" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="LDl-Jl-5h8" id="4Ut-j5-ZeR">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P3H-SB-OZR" userLabel="Title2">

@@ -26,6 +26,8 @@ class LineData: NSManagedObject {
     @NSManaged var plusynS: NSNumber
     @NSManaged var strikeS: NSNumber
     @NSManaged var timeS: NSDate
+    @NSManaged var describeS: NSString
+
 
 }
 

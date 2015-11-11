@@ -120,9 +120,9 @@ class FirstViewController: UIViewController ,CLLocationManagerDelegate{
                 surfacedata.hightErrorS=(round(hightErrorFS*10))/10;
                 surfacedata.magErrorS=(round(magErrorFS*100))/100;
                 surfacedata.adrS=adrFS;
+                surfacedata.describeS="按下编辑按键后，点击这里写下对此数据的描述……";
 
                 cdControl.save();
-            
                 saveData();
                 
             case 1:
@@ -141,6 +141,7 @@ class FirstViewController: UIViewController ,CLLocationManagerDelegate{
                 linedata.hightErrorS=(round(hightErrorFS*10))/10;
                 linedata.magErrorS=(round(magErrorFS*100))/100;
                 linedata.adrS=adrFS;
+                linedata.describeS="按下编辑按键后，点击这里写下对此数据的描述……";
 
                 cdControl.save();
                 saveData();

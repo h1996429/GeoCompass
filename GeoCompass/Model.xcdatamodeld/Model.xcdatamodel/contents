@@ -2,6 +2,7 @@
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="9057" systemVersion="15B42" minimumToolsVersion="Xcode 4.3">
     <entity name="LineData" representedClassName="LineData" syncable="YES">
         <attribute name="adrS" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="describeS" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="hightErrorS" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="hightS" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
@@ -16,13 +17,9 @@
         <attribute name="strikeS" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="timeS" optional="YES" attributeType="Date" syncable="YES"/>
     </entity>
-    <entity name="LineImage" representedClassName="PRODUCT_MODULE_NAME.LineImage" syncable="YES">
-        <attribute name="describeS" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="id" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
-        <attribute name="imageS" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
-    </entity>
     <entity name="SurfaceData" representedClassName="SurfaceData" syncable="YES">
         <attribute name="adrS" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="describeS" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="dipdirS" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="dipS" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="hightErrorS" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
@@ -36,15 +33,8 @@
         <attribute name="strikeS" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="timeS" optional="YES" attributeType="Date" syncable="YES"/>
     </entity>
-    <entity name="SurfaceImage" representedClassName="PRODUCT_MODULE_NAME.SurfaceImage" syncable="YES">
-        <attribute name="describeS" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="id" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
-        <attribute name="imageS" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
-    </entity>
     <elements>
-        <element name="LineData" positionX="-18" positionY="27" width="128" height="255"/>
-        <element name="LineImage" positionX="-27" positionY="117" width="128" height="90"/>
-        <element name="SurfaceData" positionX="-36" positionY="18" width="128" height="240"/>
-        <element name="SurfaceImage" positionX="-18" positionY="126" width="128" height="90"/>
+        <element name="LineData" positionX="-18" positionY="27" width="128" height="270"/>
+        <element name="SurfaceData" positionX="-36" positionY="18" width="128" height="255"/>
     </elements>
 </model>

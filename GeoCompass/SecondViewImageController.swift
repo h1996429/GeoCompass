@@ -77,7 +77,7 @@ class SecondViewImageController: UIViewController {
     
     var descLocalCH: [String] {
         return [
-            "《哆啦A梦：伴我同行》是一部纪念《哆啦A梦》之父藤子·F·不二雄诞辰80周年的3D动画电影,该片讲述了哆啦A梦圆满完成了他的使命，启程返回22世纪，大雄该如何以一己之力实现他那来之不易的幸福未来。该片于2014年8月8日在日本上映，2015年5月28日在中国内地上映。",
+           /* "《哆啦A梦：伴我同行》是一部纪念《哆啦A梦》之父藤子·F·不二雄诞辰80周年的3D动画电影,该片讲述了哆啦A梦圆满完成了他的使命，启程返回22世纪，大雄该如何以一己之力实现他那来之不易的幸福未来。该片于2014年8月8日在日本上映，2015年5月28日在中国内地上映。",
             "为了什么都做不来的野比大雄，22 世纪的玄孙野比世修送了猫型机器人──哆啦A梦来现代。",
             "笨笨的野比大雄原本自己开了间公司，但很不幸的倒闭，之后剩下了一屁股债务，子孙们吃了莫大的苦。于是，野比世修才打算送哆啦A梦到现代",
             "哆啦A梦于是开始勉勉强强的协助野比大雄的日常生活。",
@@ -85,7 +85,7 @@ class SecondViewImageController: UIViewController {
             "得知野比大雄的梦想是打算与梦中情人的同班同学源静香结婚以后，哆啦A梦就想尽办法要帮助野比大雄获得静香的芳心。",
             "正当源静香总算答应了野比大雄的求婚的时候，任务完成的哆啦A梦却被完成程式要求",
             "在48小时内回到22世纪。难道，得到了什么，自然的，也会失去些什么这个命定的预言，没办法被哆啦A梦跟野比大雄突破。",
-            "面对哆啦A梦即将离开的冲击，野比大雄又该如何自处。",
+            "面对哆啦A梦即将离开的冲击，野比大雄又该如何自处。",*/
         ]
     }
     
@@ -108,7 +108,7 @@ class SecondViewImageController: UIViewController {
     
     var photoType: PhotoType = PhotoType.Local
     
-    var showType: PhotoBrowser.ShowType = PhotoBrowser.ShowType.Push
+    var showType: PhotoBrowser.ShowType = PhotoBrowser.ShowType.ZoomAndDismissWithCancelBtnClick
     
     lazy var localImages: [String] = {["1.jpg","2.jpg","3.jpg","4.jpg","5.jpg","6.jpg","7.jpg","8.jpg","9.jpg"]}()
     

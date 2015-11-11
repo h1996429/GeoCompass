@@ -32,8 +32,6 @@
 		A743D9E91BF09AB600624737 /* SecondViewImageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A743D9E81BF09AB600624737 /* SecondViewImageController.swift */; };
 		A758CA4A1BE66CB60043A637 /* SurfaceData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A758CA451BE66CB60043A637 /* SurfaceData.swift */; };
 		A758CA4B1BE66CB60043A637 /* LineData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A758CA461BE66CB60043A637 /* LineData.swift */; };
-		A758CA4C1BE66CB60043A637 /* LineImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A758CA471BE66CB60043A637 /* LineImage.swift */; };
-		A758CA4D1BE66CB60043A637 /* SurfaceImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A758CA481BE66CB60043A637 /* SurfaceImage.swift */; };
 		A760A8131BF1CEC600F5812B /* PhotoBrowser+Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = A760A8001BF1CEC600F5812B /* PhotoBrowser+Common.swift */; };
 		A760A8141BF1CEC600F5812B /* pic.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A760A8011BF1CEC600F5812B /* pic.bundle */; };
 		A760A8151BF1CEC600F5812B /* PhotoBrowser+CollectionViewExtend.swift in Sources */ = {isa = PBXBuildFile; fileRef = A760A8031BF1CEC600F5812B /* PhotoBrowser+CollectionViewExtend.swift */; };
@@ -162,8 +160,6 @@
 		A743D9E81BF09AB600624737 /* SecondViewImageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondViewImageController.swift; sourceTree = "<group>"; };
 		A758CA451BE66CB60043A637 /* SurfaceData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SurfaceData.swift; path = ../GeoCompass/datamodel/SurfaceData.swift; sourceTree = "<group>"; };
 		A758CA461BE66CB60043A637 /* LineData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LineData.swift; path = ../GeoCompass/datamodel/LineData.swift; sourceTree = "<group>"; };
-		A758CA471BE66CB60043A637 /* LineImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LineImage.swift; path = ../GeoCompass/datamodel/LineImage.swift; sourceTree = "<group>"; };
-		A758CA481BE66CB60043A637 /* SurfaceImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SurfaceImage.swift; path = ../GeoCompass/datamodel/SurfaceImage.swift; sourceTree = "<group>"; };
 		A760A8001BF1CEC600F5812B /* PhotoBrowser+Common.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PhotoBrowser+Common.swift"; sourceTree = "<group>"; };
 		A760A8011BF1CEC600F5812B /* pic.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = pic.bundle; sourceTree = "<group>"; };
 		A760A8031BF1CEC600F5812B /* PhotoBrowser+CollectionViewExtend.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PhotoBrowser+CollectionViewExtend.swift"; sourceTree = "<group>"; };
@@ -375,8 +371,6 @@
 			children = (
 				A758CA451BE66CB60043A637 /* SurfaceData.swift */,
 				A758CA461BE66CB60043A637 /* LineData.swift */,
-				A758CA471BE66CB60043A637 /* LineImage.swift */,
-				A758CA481BE66CB60043A637 /* SurfaceImage.swift */,
 			);
 			name = datamodel;
 			path = GeoCompass.xcodeproj;
@@ -701,12 +695,10 @@
 				A760A88C1BF1CED100F5812B /* UIView+Haneke.swift in Sources */,
 				A760A8731BF1CED100F5812B /* EdgeInsets.swift in Sources */,
 				A760A8181BF1CEC600F5812B /* PhotoBrowser+Main.swift in Sources */,
-				A758CA4C1BE66CB60043A637 /* LineImage.swift in Sources */,
 				A760A8721BF1CED100F5812B /* Debugging.swift in Sources */,
 				A760A88B1BF1CED100F5812B /* UIImageView+Haneke.swift in Sources */,
 				A760A8AB1BF1CED100F5812B /* NVActivityIndicatorShape.swift in Sources */,
 				A760A8801BF1CED100F5812B /* Fetcher.swift in Sources */,
-				A758CA4D1BE66CB60043A637 /* SurfaceImage.swift in Sources */,
 				A760A8A71BF1CED100F5812B /* NVActivityIndicatorAnimationSemiCircleSpin.swift in Sources */,
 				A760A8931BF1CED100F5812B /* NVActivityIndicatorAnimationBallPulse.swift in Sources */,
 				A760A8811BF1CED100F5812B /* Format.swift in Sources */,

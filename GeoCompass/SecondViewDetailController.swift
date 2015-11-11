@@ -111,11 +111,13 @@ class SecondViewDetailController: UITableViewController{
         }else
             //非编辑状态时取消撤销管理器并保存数据
         {
+            self.text.editable = false
             self.editButtonItem().title = "编辑"
             self.cleanUpUndoManager()
             var error: NSError? = nil
             if nowData == "surfacedata" {
                 do {
+                    self.surfacedata.setValue((self.text.text! as NSString), forKey:"describeS")
                     try self.surfacedata.managedObjectContext!.save()
                 } catch let error1 as NSError {
                     error = error1
@@ -125,6 +127,7 @@ class SecondViewDetailController: UITableViewController{
             }
             else if nowData == "linedata" {
                 do {
+                    self.linedata.setValue((self.text.text! as NSString), forKey:"describeS")
                     try self.linedata.managedObjectContext!.save()
                 } catch let error1 as NSError {
                     error = error1
@@ -154,6 +157,7 @@ class SecondViewDetailController: UITableViewController{
     func updateInterface() {
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm";
         if nowData == "surfacedata" {
+            self.text.text = "\(self.surfacedata.describeS as String)"
             self.title1.text = "时间"
             self.detail1.text = dateFormatter.stringFromDate(surfacedata.timeS)
             self.title2.text = "地址"
@@ -183,6 +187,7 @@ class SecondViewDetailController: UITableViewController{
             NSLog("===updateInterface===\(self.surfacedata.timeS)")
         }
         else if nowData == "linedata" {
+            self.text.text = "\(self.linedata.describeS as String)"
             self.title1.text = "时间"
             self.detail1.text = dateFormatter.stringFromDate(linedata.timeS)
             self.title2.text = "地址"
