@@ -30,19 +30,25 @@ class SecondViewController:UITableViewController,UITabBarControllerDelegate,NSFe
     var needExport:[NSIndexPath]=[]
     var needExportBool:Bool = false
     var exportButton:UIBarButtonItem{
-        return UIBarButtonItem(title:"输出", style:.Done, target: self, action: "exportAction:")
+        return UIBarButtonItem(title:"导出", style:.Plain, target: self, action: "exportAction:")
     }
     func exportAction(exportBarButton:UIBarButtonItem){
         NSLog("exportAction")
+        self.tableView.beginUpdates()
         needExportBool = true
+        if tableView.indexPathsForVisibleRows?.count != 0 {
+            for path in (tableView.indexPathsForVisibleRows)! {tableView.cellForRowAtIndexPath(path)?.accessoryType = UITableViewCellAccessoryType.None}}
         self.navigationItem.rightBarButtonItem = self.isExportButton
+        /*let alert1 = UIAlertController(title: "提示", message: "请选择要输出数据(可多选)", preferredStyle: UIAlertControllerStyle.Alert)
+        alert1.addAction(UIAlertAction(title: "确定", style: UIAlertActionStyle.Cancel, handler: nil))
+        self.presentViewController(alert1, animated: true, completion: nil)*/
     }
     var isExportButton:UIBarButtonItem{
-        return UIBarButtonItem(title:"完成", style:.Done, target: self, action: "isEportAction:")
+        return UIBarButtonItem(title:"完成", style:.Plain, target: self, action: "isExportAction:")
     }
-    func isExportAction(exportBarButton:UIBarButtonItem){
+    func isExportAction(isExportBarButton:UIBarButtonItem){
         NSLog("isExportAction")
-        dir = NSHomeDirectory()+"/Documents/"+dateFormatter.stringFromDate(Date)+" 表格数据输出"
+        dir = NSHomeDirectory()+"/Documents/"+dateFormatter.stringFromDate(Date)+" 导出数据表格.csv"
         var id:[String] = [],time:[String] = [],adr:[String] = []
         var strike:[String] = [] , dipdir:[String] = [] , dip:[String] = [];
         var pitch:[String] = [] , plusyn:[String] = [] , pluang:[String] = []; //pitch、plunging syncline and plunge angle
@@ -83,7 +89,7 @@ class SecondViewController:UITableViewController,UITabBarControllerDelegate,NSFe
                 info += (hightError[i]+",")
                 info += (magError[i]+"\n")
             }
-            do{try info.writeToFile(dir, atomically: true, encoding: NSUTF8StringEncoding)}catch let error as NSError{
+            do{try info.writeToFile(dir, atomically: true, encoding: NSUnicodeStringEncoding)}catch let error as NSError{
                 if error != 0 {NSLog("Unsolved error \(error)")}
             }
         }
@@ -124,13 +130,23 @@ class SecondViewController:UITableViewController,UITabBarControllerDelegate,NSFe
                 info += (hightError[i]+",")
                 info += (magError[i]+"\n")
             }
-            do{try info.writeToFile(dir, atomically: true, encoding: NSUTF8StringEncoding)}catch let error as NSError{
+            do{try info.writeToFile(dir, atomically: true, encoding: NSUnicodeStringEncoding)}catch let error as NSError{
                 if error != 0 {NSLog("Unsolved error \(error)")}
             }
         }
+            self.navigationItem.rightBarButtonItem = self.exportButton
+            if tableView.indexPathsForVisibleRows?.count != 0 {
+                for path in (tableView.indexPathsForVisibleRows)! {tableView.cellForRowAtIndexPath(path)?.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator}}
+            let alert1 = UIAlertController(title: "提示", message: "请用iTunes连接手机后点击左上角的手机图标，在左侧导航栏“设置”一栏中选中“应用”，之后将右侧浏览框拉到最底部，在文件共享中选择应用“地质罗盘”即可导出数据", preferredStyle: UIAlertControllerStyle.Alert)
+            alert1.addAction(UIAlertAction(title: "确定", style: UIAlertActionStyle.Cancel, handler: nil))
+            self.presentViewController(alert1, animated: true, completion: nil)
       }
-        else {self.navigationItem.rightBarButtonItem = self.exportButton;needExportBool = false;return}
+        else {self.navigationItem.rightBarButtonItem = self.exportButton;needExportBool = false
+            if tableView.indexPathsForVisibleRows?.count != 0 {
+                for path in (tableView.indexPathsForVisibleRows)! {tableView.cellForRowAtIndexPath(path)?.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator}}
+            return}
         needExportBool = false
+        self.tableView.endUpdates()
     }
     func transloc(a:Double)->(b:Int,c:Int,d:Double){
         var b = 0,c = 0,d = 0.0,last1 = 0.0,last2 = 0.0;
@@ -147,12 +163,12 @@ class SecondViewController:UITableViewController,UITabBarControllerDelegate,NSFe
         if needExportBool == false {self.performSegueWithIdentifier("Detail", sender: self)}
         else {
         let cellView:UITableViewCell = tableView.cellForRowAtIndexPath(indexPath)!
-        if cellView.accessoryType == UITableViewCellAccessoryType.DisclosureIndicator{
+        if cellView.accessoryType == UITableViewCellAccessoryType.None{
             cellView.accessoryType=UITableViewCellAccessoryType.Checkmark
             needExport.append(indexPath)
         }
         else {
-            cellView.accessoryType=UITableViewCellAccessoryType.DisclosureIndicator;
+            cellView.accessoryType=UITableViewCellAccessoryType.None
             needExport.removeAtIndex(indexPath.row)
             }
         }
