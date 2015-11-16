@@ -130,11 +130,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GeoCompass/SecondViewImageController.swift"
-            timestampString = "469347794.890942"
+            timestampString = "469348799.546583"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "116"
-            endingLineNumber = "116"
+            startingLineNumber = "122"
+            endingLineNumber = "122"
             landmarkName = "load()"
             landmarkType = "5">
          </BreakpointContent>
@@ -242,11 +242,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GeoCompass/SecondViewImageController.swift"
-            timestampString = "469347794.890942"
+            timestampString = "469348799.546583"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "113"
-            endingLineNumber = "113"
+            startingLineNumber = "119"
+            endingLineNumber = "119"
             landmarkName = "load()"
             landmarkType = "5">
             <Locations>
@@ -290,11 +290,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GeoCompass/SecondViewImageController.swift"
-            timestampString = "469347804.75027"
+            timestampString = "469348799.546583"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "99"
-            endingLineNumber = "99"
+            startingLineNumber = "105"
+            endingLineNumber = "105"
             landmarkName = "load()"
             landmarkType = "5">
          </BreakpointContent>
@@ -306,12 +306,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GeoCompass/SecondViewImageController.swift"
-            timestampString = "469347876.328531"
+            timestampString = "469348799.546583"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "100"
-            endingLineNumber = "100"
+            startingLineNumber = "106"
+            endingLineNumber = "106"
             landmarkName = "load()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GeoCompass/SecondViewController.swift"
+            timestampString = "469380139.535896"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "35"
+            endingLineNumber = "35"
+            landmarkName = "exportAction(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

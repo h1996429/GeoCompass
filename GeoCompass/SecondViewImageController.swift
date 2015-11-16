@@ -23,6 +23,12 @@ class SecondViewImageController: UIViewController,UIImagePickerControllerDelegat
     
     func deletPhotoAction(deletBarButton:UIBarButtonItem){
         NSLog("deletPhotoAction")
+        for (var i=0;i < displayView.needGou.count;i++){
+            if displayView.needGou[i] == true {
+                do{try fileManagerImage.removeItemAtPath(dir+photoDate+" "+"\(i)"+".png")}catch let error as NSError{if error != 0 {NSLog("Unsolved error \(error)")}}
+            }
+        }
+        load()
     }
     
     override func viewDidLoad() {

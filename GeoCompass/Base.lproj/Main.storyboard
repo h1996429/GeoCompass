@@ -475,9 +475,6 @@
                                     <animations/>
                                 </tableViewCellContentView>
                                 <animations/>
-                                <connections>
-                                    <segue destination="QtM-tT-Cbd" kind="show" identifier="Detail" id="QCY-3Y-BEv"/>
-                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -503,6 +500,7 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="segmentedControl" destination="X8G-JQ-n7H" id="sB0-bY-ZC4"/>
+                        <segue destination="QtM-tT-Cbd" kind="show" identifier="Detail" id="ffm-2I-KCU"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HP5-JG-lHS" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -622,7 +620,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="147.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView tag="1" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultPhoto2" translatesAutoresizingMaskIntoConstraints="NO" id="Jc0-n0-17H" userLabel="image">
+                                                <imageView tag="1" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Jc0-n0-17H" userLabel="image">
                                                     <rect key="frame" x="8" y="0.0" width="147" height="147"/>
                                                     <animations/>
                                                     <accessibility key="accessibilityConfiguration" label=""/>
@@ -1156,7 +1154,6 @@
     </scenes>
     <resources>
         <image name="arrow" width="48" height="128"/>
-        <image name="defaultPhoto2" width="436" height="566"/>
         <image name="first" width="30" height="30"/>
         <image name="second" width="30" height="30"/>
     </resources>

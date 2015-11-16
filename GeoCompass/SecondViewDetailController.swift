@@ -68,6 +68,8 @@ class SecondViewDetailController: UITableViewController{
         
         //监听到NSCurrentLocaleDidChangeNotification时，即系统语言变化时触发的方法，与removeObserver是一对
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "localeChanged:", name: NSCurrentLocaleDidChangeNotification, object: nil)
+        
+        self.updateInterface()
     }
     
     func tapAction(tap: UITapGestureRecognizer){
@@ -174,8 +176,11 @@ class SecondViewDetailController: UITableViewController{
         dateFormatter.dateFormat = "yyyy-MM-dd HH时mm分";
         if nowData == "surfacedata" {
             dir = NSHomeDirectory()+"/Documents/"+"\(self.surfacedata.adrS)"+"/纬度"+"\(self.surfacedata.latS as Double)"+"经度"+"\(self.surfacedata.lonS as Double)"+"/Photos/"
+            do{try fileManager.createDirectoryAtPath(dir, withIntermediateDirectories: true, attributes: nil)}catch let error as NSError{if error != 0 {NSLog("Unsolved error \(error)")} }
             photoDate = dateFormatter.stringFromDate(surfacedata.timeS)
-                if (fileManager.subpathsAtPath(dir)?.count == nil) {self.photoNumber.text = "照片数:0"}
+                if (fileManager.subpathsAtPath(dir)?.count == 0) {
+                    self.photoNumber.text = "照片数:0"
+                    self.image.image = UIImage(named: "defaultPhoto2.png")}
                 else {self.photoNumber.text = "照片数:"+"\(fileManager.subpathsAtPath(dir)!.count)"
                     self.image.image = UIImage(contentsOfFile: dir+"\(photoDate) 0")}
             self.text.text = "\(self.surfacedata.describeS as String)"
@@ -209,8 +214,11 @@ class SecondViewDetailController: UITableViewController{
         }
         else if nowData == "linedata" {
             dir = NSHomeDirectory()+"/Documents/"+"\(self.linedata.adrS)"+"/纬度"+"\(self.linedata.latS as Double)"+"经度"+"\(self.linedata.lonS as Double)"+"/Photos/"
+            do{try fileManager.createDirectoryAtPath(dir, withIntermediateDirectories: true, attributes: nil)}catch let error as NSError{if error != 0 {NSLog("Unsolved error \(error)")} }
             photoDate = dateFormatter.stringFromDate(linedata.timeS)
-            if (fileManager.subpathsAtPath(dir)?.count == nil) {self.photoNumber.text = "照片数:0"}
+            if (fileManager.subpathsAtPath(dir)?.count == 0) {
+                self.photoNumber.text = "照片数:0"
+                self.image.image = UIImage(named: "defaultPhoto2.png")}
             else {self.photoNumber.text = "照片数:"+"\(fileManager.subpathsAtPath(dir)!.count)"
                 self.image.image = UIImage(contentsOfFile: dir+"\(photoDate) 0")}
             self.text.text = "\(self.linedata.describeS as String)"
@@ -479,7 +487,7 @@ class SecondViewDetailController: UITableViewController{
     
     // MARK: - Locale changes
     
-    //监听到语言变化时，重载数据
+    //监听到变化时，重载数据
     func localeChanged(notification : NSNotification) {
         NSLog("==localeChanged==")
         //重载数据
