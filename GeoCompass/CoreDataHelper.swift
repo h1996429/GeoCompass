@@ -53,7 +53,7 @@ class CoreDataHelper: NSObject{
                     try context.save()
                 } catch let error as NSError {
                     if error != 0 {
-                        NSLog("Unresolved error (error)")
+                        NSLog("Unresolved error \(error)")
                         abort()}
                 }
             }

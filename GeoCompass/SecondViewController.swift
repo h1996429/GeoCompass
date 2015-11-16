@@ -22,6 +22,13 @@ class SecondViewController:UITableViewController,UITabBarControllerDelegate,NSFe
     var dateFormatter = NSDateFormatter()
     
     var segmentedControlChange = false;
+    
+    var exportButton:UIBarButtonItem{
+        return UIBarButtonItem(title:"输出", style:.Done, target: self, action: "exportAction:")
+    }
+    func exportAction(exportBarButton:UIBarButtonItem){
+        NSLog("exportAction")
+    }
 
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     
@@ -44,7 +51,8 @@ class SecondViewController:UITableViewController,UITabBarControllerDelegate,NSFe
         //为导航栏左边按钮设置编辑按钮
         self.navigationItem.leftBarButtonItem = self.editButtonItem()
         self.editButtonItem().title = "编辑"
-        
+        self.navigationItem.rightBarButtonItem = self.exportButton
+
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "历史数据", style: UIBarButtonItemStyle.Plain, target: nil, action: nil)
 
         //执行获取数据，并处理异常
@@ -66,7 +74,7 @@ class SecondViewController:UITableViewController,UITabBarControllerDelegate,NSFe
     
     //设置单元格的信息
     func setCellInfo(cell: UITableViewCell, indexPath: NSIndexPath) {
-        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
+        dateFormatter.dateFormat = "yyyy-MM-dd HH时mm分"
         if segmentedControl.selectedSegmentIndex == 0 {
             let surfacedata = self.fetchedResultsController?.objectAtIndexPath(indexPath) as! SurfaceData
             cell.textLabel!.text = dateFormatter.stringFromDate(surfacedata.timeS) + " 数据"

@@ -6,37 +6,131 @@
 //  Copyright (c) 2015年 何嘉. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
-class SecondViewImageController: UIViewController {
+class SecondViewImageController: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UIActionSheetDelegate {
+    var actionSheet: UIAlertController!
+    var actionPhotoSheet: UIAlertController!
+    var fileManagerImage = NSFileManager.defaultManager()
+    var add = false
+    var delet = false
+    var dir:String = ""
+    var sourceType = UIImagePickerControllerSourceType.PhotoLibrary
+    var photoDate = ""
+    var deletButton:UIBarButtonItem{
+        return UIBarButtonItem(title:"删除", style:.Done, target: self, action: "deletPhotoAction:")
+    }
+    
+    func deletPhotoAction(deletBarButton:UIBarButtonItem){
+        NSLog("deletPhotoAction")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        //初始化
+        
         self.view.backgroundColor = UIColor.whiteColor()
         
         self.navigationItem.title = langType == LangType.Chinese ? "照片" : "Photo"
         
-        if photoType == PhotoType.Local { //本地
-            displayView.imgsPrepare(localImages, isLocal: true)
+        self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        self.editButtonItem().title = "编辑"
+        
+        
+        actionSheet = UIAlertController(title: "编辑", message: "选择添加或是删除照片", preferredStyle: UIAlertControllerStyle.ActionSheet)
+        // 定义 添加和删除 的 UIAlertAction
+        let cancelAction = UIAlertAction(title: "取消", style: UIAlertActionStyle.Cancel, handler: nil)
+        let addAction = UIAlertAction(title: "添加", style: UIAlertActionStyle.Default){
+            (action: UIAlertAction!) -> Void in
+            NSLog("you choose add")
+            self.setEditing(false, animated: true)
+            self.presentViewController(self.actionPhotoSheet, animated: true, completion: nil)
+            self.add = true
         }
+        let deletAction = UIAlertAction(title: "删除", style: UIAlertActionStyle.Default){
+            (action: UIAlertAction!) -> Void in
+            NSLog("you choose delet")
+            self.displayView.needDelete = true
+            self.navigationItem.leftBarButtonItem = self.deletButton
+            self.delet = false
+        }
+        actionSheet.addAction(cancelAction)
+        actionSheet.addAction(addAction)
+        actionSheet.addAction(deletAction)
         
-        view.addSubview(displayView)
+        actionPhotoSheet = UIAlertController(title: "添加照片", message: "", preferredStyle: UIAlertControllerStyle.ActionSheet)
+        // 定义 拍照和相册 的 UIAlertAction
+        let cancelAddAction = UIAlertAction(title: "取消", style: UIAlertActionStyle.Cancel, handler: nil)
+        let cameraAction = UIAlertAction(title: "拍照", style: UIAlertActionStyle.Default){
+            (action: UIAlertAction!) -> Void in
+            NSLog("you choose camera")
+            if(UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera)){
+                self.sourceType = UIImagePickerControllerSourceType.Camera
+                let imagePickerController:UIImagePickerController = UIImagePickerController()
+                imagePickerController.delegate = self
+                imagePickerController.allowsEditing = false //true为拍照、选择完进入图片编辑模式
+                imagePickerController.sourceType = self.sourceType
+                self.presentViewController(imagePickerController, animated: true, completion: {})
+            }
+            else{let alert1 = UIAlertController(title: "错误", message: "相机不可用", preferredStyle: UIAlertControllerStyle.Alert)
+                alert1.addAction(cancelAction)
+                self.presentViewController(alert1, animated: true, completion: nil)}
+        }
+        let fromPhotoAction = UIAlertAction(title: "相册", style: UIAlertActionStyle.Default){
+            (action: UIAlertAction!) -> Void in
+            self.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
+            let imagePickerController:UIImagePickerController = UIImagePickerController()
+            imagePickerController.delegate = self
+            imagePickerController.allowsEditing = false //true为拍照、选择完进入图片编辑模式
+            imagePickerController.sourceType = self.sourceType
+            self.presentViewController(imagePickerController, animated: true, completion: {})
+            NSLog("you choose photo collection")
+        }
+        actionPhotoSheet.addAction(cancelAddAction)
+        actionPhotoSheet.addAction(cameraAction)
+        actionPhotoSheet.addAction(fromPhotoAction)
         
-        let wh = min(UIScreen.mainScreen().bounds.size.width, UIScreen.mainScreen().bounds.size.height)
-        
-        displayView.make_center(offsest: CGPointZero, width: wh, height: wh)
-        
-        
-        displayView.tapedImageV = {[unowned self] index in
+        load()
+
+    }
+    
+    func load(){
+        for view in displayView.subviews {view.removeFromSuperview()}
+        self.localImages = []
+        if self.fileManagerImage.subpathsAtPath(self.dir)?.count != nil {
+            for f in fileManagerImage.subpathsAtPath(dir)! {self.localImages.append(dir+"\(f)")}
+            if photoType == PhotoType.Local { //本地
+                displayView.imgsPrepare(localImages, isLocal: true)
+            }
+            view.addSubview(displayView)
             
-            if self.photoType == PhotoType.Local { //本地
-                self.showLocal(index)
+            let wh = min(UIScreen.mainScreen().bounds.size.width, UIScreen.mainScreen().bounds.size.height)
+            
+            displayView.make_center(offsest: CGPointZero, width: wh, height: wh)
+            
+            
+            displayView.tapedImageV = {[unowned self] index in
+                
+                if self.photoType == PhotoType.Local { //本地
+                    self.showLocal(index)
+                }
             }
         }
     }
     
+    func imagePickerControllerDidCancel(picker:UIImagePickerController) {
+        self.dismissViewControllerAnimated(true, completion: nil)    }
+    
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+        let count = fileManagerImage.subpathsAtPath(dir)?.count ?? 0
+        let data:NSData = UIImagePNGRepresentation((info[UIImagePickerControllerOriginalImage] as? UIImage)!)!
+        do{try fileManagerImage.createDirectoryAtPath(dir, withIntermediateDirectories: true, attributes: nil)}catch let error as NSError { if error != 0 { NSLog("Unresolved error (error)");abort()}}
+        data.writeToFile(dir+photoDate+" "+"\(count)"+".png", atomically: true)
+        self.dismissViewControllerAnimated(true, completion: nil)
+        load()
+        }
+
     enum LangType: Int{
         
         case English
@@ -95,11 +189,14 @@ class SecondViewImageController: UIViewController {
     
     var showType: PhotoBrowser.ShowType = PhotoBrowser.ShowType.ZoomAndDismissWithCancelBtnClick
     
-    lazy var localImages: [String] = {["1.jpg","2.jpg","3.jpg","4.jpg","5.jpg","6.jpg","7.jpg","8.jpg","9.jpg"]}()
+    
+    var localImages: [String] = []
+
     
     let displayView = DisplayView()
     
     func showLocal(index: Int){
+
         
         
         let pbVC = PhotoBrowser()
@@ -119,9 +216,9 @@ class SecondViewImageController: UIViewController {
         let desc = langType == LangType.Chinese ? descLocalCH : descLocalEN
         
         //模型数据数组
-        for (var i=0; i<9; i++){
+        for (var i=0; i<self.fileManagerImage.subpathsAtPath(self.dir)?.count; i++){
             
-            let model = PhotoBrowser.PhotoModel(localImg:UIImage(named: "\(i+1).jpg")! , titleStr: title, descStr:desc[0], sourceView: displayView.subviews[i] )
+            let model = PhotoBrowser.PhotoModel(localImg:UIImage(contentsOfFile:"\(localImages[i])")! , titleStr: title, descStr:desc[0], sourceView: displayView.subviews[i] )
             
             models.append(model)
         }
@@ -129,7 +226,33 @@ class SecondViewImageController: UIViewController {
         /**  设置数据  */
         pbVC.photoModels = models
         
-        pbVC.show(inVC: self,index: index)
+            pbVC.show(inVC: self,index: index)
+    }
+    
+    //设置为编辑模式时调用
+    override func setEditing(var editing: Bool, animated: Bool) {
+        super.setEditing(editing, animated: animated)
+        NSLog("==setEditing==\(editing)")
+        
+        self.navigationItem.setHidesBackButton(editing, animated: animated)
+        
+        //编辑状态时设置撤销管理器
+        if(editing){
+            self.editButtonItem().title = "完成"
+            self.presentViewController(self.actionSheet, animated: true, completion: nil)
+            if self.delet == true {
+                NSLog("delet == true")
+            }
+            if add == true {editing = false}
+        }else
+            //非编辑状态时取消撤销管理器并保存数据
+        {   self.displayView.needDelete = false
+            self.navigationItem.leftBarButtonItem = nil
+            self.editButtonItem().title = "编辑"
+            self.add = false
+            self.delet = false
+            load()
+        }
     }
 
     

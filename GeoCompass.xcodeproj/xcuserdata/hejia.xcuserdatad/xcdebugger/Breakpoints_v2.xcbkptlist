@@ -45,5 +45,275 @@
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GeoCompass/DisplayView.swift"
+            timestampString = "469180683.61889"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "13"
+            endingLineNumber = "13"
+            landmarkName = "DisplayView"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GeoCompass.DisplayView.needDelete.getter : Swift.Bool"
+                  moduleName = "GeoCompass"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hejia/Documents/GeoCompass/GeoCompass/DisplayView.swift"
+                  timestampString = "469180765.346543"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "16">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GeoCompass.DisplayView.needDelete.materializeForSet : Swift.Bool"
+                  moduleName = "GeoCompass"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hejia/Documents/GeoCompass/GeoCompass/DisplayView.swift"
+                  timestampString = "469180765.347064"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "28">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GeoCompass.DisplayView.init (GeoCompass.DisplayView.Type)(frame : __C.CGRect) -&gt; GeoCompass.DisplayView"
+                  moduleName = "GeoCompass"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hejia/Documents/GeoCompass/GeoCompass/DisplayView.swift"
+                  timestampString = "469180765.347416"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "74">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GeoCompass.DisplayView.init (GeoCompass.DisplayView.Type)(coder : __ObjC.NSCoder) -&gt; Swift.Optional&lt;GeoCompass.DisplayView&gt;"
+                  moduleName = "GeoCompass"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hejia/Documents/GeoCompass/GeoCompass/DisplayView.swift"
+                  timestampString = "469180765.347685"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "35">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GeoCompass/SecondViewImageController.swift"
+            timestampString = "469347794.890942"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "116"
+            endingLineNumber = "116"
+            landmarkName = "load()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GeoCompass/DisplayView.swift"
+            timestampString = "469347587.410935"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "36"
+            endingLineNumber = "36"
+            landmarkName = "imgsPrepare(_:isLocal:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GeoCompass/DisplayView.swift"
+            timestampString = "469347587.410935"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "47"
+            endingLineNumber = "47"
+            landmarkName = "imgsPrepare(_:isLocal:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GeoCompass/DisplayView.swift"
+            timestampString = "469347587.410935"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "58"
+            endingLineNumber = "58"
+            landmarkName = "tapAction(_:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GeoCompass/DisplayView.swift"
+            timestampString = "469347587.410935"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "105"
+            endingLineNumber = "105"
+            landmarkName = "layoutSubviews()"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GeoCompass.DisplayView.layoutSubviews (GeoCompass.DisplayView)() -&gt; ()"
+                  moduleName = "GeoCompass"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hejia/Documents/GeoCompass/GeoCompass/DisplayView.swift"
+                  timestampString = "469346042.660044"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "103"
+                  endingLineNumber = "103"
+                  offsetFromSymbolStart = "2201">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GeoCompass.DisplayView.layoutSubviews (GeoCompass.DisplayView)() -&gt; ()"
+                  moduleName = "GeoCompass"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hejia/Documents/GeoCompass/GeoCompass/DisplayView.swift"
+                  timestampString = "469346042.660276"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "103"
+                  endingLineNumber = "103"
+                  offsetFromSymbolStart = "2290">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GeoCompass/SecondViewImageController.swift"
+            timestampString = "469347794.890942"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "113"
+            endingLineNumber = "113"
+            landmarkName = "load()"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GeoCompass.SecondViewImageController.load (GeoCompass.SecondViewImageController)() -&gt; ()"
+                  moduleName = "GeoCompass"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hejia/Documents/GeoCompass/GeoCompass/SecondViewImageController.swift"
+                  timestampString = "469346396.555472"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "112"
+                  endingLineNumber = "112"
+                  offsetFromSymbolStart = "3038">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GeoCompass.SecondViewImageController.(load (GeoCompass.SecondViewImageController) -&gt; () -&gt; ()).(closure #1)"
+                  moduleName = "GeoCompass"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hejia/Documents/GeoCompass/GeoCompass/SecondViewImageController.swift"
+                  timestampString = "469346396.555961"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "114"
+                  endingLineNumber = "114"
+                  offsetFromSymbolStart = "18">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GeoCompass/SecondViewImageController.swift"
+            timestampString = "469347804.75027"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "99"
+            endingLineNumber = "99"
+            landmarkName = "load()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GeoCompass/SecondViewImageController.swift"
+            timestampString = "469347876.328531"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "100"
+            endingLineNumber = "100"
+            landmarkName = "load()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

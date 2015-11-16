@@ -15,7 +15,7 @@ class ItemCell: UICollectionViewCell {
     var photoType: PhotoBrowser.PhotoType!
     
     var isHiddenBar: Bool = true{didSet{toggleDisplayBottomBar(isHiddenBar)}}
-    
+        
     weak var vc: UIViewController!
     
     /**  缓存  */
@@ -60,10 +60,9 @@ class ItemCell: UICollectionViewCell {
     }()
     
     lazy private var singleTapGesture: UITapGestureRecognizer = {
-        
-        let singleTapGesture = UITapGestureRecognizer(target: self, action: "singleTap:")
-        singleTapGesture.numberOfTapsRequired = 1
-        return singleTapGesture
+            let singleTapGesture = UITapGestureRecognizer(target: self, action: "singleTap:")
+            singleTapGesture.numberOfTapsRequired = 1
+            return singleTapGesture
     }()
     
     deinit{
@@ -125,6 +124,11 @@ extension ItemCell: UIScrollViewDelegate{
     }
     
     func singleTap(tapG: UITapGestureRecognizer){
+        
+        NSNotificationCenter.defaultCenter().postNotificationName(CFPBSingleTapNofi, object: nil)
+    }
+    
+    func singleTapDelete(tapG: UITapGestureRecognizer){
         
         NSNotificationCenter.defaultCenter().postNotificationName(CFPBSingleTapNofi, object: nil)
     }

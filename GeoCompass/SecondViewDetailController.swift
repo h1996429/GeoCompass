@@ -6,7 +6,7 @@
 //  Copyright (c) 2015年 何嘉. All rights reserved.
 //
 import UIKit
-
+import Foundation
 
 
 class SecondViewDetailController: UITableViewController{
@@ -16,6 +16,9 @@ class SecondViewDetailController: UITableViewController{
     var dateFormatter = NSDateFormatter()
     var fileManager = NSFileManager.defaultManager()
     var dir:String = ""
+    var photoDate = ""
+    let secondViewImageController = SecondViewImageController()
+
     
     @IBOutlet weak var title1: UILabel!
     @IBOutlet weak var detail1: UILabel!
@@ -56,6 +59,8 @@ class SecondViewDetailController: UITableViewController{
         self.navigationItem.rightBarButtonItem = self.editButtonItem()
         self.editButtonItem().title = "编辑"
 
+        image.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "tapAction:"))
+
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "详细数据", style: UIBarButtonItemStyle.Plain, target: nil, action: nil)
         
         //编辑的时候允许选择
@@ -63,6 +68,12 @@ class SecondViewDetailController: UITableViewController{
         
         //监听到NSCurrentLocaleDidChangeNotification时，即系统语言变化时触发的方法，与removeObserver是一对
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "localeChanged:", name: NSCurrentLocaleDidChangeNotification, object: nil)
+    }
+    
+    func tapAction(tap: UITapGestureRecognizer){
+        secondViewImageController.dir = self.dir
+        secondViewImageController.photoDate = self.photoDate
+        self.navigationController?.pushViewController(secondViewImageController , animated: true)
     }
     
     deinit{
@@ -147,7 +158,7 @@ class SecondViewDetailController: UITableViewController{
         // Dispose of any resources that can be recreated.
     }
     
-    //更新数据
+    //转60进制
     func transloc(a:Double)->(b:Int,c:Int,d:Double){
         var b = 0,c = 0,d = 0.0,last1 = 0.0,last2 = 0.0;
         last1 = a-Double(Int(a));
@@ -158,18 +169,18 @@ class SecondViewDetailController: UITableViewController{
         return (b,c,d);
     }
     
-    
+    //更新数据
     func updateInterface() {
-        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm";
+        dateFormatter.dateFormat = "yyyy-MM-dd HH时mm分";
         if nowData == "surfacedata" {
-            dir = NSHomeDirectory()+"/Documents/GeoCompass/Photos/"+"\(self.surfacedata.id)"
-                do{guard fileManager.fileExistsAtPath(dir) == true else {
-                self.photoNumber.text = "照片数:0"
-                return}
-            self.photoNumber.text = "照片数:"+"\(fileManager.subpathsAtPath(dir)?.count)"}
+            dir = NSHomeDirectory()+"/Documents/"+"\(self.surfacedata.adrS)"+"/纬度"+"\(self.surfacedata.latS as Double)"+"经度"+"\(self.surfacedata.lonS as Double)"+"/Photos/"
+            photoDate = dateFormatter.stringFromDate(surfacedata.timeS)
+                if (fileManager.subpathsAtPath(dir)?.count == nil) {self.photoNumber.text = "照片数:0"}
+                else {self.photoNumber.text = "照片数:"+"\(fileManager.subpathsAtPath(dir)!.count)"
+                    self.image.image = UIImage(contentsOfFile: dir+"\(photoDate) 0")}
             self.text.text = "\(self.surfacedata.describeS as String)"
             self.title1.text = "时间"
-            self.detail1.text = dateFormatter.stringFromDate(surfacedata.timeS)
+            self.detail1.text = photoDate
             self.title2.text = "地址"
             self.detail2.text = self.surfacedata.adrS;
             self.title3.text = "走向"
@@ -197,14 +208,14 @@ class SecondViewDetailController: UITableViewController{
             NSLog("===updateInterface===\(self.surfacedata.timeS)")
         }
         else if nowData == "linedata" {
-            dir = NSHomeDirectory()+"/Documents/GeoCompass/Photos/"+"\(self.surfacedata.id)"
-            do{guard fileManager.fileExistsAtPath(dir) == true else {
-                self.photoNumber.text = "照片数:0"
-                return}
-            self.photoNumber.text = "照片数:"+"\(fileManager.subpathsAtPath(dir)?.count)"}
+            dir = NSHomeDirectory()+"/Documents/"+"\(self.linedata.adrS)"+"/纬度"+"\(self.linedata.latS as Double)"+"经度"+"\(self.linedata.lonS as Double)"+"/Photos/"
+            photoDate = dateFormatter.stringFromDate(linedata.timeS)
+            if (fileManager.subpathsAtPath(dir)?.count == nil) {self.photoNumber.text = "照片数:0"}
+            else {self.photoNumber.text = "照片数:"+"\(fileManager.subpathsAtPath(dir)!.count)"
+                self.image.image = UIImage(contentsOfFile: dir+"\(photoDate) 0")}
             self.text.text = "\(self.linedata.describeS as String)"
             self.title1.text = "时间"
-            self.detail1.text = dateFormatter.stringFromDate(linedata.timeS)
+            self.detail1.text = photoDate
             self.title2.text = "地址"
             self.detail2.text = self.linedata.adrS;
             self.title3.text = "走向"
@@ -281,7 +292,6 @@ class SecondViewDetailController: UITableViewController{
     
     //在选择行后执行，这里是编辑状态选中一行时创建一个编辑页面
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let secondViewImageController = SecondViewImageController()
         guard  self.tableView.indexPathForSelectedRow!.row == 0 else {
         if(self.editing && nowData == "surfacedata"){
             self.performSegueWithIdentifier("ItemToEditSurface", sender: self)
@@ -291,6 +301,8 @@ class SecondViewDetailController: UITableViewController{
         }
             return
         }
+        secondViewImageController.dir = self.dir
+        secondViewImageController.photoDate = self.photoDate
         self.navigationController?.pushViewController(secondViewImageController , animated: true)
     }
     

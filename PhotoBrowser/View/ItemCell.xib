@@ -9,24 +9,24 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ItemCell" id="gTV-IL-0wX" customClass="ItemCell" customModule="GeoCompass" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="311" height="544"/>
+            <rect key="frame" x="0.0" y="0.0" width="306" height="544"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="311" height="544"/>
+                <rect key="frame" x="0.0" y="0.0" width="306" height="544"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZdW-tE-Iln" userLabel="AnchorView">
-                        <rect key="frame" x="0.0" y="0.0" width="311" height="544"/>
+                        <rect key="frame" x="0.0" y="0.0" width="316" height="544"/>
                         <animations/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </view>
                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" maximumZoomScale="3" translatesAutoresizingMaskIntoConstraints="NO" id="2cW-mx-tjF">
-                        <rect key="frame" x="0.0" y="0.0" width="311" height="544"/>
+                        <rect key="frame" x="0.0" y="0.0" width="316" height="544"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vXA-hl-als">
-                                <rect key="frame" x="0.0" y="0.0" width="311" height="544"/>
+                                <rect key="frame" x="0.0" y="0.0" width="306" height="544"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Bpy-dz-JVG" customClass="ShowImageView" customModule="GeoCompass" customModuleProvider="target">
-                                        <rect key="frame" x="108" y="212" width="120" height="120"/>
+                                    <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" highlightedImage="勾" translatesAutoresizingMaskIntoConstraints="NO" id="Bpy-dz-JVG" customClass="ShowImageView" customModule="GeoCompass" customModuleProvider="target">
+                                        <rect key="frame" x="96" y="212" width="120" height="120"/>
                                         <animations/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
@@ -37,9 +37,10 @@
                                 </subviews>
                                 <animations/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="centerY" secondItem="Bpy-dz-JVG" secondAttribute="centerY" id="RUT-M5-Yp7"/>
-                                    <constraint firstAttribute="centerX" secondItem="Bpy-dz-JVG" secondAttribute="centerX" constant="-12.5" id="W9K-2c-IYr"/>
+                                    <constraint firstAttribute="centerX" secondItem="Bpy-dz-JVG" secondAttribute="centerX" constant="-3" id="W9K-2c-IYr" userLabel="centerX = ImageV.centerX"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -49,7 +50,7 @@
                             <constraint firstAttribute="width" constant="331" id="9Qb-Fq-xXj"/>
                             <constraint firstItem="vXA-hl-als" firstAttribute="top" secondItem="2cW-mx-tjF" secondAttribute="top" id="DBw-dH-hWW"/>
                             <constraint firstAttribute="height" constant="544" id="VHN-eG-WqZ"/>
-                            <constraint firstAttribute="trailing" secondItem="vXA-hl-als" secondAttribute="trailing" id="ZNp-rq-eAH"/>
+                            <constraint firstAttribute="trailing" secondItem="vXA-hl-als" secondAttribute="trailing" constant="10" id="ZNp-rq-eAH"/>
                             <constraint firstAttribute="bottom" secondItem="vXA-hl-als" secondAttribute="bottom" id="h8W-qf-LdW"/>
                             <constraint firstItem="vXA-hl-als" firstAttribute="leading" secondItem="2cW-mx-tjF" secondAttribute="leading" id="l0V-U5-gO9"/>
                         </constraints>
@@ -61,7 +62,7 @@
                         </variation>
                     </scrollView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WLB-3h-dGe" userLabel="BottomContentView">
-                        <rect key="frame" x="0.0" y="493" width="311" height="51"/>
+                        <rect key="frame" x="0.0" y="493" width="316" height="51"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wQC-PL-rio">
                                 <rect key="frame" x="18" y="11" width="213" height="20"/>
@@ -89,39 +90,19 @@
                         <animations/>
                         <color key="backgroundColor" white="0.0" alpha="0.59999999999999998" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="D7L-xv-wLU" firstAttribute="leading" secondItem="wQC-PL-rio" secondAttribute="trailing" constant="10" id="5fT-XZ-43I"/>
                             <constraint firstItem="wQC-PL-rio" firstAttribute="leading" secondItem="WLB-3h-dGe" secondAttribute="leading" constant="18" id="BHw-S4-qrK"/>
-                            <constraint firstItem="D7L-xv-wLU" firstAttribute="leading" secondItem="wQC-PL-rio" secondAttribute="trailing" constant="10" id="BPl-xb-keG"/>
                             <constraint firstItem="D7L-xv-wLU" firstAttribute="top" secondItem="wQC-PL-rio" secondAttribute="top" id="C9d-dP-VrY"/>
-                            <constraint firstItem="D7L-xv-wLU" firstAttribute="leading" secondItem="wQC-PL-rio" secondAttribute="trailing" constant="10" id="Dxv-gD-4Jt"/>
                             <constraint firstAttribute="bottom" secondItem="pT9-Kd-MVz" secondAttribute="bottom" constant="20" id="GoL-rA-NYk"/>
-                            <constraint firstAttribute="trailing" secondItem="pT9-Kd-MVz" secondAttribute="trailing" constant="18" id="IAU-ww-PAg"/>
-                            <constraint firstAttribute="trailing" secondItem="wQC-PL-rio" secondAttribute="trailing" constant="80" id="Ozg-Gj-zdV"/>
-                            <constraint firstAttribute="trailing" secondItem="D7L-xv-wLU" secondAttribute="trailing" constant="18" id="QTv-sO-9Rz"/>
-                            <constraint firstItem="wQC-PL-rio" firstAttribute="top" secondItem="D7L-xv-wLU" secondAttribute="top" id="V3B-dP-vXH"/>
-                            <constraint firstAttribute="trailing" secondItem="wQC-PL-rio" secondAttribute="trailing" constant="18" id="baa-hU-e3S"/>
+                            <constraint firstAttribute="trailing" secondItem="wQC-PL-rio" secondAttribute="trailing" constant="85" id="Ozg-Gj-zdV"/>
+                            <constraint firstAttribute="trailing" secondItem="D7L-xv-wLU" secondAttribute="trailing" constant="23" id="QTv-sO-9Rz"/>
                             <constraint firstItem="D7L-xv-wLU" firstAttribute="bottom" secondItem="pT9-Kd-MVz" secondAttribute="bottom" id="bzr-i8-xzV"/>
-                            <constraint firstItem="pT9-Kd-MVz" firstAttribute="trailing" secondItem="wQC-PL-rio" secondAttribute="trailing" id="nYd-hx-OHr"/>
                             <constraint firstItem="wQC-PL-rio" firstAttribute="top" secondItem="WLB-3h-dGe" secondAttribute="top" constant="11" id="p3X-U4-G3t"/>
                             <constraint firstItem="D7L-xv-wLU" firstAttribute="bottom" secondItem="wQC-PL-rio" secondAttribute="bottom" id="qoa-Rn-vf0"/>
                             <constraint firstItem="D7L-xv-wLU" firstAttribute="trailing" secondItem="pT9-Kd-MVz" secondAttribute="trailing" id="rOv-Fz-Yj8"/>
                             <constraint firstItem="pT9-Kd-MVz" firstAttribute="leading" secondItem="wQC-PL-rio" secondAttribute="leading" id="tbM-fh-wIr"/>
                             <constraint firstItem="pT9-Kd-MVz" firstAttribute="top" secondItem="wQC-PL-rio" secondAttribute="bottom" constant="-11" id="v83-MS-h1Q"/>
-                            <constraint firstItem="pT9-Kd-MVz" firstAttribute="leading" secondItem="WLB-3h-dGe" secondAttribute="leading" constant="18" id="xuj-3C-s7X"/>
                             <constraint firstAttribute="height" constant="51" id="zuX-WK-rn7"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="V3B-dP-vXH"/>
-                                <exclude reference="baa-hU-e3S"/>
-                                <exclude reference="IAU-ww-PAg"/>
-                                <exclude reference="nYd-hx-OHr"/>
-                                <exclude reference="xuj-3C-s7X"/>
-                                <exclude reference="5fT-XZ-43I"/>
-                                <exclude reference="BPl-xb-keG"/>
-                                <exclude reference="Dxv-gD-4Jt"/>
-                            </mask>
-                        </variation>
                     </view>
                     <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EJM-9T-tZj" userLabel="ASView" customClass="NVActivityIndicatorView" customModule="GeoCompass" customModuleProvider="target">
                         <rect key="frame" x="116" y="232" width="80" height="80"/>
@@ -141,15 +122,15 @@
             <constraints>
                 <constraint firstItem="ZdW-tE-Iln" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="2j4-dG-Wlj"/>
                 <constraint firstItem="2cW-mx-tjF" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="Aqf-0g-AAV"/>
-                <constraint firstAttribute="trailing" secondItem="ZdW-tE-Iln" secondAttribute="trailing" id="B8d-5F-HIK"/>
-                <constraint firstAttribute="trailing" secondItem="2cW-mx-tjF" secondAttribute="trailing" id="BT6-1y-bit"/>
-                <constraint firstAttribute="centerX" secondItem="EJM-9T-tZj" secondAttribute="centerX" constant="-0.5" id="GDs-Ld-us5"/>
+                <constraint firstAttribute="trailing" secondItem="ZdW-tE-Iln" secondAttribute="trailing" constant="-10" id="B8d-5F-HIK"/>
+                <constraint firstAttribute="trailing" secondItem="2cW-mx-tjF" secondAttribute="trailing" constant="-10" id="BT6-1y-bit"/>
+                <constraint firstAttribute="centerX" secondItem="EJM-9T-tZj" secondAttribute="centerX" constant="-3" id="GDs-Ld-us5"/>
                 <constraint firstItem="2cW-mx-tjF" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="SwZ-yQ-BI1"/>
                 <constraint firstItem="WLB-3h-dGe" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="UUw-Hg-Rif"/>
                 <constraint firstAttribute="bottom" secondItem="WLB-3h-dGe" secondAttribute="bottom" id="Vu1-Es-iOw"/>
                 <constraint firstAttribute="bottom" secondItem="2cW-mx-tjF" secondAttribute="bottom" id="XTT-Vp-mOK"/>
-                <constraint firstAttribute="trailing" secondItem="WLB-3h-dGe" secondAttribute="trailing" id="Xlv-uo-FbF"/>
-                <constraint firstItem="ZdW-tE-Iln" firstAttribute="width" secondItem="vXA-hl-als" secondAttribute="width" id="acx-Uh-G1Q"/>
+                <constraint firstAttribute="trailing" secondItem="WLB-3h-dGe" secondAttribute="trailing" constant="-10" id="Xlv-uo-FbF"/>
+                <constraint firstItem="ZdW-tE-Iln" firstAttribute="width" secondItem="vXA-hl-als" secondAttribute="width" constant="10" id="acx-Uh-G1Q"/>
                 <constraint firstItem="ZdW-tE-Iln" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="faE-Hs-yyC"/>
                 <constraint firstItem="ZdW-tE-Iln" firstAttribute="height" secondItem="vXA-hl-als" secondAttribute="height" id="iQj-m1-MR1"/>
                 <constraint firstAttribute="bottom" secondItem="ZdW-tE-Iln" secondAttribute="bottom" id="iVE-lJ-0dO"/>
@@ -168,7 +149,10 @@
                 <outlet property="msgTitleLabel" destination="wQC-PL-rio" id="2fF-1L-gZZ"/>
                 <outlet property="scrollView" destination="2cW-mx-tjF" id="osy-es-Pfh"/>
             </connections>
-            <point key="canvasLocation" x="-1583.5" y="178"/>
+            <point key="canvasLocation" x="-1584" y="178"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="勾" width="36" height="36"/>
+    </resources>
 </document>

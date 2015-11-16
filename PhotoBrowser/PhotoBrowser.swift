@@ -23,7 +23,7 @@ class PhotoBrowser: UIViewController {
     
     /**  强制关闭一切信息显示: 仅仅针对ZoomAndDismissWithSingleTap模式有效  */
     var hideMsgForZoomAndDismissWithSingleTap: Bool = false
-    
+        
     lazy var pagecontrol = UIPageControl()
     
     var page: Int = 0 {didSet{pageControlPageChanged(page)}}

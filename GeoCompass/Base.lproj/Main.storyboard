@@ -499,7 +499,6 @@
                                 <action selector="indexChange:" destination="Uhb-D4-Q1A" eventType="valueChanged" id="e6H-LV-Dfi"/>
                             </connections>
                         </segmentedControl>
-                        <barButtonItem key="rightBarButtonItem" title="输出" id="dHh-8o-jyf" userLabel="输出"/>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
@@ -623,7 +622,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="147.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="Jc0-n0-17H" userLabel="image">
+                                                <imageView tag="1" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultPhoto2" translatesAutoresizingMaskIntoConstraints="NO" id="Jc0-n0-17H" userLabel="image">
                                                     <rect key="frame" x="8" y="0.0" width="147" height="147"/>
                                                     <animations/>
                                                     <accessibility key="accessibilityConfiguration" label=""/>
@@ -632,14 +631,6 @@
                                                         <constraint firstAttribute="height" constant="147" id="hLO-O9-4aq"/>
                                                     </constraints>
                                                 </imageView>
-                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="在这里写下对此数据的描述……                " selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jh6-cd-Atr" userLabel="text">
-                                                    <rect key="frame" x="164" y="10" width="428" height="128"/>
-                                                    <animations/>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <accessibility key="accessibilityConfiguration" label=""/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                                </textView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="照片数:0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eSy-B5-qzY" userLabel="photoNumber">
                                                     <rect key="frame" x="88" y="124" width="58" height="23"/>
                                                     <animations/>
@@ -647,6 +638,14 @@
                                                     <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="按下编辑按键后，点击这里写下对此数据的描述，点击左侧图片添加或编辑此构造的照片……" translatesAutoresizingMaskIntoConstraints="NO" id="Jh6-cd-Atr" userLabel="text">
+                                                    <rect key="frame" x="164" y="10" width="428" height="128"/>
+                                                    <animations/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <accessibility key="accessibilityConfiguration" label=""/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                </textView>
                                             </subviews>
                                             <animations/>
                                             <constraints>
@@ -1157,7 +1156,7 @@
     </scenes>
     <resources>
         <image name="arrow" width="48" height="128"/>
-        <image name="defaultPhoto" width="512" height="512"/>
+        <image name="defaultPhoto2" width="436" height="566"/>
         <image name="first" width="30" height="30"/>
         <image name="second" width="30" height="30"/>
     </resources>

@@ -27,7 +27,6 @@
 		A731A05F1BAC79A0008C5966 /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A731A05E1BAC79A0008C5966 /* CoreDataHelper.swift */; };
 		A731A0611BAC79BC008C5966 /* CoreDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = A731A0601BAC79BC008C5966 /* CoreDataStore.swift */; };
 		A743D9301BEE6FCC00624737 /* SecondViewEditLineController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A743D92F1BEE6FCC00624737 /* SecondViewEditLineController.swift */; };
-		A743D9361BEF056500624737 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A743D9351BEF056500624737 /* Images.xcassets */; };
 		A743D9381BEF05AD00624737 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = A743D9371BEF05AD00624737 /* icon.png */; };
 		A743D9E91BF09AB600624737 /* SecondViewImageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A743D9E81BF09AB600624737 /* SecondViewImageController.swift */; };
 		A758CA4A1BE66CB60043A637 /* SurfaceData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A758CA451BE66CB60043A637 /* SurfaceData.swift */; };
@@ -45,7 +44,6 @@
 		A760A81D1BF1CEC600F5812B /* PhotoBrowser.swift in Sources */ = {isa = PBXBuildFile; fileRef = A760A80D1BF1CEC600F5812B /* PhotoBrowser.swift */; };
 		A760A81E1BF1CEC600F5812B /* CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A760A80F1BF1CEC600F5812B /* CollectionView.swift */; };
 		A760A81F1BF1CEC600F5812B /* ItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A760A8101BF1CEC600F5812B /* ItemCell.swift */; };
-		A760A8201BF1CEC600F5812B /* ItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A760A8111BF1CEC600F5812B /* ItemCell.xib */; };
 		A760A8211BF1CEC600F5812B /* ShowImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A760A8121BF1CEC600F5812B /* ShowImageView.swift */; };
 		A760A86B1BF1CED100F5812B /* CFSnapKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = A760A8231BF1CED100F5812B /* CFSnapKit.swift */; };
 		A760A86C1BF1CED100F5812B /* Constraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = A760A8251BF1CED100F5812B /* Constraint.swift */; };
@@ -115,8 +113,12 @@
 		A760A8AE1BF2271600F5812B /* DisplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A760A8AD1BF2271600F5812B /* DisplayView.swift */; };
 		A76406B21BAECC3E00256D1B /* Data.plist in Resources */ = {isa = PBXBuildFile; fileRef = A76406B11BAECC3E00256D1B /* Data.plist */; };
 		A794CF721BA82BCB00A64365 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A794CF701BA82BCB00A64365 /* Model.xcdatamodeld */; };
+		A79D51AC1BF83C3600BC5D23 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A79D51AB1BF83C3600BC5D23 /* AssetsLibrary.framework */; };
+		A79D51AE1BF83C4500BC5D23 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A79D51AD1BF83C4500BC5D23 /* MobileCoreServices.framework */; };
 		A7AE53171BEA18F50077B630 /* SecondViewDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7AE53161BEA18F50077B630 /* SecondViewDetailController.swift */; };
 		A7AE53191BEA33900077B630 /* SecondViewEditSurfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7AE53181BEA33900077B630 /* SecondViewEditSurfaceController.swift */; };
+		A7FE17EC1BF4E64E00EA1BE9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A7FE17EB1BF4E64E00EA1BE9 /* Images.xcassets */; };
+		A7FE17EE1BF4E7D100EA1BE9 /* ItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A7FE17ED1BF4E7D100EA1BE9 /* ItemCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -138,7 +140,6 @@
 		A722933C1B983CAC00CCF6E8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A72293411B983CAC00CCF6E8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		A72293471B983CAC00CCF6E8 /* GeoCompassTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GeoCompassTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		A722934C1B983CAC00CCF6E8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A722934D1B983CAC00CCF6E8 /* GeoCompassTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoCompassTests.swift; sourceTree = "<group>"; };
 		A72293571B98619800CCF6E8 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		A72293661B99C66A00CCF6E8 /* VectorMath */ = {isa = PBXFileReference; lastKnownFileType = folder; path = VectorMath; sourceTree = "<group>"; };
@@ -146,16 +147,15 @@
 		A72293691B99CFA100CCF6E8 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		A722936A1B99CFA100CCF6E8 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		A722936F1B99D9EC00CCF6E8 /* GeoCompass-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GeoCompass-Bridging-Header.h"; sourceTree = "<group>"; };
-		A722937C1B9C35C300CCF6E8 /* VectorMath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VectorMath.swift; sourceTree = "<group>"; };
-		A722937D1B9C35C300CCF6E8 /* VectorMath+Quartz.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "VectorMath+Quartz.swift"; sourceTree = "<group>"; };
-		A722937E1B9C35C300CCF6E8 /* VectorMath+SceneKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "VectorMath+SceneKit.swift"; sourceTree = "<group>"; };
+		A722937C1B9C35C300CCF6E8 /* VectorMath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VectorMath.swift; path = GeoCompass/VectorMath.swift; sourceTree = "<group>"; };
+		A722937D1B9C35C300CCF6E8 /* VectorMath+Quartz.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "VectorMath+Quartz.swift"; path = "GeoCompass/VectorMath+Quartz.swift"; sourceTree = "<group>"; };
+		A722937E1B9C35C300CCF6E8 /* VectorMath+SceneKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "VectorMath+SceneKit.swift"; path = "GeoCompass/VectorMath+SceneKit.swift"; sourceTree = "<group>"; };
 		A72293821BA0985900CCF6E8 /* ThirdViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThirdViewController.swift; sourceTree = "<group>"; };
 		A72293841BA18BB600CCF6E8 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		A731A05C1BAC77B4008C5966 /* NewsCoreDataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsCoreDataController.swift; sourceTree = "<group>"; };
 		A731A05E1BAC79A0008C5966 /* CoreDataHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataHelper.swift; sourceTree = "<group>"; };
 		A731A0601BAC79BC008C5966 /* CoreDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStore.swift; sourceTree = "<group>"; };
 		A743D92F1BEE6FCC00624737 /* SecondViewEditLineController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondViewEditLineController.swift; sourceTree = "<group>"; };
-		A743D9351BEF056500624737 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		A743D9371BEF05AD00624737 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		A743D9E81BF09AB600624737 /* SecondViewImageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondViewImageController.swift; sourceTree = "<group>"; };
 		A758CA451BE66CB60043A637 /* SurfaceData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SurfaceData.swift; path = ../GeoCompass/datamodel/SurfaceData.swift; sourceTree = "<group>"; };
@@ -173,7 +173,6 @@
 		A760A80D1BF1CEC600F5812B /* PhotoBrowser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoBrowser.swift; sourceTree = "<group>"; };
 		A760A80F1BF1CEC600F5812B /* CollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionView.swift; sourceTree = "<group>"; };
 		A760A8101BF1CEC600F5812B /* ItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemCell.swift; sourceTree = "<group>"; };
-		A760A8111BF1CEC600F5812B /* ItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ItemCell.xib; sourceTree = "<group>"; };
 		A760A8121BF1CEC600F5812B /* ShowImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowImageView.swift; sourceTree = "<group>"; };
 		A760A8231BF1CED100F5812B /* CFSnapKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CFSnapKit.swift; sourceTree = "<group>"; };
 		A760A8251BF1CED100F5812B /* Constraint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constraint.swift; sourceTree = "<group>"; };
@@ -247,8 +246,13 @@
 		A794CF6E1BA82ABC00A64365 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
 		A794CF6F1BA82ABC00A64365 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		A794CF711BA82BCB00A64365 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		A79D51AB1BF83C3600BC5D23 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
+		A79D51AD1BF83C4500BC5D23 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		A79D51B11BF8AA1E00BC5D23 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A7AE53161BEA18F50077B630 /* SecondViewDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondViewDetailController.swift; sourceTree = "<group>"; };
 		A7AE53181BEA33900077B630 /* SecondViewEditSurfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondViewEditSurfaceController.swift; sourceTree = "<group>"; };
+		A7FE17EB1BF4E64E00EA1BE9 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		A7FE17ED1BF4E7D100EA1BE9 /* ItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ItemCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -256,6 +260,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A79D51AE1BF83C4500BC5D23 /* MobileCoreServices.framework in Frameworks */,
+				A79D51AC1BF83C3600BC5D23 /* AssetsLibrary.framework in Frameworks */,
 				A72293851BA18BB600CCF6E8 /* CoreData.framework in Frameworks */,
 				A722936B1B99CFA100CCF6E8 /* CoreLocation.framework in Frameworks */,
 				A722936C1B99CFA100CCF6E8 /* MapKit.framework in Frameworks */,
@@ -277,9 +283,9 @@
 		A72293271B983CAC00CCF6E8 = {
 			isa = PBXGroup;
 			children = (
+				A7FE17EB1BF4E64E00EA1BE9 /* Images.xcassets */,
 				A760A7FE1BF1CEC600F5812B /* PhotoBrowser */,
 				A743D9371BEF05AD00624737 /* icon.png */,
-				A743D9351BEF056500624737 /* Images.xcassets */,
 				A758CA491BE66CB60043A637 /* datamodel */,
 				A722936F1B99D9EC00CCF6E8 /* GeoCompass-Bridging-Header.h */,
 				A722936E1B99CFAC00CCF6E8 /* framework */,
@@ -304,9 +310,6 @@
 			children = (
 				A76406B11BAECC3E00256D1B /* Data.plist */,
 				A794CF701BA82BCB00A64365 /* Model.xcdatamodeld */,
-				A722937C1B9C35C300CCF6E8 /* VectorMath.swift */,
-				A722937D1B9C35C300CCF6E8 /* VectorMath+Quartz.swift */,
-				A722937E1B9C35C300CCF6E8 /* VectorMath+SceneKit.swift */,
 				A72293351B983CAC00CCF6E8 /* AppDelegate.swift */,
 				A72293371B983CAC00CCF6E8 /* FirstViewController.swift */,
 				A72293391B983CAC00CCF6E8 /* SecondViewController.swift */,
@@ -337,23 +340,20 @@
 		A722934A1B983CAC00CCF6E8 /* GeoCompassTests */ = {
 			isa = PBXGroup;
 			children = (
+				A79D51B31BF8AA2600BC5D23 /* Supporting Files */,
 				A722934D1B983CAC00CCF6E8 /* GeoCompassTests.swift */,
-				A722934B1B983CAC00CCF6E8 /* Supporting Files */,
 			);
 			path = GeoCompassTests;
-			sourceTree = "<group>";
-		};
-		A722934B1B983CAC00CCF6E8 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				A722934C1B983CAC00CCF6E8 /* Info.plist */,
-			);
-			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		A722936E1B99CFAC00CCF6E8 /* framework */ = {
 			isa = PBXGroup;
 			children = (
+				A79D51AB1BF83C3600BC5D23 /* AssetsLibrary.framework */,
+				A79D51AD1BF83C4500BC5D23 /* MobileCoreServices.framework */,
+				A722937C1B9C35C300CCF6E8 /* VectorMath.swift */,
+				A722937D1B9C35C300CCF6E8 /* VectorMath+Quartz.swift */,
+				A722937E1B9C35C300CCF6E8 /* VectorMath+SceneKit.swift */,
 				A760A8221BF1CED100F5812B /* CFSnapKit */,
 				A760A8331BF1CED100F5812B /* Haneke */,
 				A760A8491BF1CED100F5812B /* NVActivityIndicatorView */,
@@ -432,7 +432,7 @@
 			children = (
 				A760A80F1BF1CEC600F5812B /* CollectionView.swift */,
 				A760A8101BF1CEC600F5812B /* ItemCell.swift */,
-				A760A8111BF1CEC600F5812B /* ItemCell.xib */,
+				A7FE17ED1BF4E7D100EA1BE9 /* ItemCell.xib */,
 				A760A8121BF1CEC600F5812B /* ShowImageView.swift */,
 			);
 			path = View;
@@ -542,6 +542,14 @@
 			path = Animations;
 			sourceTree = "<group>";
 		};
+		A79D51B31BF8AA2600BC5D23 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A79D51B11BF8AA1E00BC5D23 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -624,15 +632,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A7FE17EC1BF4E64E00EA1BE9 /* Images.xcassets in Resources */,
 				A76406B21BAECC3E00256D1B /* Data.plist in Resources */,
-				A743D9361BEF056500624737 /* Images.xcassets in Resources */,
 				A743D9381BEF05AD00624737 /* icon.png in Resources */,
 				A722933D1B983CAC00CCF6E8 /* Main.storyboard in Resources */,
-				A760A8201BF1CEC600F5812B /* ItemCell.xib in Resources */,
 				A760A8141BF1CEC600F5812B /* pic.bundle in Resources */,
 				A72293421B983CAC00CCF6E8 /* LaunchScreen.xib in Resources */,
 				A760A8831BF1CED100F5812B /* Info.plist in Resources */,
 				A72293671B99C66A00CCF6E8 /* VectorMath in Resources */,
+				A7FE17EE1BF4E7D100EA1BE9 /* ItemCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -881,7 +889,7 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = GeoCompass/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = GeoCompass.GeoCompass;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -899,7 +907,7 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = GeoCompass/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = GeoCompass.GeoCompass;
 				PRODUCT_NAME = "$(TARGET_NAME)";

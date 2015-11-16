@@ -15,12 +15,13 @@ extension PhotoBrowser{
     override func viewDidLoad() {
         super.viewDidLoad()
         
+
         /**  准备  */
         collectionViewPrepare()
-        
         /**  控制器准备  */
         vcPrepare()
         
+
         self.edgesForExtendedLayout = UIRectEdge.None
         view.backgroundColor = UIColor.blackColor()
     }

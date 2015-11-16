@@ -64,8 +64,6 @@ extension PhotoBrowser: UICollectionViewDataSource,UICollectionViewDelegate{
     }
 
     
-    
-    
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
         return photoModels.count
@@ -104,15 +102,15 @@ extension PhotoBrowser: UICollectionViewDataSource,UICollectionViewDelegate{
     
     func handleRotation(anim: Bool){
         
-        dispatch_async(dispatch_get_main_queue(), {[unowned self] () -> Void in
-            
+        dispatch_async(dispatch_get_main_queue(),{[unowned self] () -> Void in
             let layout = Layout()
             
             layout.itemSize = self.view.bounds.size.sizeWithExtraWidth
             
             self.collectionView.setCollectionViewLayout(layout, animated: anim)
             
-            self.collectionView.scrollToItemAtIndexPath(NSIndexPath(forItem: self.page, inSection: 0), atScrollPosition: UICollectionViewScrollPosition.Left, animated: false)
+                self.collectionView.scrollToItemAtIndexPath(NSIndexPath(forItem: self.page, inSection: 0), atScrollPosition: UICollectionViewScrollPosition.Left, animated: false)
+
         })
     }
     
@@ -120,6 +118,8 @@ extension PhotoBrowser: UICollectionViewDataSource,UICollectionViewDelegate{
 
         page = Int(scrollView.contentOffset.x / scrollView.bounds.size.width + 0.5)
     }
+    
+
     
 }
 
