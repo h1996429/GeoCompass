@@ -103,6 +103,7 @@ class FirstViewController: UIViewController,CLLocationManagerDelegate{
             
         else if segmentedControl.selectedSegmentIndex == 2 {
             let time:NSDate = NSDate();
+            let gpsCoords = CoordsTransform.transformMarsToGpsCoords(lonFS, lat: latFS)
             loadData();
             switch needSave{
             case 0:
@@ -113,8 +114,8 @@ class FirstViewController: UIViewController,CLLocationManagerDelegate{
                 surfacedata.strikeS=(round(strikeFS*100))/100;
                 surfacedata.dipdirS=(round(dipdirFS*100))/100;
                 surfacedata.dipS=(round(dipFS*100))/100;
-                surfacedata.latS=(round(latFS*10000000))/10000000;
-                surfacedata.lonS=(round(lonFS*10000000))/10000000;
+                surfacedata.latS=(round(gpsCoords.gLat*100000000))/100000000;
+                surfacedata.lonS=(round(gpsCoords.gLng*100000000))/100000000;
                 surfacedata.hightS=(round(hightFS*100))/100;
                 surfacedata.locErrorS=(round(locErrorFS*10))/10;
                 surfacedata.hightErrorS=(round(hightErrorFS*10))/10;
@@ -134,8 +135,8 @@ class FirstViewController: UIViewController,CLLocationManagerDelegate{
                 linedata.pitchS=(round(pitchFS*100))/100;
                 linedata.plusynS=(round(plusynFS*100))/100;
                 linedata.pluangS=(round(pluangFS*100))/100;
-                linedata.latS=(round(latFS*10000000))/10000000;
-                linedata.lonS=(round(lonFS*10000000))/10000000;
+                linedata.latS=(round(gpsCoords.gLat*10000000))/10000000;
+                linedata.lonS=(round(gpsCoords.gLng*10000000))/10000000;
                 linedata.hightS=(round(hightFS*100))/100;
                 linedata.locErrorS=(round(locErrorFS*10))/10;
                 linedata.hightErrorS=(round(hightErrorFS*10))/10;
@@ -202,9 +203,9 @@ class FirstViewController: UIViewController,CLLocationManagerDelegate{
             
             if (self.index == 2 && self.locklocShow == true){
                 var R = transloc(self.latFS);
-                self.labelLat.text = "\(R.b)" + "°" + "\(R.c)" + "'" + (R.d).format(".4") + "\"";
+                self.labelLat.text = "\(R.b)" + "°" + "\(R.c)" + "'" + (R.d).format(".5") + "\"";
                 R = transloc(self.lonFS);
-                self.labelLon.text = "\(R.b)" + "°" + "\(R.c)" + "'" + (R.d).format(".4") + "\"";
+                self.labelLon.text = "\(R.b)" + "°" + "\(R.c)" + "'" + (R.d).format(".5") + "\"";
                 self.labelH.text = (self.hightFS).format(".2")+"m";
                 self.labelLonE.text = "±"+(self.locErrorFS).format(".1")+"m";
                 self.labelLatE.text = "±"+(self.locErrorFS).format(".1")+"m";
@@ -213,9 +214,9 @@ class FirstViewController: UIViewController,CLLocationManagerDelegate{
             }
             else {
                 var R = transloc(self.lat);
-                self.labelLat.text = "\(R.b)" + "°" + "\(R.c)" + "'" + (R.d).format(".4") + "\"";
+                self.labelLat.text = "\(R.b)" + "°" + "\(R.c)" + "'" + (R.d).format(".5") + "\"";
                 R = transloc(self.lon);
-                self.labelLon.text = "\(R.b)" + "°" + "\(R.c)" + "'" + (R.d).format(".4") + "\"";
+                self.labelLon.text = "\(R.b)" + "°" + "\(R.c)" + "'" + (R.d).format(".5") + "\"";
                 self.labelH.text = (self.hight).format(".2")+"m";
                 self.labelLonE.text = "±"+(self.locError).format(".1")+"m";
                 self.labelLatE.text = "±"+(self.locError).format(".1")+"m";

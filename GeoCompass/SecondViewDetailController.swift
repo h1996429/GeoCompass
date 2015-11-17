@@ -196,10 +196,10 @@ class SecondViewDetailController: UITableViewController{
             self.detail5.text = (self.surfacedata.dipS as Double).format(".2")+"°";
             self.title6.text = "纬度"
             var R = transloc(self.surfacedata.latS as Double);
-            self.detail6.text = "\(R.b)" + "°" + "\(R.c)" + "'" + (R.d).format(".4") + "\"";
+            self.detail6.text = "\(R.b)" + "°" + "\(R.c)" + "'" + (R.d).format(".5") + "\"";
             self.title7.text = "经度"
             R = transloc(self.surfacedata.lonS as Double);
-            self.detail7.text = "\(R.b)" + "°" + "\(R.c)" + "'" + (R.d).format(".4") + "\"";
+            self.detail7.text = "\(R.b)" + "°" + "\(R.c)" + "'" + (R.d).format(".5") + "\"";
             self.title8.text = "高程"
             self.detail8.text = (self.surfacedata.hightS as Double).format(".2")+"m";
             self.title9.text = "经纬误差"
@@ -236,10 +236,10 @@ class SecondViewDetailController: UITableViewController{
             self.detail6.text = (self.linedata.pluangS as Double).format(".2")+"°";
             self.title7.text = "纬度"
             var R = transloc(self.linedata.latS as Double);
-            self.detail7.text = "\(R.b)" + "°" + "\(R.c)" + "'" + (R.d).format(".4") + "\"";
+            self.detail7.text = "\(R.b)" + "°" + "\(R.c)" + "'" + (R.d).format(".5") + "\"";
             self.title8.text = "经度"
             R = transloc(self.linedata.lonS as Double);
-            self.detail8.text = "\(R.b)" + "°" + "\(R.c)" + "'" + (R.d).format(".4") + "\"";
+            self.detail8.text = "\(R.b)" + "°" + "\(R.c)" + "'" + (R.d).format(".5") + "\"";
             self.title9.text = "高程"
             self.detail9.text = (self.linedata.hightS as Double).format(".2")+"m";
             self.title10.text = "经纬误差"

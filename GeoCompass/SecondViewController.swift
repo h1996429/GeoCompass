@@ -75,9 +75,9 @@ class SecondViewController:UITableViewController,UITabBarControllerDelegate,NSFe
             dipdir.append("\(surfacedata.dipdirS)°")
             dip.append("\(surfacedata.dipS)°");
             var R = transloc(surfacedata.latS as Double);
-            lat.append("\(R.b)" + "°" + "\(R.c)" + "'" + (R.d).format(".4") + "\"\"")
+            lat.append("\(R.b)" + "°" + "\(R.c)" + "'" + (R.d).format(".5") + "\"\"")
             R = transloc(surfacedata.lonS as Double);
-            lon.append("\(R.b)" + "°" + "\(R.c)" + "'" + (R.d).format(".4") + "\"\"")
+            lon.append("\(R.b)" + "°" + "\(R.c)" + "'" + (R.d).format(".5") + "\"\"")
             hight.append("\(surfacedata.hightS)m")
             locError.append("±\(surfacedata.locErrorS)m")
             hightError.append("±\(surfacedata.hightErrorS)m")
@@ -117,9 +117,9 @@ class SecondViewController:UITableViewController,UITabBarControllerDelegate,NSFe
             plusyn.append("\(linedata.plusynS)°")
             pluang.append("\(linedata.pluangS)°"); //pitch、plunging syncline and plunge angle
             var R = transloc(linedata.latS as Double);
-            lat.append("\(R.b)" + "°" + "\(R.c)" + "'" + (R.d).format(".4") + "\"\"")
+            lat.append("\(R.b)" + "°" + "\(R.c)" + "'" + (R.d).format(".5") + "\"\"")
             R = transloc(linedata.lonS as Double);
-            lon.append("\(R.b)" + "°" + "\(R.c)" + "'" + (R.d).format(".4") + "\"\"")
+            lon.append("\(R.b)" + "°" + "\(R.c)" + "'" + (R.d).format(".5") + "\"\"")
             hight.append("\(linedata.hightS)m")
             locError.append("±\(linedata.locErrorS)m")
             hightError.append("±\(linedata.hightErrorS)m")
@@ -165,6 +165,7 @@ class SecondViewController:UITableViewController,UITabBarControllerDelegate,NSFe
                     tableView.cellForRowAtIndexPath(path)?.selectionStyle = UITableViewCellSelectionStyle.Default }}
             return}
         needExportBool = false
+        self.navigationItem.leftBarButtonItem = self.editButtonItem()
         self.tableView.endUpdates()
     }
     var cancelButton:UIBarButtonItem{

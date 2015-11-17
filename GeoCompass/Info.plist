@@ -29,7 +29,7 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>定位请求（请务必选择接受。另外，GPS很耗电，应用程序请尽量保持关闭状态）（使用说明：1.面状构造测量时需将箭头旋转至正对手机上方与另一箭头重合。2.线状构造需将手机侧边保持平行（沿固定的红色箭头方向））</string>
+	<string>定位请求（请务必选择接受。另外，GPS很耗电，应用程序请尽量保持关闭状态）（GPS坐标系：WGS84）（使用说明：1.面状构造测量时需将箭头旋转至正对手机上方与另一箭头重合。2.线状构造需将手机侧边保持平行（沿固定的红色箭头方向））</string>
 	<key>UIFileSharingEnabled</key>
 	<true/>
 	<key>UILaunchStoryboardName</key>
