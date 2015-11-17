@@ -117,6 +117,7 @@
 		A79D51AE1BF83C4500BC5D23 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A79D51AD1BF83C4500BC5D23 /* MobileCoreServices.framework */; };
 		A7AE53171BEA18F50077B630 /* SecondViewDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7AE53161BEA18F50077B630 /* SecondViewDetailController.swift */; };
 		A7AE53191BEA33900077B630 /* SecondViewEditSurfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7AE53181BEA33900077B630 /* SecondViewEditSurfaceController.swift */; };
+		A7F04A921BFAFC8D0063C7F4 /* libiconv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A7F04A911BFAFC8D0063C7F4 /* libiconv.tbd */; };
 		A7FE17EC1BF4E64E00EA1BE9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A7FE17EB1BF4E64E00EA1BE9 /* Images.xcassets */; };
 		A7FE17EE1BF4E7D100EA1BE9 /* ItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A7FE17ED1BF4E7D100EA1BE9 /* ItemCell.xib */; };
 /* End PBXBuildFile section */
@@ -251,6 +252,7 @@
 		A79D51B11BF8AA1E00BC5D23 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A7AE53161BEA18F50077B630 /* SecondViewDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondViewDetailController.swift; sourceTree = "<group>"; };
 		A7AE53181BEA33900077B630 /* SecondViewEditSurfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondViewEditSurfaceController.swift; sourceTree = "<group>"; };
+		A7F04A911BFAFC8D0063C7F4 /* libiconv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.tbd; path = usr/lib/libiconv.tbd; sourceTree = SDKROOT; };
 		A7FE17EB1BF4E64E00EA1BE9 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		A7FE17ED1BF4E7D100EA1BE9 /* ItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ItemCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -260,6 +262,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A7F04A921BFAFC8D0063C7F4 /* libiconv.tbd in Frameworks */,
 				A79D51AE1BF83C4500BC5D23 /* MobileCoreServices.framework in Frameworks */,
 				A79D51AC1BF83C3600BC5D23 /* AssetsLibrary.framework in Frameworks */,
 				A72293851BA18BB600CCF6E8 /* CoreData.framework in Frameworks */,
@@ -283,6 +286,7 @@
 		A72293271B983CAC00CCF6E8 = {
 			isa = PBXGroup;
 			children = (
+				A7F04A911BFAFC8D0063C7F4 /* libiconv.tbd */,
 				A7FE17EB1BF4E64E00EA1BE9 /* Images.xcassets */,
 				A760A7FE1BF1CEC600F5812B /* PhotoBrowser */,
 				A743D9371BEF05AD00624737 /* icon.png */,

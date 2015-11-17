@@ -25,9 +25,12 @@ class SecondViewController:UITableViewController,UITabBarControllerDelegate,NSFe
     
     var dir:String = ""
     var Date:NSDate = NSDate();
+    var needDeleteDir:String = ""
     
     //输出用
+    var fileManager = NSFileManager.defaultManager()
     var needExport:[NSIndexPath]=[]
+    var needEXportSymbol:[Bool]=[]
     var needExportBool:Bool = false
     var exportButton:UIBarButtonItem{
         return UIBarButtonItem(title:"导出", style:.Plain, target: self, action: "exportAction:")
@@ -36,9 +39,16 @@ class SecondViewController:UITableViewController,UITabBarControllerDelegate,NSFe
         NSLog("exportAction")
         self.tableView.beginUpdates()
         needExportBool = true
+        needEXportSymbol = []
+        needExport = []
         if tableView.indexPathsForVisibleRows?.count != 0 {
-            for path in (tableView.indexPathsForVisibleRows)! {tableView.cellForRowAtIndexPath(path)?.accessoryType = UITableViewCellAccessoryType.None}}
+            for path in (tableView.indexPathsForVisibleRows)! {
+                needExport.append(path)
+                needEXportSymbol.append(false)
+                tableView.cellForRowAtIndexPath(path)?.accessoryType = UITableViewCellAccessoryType.None
+                tableView.cellForRowAtIndexPath(path)?.selectionStyle = UITableViewCellSelectionStyle.None }}
         self.navigationItem.rightBarButtonItem = self.isExportButton
+        self.navigationItem.leftBarButtonItem = self.cancelButton
         /*let alert1 = UIAlertController(title: "提示", message: "请选择要输出数据(可多选)", preferredStyle: UIAlertControllerStyle.Alert)
         alert1.addAction(UIAlertAction(title: "确定", style: UIAlertActionStyle.Cancel, handler: nil))
         self.presentViewController(alert1, animated: true, completion: nil)*/
@@ -56,24 +66,26 @@ class SecondViewController:UITableViewController,UITabBarControllerDelegate,NSFe
         if needExport.count != 0 {
         if segmentedControl.selectedSegmentIndex == 0 {
             for (var i=0;i < needExport.count;i++) {
+            if needEXportSymbol[i] == true {
             let surfacedata = self.fetchedResultsController?.objectAtIndexPath(needExport[i]) as! SurfaceData
             id.append("\(surfacedata.id)")
             time.append(dateFormatter.stringFromDate(surfacedata.timeS))
             adr.append(surfacedata.adrS)
-            strike.append("\(surfacedata.strikeS)")
-            dipdir.append("\(surfacedata.dipdirS)")
-            dip.append("\(surfacedata.dipS)");
+            strike.append("\(surfacedata.strikeS)°")
+            dipdir.append("\(surfacedata.dipdirS)°")
+            dip.append("\(surfacedata.dipS)°");
             var R = transloc(surfacedata.latS as Double);
-            lat.append("\(R.b)" + "°" + "\(R.c)" + "'" + (R.d).format(".4") + "\"")
+            lat.append("\(R.b)" + "°" + "\(R.c)" + "'" + (R.d).format(".4") + "\"\"")
             R = transloc(surfacedata.lonS as Double);
-            lon.append("\(R.b)" + "°" + "\(R.c)" + "'" + (R.d).format(".4") + "\"")
-            hight.append("\(surfacedata.hightS)")
-            locError.append("\(surfacedata.locErrorS)")
-            hightError.append("\(surfacedata.hightErrorS)")
-            magError.append("\(surfacedata.magErrorS)")
-            }
+            lon.append("\(R.b)" + "°" + "\(R.c)" + "'" + (R.d).format(".4") + "\"\"")
+            hight.append("\(surfacedata.hightS)m")
+            locError.append("±\(surfacedata.locErrorS)m")
+            hightError.append("±\(surfacedata.hightErrorS)m")
+            magError.append(String(format: "%.2f",surfacedata.magErrorS as Double)+"°")
+            }}
+            if id.count != 0 {
             var info = ""
-            let title = "ID,时间,地址,走向,倾向,倾角,纬度,经度,高程,经纬误差,高程误差,磁偏角\n"
+            let title = "编号,时间,地址,走向,倾向,倾角,纬度,经度,高程,经纬误差,高程误差,磁偏角\n"
             info += title
             for (var i=0;i < needExport.count;i++) {
                 info += (id[i]+",")
@@ -82,38 +94,40 @@ class SecondViewController:UITableViewController,UITabBarControllerDelegate,NSFe
                 info += (strike[i]+",")
                 info += (dipdir[i]+",")
                 info += (dip[i]+",")
-                info += (lat[i]+",")
-                info += (lon[i]+",")
+                info += ("\""+lat[i]+"\",")
+                info += ("\""+lon[i]+"\",")
                 info += (hight[i]+",")
                 info += (locError[i]+",")
                 info += (hightError[i]+",")
                 info += (magError[i]+"\n")
             }
-            do{try info.writeToFile(dir, atomically: true, encoding: NSUnicodeStringEncoding)}catch let error as NSError{
+            do{try info.writeToFile(dir, atomically: true, encoding: CFStringConvertEncodingToNSStringEncoding(0x0632))}catch let error as NSError{
                 if error != 0 {NSLog("Unsolved error \(error)")}
-            }
+                }}
         }
         if segmentedControl.selectedSegmentIndex == 1 {
             for (var i=0;i < needExport.count;i++) {
+                if needEXportSymbol[i] == true {
             let linedata = self.fetchedResultsController?.objectAtIndexPath(needExport[i]) as! LineData
             id.append("\(linedata.id)")
             time.append(dateFormatter.stringFromDate(linedata.timeS))
             adr.append(linedata.adrS)
-            strike.append("\(linedata.strikeS)")
-            pitch.append("\(linedata.pitchS)")
-            plusyn.append("\(linedata.plusynS)")
-            pluang.append("\(linedata.pluangS)"); //pitch、plunging syncline and plunge angle
+            strike.append("\(linedata.strikeS)°")
+            pitch.append("\(linedata.pitchS)°")
+            plusyn.append("\(linedata.plusynS)°")
+            pluang.append("\(linedata.pluangS)°"); //pitch、plunging syncline and plunge angle
             var R = transloc(linedata.latS as Double);
-            lat.append("\(R.b)" + "°" + "\(R.c)" + "'" + (R.d).format(".4") + "\"")
+            lat.append("\(R.b)" + "°" + "\(R.c)" + "'" + (R.d).format(".4") + "\"\"")
             R = transloc(linedata.lonS as Double);
-            lon.append("\(R.b)" + "°" + "\(R.c)" + "'" + (R.d).format(".4") + "\"")
-            hight.append("\(linedata.hightS)")
-            locError.append("\(linedata.locErrorS)")
-            hightError.append("\(linedata.hightErrorS)")
-            magError.append("\(linedata.magErrorS)")
-                }
+            lon.append("\(R.b)" + "°" + "\(R.c)" + "'" + (R.d).format(".4") + "\"\"")
+            hight.append("\(linedata.hightS)m")
+            locError.append("±\(linedata.locErrorS)m")
+            hightError.append("±\(linedata.hightErrorS)m")
+            magError.append(String(format: "%.2f",linedata.magErrorS as Double)+"°")
+                }}
+            if id.count != 0 {
             var info = ""
-            let title = "ID,时间,地址,走向,侧俯角,倾伏向,倾俯角,纬度,经度,高程,经纬误差,高程误差,磁偏角\n"
+            let title = "编号,时间,地址,走向,侧俯角,倾伏向,倾俯角,纬度,经度,高程,经纬误差,高程误差,磁偏角\n"
             info += title
             for (var i=0;i < needExport.count;i++) {
                 info += (id[i]+",")
@@ -123,30 +137,49 @@ class SecondViewController:UITableViewController,UITabBarControllerDelegate,NSFe
                 info += (pitch[i]+",")
                 info += (plusyn[i]+",")
                 info += (pluang[i]+",")
-                info += (lat[i]+",")
-                info += (lon[i]+",")
+                info += ("\""+lat[i]+"\",")
+                info += ("\""+lon[i]+"\",")
                 info += (hight[i]+",")
                 info += (locError[i]+",")
                 info += (hightError[i]+",")
                 info += (magError[i]+"\n")
             }
-            do{try info.writeToFile(dir, atomically: true, encoding: NSUnicodeStringEncoding)}catch let error as NSError{
+            do{try info.writeToFile(dir, atomically: true, encoding:CFStringConvertEncodingToNSStringEncoding(0x0632))}catch let error as NSError{
                 if error != 0 {NSLog("Unsolved error \(error)")}
-            }
+                }}
         }
             self.navigationItem.rightBarButtonItem = self.exportButton
             if tableView.indexPathsForVisibleRows?.count != 0 {
-                for path in (tableView.indexPathsForVisibleRows)! {tableView.cellForRowAtIndexPath(path)?.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator}}
-            let alert1 = UIAlertController(title: "提示", message: "请用iTunes连接手机后点击左上角的手机图标，在左侧导航栏“设置”一栏中选中“应用”，之后将右侧浏览框拉到最底部，在文件共享中选择应用“地质罗盘”即可导出数据", preferredStyle: UIAlertControllerStyle.Alert)
+                for path in (tableView.indexPathsForVisibleRows)! {
+                    tableView.cellForRowAtIndexPath(path)?.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
+                    tableView.cellForRowAtIndexPath(path)?.selectionStyle = UITableViewCellSelectionStyle.Default }}
+            if id.count != 0 {
+            let alert1 = UIAlertController(title: "提示", message: "请用iTunes连接手机后点击左上角的手机图标，在左侧导航栏“设置”一栏中选中“应用”，之后将右侧浏览框拉到最底部，在文件共享中选择应用“地质罗盘”即可导出数据(csv格式)", preferredStyle: UIAlertControllerStyle.Alert)
             alert1.addAction(UIAlertAction(title: "确定", style: UIAlertActionStyle.Cancel, handler: nil))
-            self.presentViewController(alert1, animated: true, completion: nil)
+                self.presentViewController(alert1, animated: true, completion: nil)}
       }
         else {self.navigationItem.rightBarButtonItem = self.exportButton;needExportBool = false
             if tableView.indexPathsForVisibleRows?.count != 0 {
-                for path in (tableView.indexPathsForVisibleRows)! {tableView.cellForRowAtIndexPath(path)?.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator}}
+                for path in (tableView.indexPathsForVisibleRows)! {
+                    tableView.cellForRowAtIndexPath(path)?.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
+                    tableView.cellForRowAtIndexPath(path)?.selectionStyle = UITableViewCellSelectionStyle.Default }}
             return}
         needExportBool = false
         self.tableView.endUpdates()
+    }
+    var cancelButton:UIBarButtonItem{
+        return UIBarButtonItem(title:"取消", style:.Plain, target: self, action: "cancelAction:")
+    }
+    func cancelAction(cancelBarButton:UIBarButtonItem){
+        self.navigationItem.leftBarButtonItem = self.editButtonItem()
+        self.editButtonItem().title = "编辑"
+        self.navigationItem.rightBarButtonItem = self.exportButton
+        if tableView.indexPathsForVisibleRows?.count != 0 {
+            for path in (tableView.indexPathsForVisibleRows)! {
+                tableView.cellForRowAtIndexPath(path)?.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
+                tableView.cellForRowAtIndexPath(path)?.selectionStyle = UITableViewCellSelectionStyle.Default }}
+        needExportBool = false
+        return
     }
     func transloc(a:Double)->(b:Int,c:Int,d:Double){
         var b = 0,c = 0,d = 0.0,last1 = 0.0,last2 = 0.0;
@@ -158,6 +191,10 @@ class SecondViewController:UITableViewController,UITabBarControllerDelegate,NSFe
         return (b,c,d);
     }
     
+    
+    
+    
+    
     //cell相关
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if needExportBool == false {self.performSegueWithIdentifier("Detail", sender: self)}
@@ -165,11 +202,13 @@ class SecondViewController:UITableViewController,UITabBarControllerDelegate,NSFe
         let cellView:UITableViewCell = tableView.cellForRowAtIndexPath(indexPath)!
         if cellView.accessoryType == UITableViewCellAccessoryType.None{
             cellView.accessoryType=UITableViewCellAccessoryType.Checkmark
-            needExport.append(indexPath)
+            //needExport.append(indexPath)
+            needEXportSymbol[indexPath.row] = true
         }
         else {
             cellView.accessoryType=UITableViewCellAccessoryType.None
-            needExport.removeAtIndex(indexPath.row)
+            //needExport.removeAtIndex(indexPath.row)
+            needEXportSymbol[indexPath.row] = false
             }
         }
     }
@@ -259,6 +298,8 @@ class SecondViewController:UITableViewController,UITabBarControllerDelegate,NSFe
     // 自定义编辑单元格时的动作，可编辑样式包括UITableViewCellEditingStyleInsert（插入）、UITableViewCellEditingStyleDelete（删除）。
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
+            needDeleteDir = NSHomeDirectory()+"/Documents/"+"\((self.fetchedResultsController?.objectAtIndexPath(indexPath).adrS)! )"+"/纬度"+"\(self.fetchedResultsController?.objectAtIndexPath(indexPath).latS! as! Double)"+"经度"+"\(self.fetchedResultsController?.objectAtIndexPath(indexPath).lonS! as! Double)"
+            do{try fileManager.removeItemAtPath(needDeleteDir)}catch let error as NSError {if error != 0 {NSLog("Unsolved error \(error)")}}
             //删除sqlite库中对应的数据
             let context = self.fetchedResultsController?.managedObjectContext
             context!.deleteObject(self.fetchedResultsController?.objectAtIndexPath(indexPath) as! NSManagedObject)
