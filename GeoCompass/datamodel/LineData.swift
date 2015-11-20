@@ -8,9 +8,11 @@
 
 import Foundation
 import CoreData
+import MapKit
+
 
 @objc(LineData)
-class LineData: NSManagedObject {
+class LineData: NSManagedObject,MKAnnotation {
 
     @NSManaged var adrS: String
     @NSManaged var hightErrorS: NSNumber
@@ -28,6 +30,11 @@ class LineData: NSManagedObject {
     @NSManaged var timeS: NSDate
     @NSManaged var describeS: NSString
 
+    
+    //returning the coordinate so as to conform to MKAnnotation protocol
+    var coordinate: CLLocationCoordinate2D {
+        return CLLocationCoordinate2D(latitude: latS as Double, longitude: lonS as Double)
+    }
 
 }
 

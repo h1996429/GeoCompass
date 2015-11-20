@@ -8,9 +8,11 @@
 
 import Foundation
 import CoreData
+import MapKit
+
 
 @objc(SurfaceData)
-class SurfaceData: NSManagedObject {
+class SurfaceData: NSManagedObject, MKAnnotation {
 
     @NSManaged var adrS: String
     @NSManaged var dipdirS: NSNumber
@@ -26,6 +28,12 @@ class SurfaceData: NSManagedObject {
     @NSManaged var strikeS: NSNumber
     @NSManaged var timeS: NSDate
     @NSManaged var describeS: NSString
+    
+    
+    //returning the coordinate so as to conform to MKAnnotation protocol
+    var coordinate: CLLocationCoordinate2D {
+        return CLLocationCoordinate2D(latitude: latS as Double, longitude: lonS as Double)
+    }
 
 
 }

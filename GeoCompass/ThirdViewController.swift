@@ -9,6 +9,8 @@
 import UIKit
 import MapKit
 import CoreLocation
+import CoreData
+
 
 
 enum MapType: Int {
@@ -16,11 +18,17 @@ enum MapType: Int {
     case Hybrid
 }
 
-class ThirdViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDelegate,UITabBarControllerDelegate {
+class ThirdViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDelegate,UITabBarControllerDelegate,NSFetchedResultsControllerDelegate {
+    //产状部分
+    var sharedContext: NSManagedObjectContext!
+
     
+    //航迹部分
     var locationManager: CLLocationManager!
     
     let walkStore: WalkStore = WalkStore.sharedInstance
+    let cdControl = NewsCoreDataController()
+    var nowdata = "surfacedata"
     
     var isTracking: Bool = false
     var isCompass: Bool = false
@@ -157,6 +165,12 @@ class ThirdViewController: UIViewController,MKMapViewDelegate,CLLocationManagerD
         locationManager.requestAlwaysAuthorization()
         mapView.showsUserLocation = true
         self.mapView.delegate = self
+        
+        //显示产状部分
+        sharedContext = cdControl.cdh.managedObjectContext
+        mapView.addAnnotations(fetchSurfacePins())
+        mapView.addAnnotations(fetchLinePins())
+
     }
     
 
@@ -259,6 +273,76 @@ class ThirdViewController: UIViewController,MKMapViewDelegate,CLLocationManagerD
             return renderer }
         return MKOverlayRenderer()
     }
+    
+    
+    //显示产状部分
+    func mapView(mapView: MKMapView, didSelectAnnotationView view: MKAnnotationView) {
+        //cast pin
+        func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+            //明细查询页面
+            if (segue.identifier == "MapToDetail") {
+                NSLog("Detail go")
+                //将所选择的当前数据赋值给所打开页面的控制器
+                let secondViewDetailController = segue.destinationViewController as! SecondViewDetailController
+                if segmentedControl.selectedSegmentIndex == 0 {
+                    let surfacedata = view.annotation as! SurfaceData
+                    secondViewDetailController.surfacedata = surfacedata
+                    secondViewDetailController.nowData = "surfacedata"}
+                else if segmentedControl.selectedSegmentIndex == 1 {
+                    let linedata = view.annotation as! LineData
+                    secondViewDetailController.linedata = linedata
+                    secondViewDetailController.nowData = "linedata"}
+            }
+        }
+        self.performSegueWithIdentifier("MapToDetail", sender: self)
+    }
+    
+    
+    func fetchSurfacePins() -> [SurfaceData] {
+        
+        let error: NSErrorPointer = nil
+        // Create the Fetch Request
+        let fetchRequest = NSFetchRequest(entityName: "SurfaceData")
+        // Execute the Fetch Request
+        let results: [AnyObject]?
+        do {
+            results = try sharedContext.executeFetchRequest(fetchRequest)
+        } catch let error1 as NSError {
+            error.memory = error1
+            results = nil
+        }
+        // Check for Errors
+        if error != nil {
+            print("Error in fectchAllActors(): \(error)")
+        }
+        // Return the results, cast to an array of Pin objects
+        return results as! [SurfaceData]
+    }
+    
+    func fetchLinePins() -> [LineData] {
+        
+        let error: NSErrorPointer = nil
+        // Create the Fetch Request
+        let fetchRequest = NSFetchRequest(entityName: "LineData")
+        // Execute the Fetch Request
+        let results: [AnyObject]?
+        do {
+            results = try sharedContext.executeFetchRequest(fetchRequest)
+        } catch let error1 as NSError {
+            error.memory = error1
+            results = nil
+        }
+        // Check for Errors
+        if error != nil {
+            print("Error in fectchAllActors(): \(error)")
+        }
+        // Return the results, cast to an array of Pin objects
+        return results as! [LineData]
+    }
+    
+
+    
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
