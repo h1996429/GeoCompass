@@ -301,7 +301,9 @@ class SecondViewDetailController: UITableViewController{
     //在选择行后执行，这里是编辑状态选中一行时创建一个编辑页面
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         guard  self.tableView.indexPathForSelectedRow!.row == 0 else {
-        if(self.editing && nowData == "surfacedata"){
+        if indexPath.row == 12 {self.tableView.cellForRowAtIndexPath(indexPath)!.selectionStyle = UITableViewCellSelectionStyle.None
+            self.tableView.cellForRowAtIndexPath(indexPath)!.editingAccessoryType = UITableViewCellAccessoryType.None}
+        if(self.editing && nowData == "surfacedata" && indexPath.row != 12){
             self.performSegueWithIdentifier("ItemToEditSurface", sender: self)
         }
         else if(self.editing && nowData == "linedata"){
@@ -427,7 +429,7 @@ class SecondViewDetailController: UITableViewController{
                     bookEditViewController.editedFieldKey = "magErrorS"
                     bookEditViewController.editedFieldName = "磁偏角"
                 case 12:
-                    break
+                    return
                 default:
                     break
                 }

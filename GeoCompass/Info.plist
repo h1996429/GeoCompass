@@ -2,10 +2,12 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>UIViewControllerBasedStatusBarAppearance</key>
-	<false/>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>zh_CN</string>
+	<key>CFBundleDisplayName</key>
+	<string>地质罗盘</string>
+	<key>CFBundleDocumentTypes</key>
+	<array/>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIcons~ipad</key>
@@ -26,9 +28,18 @@
 	<string>1</string>
 	<key>LSApplicationCategoryType</key>
 	<string>public.app-category.productivity</string>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>baidumap</string>
+	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
-	<key>NSLocationWhenInUseUsageDescription</key>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
+	<key>NSLocationAlwaysUsageDescription</key>
 	<string>定位请求（请务必选择接受。另外，GPS很耗电，应用程序请尽量保持关闭状态）（GPS坐标系：WGS84）（使用说明：1.面状构造测量时需将箭头旋转至正对手机上方与另一箭头重合。2.线状构造需将手机侧边保持平行（沿固定的红色箭头方向））</string>
 	<key>UIFileSharingEnabled</key>
 	<true/>
@@ -61,5 +72,7 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>UIViewControllerBasedStatusBarAppearance</key>
+	<false/>
 </dict>
 </plist>

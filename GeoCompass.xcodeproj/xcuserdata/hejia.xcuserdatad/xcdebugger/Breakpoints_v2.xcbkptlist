@@ -20,11 +20,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GeoCompass/FirstViewController.swift"
-            timestampString = "468938003.056507"
+            timestampString = "469625344.231525"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "212"
-            endingLineNumber = "212"
+            startingLineNumber = "208"
+            endingLineNumber = "208"
             landmarkName = "locationManager(_:didUpdateLocations:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -36,11 +36,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GeoCompass/FirstViewController.swift"
-            timestampString = "468938003.056507"
+            timestampString = "469625344.231525"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "223"
-            endingLineNumber = "223"
+            startingLineNumber = "219"
+            endingLineNumber = "219"
             landmarkName = "locationManager(_:didUpdateLocations:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -361,6 +361,102 @@
             endingLineNumber = "211"
             landmarkName = "tableView(_:didSelectRowAtIndexPath:)"
             landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GeoCompass/AnimatedStartButton.swift"
+            timestampString = "469594439.012097"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "16"
+            endingLineNumber = "16"
+            landmarkName = "AnimatedStartButton"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GeoCompass.AnimatedStartButton.pauseSpace.getter : CoreGraphics.CGFloat"
+                  moduleName = "GeoCompass"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hejia/Documents/GeoCompass/GeoCompass/AnimatedStartButton.swift"
+                  timestampString = "469594443.817834"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "18">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GeoCompass.AnimatedStartButton.init (GeoCompass.AnimatedStartButton.Type)(frame : __C.CGRect) -&gt; GeoCompass.AnimatedStartButton"
+                  moduleName = "GeoCompass"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hejia/Documents/GeoCompass/GeoCompass/AnimatedStartButton.swift"
+                  timestampString = "469594443.818399"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "16"
+                  endingLineNumber = "16"
+                  offsetFromSymbolStart = "81">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GeoCompass/AnimatedStartButton.swift"
+            timestampString = "469595292.765999"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "86"
+            endingLineNumber = "86"
+            landmarkName = "addTransforms()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GeoCompass/WalkStore.swift"
+            timestampString = "469645644.367286"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "50"
+            endingLineNumber = "50"
+            landmarkName = "startWalk()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GeoCompass/WalkStore.swift"
+            timestampString = "469645649.591325"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "43"
+            endingLineNumber = "43"
+            landmarkName = "allWalks"
+            landmarkType = "19">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

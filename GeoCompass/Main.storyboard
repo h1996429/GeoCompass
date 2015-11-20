@@ -428,7 +428,7 @@
                             </mask>
                         </variation>
                     </view>
-                    <tabBarItem key="tabBarItem" title="罗盘" image="first" id="acW-dT-cKf"/>
+                    <tabBarItem key="tabBarItem" title="罗盘" image="compass" id="acW-dT-cKf"/>
                     <connections>
                         <outlet property="arrow" destination="QmJ-9U-aIv" id="imH-uR-bjD"/>
                         <outlet property="label1" destination="Ajv-uJ-p3Q" id="9he-Gc-FMW"/>
@@ -511,7 +511,7 @@
         <scene sceneID="7GY-hO-1hk">
             <objects>
                 <navigationController id="Zps-qg-Jpd" userLabel="列表（导航）" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="历史数据" image="second" id="Gsx-S6-Mm0"/>
+                    <tabBarItem key="tabBarItem" title="历史数据" image="book" id="Gsx-S6-Mm0"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="eIE-qt-C6X">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -525,60 +525,23 @@
             </objects>
             <point key="canvasLocation" x="967.5" y="0.0"/>
         </scene>
-        <!--地图-->
-        <scene sceneID="dqw-N7-2fU">
+        <!--地图（导航）-->
+        <scene sceneID="sYw-He-ARW">
             <objects>
-                <viewController id="ekV-pn-k5k" customClass="ThirdViewController" customModule="GeoCompass" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="8aR-JP-Dtn"/>
-                        <viewControllerLayoutGuide type="bottom" id="9rc-3o-6B2"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="q7i-h2-5eJ">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="Third View" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="8uy-wU-kmJ">
-                                <rect key="frame" x="195" y="279" width="209.5" height="41.5"/>
-                                <animations/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="36"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                                <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="96" y="187" width="209.5" height="41.5"/>
-                                </variation>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loaded by SecondViewController" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mGq-Pw-IDK">
-                                <rect key="frame" x="192" y="329" width="215.5" height="17"/>
-                                <animations/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                                <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="93" y="237.5" width="215.5" height="17"/>
-                                </variation>
-                            </label>
-                        </subviews>
+                <navigationController title="地图（导航）" id="uz6-fM-P3Q" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="地图" image="map" id="obA-ZE-U2J"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="IOh-Gx-9KJ">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
                         <animations/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <variation key="default">
-                            <mask key="subviews">
-                                <exclude reference="8uy-wU-kmJ"/>
-                                <exclude reference="mGq-Pw-IDK"/>
-                            </mask>
-                        </variation>
-                        <variation key="widthClass=compact">
-                            <mask key="subviews">
-                                <include reference="8uy-wU-kmJ"/>
-                                <include reference="mGq-Pw-IDK"/>
-                            </mask>
-                        </variation>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="地图" image="second" id="p2J-vc-dV1"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Hdq-7S-ioc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="COn-7j-uM0" kind="relationship" relationship="rootViewController" id="Lt8-Yv-xq1"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="49E-h2-drE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="967.5" y="776"/>
+            <point key="canvasLocation" x="948" y="899"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
@@ -594,7 +557,7 @@
                     <connections>
                         <segue destination="9pv-A4-QxB" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
                         <segue destination="Zps-qg-Jpd" kind="relationship" relationship="viewControllers" id="fAh-JS-sgc"/>
-                        <segue destination="ekV-pn-k5k" kind="relationship" relationship="viewControllers" id="ldD-YO-Kag"/>
+                        <segue destination="uz6-fM-P3Q" kind="relationship" relationship="viewControllers" id="MXC-ug-RxT"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
@@ -605,7 +568,7 @@
         <scene sceneID="sTN-DX-p6s">
             <objects>
                 <tableViewController id="QtM-tT-Cbd" userLabel="细节" customClass="SecondViewDetailController" customModule="GeoCompass" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="dZZ-Pq-ASv">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="dZZ-Pq-ASv">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
@@ -1092,6 +1055,71 @@
             </objects>
             <point key="canvasLocation" x="2467" y="748"/>
         </scene>
+        <!--地图-->
+        <scene sceneID="r1Q-Q5-nKL">
+            <objects>
+                <viewController title="地图" id="COn-7j-uM0" customClass="ThirdViewController" customModule="GeoCompass" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="zmk-v9-PSI"/>
+                        <viewControllerLayoutGuide type="bottom" id="TWN-Ad-XIU"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="d0p-K0-BWh">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="m4z-sU-R7k">
+                                <rect key="frame" x="0.0" y="64" width="600" height="487"/>
+                                <animations/>
+                            </mapView>
+                            <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wak-iP-1WI" customClass="AnimatedStartButton" customModule="GeoCompass" customModuleProvider="target">
+                                <rect key="frame" x="530" y="479" width="50" height="64"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="64" id="5Ou-BL-ikS"/>
+                                    <constraint firstAttribute="width" constant="50" id="h6Q-97-8ir"/>
+                                </constraints>
+                                <state key="normal" image="locationButton"/>
+                                <connections>
+                                    <action selector="walkPressed:" destination="COn-7j-uM0" eventType="touchUpInside" id="K3i-cs-0ek"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="m4z-sU-R7k" firstAttribute="leading" secondItem="d0p-K0-BWh" secondAttribute="leading" id="E8N-vs-j2v"/>
+                            <constraint firstItem="TWN-Ad-XIU" firstAttribute="top" secondItem="wak-iP-1WI" secondAttribute="bottom" constant="8" id="Pa0-lz-zFF"/>
+                            <constraint firstAttribute="trailing" secondItem="wak-iP-1WI" secondAttribute="trailing" constant="20" id="dqU-so-h5C"/>
+                            <constraint firstAttribute="trailing" secondItem="m4z-sU-R7k" secondAttribute="trailing" id="qgC-s2-fWH"/>
+                            <constraint firstItem="TWN-Ad-XIU" firstAttribute="top" secondItem="m4z-sU-R7k" secondAttribute="bottom" id="sdi-bM-JaV"/>
+                            <constraint firstItem="m4z-sU-R7k" firstAttribute="top" secondItem="zmk-v9-PSI" secondAttribute="bottom" id="tbf-u7-Qdp"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="RNZ-md-WwD">
+                        <nil key="title"/>
+                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="XHu-t6-DFZ">
+                            <rect key="frame" x="233.5" y="7" width="133" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <animations/>
+                            <segments>
+                                <segment title="矢量地图"/>
+                                <segment title="卫星地图"/>
+                            </segments>
+                            <connections>
+                                <action selector="indexChanged:" destination="COn-7j-uM0" eventType="valueChanged" id="Zse-xZ-3o9"/>
+                            </connections>
+                        </segmentedControl>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="mapView" destination="m4z-sU-R7k" id="G7g-6Z-h7Y"/>
+                        <outlet property="segmentedControl" destination="XHu-t6-DFZ" id="fe1-fI-Aub"/>
+                        <segue destination="QtM-tT-Cbd" kind="show" identifier="MapToDetail" id="Q9t-ZM-ght"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Z4w-RU-Uwp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1755" y="899"/>
+        </scene>
         <!--编辑线状-->
         <scene sceneID="1Ka-tP-auY">
             <objects>
@@ -1154,7 +1182,13 @@
     </scenes>
     <resources>
         <image name="arrow" width="48" height="128"/>
+        <image name="book" width="49" height="49"/>
+        <image name="compass" width="49" height="50"/>
         <image name="first" width="30" height="30"/>
-        <image name="second" width="30" height="30"/>
+        <image name="locationButton" width="200" height="256"/>
+        <image name="map" width="50" height="50"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="Q9t-ZM-ght"/>
+    </inferredMetricsTieBreakers>
 </document>

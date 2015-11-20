@@ -15,6 +15,8 @@
 //
 
 import Foundation
+import CoreLocation
+
 
 // 收藏站点数据表类
 class CoordsTransform {
@@ -94,16 +96,38 @@ class CoordsTransform {
      *                Date          Author             Operation
      *             2015-02-03     Yangzheng         Create Function
      ********************************************************************************/
-    class func transformMarsToGpsCoords(lon: Double, lat: Double) -> (gLng: Double, gLat: Double) {
+    class func transformMarsToGpsCoords(lon: Double, lat: Double) -> CLLocationCoordinate2D {
         var gLng: Double
         var gLat: Double
         
         let gpsCoords = transformGpsToMarsCoords(lon, wgLat: lat)
         
-        gLng = lon - (gpsCoords.mgLon - lon)
-        gLat = lat - (gpsCoords.mgLat - lat)
+        gLng = lon + (gpsCoords.mgLon - lon)
+        gLat = lat + (gpsCoords.mgLat - lat)
         
-        return (gLng, gLat)
+        return CLLocationCoordinate2D(latitude: gLat,longitude: gLng)
+    }
+    class func transformMarsToGpsCoordsWithCLLocationCoordinate2D(cllocation:CLLocationCoordinate2D) -> CLLocationCoordinate2D {
+        var gLng: Double
+        var gLat: Double
+        
+        let gpsCoords = transformGpsToMarsCoords(cllocation.longitude, wgLat: cllocation.latitude)
+        
+        gLng = cllocation.longitude + (gpsCoords.mgLon - cllocation.longitude)
+        gLat = cllocation.latitude + (gpsCoords.mgLat - cllocation.latitude)
+        
+        return CLLocationCoordinate2D(latitude: gLat,longitude: gLng)
+    }
+    class func transformMarsToGpsCoordsWithCLLocation(cllocation:CLLocation) -> CLLocation {
+        var gLng: Double
+        var gLat: Double
+        
+        let gpsCoords = transformGpsToMarsCoords(cllocation.coordinate.longitude, wgLat: cllocation.coordinate.latitude)
+        
+        gLng = cllocation.coordinate.longitude + (gpsCoords.mgLon - cllocation.coordinate.longitude)
+        gLat = cllocation.coordinate.latitude + (gpsCoords.mgLat - cllocation.coordinate.latitude)
+        
+        return CLLocation(latitude: gLat,longitude: gLng)
     }
     
     /*******************************************************************************

@@ -228,6 +228,8 @@ class SecondViewController:UITableViewController,UITabBarControllerDelegate,NSFe
         }
         self.tableView.reloadData()
     }
+    
+
 
     override func viewDidLoad() {
         super.viewDidLoad()

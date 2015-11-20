@@ -10,13 +10,11 @@
 		A72293361B983CAC00CCF6E8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72293351B983CAC00CCF6E8 /* AppDelegate.swift */; };
 		A72293381B983CAC00CCF6E8 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72293371B983CAC00CCF6E8 /* FirstViewController.swift */; };
 		A722933A1B983CAC00CCF6E8 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72293391B983CAC00CCF6E8 /* SecondViewController.swift */; };
-		A722933D1B983CAC00CCF6E8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A722933B1B983CAC00CCF6E8 /* Main.storyboard */; };
 		A72293421B983CAC00CCF6E8 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = A72293401B983CAC00CCF6E8 /* LaunchScreen.xib */; };
 		A722934E1B983CAC00CCF6E8 /* GeoCompassTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A722934D1B983CAC00CCF6E8 /* GeoCompassTests.swift */; };
 		A72293581B98619800CCF6E8 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A72293571B98619800CCF6E8 /* CoreMotion.framework */; };
 		A72293671B99C66A00CCF6E8 /* VectorMath in Resources */ = {isa = PBXBuildFile; fileRef = A72293661B99C66A00CCF6E8 /* VectorMath */; };
 		A722936B1B99CFA100CCF6E8 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A72293681B99CFA100CCF6E8 /* CoreLocation.framework */; };
-		A722936C1B99CFA100CCF6E8 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A72293691B99CFA100CCF6E8 /* MapKit.framework */; };
 		A722936D1B99CFA100CCF6E8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A722936A1B99CFA100CCF6E8 /* UIKit.framework */; };
 		A722937F1B9C35C300CCF6E8 /* VectorMath.swift in Sources */ = {isa = PBXBuildFile; fileRef = A722937C1B9C35C300CCF6E8 /* VectorMath.swift */; };
 		A72293801B9C35C300CCF6E8 /* VectorMath+Quartz.swift in Sources */ = {isa = PBXBuildFile; fileRef = A722937D1B9C35C300CCF6E8 /* VectorMath+Quartz.swift */; };
@@ -112,10 +110,25 @@
 		A760A8AC1BF1CED100F5812B /* NVActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A760A86A1BF1CED100F5812B /* NVActivityIndicatorView.swift */; };
 		A760A8AE1BF2271600F5812B /* DisplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A760A8AD1BF2271600F5812B /* DisplayView.swift */; };
 		A76406B21BAECC3E00256D1B /* Data.plist in Resources */ = {isa = PBXBuildFile; fileRef = A76406B11BAECC3E00256D1B /* Data.plist */; };
+		A7737C531BFC7EB200547A0B /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7737C521BFC7EB200547A0B /* MapKit.framework */; };
+		A7737C571BFC892B00547A0B /* WalkStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7737C551BFC892B00547A0B /* WalkStore.swift */; };
+		A7737C5C1BFCBDB300547A0B /* AnimatedStartButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7737C5B1BFCBDB300547A0B /* AnimatedStartButton.swift */; };
+		A7737C631BFCD8D200547A0B /* Walk+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7737C611BFCD8D200547A0B /* Walk+CoreDataProperties.swift */; };
+		A7737C641BFCD8D200547A0B /* Walk.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7737C621BFCD8D200547A0B /* Walk.swift */; };
+		A7737C661BFD9EBA00547A0B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A7737C651BFD9EBA00547A0B /* Main.storyboard */; };
+		A7737C681BFDE79F00547A0B /* Beijing, China.gpx in Resources */ = {isa = PBXBuildFile; fileRef = A7737C671BFDE79F00547A0B /* Beijing, China.gpx */; };
 		A794CF721BA82BCB00A64365 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A794CF701BA82BCB00A64365 /* Model.xcdatamodeld */; };
 		A79D51AC1BF83C3600BC5D23 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A79D51AB1BF83C3600BC5D23 /* AssetsLibrary.framework */; };
 		A79D51AE1BF83C4500BC5D23 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A79D51AD1BF83C4500BC5D23 /* MobileCoreServices.framework */; };
 		A7A72C4C1BFB5C4400BC402C /* CoordsTransfer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7A72C4B1BFB5C4400BC402C /* CoordsTransfer.swift */; };
+		A7A72C641BFB77D700BC402C /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7A72C631BFB77D700BC402C /* QuartzCore.framework */; };
+		A7A72C661BFB77ED00BC402C /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7A72C651BFB77ED00BC402C /* OpenGLES.framework */; };
+		A7A72C681BFB77FC00BC402C /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7A72C671BFB77FC00BC402C /* SystemConfiguration.framework */; };
+		A7A72C6A1BFB780700BC402C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7A72C691BFB780700BC402C /* CoreGraphics.framework */; };
+		A7A72C6C1BFB780F00BC402C /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7A72C6B1BFB780F00BC402C /* Security.framework */; };
+		A7A72C6E1BFB782600BC402C /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A7A72C6D1BFB782600BC402C /* libsqlite3.0.tbd */; };
+		A7A72C701BFB783400BC402C /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7A72C6F1BFB783400BC402C /* CoreTelephony.framework */; };
+		A7A72C721BFB784300BC402C /* libstdc++.6.0.9.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A7A72C711BFB784300BC402C /* libstdc++.6.0.9.tbd */; };
 		A7AE53171BEA18F50077B630 /* SecondViewDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7AE53161BEA18F50077B630 /* SecondViewDetailController.swift */; };
 		A7AE53191BEA33900077B630 /* SecondViewEditSurfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7AE53181BEA33900077B630 /* SecondViewEditSurfaceController.swift */; };
 		A7FE17EC1BF4E64E00EA1BE9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A7FE17EB1BF4E64E00EA1BE9 /* Images.xcassets */; };
@@ -138,14 +151,12 @@
 		A72293351B983CAC00CCF6E8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A72293371B983CAC00CCF6E8 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
 		A72293391B983CAC00CCF6E8 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
-		A722933C1B983CAC00CCF6E8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A72293411B983CAC00CCF6E8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		A72293471B983CAC00CCF6E8 /* GeoCompassTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GeoCompassTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A722934D1B983CAC00CCF6E8 /* GeoCompassTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoCompassTests.swift; sourceTree = "<group>"; };
 		A72293571B98619800CCF6E8 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		A72293661B99C66A00CCF6E8 /* VectorMath */ = {isa = PBXFileReference; lastKnownFileType = folder; path = VectorMath; sourceTree = "<group>"; };
 		A72293681B99CFA100CCF6E8 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		A72293691B99CFA100CCF6E8 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		A722936A1B99CFA100CCF6E8 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		A722936F1B99D9EC00CCF6E8 /* GeoCompass-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GeoCompass-Bridging-Header.h"; sourceTree = "<group>"; };
 		A722937C1B9C35C300CCF6E8 /* VectorMath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VectorMath.swift; path = GeoCompass/VectorMath.swift; sourceTree = "<group>"; };
@@ -244,13 +255,27 @@
 		A760A86A1BF1CED100F5812B /* NVActivityIndicatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NVActivityIndicatorView.swift; sourceTree = "<group>"; };
 		A760A8AD1BF2271600F5812B /* DisplayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplayView.swift; sourceTree = "<group>"; };
 		A76406B11BAECC3E00256D1B /* Data.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Data.plist; sourceTree = "<group>"; };
-		A794CF6E1BA82ABC00A64365 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
+		A7737C521BFC7EB200547A0B /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		A7737C551BFC892B00547A0B /* WalkStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalkStore.swift; sourceTree = "<group>"; };
+		A7737C5B1BFCBDB300547A0B /* AnimatedStartButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimatedStartButton.swift; sourceTree = "<group>"; };
+		A7737C611BFCD8D200547A0B /* Walk+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Walk+CoreDataProperties.swift"; path = "GeoCompass/datamodel/Walk+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		A7737C621BFCD8D200547A0B /* Walk.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Walk.swift; path = GeoCompass/datamodel/Walk.swift; sourceTree = SOURCE_ROOT; };
+		A7737C651BFD9EBA00547A0B /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		A7737C671BFDE79F00547A0B /* Beijing, China.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Beijing, China.gpx"; sourceTree = "<group>"; };
 		A794CF6F1BA82ABC00A64365 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		A794CF711BA82BCB00A64365 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		A79D51AB1BF83C3600BC5D23 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		A79D51AD1BF83C4500BC5D23 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		A79D51B11BF8AA1E00BC5D23 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A7A72C4B1BFB5C4400BC402C /* CoordsTransfer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoordsTransfer.swift; sourceTree = "<group>"; };
+		A7A72C631BFB77D700BC402C /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		A7A72C651BFB77ED00BC402C /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		A7A72C671BFB77FC00BC402C /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		A7A72C691BFB780700BC402C /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		A7A72C6B1BFB780F00BC402C /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		A7A72C6D1BFB782600BC402C /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
+		A7A72C6F1BFB783400BC402C /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		A7A72C711BFB784300BC402C /* libstdc++.6.0.9.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.6.0.9.tbd"; path = "usr/lib/libstdc++.6.0.9.tbd"; sourceTree = SDKROOT; };
 		A7AE53161BEA18F50077B630 /* SecondViewDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondViewDetailController.swift; sourceTree = "<group>"; };
 		A7AE53181BEA33900077B630 /* SecondViewEditSurfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondViewEditSurfaceController.swift; sourceTree = "<group>"; };
 		A7FE17EB1BF4E64E00EA1BE9 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -262,11 +287,19 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A7A72C721BFB784300BC402C /* libstdc++.6.0.9.tbd in Frameworks */,
+				A7A72C701BFB783400BC402C /* CoreTelephony.framework in Frameworks */,
+				A7A72C6E1BFB782600BC402C /* libsqlite3.0.tbd in Frameworks */,
+				A7A72C6C1BFB780F00BC402C /* Security.framework in Frameworks */,
+				A7A72C6A1BFB780700BC402C /* CoreGraphics.framework in Frameworks */,
+				A7A72C681BFB77FC00BC402C /* SystemConfiguration.framework in Frameworks */,
+				A7A72C661BFB77ED00BC402C /* OpenGLES.framework in Frameworks */,
+				A7737C531BFC7EB200547A0B /* MapKit.framework in Frameworks */,
+				A7A72C641BFB77D700BC402C /* QuartzCore.framework in Frameworks */,
 				A79D51AE1BF83C4500BC5D23 /* MobileCoreServices.framework in Frameworks */,
 				A79D51AC1BF83C3600BC5D23 /* AssetsLibrary.framework in Frameworks */,
 				A72293851BA18BB600CCF6E8 /* CoreData.framework in Frameworks */,
 				A722936B1B99CFA100CCF6E8 /* CoreLocation.framework in Frameworks */,
-				A722936C1B99CFA100CCF6E8 /* MapKit.framework in Frameworks */,
 				A722936D1B99CFA100CCF6E8 /* UIKit.framework in Frameworks */,
 				A72293581B98619800CCF6E8 /* CoreMotion.framework in Frameworks */,
 			);
@@ -285,6 +318,8 @@
 		A72293271B983CAC00CCF6E8 = {
 			isa = PBXGroup;
 			children = (
+				A7737C671BFDE79F00547A0B /* Beijing, China.gpx */,
+				A7737C521BFC7EB200547A0B /* MapKit.framework */,
 				A7FE17EB1BF4E64E00EA1BE9 /* Images.xcassets */,
 				A760A7FE1BF1CEC600F5812B /* PhotoBrowser */,
 				A743D9371BEF05AD00624737 /* icon.png */,
@@ -320,9 +355,10 @@
 				A743D92F1BEE6FCC00624737 /* SecondViewEditLineController.swift */,
 				A743D9E81BF09AB600624737 /* SecondViewImageController.swift */,
 				A760A8AD1BF2271600F5812B /* DisplayView.swift */,
-				A72293821BA0985900CCF6E8 /* ThirdViewController.swift */,
-				A722933B1B983CAC00CCF6E8 /* Main.storyboard */,
+				A7737C581BFC893400547A0B /* walkTrack */,
 				A7A72C4B1BFB5C4400BC402C /* CoordsTransfer.swift */,
+				A72293821BA0985900CCF6E8 /* ThirdViewController.swift */,
+				A7737C651BFD9EBA00547A0B /* Main.storyboard */,
 				A72293401B983CAC00CCF6E8 /* LaunchScreen.xib */,
 				A72293331B983CAC00CCF6E8 /* Supporting Files */,
 				A731A05C1BAC77B4008C5966 /* NewsCoreDataController.swift */,
@@ -352,6 +388,14 @@
 		A722936E1B99CFAC00CCF6E8 /* framework */ = {
 			isa = PBXGroup;
 			children = (
+				A7A72C711BFB784300BC402C /* libstdc++.6.0.9.tbd */,
+				A7A72C6F1BFB783400BC402C /* CoreTelephony.framework */,
+				A7A72C6D1BFB782600BC402C /* libsqlite3.0.tbd */,
+				A7A72C6B1BFB780F00BC402C /* Security.framework */,
+				A7A72C691BFB780700BC402C /* CoreGraphics.framework */,
+				A7A72C671BFB77FC00BC402C /* SystemConfiguration.framework */,
+				A7A72C651BFB77ED00BC402C /* OpenGLES.framework */,
+				A7A72C631BFB77D700BC402C /* QuartzCore.framework */,
 				A79D51AB1BF83C3600BC5D23 /* AssetsLibrary.framework */,
 				A79D51AD1BF83C4500BC5D23 /* MobileCoreServices.framework */,
 				A722937C1B9C35C300CCF6E8 /* VectorMath.swift */,
@@ -362,7 +406,6 @@
 				A760A8491BF1CED100F5812B /* NVActivityIndicatorView */,
 				A72293841BA18BB600CCF6E8 /* CoreData.framework */,
 				A72293681B99CFA100CCF6E8 /* CoreLocation.framework */,
-				A72293691B99CFA100CCF6E8 /* MapKit.framework */,
 				A722936A1B99CFA100CCF6E8 /* UIKit.framework */,
 				A72293571B98619800CCF6E8 /* CoreMotion.framework */,
 			);
@@ -372,6 +415,8 @@
 		A758CA491BE66CB60043A637 /* datamodel */ = {
 			isa = PBXGroup;
 			children = (
+				A7737C611BFCD8D200547A0B /* Walk+CoreDataProperties.swift */,
+				A7737C621BFCD8D200547A0B /* Walk.swift */,
 				A758CA451BE66CB60043A637 /* SurfaceData.swift */,
 				A758CA461BE66CB60043A637 /* LineData.swift */,
 			);
@@ -545,6 +590,15 @@
 			path = Animations;
 			sourceTree = "<group>";
 		};
+		A7737C581BFC893400547A0B /* walkTrack */ = {
+			isa = PBXGroup;
+			children = (
+				A7737C5B1BFCBDB300547A0B /* AnimatedStartButton.swift */,
+				A7737C551BFC892B00547A0B /* WalkStore.swift */,
+			);
+			name = walkTrack;
+			sourceTree = "<group>";
+		};
 		A79D51B31BF8AA2600BC5D23 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -604,6 +658,11 @@
 				TargetAttributes = {
 					A722932F1B983CAC00CCF6E8 = {
 						CreatedOnToolsVersion = 6.4;
+						SystemCapabilities = {
+							com.apple.Maps.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 					A72293461B983CAC00CCF6E8 = {
 						CreatedOnToolsVersion = 6.4;
@@ -638,11 +697,12 @@
 				A7FE17EC1BF4E64E00EA1BE9 /* Images.xcassets in Resources */,
 				A76406B21BAECC3E00256D1B /* Data.plist in Resources */,
 				A743D9381BEF05AD00624737 /* icon.png in Resources */,
-				A722933D1B983CAC00CCF6E8 /* Main.storyboard in Resources */,
 				A760A8141BF1CEC600F5812B /* pic.bundle in Resources */,
 				A72293421B983CAC00CCF6E8 /* LaunchScreen.xib in Resources */,
 				A760A8831BF1CED100F5812B /* Info.plist in Resources */,
+				A7737C661BFD9EBA00547A0B /* Main.storyboard in Resources */,
 				A72293671B99C66A00CCF6E8 /* VectorMath in Resources */,
+				A7737C681BFDE79F00547A0B /* Beijing, China.gpx in Resources */,
 				A7FE17EE1BF4E7D100EA1BE9 /* ItemCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -683,6 +743,7 @@
 				A760A8131BF1CEC600F5812B /* PhotoBrowser+Common.swift in Sources */,
 				A794CF721BA82BCB00A64365 /* Model.xcdatamodeld in Sources */,
 				A72293831BA0985900CCF6E8 /* ThirdViewController.swift in Sources */,
+				A7737C571BFC892B00547A0B /* WalkStore.swift in Sources */,
 				A760A8161BF1CEC600F5812B /* PhotoBrowser+HUD.swift in Sources */,
 				A760A8781BF1CED100F5812B /* ViewController+SnapKit.swift in Sources */,
 				A731A0611BAC79BC008C5966 /* CoreDataStore.swift in Sources */,
@@ -708,6 +769,7 @@
 				A760A8181BF1CEC600F5812B /* PhotoBrowser+Main.swift in Sources */,
 				A760A8721BF1CED100F5812B /* Debugging.swift in Sources */,
 				A760A88B1BF1CED100F5812B /* UIImageView+Haneke.swift in Sources */,
+				A7737C5C1BFCBDB300547A0B /* AnimatedStartButton.swift in Sources */,
 				A760A8AB1BF1CED100F5812B /* NVActivityIndicatorShape.swift in Sources */,
 				A760A8801BF1CED100F5812B /* Fetcher.swift in Sources */,
 				A760A8A71BF1CED100F5812B /* NVActivityIndicatorAnimationSemiCircleSpin.swift in Sources */,
@@ -731,6 +793,7 @@
 				A760A81F1BF1CEC600F5812B /* ItemCell.swift in Sources */,
 				A760A89E1BF1CED100F5812B /* NVActivityIndicatorAnimationBallZigZagDeflect.swift in Sources */,
 				A760A88D1BF1CED100F5812B /* NVActivityIndicatorAnimationBallBeat.swift in Sources */,
+				A7737C641BFCD8D200547A0B /* Walk.swift in Sources */,
 				A731A05D1BAC77B4008C5966 /* NewsCoreDataController.swift in Sources */,
 				A760A8891BF1CED100F5812B /* UIButton+Haneke.swift in Sources */,
 				A760A87D1BF1CED100F5812B /* DiskCache.swift in Sources */,
@@ -741,6 +804,7 @@
 				A760A8971BF1CED100F5812B /* NVActivityIndicatorAnimationBallScale.swift in Sources */,
 				A760A8911BF1CED100F5812B /* NVActivityIndicatorAnimationBallGridBeat.swift in Sources */,
 				A760A8191BF1CEC600F5812B /* PhotoBrowser+PBType.swift in Sources */,
+				A7737C631BFCD8D200547A0B /* Walk+CoreDataProperties.swift in Sources */,
 				A760A81C1BF1CEC600F5812B /* PhotoBrowser+Model.swift in Sources */,
 				A760A88A1BF1CED100F5812B /* UIImage+Haneke.swift in Sources */,
 				A760A81D1BF1CEC600F5812B /* PhotoBrowser.swift in Sources */,
@@ -779,15 +843,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		A722933B1B983CAC00CCF6E8 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				A722933C1B983CAC00CCF6E8 /* Base */,
-				A794CF6E1BA82ABC00A64365 /* zh-Hans */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		A72293401B983CAC00CCF6E8 /* LaunchScreen.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -820,6 +875,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -840,6 +896,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "-ObjC";
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -866,6 +923,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_BITCODE = NO;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -878,6 +936,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "-ObjC";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -888,13 +947,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/BaiduMapSDK",
 				);
 				INFOPLIST_FILE = GeoCompass/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = GeoCompass.GeoCompass;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "GeoCompass-Bridging-Header.h";
@@ -906,13 +968,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/BaiduMapSDK",
 				);
 				INFOPLIST_FILE = GeoCompass/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = GeoCompass.GeoCompass;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "GeoCompass-Bridging-Header.h";

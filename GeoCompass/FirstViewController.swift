@@ -28,7 +28,7 @@ extension Double {
 
 
 
-class FirstViewController: UIViewController,CLLocationManagerDelegate{
+class FirstViewController: UIViewController,CLLocationManagerDelegate,UITabBarControllerDelegate{
     
 
     
@@ -103,7 +103,6 @@ class FirstViewController: UIViewController,CLLocationManagerDelegate{
             
         else if segmentedControl.selectedSegmentIndex == 2 {
             let time:NSDate = NSDate();
-            let gpsCoords = CoordsTransform.transformMarsToGpsCoords(lonFS, lat: latFS)
             loadData();
             switch needSave{
             case 0:
@@ -114,8 +113,8 @@ class FirstViewController: UIViewController,CLLocationManagerDelegate{
                 surfacedata.strikeS=(round(strikeFS*100))/100;
                 surfacedata.dipdirS=(round(dipdirFS*100))/100;
                 surfacedata.dipS=(round(dipFS*100))/100;
-                surfacedata.latS=(round(gpsCoords.gLat*100000000))/100000000;
-                surfacedata.lonS=(round(gpsCoords.gLng*100000000))/100000000;
+                surfacedata.latS=(round(latFS*100000000))/100000000;
+                surfacedata.lonS=(round(lonFS*100000000))/100000000;
                 surfacedata.hightS=(round(hightFS*100))/100;
                 surfacedata.locErrorS=(round(locErrorFS*10))/10;
                 surfacedata.hightErrorS=(round(hightErrorFS*10))/10;
@@ -135,8 +134,8 @@ class FirstViewController: UIViewController,CLLocationManagerDelegate{
                 linedata.pitchS=(round(pitchFS*100))/100;
                 linedata.plusynS=(round(plusynFS*100))/100;
                 linedata.pluangS=(round(pluangFS*100))/100;
-                linedata.latS=(round(gpsCoords.gLat*10000000))/10000000;
-                linedata.lonS=(round(gpsCoords.gLng*10000000))/10000000;
+                linedata.latS=(round(latFS*10000000))/10000000;
+                linedata.lonS=(round(lonFS*10000000))/10000000;
                 linedata.hightS=(round(hightFS*100))/100;
                 linedata.locErrorS=(round(locErrorFS*10))/10;
                 linedata.hightErrorS=(round(hightErrorFS*10))/10;
@@ -150,11 +149,7 @@ class FirstViewController: UIViewController,CLLocationManagerDelegate{
             default:
                 break;
             }
-            
-            
         }
-        
- 
     }
     
     
@@ -195,8 +190,8 @@ class FirstViewController: UIViewController,CLLocationManagerDelegate{
         
         if (location.horizontalAccuracy > 0) {
             self.locationManager.stopUpdatingLocation();
-            self.lat = location.coordinate.latitude;
-            self.lon = location.coordinate.longitude;
+            self.lat = CoordsTransform.transformMarsToGpsCoordsWithCLLocationCoordinate2D(location.coordinate).latitude;
+            self.lon = CoordsTransform.transformMarsToGpsCoordsWithCLLocationCoordinate2D(location.coordinate).longitude;
             self.hight = location.altitude;
             self.locError = location.horizontalAccuracy;
             self.hightError = location.verticalAccuracy;
@@ -259,6 +254,8 @@ class FirstViewController: UIViewController,CLLocationManagerDelegate{
     return (b,c,d);
     }
     
+
+
     
     override func viewDidLoad() {
         super.viewDidLoad();
@@ -405,8 +402,7 @@ class FirstViewController: UIViewController,CLLocationManagerDelegate{
                 }
             })
 
-        }
-        
+        }        
     }
     
     func loadData() {
@@ -460,6 +456,11 @@ class FirstViewController: UIViewController,CLLocationManagerDelegate{
         dict.writeToFile(path, atomically: false)
         let resultDictionary = NSMutableDictionary(contentsOfFile: path)
         print("Saved Data.plist file is --> \(resultDictionary?.description)")
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewDidDisappear(animated)
+        locationManager.stopUpdatingLocation()
     }
 
 
