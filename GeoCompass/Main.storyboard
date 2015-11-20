@@ -529,7 +529,7 @@
         <scene sceneID="sYw-He-ARW">
             <objects>
                 <navigationController title="地图（导航）" id="uz6-fM-P3Q" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="地图" image="map" id="obA-ZE-U2J"/>
+                    <tabBarItem key="tabBarItem" title="产状地图" image="map" id="obA-ZE-U2J"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="IOh-Gx-9KJ">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -1182,11 +1182,11 @@
     </scenes>
     <resources>
         <image name="arrow" width="48" height="128"/>
-        <image name="book" width="49" height="49"/>
-        <image name="compass" width="49" height="50"/>
+        <image name="book" width="47" height="47"/>
+        <image name="compass" width="47" height="48"/>
         <image name="first" width="30" height="30"/>
         <image name="locationButton" width="200" height="256"/>
-        <image name="map" width="50" height="50"/>
+        <image name="map" width="48" height="48"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Q9t-ZM-ght"/>

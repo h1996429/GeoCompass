@@ -46,7 +46,7 @@ class SecondViewImageController: UIViewController,UIImagePickerControllerDelegat
         
         actionSheet = UIAlertController(title: "编辑", message: "选择添加或是删除照片", preferredStyle: UIAlertControllerStyle.ActionSheet)
         // 定义 添加和删除 的 UIAlertAction
-        let cancelAction = UIAlertAction(title: "取消", style: UIAlertActionStyle.Cancel, handler: nil)
+        let cancelAction = UIAlertAction(title: "取消", style: UIAlertActionStyle.Destructive, handler: nil)
         let addAction = UIAlertAction(title: "添加", style: UIAlertActionStyle.Default){
             (action: UIAlertAction!) -> Void in
             NSLog("you choose add")

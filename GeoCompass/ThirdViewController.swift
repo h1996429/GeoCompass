@@ -30,18 +30,90 @@ class ThirdViewController: UIViewController,MKMapViewDelegate,CLLocationManagerD
     var toolButton:UIBarButtonItem{
         return UIBarButtonItem(title:"工具", style:.Plain, target: self, action: "toolAction:")
     }
+    
+
     func trackAction(exportBarButton:UIBarButtonItem){
-        if isTracking {
-            locationManager.stopUpdatingLocation()
-        } else {
-            locationManager.startUpdatingLocation()
-            walkStore.startWalk()
+        let alert = UIAlertController(title: "航迹",
+            message: "航迹将会自动保存",
+            preferredStyle: UIAlertControllerStyle.Alert)
+        let alertStop = UIAlertController(title: "航迹",
+            message: "航迹将会自动保存",
+            preferredStyle: UIAlertControllerStyle.Alert)
+        
+        let recordAction = UIAlertAction(title: "开始记录航迹",
+            style: UIAlertActionStyle.Default)
+            { (action: UIAlertAction!) -> Void in
+                    if self.isTracking {
+                        self.locationManager.stopUpdatingLocation()
+                    } else {
+                        self.locationManager.startUpdatingLocation()
+                        self.walkStore.startWalk()
+                    }
+                    self.isTracking = !self.isTracking
+                    self.updateDisplay()
         }
         
-        isTracking = !isTracking
-        updateDisplay()
+        let stopRecordAction = UIAlertAction(title: "停止记录航迹",
+            style: UIAlertActionStyle.Default)
+            { (action: UIAlertAction!) -> Void in
+                    if self.isTracking {
+                        self.locationManager.stopUpdatingLocation()
+                    } else {
+                        self.locationManager.startUpdatingLocation()
+                        self.walkStore.startWalk()
+                    }
+                    self.isTracking = !self.isTracking
+                    self.updateDisplay()
+        }
+        
+        let historyAction1 = UIAlertAction(title: "历史航迹",
+            style: UIAlertActionStyle.Default)
+            { (action) in
+                
+        }
+        let historyAction2 = UIAlertAction(title: "历史航迹",
+            style: UIAlertActionStyle.Default)
+            { (action) in
+                
+        }
+        
+        let deleteAction1 = UIAlertAction(title: "清除屏幕上的航迹",
+            style: UIAlertActionStyle.Default)
+            { (action: UIAlertAction!) -> Void in
+                self.mapView.removeOverlays(self.mapView.overlays)
+                self.walkStore.stopWalk()
+        }
+        let deleteAction2 = UIAlertAction(title: "清除屏幕上的航迹",
+            style: UIAlertActionStyle.Default)
+            { (action: UIAlertAction!) -> Void in
+                self.mapView.removeOverlays(self.mapView.overlays)
+                self.walkStore.stopWalk()
+        }
+        let cancelAction = UIAlertAction(title: "取消",
+            style: UIAlertActionStyle.Destructive,
+            handler: nil)
+        
+        
+        alert.addAction(recordAction)
+        alert.addAction(historyAction1)
+        alert.addAction(deleteAction1)
+        alert.addAction(cancelAction)
+        
+        alertStop.addAction(stopRecordAction)
+        alertStop.addAction(historyAction2)
+        alertStop.addAction(deleteAction2)
+        alertStop.addAction(cancelAction)
+        
+        if !isTracking {
+            self.presentViewController(alert,
+            animated: true, completion: nil)}
+        else if isTracking {
+            self.presentViewController(alertStop,
+                animated: true, completion: nil)
+        }
 
     }
+    
     func toolAction(exportBarButton:UIBarButtonItem){
     }
     
@@ -50,18 +122,23 @@ class ThirdViewController: UIViewController,MKMapViewDelegate,CLLocationManagerD
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     
     @IBAction func indexChanged(sender: UISegmentedControl) {
-        let mapType = MapType(rawValue: segmentedControl.selectedSegmentIndex)
+        let mapType = MapType(rawValue: self.segmentedControl.selectedSegmentIndex)
         switch (mapType!) {
         case .Standard:
-            mapView.mapType = MKMapType.Standard
+            self.mapView.mapType = MKMapType.Standard
         case .Hybrid:
-            mapView.mapType = MKMapType.Hybrid}
+            self.mapView.mapType = MKMapType.Hybrid}
     }
     
     @IBAction func walkPressed(sender: UIButton) {
         sender.selected = !sender.selected
         if !isCompass {mapView.userTrackingMode = MKUserTrackingMode.FollowWithHeading}
-        else {mapView.userTrackingMode = MKUserTrackingMode.None}
+        else {
+            mapView.userTrackingMode = MKUserTrackingMode.None
+            mapView.setCenterCoordinate(CoordsTransform.transformMarsToGpsCoordsWithCLLocationCoordinate2D(mapView.centerCoordinate), animated: true)
+            
+            let region = MKCoordinateRegionMakeWithDistance(CoordsTransform.transformMarsToGpsCoordsWithCLLocationCoordinate2D(mapView.centerCoordinate),4.5*pow(3, 10),4.5*pow(3, 10))
+            mapView.setRegion(region, animated: true)}
         isCompass = !isCompass
     }
 
@@ -79,6 +156,7 @@ class ThirdViewController: UIViewController,MKMapViewDelegate,CLLocationManagerD
         
         locationManager.requestAlwaysAuthorization()
         mapView.showsUserLocation = true
+        self.mapView.delegate = self
     }
     
 
@@ -99,10 +177,11 @@ class ThirdViewController: UIViewController,MKMapViewDelegate,CLLocationManagerD
                     if newLocation.horizontalAccuracy > 0 {
                         // Only set the location on and region on the first try
                         // This may change in the future
-                        if walk.locations.count <= 0 {
-                            mapView.setCenterCoordinate(CoordsTransform.transformMarsToGpsCoordsWithCLLocationCoordinate2D(newLocation.coordinate), animated: true)
+                        if mapView.userLocationVisible {
+                            mapView.userTrackingMode = MKUserTrackingMode.None
+                            mapView.setCenterCoordinate(CoordsTransform.transformMarsToGpsCoordsWithCLLocationCoordinate2D(mapView.userLocation.coordinate), animated: true)
                             
-                            let region = MKCoordinateRegionMakeWithDistance(CoordsTransform.transformMarsToGpsCoordsWithCLLocationCoordinate2D(newLocation.coordinate), 1000, 1000)
+                            let region = MKCoordinateRegionMakeWithDistance(CoordsTransform.transformMarsToGpsCoordsWithCLLocationCoordinate2D(mapView.userLocation.coordinate),4.5*pow(3, 10),4.5*pow(3, 10))
                             mapView.setRegion(region, animated: true)
                         }
                         let locations = walk.locations as Array<CLLocation>
@@ -119,13 +198,16 @@ class ThirdViewController: UIViewController,MKMapViewDelegate,CLLocationManagerD
         }
     }
     
+    func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
+        print(error)
+    }
+    
     func polyLine() -> MKPolyline {
         if let walk = walkStore.currentWalk {
             var coordinates = walk.locations.map({ (location: CLLocation) ->
                 CLLocationCoordinate2D in
                 return location.coordinate
             })
-            
             return MKPolyline(coordinates: &coordinates, count: walk.locations.count)
         }
         return MKPolyline()
@@ -170,12 +252,12 @@ class ThirdViewController: UIViewController,MKMapViewDelegate,CLLocationManagerD
     }
     
     func mapView(mapView: MKMapView, rendererForOverlay overlay: MKOverlay) -> MKOverlayRenderer {
-        if let polyLine = overlay as? MKPolyline {
-            let renderer = MKPolylineRenderer(polyline: polyLine)
-            renderer.strokeColor = UIColor(hue:0.88, saturation:0.46, brightness:0.73, alpha:0.75)
+        if overlay is MKPolyline {
+            let renderer = MKPolylineRenderer(polyline: polyLine())
+            renderer.strokeColor = UIColor(red: 11/255.0, green: 128/255.0, blue: 224/255.0, alpha: 0.75)
             renderer.lineWidth = 6
             return renderer }
-        else{return MKOverlayRenderer()}
+        return MKOverlayRenderer()
     }
     
     override func didReceiveMemoryWarning() {

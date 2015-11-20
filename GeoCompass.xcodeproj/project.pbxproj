@@ -13,7 +13,6 @@
 		A72293421B983CAC00CCF6E8 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = A72293401B983CAC00CCF6E8 /* LaunchScreen.xib */; };
 		A722934E1B983CAC00CCF6E8 /* GeoCompassTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A722934D1B983CAC00CCF6E8 /* GeoCompassTests.swift */; };
 		A72293581B98619800CCF6E8 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A72293571B98619800CCF6E8 /* CoreMotion.framework */; };
-		A72293671B99C66A00CCF6E8 /* VectorMath in Resources */ = {isa = PBXBuildFile; fileRef = A72293661B99C66A00CCF6E8 /* VectorMath */; };
 		A722936B1B99CFA100CCF6E8 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A72293681B99CFA100CCF6E8 /* CoreLocation.framework */; };
 		A722936D1B99CFA100CCF6E8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A722936A1B99CFA100CCF6E8 /* UIKit.framework */; };
 		A722937F1B9C35C300CCF6E8 /* VectorMath.swift in Sources */ = {isa = PBXBuildFile; fileRef = A722937C1B9C35C300CCF6E8 /* VectorMath.swift */; };
@@ -155,7 +154,6 @@
 		A72293471B983CAC00CCF6E8 /* GeoCompassTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GeoCompassTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A722934D1B983CAC00CCF6E8 /* GeoCompassTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoCompassTests.swift; sourceTree = "<group>"; };
 		A72293571B98619800CCF6E8 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
-		A72293661B99C66A00CCF6E8 /* VectorMath */ = {isa = PBXFileReference; lastKnownFileType = folder; path = VectorMath; sourceTree = "<group>"; };
 		A72293681B99CFA100CCF6E8 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		A722936A1B99CFA100CCF6E8 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		A722936F1B99D9EC00CCF6E8 /* GeoCompass-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GeoCompass-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -319,17 +317,15 @@
 			isa = PBXGroup;
 			children = (
 				A7737C671BFDE79F00547A0B /* Beijing, China.gpx */,
-				A7737C521BFC7EB200547A0B /* MapKit.framework */,
 				A7FE17EB1BF4E64E00EA1BE9 /* Images.xcassets */,
-				A760A7FE1BF1CEC600F5812B /* PhotoBrowser */,
 				A743D9371BEF05AD00624737 /* icon.png */,
+				A722936E1B99CFAC00CCF6E8 /* framework */,
+				A760A7FE1BF1CEC600F5812B /* PhotoBrowser */,
 				A758CA491BE66CB60043A637 /* datamodel */,
 				A722936F1B99D9EC00CCF6E8 /* GeoCompass-Bridging-Header.h */,
-				A722936E1B99CFAC00CCF6E8 /* framework */,
 				A72293321B983CAC00CCF6E8 /* GeoCompass */,
 				A722934A1B983CAC00CCF6E8 /* GeoCompassTests */,
 				A72293311B983CAC00CCF6E8 /* Products */,
-				A72293661B99C66A00CCF6E8 /* VectorMath */,
 			);
 			sourceTree = "<group>";
 		};
@@ -355,15 +351,15 @@
 				A743D92F1BEE6FCC00624737 /* SecondViewEditLineController.swift */,
 				A743D9E81BF09AB600624737 /* SecondViewImageController.swift */,
 				A760A8AD1BF2271600F5812B /* DisplayView.swift */,
-				A7737C581BFC893400547A0B /* walkTrack */,
-				A7A72C4B1BFB5C4400BC402C /* CoordsTransfer.swift */,
 				A72293821BA0985900CCF6E8 /* ThirdViewController.swift */,
+				A7737C581BFC893400547A0B /* walkTrack */,
 				A7737C651BFD9EBA00547A0B /* Main.storyboard */,
 				A72293401B983CAC00CCF6E8 /* LaunchScreen.xib */,
-				A72293331B983CAC00CCF6E8 /* Supporting Files */,
+				A7A72C4B1BFB5C4400BC402C /* CoordsTransfer.swift */,
 				A731A05C1BAC77B4008C5966 /* NewsCoreDataController.swift */,
 				A731A05E1BAC79A0008C5966 /* CoreDataHelper.swift */,
 				A731A0601BAC79BC008C5966 /* CoreDataStore.swift */,
+				A72293331B983CAC00CCF6E8 /* Supporting Files */,
 			);
 			path = GeoCompass;
 			sourceTree = "<group>";
@@ -388,6 +384,7 @@
 		A722936E1B99CFAC00CCF6E8 /* framework */ = {
 			isa = PBXGroup;
 			children = (
+				A7737C521BFC7EB200547A0B /* MapKit.framework */,
 				A7A72C711BFB784300BC402C /* libstdc++.6.0.9.tbd */,
 				A7A72C6F1BFB783400BC402C /* CoreTelephony.framework */,
 				A7A72C6D1BFB782600BC402C /* libsqlite3.0.tbd */,
@@ -398,9 +395,7 @@
 				A7A72C631BFB77D700BC402C /* QuartzCore.framework */,
 				A79D51AB1BF83C3600BC5D23 /* AssetsLibrary.framework */,
 				A79D51AD1BF83C4500BC5D23 /* MobileCoreServices.framework */,
-				A722937C1B9C35C300CCF6E8 /* VectorMath.swift */,
-				A722937D1B9C35C300CCF6E8 /* VectorMath+Quartz.swift */,
-				A722937E1B9C35C300CCF6E8 /* VectorMath+SceneKit.swift */,
+				A7F3EBEE1BFEF84A00AD3832 /* VectorMath */,
 				A760A8221BF1CED100F5812B /* CFSnapKit */,
 				A760A8331BF1CED100F5812B /* Haneke */,
 				A760A8491BF1CED100F5812B /* NVActivityIndicatorView */,
@@ -607,6 +602,16 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		A7F3EBEE1BFEF84A00AD3832 /* VectorMath */ = {
+			isa = PBXGroup;
+			children = (
+				A722937C1B9C35C300CCF6E8 /* VectorMath.swift */,
+				A722937D1B9C35C300CCF6E8 /* VectorMath+Quartz.swift */,
+				A722937E1B9C35C300CCF6E8 /* VectorMath+SceneKit.swift */,
+			);
+			name = VectorMath;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -701,7 +706,6 @@
 				A72293421B983CAC00CCF6E8 /* LaunchScreen.xib in Resources */,
 				A760A8831BF1CED100F5812B /* Info.plist in Resources */,
 				A7737C661BFD9EBA00547A0B /* Main.storyboard in Resources */,
-				A72293671B99C66A00CCF6E8 /* VectorMath in Resources */,
 				A7737C681BFDE79F00547A0B /* Beijing, China.gpx in Resources */,
 				A7FE17EE1BF4E7D100EA1BE9 /* ItemCell.xib in Resources */,
 			);
