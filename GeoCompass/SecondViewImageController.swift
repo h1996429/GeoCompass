@@ -22,10 +22,9 @@ class SecondViewImageController: UIViewController,UIImagePickerControllerDelegat
     }
     
     func deletPhotoAction(deletBarButton:UIBarButtonItem){
-        NSLog("deletPhotoAction")
         for (var i=0;i < displayView.needGou.count;i++){
             if displayView.needGou[i] == true {
-                do{try fileManagerImage.removeItemAtPath(dir+photoDate+" "+"\(i)"+".png")}catch let error as NSError{if error != 0 {NSLog("Unsolved error \(error)")}}
+                do{try fileManagerImage.removeItemAtPath(dir+photoDate+" "+"\(i)"+".png")}catch let error as NSError{if error != 0 {abort()}}
             }
         }
         load()
@@ -46,31 +45,34 @@ class SecondViewImageController: UIViewController,UIImagePickerControllerDelegat
         
         actionSheet = UIAlertController(title: "编辑", message: "选择添加或是删除照片", preferredStyle: UIAlertControllerStyle.ActionSheet)
         // 定义 添加和删除 的 UIAlertAction
-        let cancelAction = UIAlertAction(title: "取消", style: UIAlertActionStyle.Destructive, handler: nil)
+        let cancelAction = UIAlertAction(title: "取消", style: UIAlertActionStyle.Destructive){
+            (action: UIAlertAction!) -> Void in
+            self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        }
         let addAction = UIAlertAction(title: "添加", style: UIAlertActionStyle.Default){
             (action: UIAlertAction!) -> Void in
-            NSLog("you choose add")
             self.setEditing(false, animated: true)
             self.presentViewController(self.actionPhotoSheet, animated: true, completion: nil)
             self.add = true
         }
         let deletAction = UIAlertAction(title: "删除", style: UIAlertActionStyle.Default){
             (action: UIAlertAction!) -> Void in
-            NSLog("you choose delet")
             self.displayView.needDelete = true
             self.navigationItem.leftBarButtonItem = self.deletButton
             self.delet = false
         }
-        actionSheet.addAction(cancelAction)
         actionSheet.addAction(addAction)
         actionSheet.addAction(deletAction)
+        actionSheet.addAction(cancelAction)
         
         actionPhotoSheet = UIAlertController(title: "添加照片", message: "", preferredStyle: UIAlertControllerStyle.ActionSheet)
         // 定义 拍照和相册 的 UIAlertAction
-        let cancelAddAction = UIAlertAction(title: "取消", style: UIAlertActionStyle.Cancel, handler: nil)
+        let cancelAddAction = UIAlertAction(title: "取消", style: UIAlertActionStyle.Cancel){
+            (action: UIAlertAction!) -> Void in
+            self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        }
         let cameraAction = UIAlertAction(title: "拍照", style: UIAlertActionStyle.Default){
             (action: UIAlertAction!) -> Void in
-            NSLog("you choose camera")
             if(UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera)){
                 self.sourceType = UIImagePickerControllerSourceType.Camera
                 let imagePickerController:UIImagePickerController = UIImagePickerController()
@@ -91,7 +93,6 @@ class SecondViewImageController: UIViewController,UIImagePickerControllerDelegat
             imagePickerController.allowsEditing = false //true为拍照、选择完进入图片编辑模式
             imagePickerController.sourceType = self.sourceType
             self.presentViewController(imagePickerController, animated: true, completion: {})
-            NSLog("you choose photo collection")
         }
         actionPhotoSheet.addAction(cancelAddAction)
         actionPhotoSheet.addAction(cameraAction)
@@ -131,7 +132,7 @@ class SecondViewImageController: UIViewController,UIImagePickerControllerDelegat
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         let count = fileManagerImage.subpathsAtPath(dir)?.count ?? 0
         let data:NSData = UIImagePNGRepresentation((info[UIImagePickerControllerOriginalImage] as? UIImage)!)!
-        do{try fileManagerImage.createDirectoryAtPath(dir, withIntermediateDirectories: true, attributes: nil)}catch let error as NSError { if error != 0 { NSLog("Unresolved error (error)");abort()}}
+        do{try fileManagerImage.createDirectoryAtPath(dir, withIntermediateDirectories: true, attributes: nil)}catch let error as NSError { if error != 0 { abort()}}
         data.writeToFile(dir+photoDate+" "+"\(count)"+".png", atomically: true)
         self.dismissViewControllerAnimated(true, completion: nil)
         load()
@@ -238,7 +239,6 @@ class SecondViewImageController: UIViewController,UIImagePickerControllerDelegat
     //设置为编辑模式时调用
     override func setEditing(var editing: Bool, animated: Bool) {
         super.setEditing(editing, animated: animated)
-        NSLog("==setEditing==\(editing)")
         
         self.navigationItem.setHidesBackButton(editing, animated: animated)
         
@@ -246,9 +246,7 @@ class SecondViewImageController: UIViewController,UIImagePickerControllerDelegat
         if(editing){
             self.editButtonItem().title = "完成"
             self.presentViewController(self.actionSheet, animated: true, completion: nil)
-            if self.delet == true {
-                NSLog("delet == true")
-            }
+
             if add == true {editing = false}
         }else
             //非编辑状态时取消撤销管理器并保存数据

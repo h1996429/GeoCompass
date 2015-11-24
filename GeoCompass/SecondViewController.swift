@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 
 
-class SecondViewController:UITableViewController,UITabBarControllerDelegate,NSFetchedResultsControllerDelegate {
+class SecondViewController:UITableViewController,NSFetchedResultsControllerDelegate,UITabBarControllerDelegate{
     let cdControl = NewsCoreDataController();
     var managedObjectContext: NSManagedObjectContext?
     //获取数据的控制器
@@ -36,8 +36,6 @@ class SecondViewController:UITableViewController,UITabBarControllerDelegate,NSFe
         return UIBarButtonItem(title:"导出", style:.Plain, target: self, action: "exportAction:")
     }
     func exportAction(exportBarButton:UIBarButtonItem){
-        NSLog("exportAction")
-        self.tableView.beginUpdates()
         needExportBool = true
         needEXportSymbol = []
         needExport = []
@@ -57,11 +55,11 @@ class SecondViewController:UITableViewController,UITabBarControllerDelegate,NSFe
         return UIBarButtonItem(title:"完成", style:.Plain, target: self, action: "isExportAction:")
     }
     func isExportAction(isExportBarButton:UIBarButtonItem){
-        NSLog("isExportAction")
         dir = NSHomeDirectory()+"/Documents/"+dateFormatter.stringFromDate(Date)+" 导出数据表格.csv"
         var id:[String] = [],time:[String] = [],adr:[String] = []
         var strike:[String] = [] , dipdir:[String] = [] , dip:[String] = [];
         var pitch:[String] = [] , plusyn:[String] = [] , pluang:[String] = []; //pitch、plunging syncline and plunge angle
+        var describe:[String] = []
         var lat:[String] = [] , lon:[String] = [] , hight:[String] = [] , locError:[String] = [] , hightError:[String] = [] , magError:[String] = [] ;
         if needExport.count != 0 {
         if segmentedControl.selectedSegmentIndex == 0 {
@@ -82,12 +80,19 @@ class SecondViewController:UITableViewController,UITabBarControllerDelegate,NSFe
             locError.append("±\(surfacedata.locErrorS)m")
             hightError.append("±\(surfacedata.hightErrorS)m")
             magError.append(String(format: "%.2f",surfacedata.magErrorS as Double)+"°")
+            describe.append("\(surfacedata.describeS)")
             }}
             if id.count != 0 {
+                var needExportNumber = 0
+                for bool in needEXportSymbol {
+                    if bool == true {
+                        needExportNumber = needExportNumber + 1
+                    }
+                }
             var info = ""
-            let title = "编号,时间,地址,走向,倾向,倾角,纬度,经度,高程,经纬误差,高程误差,磁偏角\n"
+            let title = "编号,时间,地址,走向,倾向,倾角,纬度,经度,高程,经纬误差,高程误差,磁偏角,描述\n"
             info += title
-            for (var i=0;i < needExport.count;i++) {
+            for (var i=0;i < needExportNumber;i++) {
                 info += (id[i]+",")
                 info += (time[i]+",")
                 info += (adr[i]+",")
@@ -99,10 +104,11 @@ class SecondViewController:UITableViewController,UITabBarControllerDelegate,NSFe
                 info += (hight[i]+",")
                 info += (locError[i]+",")
                 info += (hightError[i]+",")
-                info += (magError[i]+"\n")
+                info += (magError[i]+",")
+                info += ("\""+describe[i]+"\"\n")
             }
             do{try info.writeToFile(dir, atomically: true, encoding: CFStringConvertEncodingToNSStringEncoding(0x0632))}catch let error as NSError{
-                if error != 0 {NSLog("Unsolved error \(error)")}
+                if error != 0 {abort()}
                 }}
         }
         if segmentedControl.selectedSegmentIndex == 1 {
@@ -124,12 +130,19 @@ class SecondViewController:UITableViewController,UITabBarControllerDelegate,NSFe
             locError.append("±\(linedata.locErrorS)m")
             hightError.append("±\(linedata.hightErrorS)m")
             magError.append(String(format: "%.2f",linedata.magErrorS as Double)+"°")
-                }}
+            describe.append("\(linedata.describeS)")
+            }}
             if id.count != 0 {
+                var needExportNumber = 0
+                for bool in needEXportSymbol {
+                    if bool == true {
+                        needExportNumber = needExportNumber + 1
+                    }
+                }
             var info = ""
-            let title = "编号,时间,地址,走向,侧俯角,倾伏向,倾俯角,纬度,经度,高程,经纬误差,高程误差,磁偏角\n"
+            let title = "编号,时间,地址,走向,侧俯角,倾伏向,倾俯角,纬度,经度,高程,经纬误差,高程误差,磁偏角,描述\n"
             info += title
-            for (var i=0;i < needExport.count;i++) {
+            for (var i=0;i < needExportNumber;i++) {
                 info += (id[i]+",")
                 info += (time[i]+",")
                 info += (adr[i]+",")
@@ -143,9 +156,10 @@ class SecondViewController:UITableViewController,UITabBarControllerDelegate,NSFe
                 info += (locError[i]+",")
                 info += (hightError[i]+",")
                 info += (magError[i]+"\n")
+                info += ("\""+describe[i]+"\"\n")
             }
             do{try info.writeToFile(dir, atomically: true, encoding:CFStringConvertEncodingToNSStringEncoding(0x0632))}catch let error as NSError{
-                if error != 0 {NSLog("Unsolved error \(error)")}
+                if error != 0 {abort()}
                 }}
         }
             self.navigationItem.rightBarButtonItem = self.exportButton
@@ -166,7 +180,6 @@ class SecondViewController:UITableViewController,UITabBarControllerDelegate,NSFe
             return}
         needExportBool = false
         self.navigationItem.leftBarButtonItem = self.editButtonItem()
-        self.tableView.endUpdates()
     }
     var cancelButton:UIBarButtonItem{
         return UIBarButtonItem(title:"取消", style:.Plain, target: self, action: "cancelAction:")
@@ -217,14 +230,11 @@ class SecondViewController:UITableViewController,UITabBarControllerDelegate,NSFe
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     
     @IBAction func indexChange(sender: UISegmentedControl) {
-        var error: NSError? = nil
         segmentedControlChange = true;
         do {
             try self.initFetchedResultsController().performFetch()
-        } catch let error1 as NSError {
-            error = error1
-            NSLog("Unresolved error \(error), \(error!.userInfo)")
-            abort()
+        } catch let error as NSError {
+            if error != 0 {abort()}
         }
         self.tableView.reloadData()
     }
@@ -238,21 +248,22 @@ class SecondViewController:UITableViewController,UITabBarControllerDelegate,NSFe
         self.navigationItem.leftBarButtonItem = self.editButtonItem()
         self.editButtonItem().title = "编辑"
         self.navigationItem.rightBarButtonItem = self.exportButton
+        
 
-        navigationItem.backBarButtonItem = UIBarButtonItem(title: "历史数据", style: UIBarButtonItemStyle.Plain, target: nil, action: nil)
 
         //执行获取数据，并处理异常
-        var error: NSError? = nil
         do {
             try self.initFetchedResultsController().performFetch()
-        } catch let error1 as NSError {
-            error = error1
-            NSLog("Unresolved error \(error), \(error!.userInfo)")
-            abort()
+        } catch let error as NSError {
+            if error != 0 {abort()}
         }
+        
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "历史数据", style: UIBarButtonItemStyle.Plain, target: nil, action: nil)
+
     }
     
-
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -301,8 +312,11 @@ class SecondViewController:UITableViewController,UITabBarControllerDelegate,NSFe
     // 自定义编辑单元格时的动作，可编辑样式包括UITableViewCellEditingStyleInsert（插入）、UITableViewCellEditingStyleDelete（删除）。
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
-            needDeleteDir = NSHomeDirectory()+"/Documents/"+"\((self.fetchedResultsController?.objectAtIndexPath(indexPath).adrS)! )"+"/纬度"+"\(self.fetchedResultsController?.objectAtIndexPath(indexPath).latS! as! Double)"+"经度"+"\(self.fetchedResultsController?.objectAtIndexPath(indexPath).lonS! as! Double)"
-            do{try fileManager.removeItemAtPath(needDeleteDir)}catch let error as NSError {if error != 0 {NSLog("Unsolved error \(error)")}}
+            if segmentedControl.selectedSegmentIndex == 0 {
+            needDeleteDir = NSHomeDirectory()+"/Documents/面状构造/"+"\((self.fetchedResultsController?.objectAtIndexPath(indexPath).adrS)! )"+"/纬度"+"\(self.fetchedResultsController?.objectAtIndexPath(indexPath).latS! as! Double)"+"经度"+"\(self.fetchedResultsController?.objectAtIndexPath(indexPath).lonS! as! Double)"}
+            else if segmentedControl.selectedSegmentIndex == 1 {
+            needDeleteDir = NSHomeDirectory()+"/Documents/线状构造/"+"\((self.fetchedResultsController?.objectAtIndexPath(indexPath).adrS)! )"+"/纬度"+"\(self.fetchedResultsController?.objectAtIndexPath(indexPath).latS! as! Double)"+"经度"+"\(self.fetchedResultsController?.objectAtIndexPath(indexPath).lonS! as! Double)"}
+            do{try fileManager.removeItemAtPath(needDeleteDir)}catch let error as NSError {if error != 0 {}}
             //删除sqlite库中对应的数据
             let context = self.fetchedResultsController?.managedObjectContext
             context!.deleteObject(self.fetchedResultsController?.objectAtIndexPath(indexPath) as! NSManagedObject)
@@ -310,7 +324,6 @@ class SecondViewController:UITableViewController,UITabBarControllerDelegate,NSFe
             do{ try context?.save() }
             catch let error as NSError {
             if error != 0 {
-                NSLog("Unresolved error \(error), \(error.userInfo)")
                 abort()
             }}
             }
@@ -343,15 +356,12 @@ class SecondViewController:UITableViewController,UITabBarControllerDelegate,NSFe
     func initFetchedResultsController() ->NSFetchedResultsController
     {
         var entityName = "SurfaceData"
-        NSLog("===initFetchedResultsController===")
         if (self.fetchedResultsController != nil && segmentedControlChange == false) {
-            NSLog("===1===")
             return self.fetchedResultsController!
         }
         else if segmentedControlChange == true {
             segmentedControlChange = false;
         }
-        NSLog("===2===")
         // 创建一个获取数据的实例，用来查询实体
         let fetchRequest = NSFetchRequest()
         if segmentedControl.selectedSegmentIndex == 0 {
@@ -371,7 +381,7 @@ class SecondViewController:UITableViewController,UITabBarControllerDelegate,NSFe
         fetchRequest.sortDescriptors = sortDescriptors
         
         // 创建获取数据的控制器，将section的name设置为author，可以直接用于tableViewSourceData
-        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: cdControl.cdh.managedObjectContext, sectionNameKeyPath: "adrS", cacheName: "Root")
+        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: cdControl.cdh.managedObjectContext, sectionNameKeyPath: "adrS", cacheName: nil)
         fetchedResultsController.delegate = self
         self.fetchedResultsController = fetchedResultsController
         return fetchedResultsController
@@ -379,7 +389,6 @@ class SecondViewController:UITableViewController,UITabBarControllerDelegate,NSFe
     
     //通知控制器即将开始处理一个或多个的单元格变化，包括添加、删除、移动或更新。在这里处理变化时对tableView的影响，例如删除sqlite数据时同时要删除tableView中对应的单元格
     func controller(controller: NSFetchedResultsController, didChangeObject anObject: AnyObject, atIndexPath indexPath: NSIndexPath?, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath?) {
-        NSLog("==didChangeObject=="+type.rawValue.description)
         switch(type) {
         case .Insert:
             self.tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: UITableViewRowAnimation.Automatic)
@@ -395,7 +404,6 @@ class SecondViewController:UITableViewController,UITabBarControllerDelegate,NSFe
     
     //通知控制器即将开始处理一个或多个的分组变化，包括添加、删除、移动或更新。
     func controller(controller: NSFetchedResultsController, didChangeSection sectionInfo: NSFetchedResultsSectionInfo, atIndex sectionIndex: Int, forChangeType type: NSFetchedResultsChangeType) {
-        NSLog("==didChangeSection=="+type.rawValue.description)
         switch(type) {
         case .Insert:
             self.tableView.insertSections(NSIndexSet(index: sectionIndex), withRowAnimation: UITableViewRowAnimation.Automatic)
@@ -425,7 +433,6 @@ class SecondViewController:UITableViewController,UITabBarControllerDelegate,NSFe
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         //明细查询页面
         if (segue.identifier == "Detail") {
-            NSLog("Detail go")
             //将所选择的当前数据赋值给所打开页面的控制器
             let secondViewDetailController = segue.destinationViewController as! SecondViewDetailController
             let currentRow = tableView.indexPathForSelectedRow

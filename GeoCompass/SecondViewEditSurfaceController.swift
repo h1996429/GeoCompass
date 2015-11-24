@@ -81,7 +81,6 @@ class SecondViewEditSurfaceController: UIViewController{
     //点击保存
     @IBAction func saveAction(sender: AnyObject) {
         // Set the action name for the undo operation.给撤回操作设置name
-        NSLog("==saveAction==\(self.editedFieldName)")
         let undoManager = self.editedObject.managedObjectContext?.undoManager
         undoManager?.setActionName(self.editedFieldName)
         

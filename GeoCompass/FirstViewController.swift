@@ -111,7 +111,7 @@ class FirstViewController: UIViewController,CLLocationManagerDelegate,UITabBarCo
                 surfacedata.id=surfaceidID as! NSNumber;
                 surfacedata.timeS=time;
                 surfacedata.strikeS=(round(strikeFS*100))/100;
-                surfacedata.dipdirS=(round(dipdirFS*100))/100;
+                surfacedata.dipdirS=(round(dipdirFS*100))/100 ?? 0;
                 surfacedata.dipS=(round(dipFS*100))/100;
                 surfacedata.latS=(round(latFS*100000000))/100000000;
                 surfacedata.lonS=(round(lonFS*100000000))/100000000;
@@ -133,7 +133,7 @@ class FirstViewController: UIViewController,CLLocationManagerDelegate,UITabBarCo
                 linedata.strikeS=(round(strikeFS*100))/100;
                 linedata.pitchS=(round(pitchFS*100))/100;
                 linedata.plusynS=(round(plusynFS*100))/100;
-                linedata.pluangS=(round(pluangFS*100))/100;
+                linedata.pluangS=(round(pluangFS*100))/100 ?? 0;
                 linedata.latS=(round(latFS*10000000))/10000000;
                 linedata.lonS=(round(lonFS*10000000))/10000000;
                 linedata.hightS=(round(hightFS*100))/100;
@@ -189,7 +189,6 @@ class FirstViewController: UIViewController,CLLocationManagerDelegate,UITabBarCo
 
         
         if (location.horizontalAccuracy > 0) {
-            self.locationManager.stopUpdatingLocation();
             self.lat = CoordsTransform.transformMarsToGpsCoordsWithCLLocationCoordinate2D(location.coordinate).latitude;
             self.lon = CoordsTransform.transformMarsToGpsCoordsWithCLLocationCoordinate2D(location.coordinate).longitude;
             self.hight = location.altitude;
@@ -273,8 +272,8 @@ class FirstViewController: UIViewController,CLLocationManagerDelegate,UITabBarCo
                 self.locationManager.delegate = self;
                 self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
                 if(self.requestauthorization==false){
-                if self.locationManager.respondsToSelector("requestWhenInUseAuthorization") {
-                    print("requestWhenInUseAuthorization")
+                if self.locationManager.respondsToSelector("requestAlwaysAuthorization") {
+                    print("requestAlwaysAuthorization")
                     self.locationManager.requestWhenInUseAuthorization ()
                     self.requestauthorization=true
                     }}
@@ -291,19 +290,22 @@ class FirstViewController: UIViewController,CLLocationManagerDelegate,UITabBarCo
                 
                 let angle = -atan2(gravityY, gravityX) + M_PI/2;
                 
-
-                let dipV = Vector3(gravityX,gravityY,0);
+                
+                let dipV = Vector3(gravityX,gravityY,0).normalized();
                 let n_downV = Vector3(gravityX,gravityY,gravityZ).normalized();
-                var hplane_dipV   = dipV - n_downV * ( n_downV.dot(dipV  ) );
-                var hplane_northV = self.northV - n_downV * ( n_downV.dot(self.northV) );
-                hplane_dipV = Vector3(hplane_dipV.x,hplane_dipV.y,hplane_dipV.z).normalized();
-                hplane_northV = Vector3(hplane_northV.x,hplane_northV.y,hplane_northV.z).normalized();
-                var cp = Vector3(hplane_dipV.x,hplane_dipV.y,hplane_dipV.z).cross(hplane_northV);
-                let dp = Vector3(hplane_dipV.x,hplane_dipV.y,hplane_dipV.z).dot(hplane_northV);
-                let len = cp.length; // get length of vector
-                cp = cp/len; // normalize
-                var dipDirection = acos(dp/((hplane_dipV.length)*(hplane_northV.length))); // now we have the angle
+                var hplane_dipV:Vector3 = dipV - n_downV * ( n_downV.dot(dipV  ) );
+                var hplane_northV:Vector3 = self.northV - n_downV * ( n_downV.dot(self.northV) );
+                hplane_dipV = hplane_dipV.normalized();
+                hplane_northV = hplane_northV.normalized();
+                var cp:Vector3 = hplane_dipV.cross(hplane_northV);
+                let dp = hplane_dipV.dot(hplane_northV);
+                //let len = cp.length; // get length of vector
+                cp = cp.normalized(); // normalize
+                var dipDirection = acos(dp); // now we have the angle
                 // now we want whether or not the cross product is in the same direction or the opposite of g, telling us the sign of the angle!
+                
+                
+                
                 dipDirection *= -(n_downV.dot(cp));
                 if(dipDirection < 0){
                     dipDirection += 2*M_PI;}
@@ -330,13 +332,14 @@ class FirstViewController: UIViewController,CLLocationManagerDelegate,UITabBarCo
                     if(self.pitch < 0){self.pitch = -self.pitch};
                     if(self.pitch > 90){self.pitch = 180 - self.pitch};
                     
-                    //var plusynlevel = Vector3(0,gravityY,-gravityZ).normalized();
-                    //var plusynbasic = (Vector3(0,gravityY,-gravityZ).normalized()).dot(self!.northV.normalized());
-                    //self!.plusyn = acos(plusynbasic/((plusynlevel.length)*(self!.northV.length)))*(180/M_PI);
+                    //let plusynlevel = Vector3(0,gravityY,-gravityZ).normalized();
+                    //let plusynbasic = (Vector3(0,gravityY,-gravityZ).normalized()).dot(self.northV.normalized());
+                    //self.plusyn = acos(plusynbasic/((plusynlevel.length)*(self.northV.length)))*(180/M_PI);
                     
-                    let calpitch:Double = cos(self.pitch/(180/M_PI));
-                    let calplusyn:Double = (self.plusyn - self.strike)/(180/M_PI);
-                    self.pluang =  acos(calpitch/calplusyn)*(180/M_PI);
+                    //let calpitch:Double = cos(self.pitch/(180/M_PI));
+                    //let calplusyn:Double = (self.plusyn - self.strike)/(180/M_PI);
+                    let calpluang = (Vector2(gravityY,-gravityZ).normalized()).dot(Vector2(gravityY,0).normalized())/(Vector2(gravityY,-gravityZ).normalized().length*Vector2(gravityY,0).normalized().length);
+                    self.pluang = 90-((acos(calpluang))*180)/M_PI
                 case 2:
                     break;
                 default:

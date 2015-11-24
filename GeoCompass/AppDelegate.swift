@@ -21,6 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     //app将要入非活动状态时调用，在此期间，应用程序不接收消息或事件，比如来电话了；保存数据
     func applicationWillResignActive(application: UIApplication) {
+        WalkStore.sharedInstance.saveContext()
     }
     
     //app被推送到后台时调用，所以要设置后台继续运行，则在这个函数里面设置即可；保存数据
@@ -56,6 +57,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
         // Saves changes in the application's managed object context before the application terminates.
+        WalkStore.sharedInstance.saveContext()
         self.cdh.saveContext()
     }
     

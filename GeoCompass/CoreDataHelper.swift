@@ -53,7 +53,6 @@ class CoreDataHelper: NSObject{
                     try context.save()
                 } catch let error as NSError {
                     if error != 0 {
-                        NSLog("Unresolved error \(error)")
                         abort()}
                 }
             }
@@ -66,12 +65,10 @@ class CoreDataHelper: NSObject{
     func contextDidSaveContext(notification: NSNotification) {
         let sender = notification.object as! NSManagedObjectContext
         if sender === self.managedObjectContext {
-            print("======= Saved main Context in this thread")
             self.backgroundContext.performBlock {
                 self.backgroundContext.mergeChangesFromContextDidSaveNotification(notification)
             }
         } else if sender === self.backgroundContext {
-            print("======= Saved background Context in this thread")
             self.managedObjectContext.performBlock {
                 self.managedObjectContext.mergeChangesFromContextDidSaveNotification(notification)
             }

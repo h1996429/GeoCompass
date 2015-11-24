@@ -115,7 +115,6 @@
 		A7737C631BFCD8D200547A0B /* Walk+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7737C611BFCD8D200547A0B /* Walk+CoreDataProperties.swift */; };
 		A7737C641BFCD8D200547A0B /* Walk.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7737C621BFCD8D200547A0B /* Walk.swift */; };
 		A7737C661BFD9EBA00547A0B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A7737C651BFD9EBA00547A0B /* Main.storyboard */; };
-		A7737C681BFDE79F00547A0B /* Beijing, China.gpx in Resources */ = {isa = PBXBuildFile; fileRef = A7737C671BFDE79F00547A0B /* Beijing, China.gpx */; };
 		A794CF721BA82BCB00A64365 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A794CF701BA82BCB00A64365 /* Model.xcdatamodeld */; };
 		A79D51AC1BF83C3600BC5D23 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A79D51AB1BF83C3600BC5D23 /* AssetsLibrary.framework */; };
 		A79D51AE1BF83C4500BC5D23 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A79D51AD1BF83C4500BC5D23 /* MobileCoreServices.framework */; };
@@ -130,6 +129,11 @@
 		A7A72C721BFB784300BC402C /* libstdc++.6.0.9.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A7A72C711BFB784300BC402C /* libstdc++.6.0.9.tbd */; };
 		A7AE53171BEA18F50077B630 /* SecondViewDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7AE53161BEA18F50077B630 /* SecondViewDetailController.swift */; };
 		A7AE53191BEA33900077B630 /* SecondViewEditSurfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7AE53181BEA33900077B630 /* SecondViewEditSurfaceController.swift */; };
+		A7D1F6381C0370D400EBD5B3 /* Pin.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D1F6371C0370D400EBD5B3 /* Pin.swift */; };
+		A7D1F63A1C0371DA00EBD5B3 /* PinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D1F6391C0371DA00EBD5B3 /* PinView.swift */; };
+		A7F3EBF01C00BD8100AD3832 /* rulerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F3EBEF1C00BD8100AD3832 /* rulerView.swift */; };
+		A7F3EBF21C00C13C00AD3832 /* Ruler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F3EBF11C00C13C00AD3832 /* Ruler.swift */; };
+		A7F3EBF41C01820D00AD3832 /* ThirdViewTrackController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F3EBF31C01820D00AD3832 /* ThirdViewTrackController.swift */; };
 		A7FE17EC1BF4E64E00EA1BE9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A7FE17EB1BF4E64E00EA1BE9 /* Images.xcassets */; };
 		A7FE17EE1BF4E7D100EA1BE9 /* ItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A7FE17ED1BF4E7D100EA1BE9 /* ItemCell.xib */; };
 /* End PBXBuildFile section */
@@ -259,7 +263,6 @@
 		A7737C611BFCD8D200547A0B /* Walk+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Walk+CoreDataProperties.swift"; path = "GeoCompass/datamodel/Walk+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		A7737C621BFCD8D200547A0B /* Walk.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Walk.swift; path = GeoCompass/datamodel/Walk.swift; sourceTree = SOURCE_ROOT; };
 		A7737C651BFD9EBA00547A0B /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		A7737C671BFDE79F00547A0B /* Beijing, China.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Beijing, China.gpx"; sourceTree = "<group>"; };
 		A794CF6F1BA82ABC00A64365 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		A794CF711BA82BCB00A64365 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		A79D51AB1BF83C3600BC5D23 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
@@ -276,6 +279,11 @@
 		A7A72C711BFB784300BC402C /* libstdc++.6.0.9.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.6.0.9.tbd"; path = "usr/lib/libstdc++.6.0.9.tbd"; sourceTree = SDKROOT; };
 		A7AE53161BEA18F50077B630 /* SecondViewDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondViewDetailController.swift; sourceTree = "<group>"; };
 		A7AE53181BEA33900077B630 /* SecondViewEditSurfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondViewEditSurfaceController.swift; sourceTree = "<group>"; };
+		A7D1F6371C0370D400EBD5B3 /* Pin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pin.swift; sourceTree = "<group>"; };
+		A7D1F6391C0371DA00EBD5B3 /* PinView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinView.swift; sourceTree = "<group>"; };
+		A7F3EBEF1C00BD8100AD3832 /* rulerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = rulerView.swift; sourceTree = "<group>"; };
+		A7F3EBF11C00C13C00AD3832 /* Ruler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ruler.swift; sourceTree = "<group>"; };
+		A7F3EBF31C01820D00AD3832 /* ThirdViewTrackController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThirdViewTrackController.swift; sourceTree = "<group>"; };
 		A7FE17EB1BF4E64E00EA1BE9 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		A7FE17ED1BF4E7D100EA1BE9 /* ItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ItemCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -316,7 +324,6 @@
 		A72293271B983CAC00CCF6E8 = {
 			isa = PBXGroup;
 			children = (
-				A7737C671BFDE79F00547A0B /* Beijing, China.gpx */,
 				A7FE17EB1BF4E64E00EA1BE9 /* Images.xcassets */,
 				A743D9371BEF05AD00624737 /* icon.png */,
 				A722936E1B99CFAC00CCF6E8 /* framework */,
@@ -352,6 +359,9 @@
 				A743D9E81BF09AB600624737 /* SecondViewImageController.swift */,
 				A760A8AD1BF2271600F5812B /* DisplayView.swift */,
 				A72293821BA0985900CCF6E8 /* ThirdViewController.swift */,
+				A7F3EBF31C01820D00AD3832 /* ThirdViewTrackController.swift */,
+				A7F3EBF11C00C13C00AD3832 /* Ruler.swift */,
+				A7F3EBEF1C00BD8100AD3832 /* rulerView.swift */,
 				A7737C581BFC893400547A0B /* walkTrack */,
 				A7737C651BFD9EBA00547A0B /* Main.storyboard */,
 				A72293401B983CAC00CCF6E8 /* LaunchScreen.xib */,
@@ -414,6 +424,8 @@
 				A7737C621BFCD8D200547A0B /* Walk.swift */,
 				A758CA451BE66CB60043A637 /* SurfaceData.swift */,
 				A758CA461BE66CB60043A637 /* LineData.swift */,
+				A7D1F6371C0370D400EBD5B3 /* Pin.swift */,
+				A7D1F6391C0371DA00EBD5B3 /* PinView.swift */,
 			);
 			name = datamodel;
 			path = GeoCompass.xcodeproj;
@@ -663,6 +675,7 @@
 				TargetAttributes = {
 					A722932F1B983CAC00CCF6E8 = {
 						CreatedOnToolsVersion = 6.4;
+						DevelopmentTeam = D8W4YSU44Q;
 						SystemCapabilities = {
 							com.apple.Maps.iOS = {
 								enabled = 1;
@@ -706,7 +719,6 @@
 				A72293421B983CAC00CCF6E8 /* LaunchScreen.xib in Resources */,
 				A760A8831BF1CED100F5812B /* Info.plist in Resources */,
 				A7737C661BFD9EBA00547A0B /* Main.storyboard in Resources */,
-				A7737C681BFDE79F00547A0B /* Beijing, China.gpx in Resources */,
 				A7FE17EE1BF4E7D100EA1BE9 /* ItemCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -744,6 +756,7 @@
 				A7AE53171BEA18F50077B630 /* SecondViewDetailController.swift in Sources */,
 				A760A81E1BF1CEC600F5812B /* CollectionView.swift in Sources */,
 				A72293811B9C35C300CCF6E8 /* VectorMath+SceneKit.swift in Sources */,
+				A7D1F6381C0370D400EBD5B3 /* Pin.swift in Sources */,
 				A760A8131BF1CEC600F5812B /* PhotoBrowser+Common.swift in Sources */,
 				A794CF721BA82BCB00A64365 /* Model.xcdatamodeld in Sources */,
 				A72293831BA0985900CCF6E8 /* ThirdViewController.swift in Sources */,
@@ -787,7 +800,9 @@
 				A760A8751BF1CED100F5812B /* LayoutConstraint.swift in Sources */,
 				A760A8A81BF1CED100F5812B /* NVActivityIndicatorAnimationSquareSpin.swift in Sources */,
 				A760A89D1BF1CED100F5812B /* NVActivityIndicatorAnimationBallZigZag.swift in Sources */,
+				A7F3EBF21C00C13C00AD3832 /* Ruler.swift in Sources */,
 				A760A87A1BF1CED100F5812B /* CGSize+Swift.swift in Sources */,
+				A7D1F63A1C0371DA00EBD5B3 /* PinView.swift in Sources */,
 				A722933A1B983CAC00CCF6E8 /* SecondViewController.swift in Sources */,
 				A760A8701BF1CED100F5812B /* ConstraintMaker.swift in Sources */,
 				A72293361B983CAC00CCF6E8 /* AppDelegate.swift in Sources */,
@@ -798,6 +813,7 @@
 				A760A89E1BF1CED100F5812B /* NVActivityIndicatorAnimationBallZigZagDeflect.swift in Sources */,
 				A760A88D1BF1CED100F5812B /* NVActivityIndicatorAnimationBallBeat.swift in Sources */,
 				A7737C641BFCD8D200547A0B /* Walk.swift in Sources */,
+				A7F3EBF01C00BD8100AD3832 /* rulerView.swift in Sources */,
 				A731A05D1BAC77B4008C5966 /* NewsCoreDataController.swift in Sources */,
 				A760A8891BF1CED100F5812B /* UIButton+Haneke.swift in Sources */,
 				A760A87D1BF1CED100F5812B /* DiskCache.swift in Sources */,
@@ -815,6 +831,7 @@
 				A760A8951BF1CED100F5812B /* NVActivityIndicatorAnimationBallPulseSync.swift in Sources */,
 				A743D9301BEE6FCC00624737 /* SecondViewEditLineController.swift in Sources */,
 				A760A86B1BF1CED100F5812B /* CFSnapKit.swift in Sources */,
+				A7F3EBF41C01820D00AD3832 /* ThirdViewTrackController.swift in Sources */,
 				A72293381B983CAC00CCF6E8 /* FirstViewController.swift in Sources */,
 				A760A8A21BF1CED100F5812B /* NVActivityIndicatorAnimationLineScaleParty.swift in Sources */,
 				A760A8A91BF1CED100F5812B /* NVActivityIndicatorAnimationTriangleSkewSpin.swift in Sources */,
@@ -951,6 +968,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -963,6 +982,7 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = GeoCompass.GeoCompass;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "GeoCompass-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -972,6 +992,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -984,6 +1006,7 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = GeoCompass.GeoCompass;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "GeoCompass-Bridging-Header.h";
 			};
 			name = Release;

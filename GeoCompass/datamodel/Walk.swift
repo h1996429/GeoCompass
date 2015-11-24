@@ -25,7 +25,7 @@ class Walk: NSManagedObject {
     }
     
     func addNewLocation(location: CLLocation) {
-        locations.append(location)
+        locations.append(CoordsTransform.transformMarsToGpsCoordsWithCLLocation(location))
     }
     
     override func awakeFromInsert() {

@@ -53,7 +53,6 @@ class SecondViewDetailController: UITableViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        NSLog("==viewDidLoad==")
         navigationController
 
         self.navigationItem.rightBarButtonItem = self.editButtonItem()
@@ -79,7 +78,6 @@ class SecondViewDetailController: UITableViewController{
     }
     
     deinit{
-        NSLog("==deinit==")
         NSNotificationCenter.defaultCenter().removeObserver(self, name: NSCurrentLocaleDidChangeNotification, object: nil)
     }
     
@@ -104,7 +102,6 @@ class SecondViewDetailController: UITableViewController{
     
     //视图即将可见时调用，每次显示view就会调用
     override func viewWillAppear(animated: Bool) {
-        NSLog("==viewWillAppear==")
         super.viewWillAppear(animated)
         
         //重载数据
@@ -116,7 +113,6 @@ class SecondViewDetailController: UITableViewController{
     //设置为编辑模式时调用
     override func setEditing(editing: Bool, animated: Bool) {
         super.setEditing(editing, animated: animated)
-        NSLog("==setEditing==\(editing)")
         
         self.navigationItem.setHidesBackButton(editing, animated: animated)
         
@@ -131,25 +127,20 @@ class SecondViewDetailController: UITableViewController{
             self.text.editable = false
             self.editButtonItem().title = "编辑"
             self.cleanUpUndoManager()
-            var error: NSError? = nil
             if nowData == "surfacedata" {
                 do {
                     self.surfacedata.setValue((self.text.text! as NSString), forKey:"describeS")
                     try self.surfacedata.managedObjectContext!.save()
-                } catch let error1 as NSError {
-                    error = error1
-                    NSLog("Unresolved error \(error), \(error?.userInfo)")
-                    abort()
+                } catch let error as NSError {
+                    if error != 0 {abort()}
                 }
             }
             else if nowData == "linedata" {
                 do {
                     self.linedata.setValue((self.text.text! as NSString), forKey:"describeS")
                     try self.linedata.managedObjectContext!.save()
-                } catch let error1 as NSError {
-                    error = error1
-                    NSLog("Unresolved error \(error), \(error?.userInfo)")
-                    abort()
+                } catch let error as NSError {
+                    if error != 0 {abort()}
                 }
             }
         }
@@ -175,8 +166,8 @@ class SecondViewDetailController: UITableViewController{
     func updateInterface() {
         dateFormatter.dateFormat = "yyyy-MM-dd HH时mm分";
         if nowData == "surfacedata" {
-            dir = NSHomeDirectory()+"/Documents/"+"\(self.surfacedata.adrS)"+"/纬度"+"\(self.surfacedata.latS as Double)"+"经度"+"\(self.surfacedata.lonS as Double)"+"/Photos/"
-            do{try fileManager.createDirectoryAtPath(dir, withIntermediateDirectories: true, attributes: nil)}catch let error as NSError{if error != 0 {NSLog("Unsolved error \(error)")} }
+            dir = NSHomeDirectory()+"/Documents/"+"面状构造/"+"\(self.surfacedata.adrS)"+"/纬度"+"\(self.surfacedata.latS as Double)"+"经度"+"\(self.surfacedata.lonS as Double)"+"/Photos/"
+            do{try fileManager.createDirectoryAtPath(dir, withIntermediateDirectories: true, attributes: nil)}catch let error as NSError{if error != 0 {abort()} }
             photoDate = dateFormatter.stringFromDate(surfacedata.timeS)
                 if (fileManager.subpathsAtPath(dir)?.count == 0) {
                     self.photoNumber.text = "照片数:0"
@@ -210,11 +201,10 @@ class SecondViewDetailController: UITableViewController{
             self.detail11.text = (self.surfacedata.magErrorS as Double).format(".2")+"°";
             self.title12.text = ""
             self.detail12.text = ""
-            NSLog("===updateInterface===\(self.surfacedata.timeS)")
         }
         else if nowData == "linedata" {
-            dir = NSHomeDirectory()+"/Documents/"+"\(self.linedata.adrS)"+"/纬度"+"\(self.linedata.latS as Double)"+"经度"+"\(self.linedata.lonS as Double)"+"/Photos/"
-            do{try fileManager.createDirectoryAtPath(dir, withIntermediateDirectories: true, attributes: nil)}catch let error as NSError{if error != 0 {NSLog("Unsolved error \(error)")} }
+            dir = NSHomeDirectory()+"/Documents/"+"线状构造/"+"\(self.linedata.adrS)"+"/纬度"+"\(self.linedata.latS as Double)"+"经度"+"\(self.linedata.lonS as Double)"+"/Photos/"
+            do{try fileManager.createDirectoryAtPath(dir, withIntermediateDirectories: true, attributes: nil)}catch let error as NSError{if error != 0 {abort()} }
             photoDate = dateFormatter.stringFromDate(linedata.timeS)
             if (fileManager.subpathsAtPath(dir)?.count == 0) {
                 self.photoNumber.text = "照片数:0"
@@ -248,12 +238,10 @@ class SecondViewDetailController: UITableViewController{
             self.detail11.text = "±"+(self.linedata.hightErrorS as Double).format(".1")+"m";
             self.title12.text = "磁偏角"
             self.detail12.text = (self.linedata.magErrorS as Double).format(".2")+"°";
-            NSLog("===updateInterface===\(self.linedata.timeS)")
         }
     }
     
     func updateRightBarButtonItemState() {
-        NSLog("==updateRightBarButtonItemState==")
         // 如果实体对象在保存状态，则允许右侧按钮
         if nowData == "surfacedata" {
             do {
@@ -365,7 +353,6 @@ class SecondViewDetailController: UITableViewController{
     
     //监听到撤回触发，重载数据和导航右侧按钮状态
     func undoManagerDidUndo(notification : NSNotification){
-        NSLog("==undoManagerDidUndo==")
         //重载数据
         self.updateInterface()
         //改变右侧按钮状态
@@ -374,7 +361,6 @@ class SecondViewDetailController: UITableViewController{
     
     //监听到取消撤回触发，重载数据和导航右侧按钮状态
     func undoManagerDidRedo(notification : NSNotification){
-        NSLog("==undoManagerDidRedo==")
         //重载数据
         self.updateInterface()
         //改变右侧按钮状态
@@ -491,7 +477,6 @@ class SecondViewDetailController: UITableViewController{
     
     //监听到变化时，重载数据
     func localeChanged(notification : NSNotification) {
-        NSLog("==localeChanged==")
         //重载数据
         self.updateInterface()
     }
