@@ -640,7 +640,7 @@ class ThirdViewController: UIViewController,MKMapViewDelegate,CLLocationManagerD
                 annotationView.addSubview(text)
             
                 var textFrame:CGRect = annotationView.frame
-                textFrame.size = CGSizeMake(13,
+                textFrame.size = CGSizeMake(20,
                 11)
                 text.textAlignment = NSTextAlignment.Center
                 let XFloat = Float(imageView.bounds.origin.x)
@@ -713,7 +713,7 @@ class ThirdViewController: UIViewController,MKMapViewDelegate,CLLocationManagerD
                 text.font = UIFont.systemFontOfSize(10)
                 annotationView.addSubview(text)
                 var textFrame:CGRect = annotationView.frame
-                textFrame.size = CGSizeMake(13,
+                textFrame.size = CGSizeMake(20,
                     11)
                 
                 text.textAlignment = NSTextAlignment.Center
